@@ -28,6 +28,7 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
     "skipLibCheck": true,
+    // Test
     "forceConsistentCasingInFileNames": true,
 
     "jsx": "preserve",
