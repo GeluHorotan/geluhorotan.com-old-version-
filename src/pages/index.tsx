@@ -1,6 +1,6 @@
+import { Inter } from '@next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,7 +20,9 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
-          <p>TEST 2</p>
+          <header>TEST 2</header>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
