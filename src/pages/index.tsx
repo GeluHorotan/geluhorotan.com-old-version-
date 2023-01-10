@@ -23,6 +23,7 @@ export default function Home() {
           <header>TEST 2</header>
           <p>Lorem ipsum</p>
           <p>Lorem ipsum</p>
+          <h1>TEST</h1>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
