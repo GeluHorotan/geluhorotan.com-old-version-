@@ -3,6 +3,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const productionAPI = 'https://geluhorotancom-horotangelu17.b4a.run';
+const developmentAPI = 'http://localhost:5000';
+
+const apiDomain =
+  process.env.NODE_ENV === 'production' ? productionAPI : developmentAPI;
+
 module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['.'],
@@ -14,4 +20,15 @@ module.exports = withBundleAnalyzer({
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${apiDomain}/api/:path*`,
+      },
+    ];
+  },
 });
