@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://curious-nasturtium-0156fd.netlify.app/
+Host: https://geluhorotan.com
 
 # Sitemaps
-Sitemap: https://curious-nasturtium-0156fd.netlify.app/sitemap.xml
+Sitemap: https://geluhorotan.com/sitemap.xml
