@@ -19,7 +19,7 @@ const ProjectForm: React.FC = () => {
 
   const technologyOptions = [
     { value: 'csharp', label: 'C#' },
-    { value: 'cpp', label: 'C++' },
+    { value: 'cplusplus', label: 'C++' },
     { value: 'go', label: 'Go' },
     { value: 'java', label: 'Java' },
     { value: 'javascript', label: 'JavaScript' },
@@ -27,17 +27,17 @@ const ProjectForm: React.FC = () => {
     { value: 'python', label: 'Python' },
     { value: 'ruby', label: 'Ruby' },
     { value: 'swift', label: 'Swift' },
-    { value: 'angular', label: 'Angular' },
-    { value: 'aspnet', label: 'ASP.NET' },
+    { value: 'angularjs', label: 'Angular' },
+
     { value: 'flask', label: 'Flask' },
     { value: 'laravel', label: 'Laravel' },
     { value: 'nodejs', label: 'Node.js' },
     { value: 'rails', label: 'Rails' },
     { value: 'react', label: 'React' },
-    { value: 'vue', label: 'Vue.js' },
+    { value: 'vuejs', label: 'Vue.js' },
     { value: 'django', label: 'Django' },
     { value: 'express', label: 'Express' },
-    { value: 'nuxt', label: 'Nuxt' },
+    { value: 'nuxtjs', label: 'Nuxt' },
     { value: 'svelte', label: 'Svelte' },
   ];
 

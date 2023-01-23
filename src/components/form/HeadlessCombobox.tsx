@@ -1,7 +1,8 @@
-import { Combobox, Transition } from '@headlessui/react';
-import React, { Fragment, useEffect, useState } from 'react';
-// Icons
+import { Combobox } from '@headlessui/react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
+// Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
 
 type Props = {
@@ -33,6 +34,7 @@ const HeadlessCombobox = ({
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
+  const [techSrc, setTechSrc] = useState('');
 
   const filteredOptions =
     query === ''
@@ -70,84 +72,108 @@ const HeadlessCombobox = ({
 
       <div className=" relative w-full ">
         <Combobox value={selectedOptions} onChange={handleOnChange} multiple>
-          <div className="relative flex flex-col  ">
+          <div className="relative flex flex-col   ">
             <Combobox.Input
-              className="w-full rounded-lg bg-secondary_s p-2 duration-200  ease-in-out"
+              className="w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out"
               onChange={(event) => setQuery(event.target.value)}
             />
-            <Combobox.Button className="absolute inset-y-12 right-0 top-0 flex items-center pr-2 ">
+            <Combobox.Button className=" absolute right-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center pr-2 ">
               <IoIosArrowForward className="rotate-90 transition-all duration-200 ease-in-out " />
             </Combobox.Button>
 
-            {selectedOptions.length !== 0 && (
-              <div className="flex  w-full  gap-4 rounded-md py-2">
-                {selectedOptions?.map((sOption, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="flex  items-center justify-between gap-1  rounded-md bg-blue-400"
-                    >
-                      {/* <p className="px-2">{sOption.label}</p> */}
+            <Combobox.Options className="absolute top-full right-0 z-50   max-h-60 w-full overflow-auto rounded-md bg-secondary py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              {filteredOptions.length === 0 && query !== '' ? (
+                <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+                  Nothing found.
+                </div>
+              ) : (
+                filteredOptions.map((option, index) => (
+                  <Combobox.Option
+                    key={index}
+                    className={({ active }) =>
+                      `relative cursor-default  select-none py-2 pl-10 pr-4 ${
+                        active ? 'bg-secondary_s_2 ' : ''
+                      }`
+                    }
+                    value={option}
+                  >
+                    {({ selected, active }) => (
+                      <div className="flex flex-row items-center gap-3">
+                        <span>{index}.</span>
+                        <Image
+                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${option.value}/${option.value}-original.svg`}
+                          width={24}
+                          height={24}
+                          alt={option.label}
+                          onError={(e) => {
+                            const img = e.target as HTMLImageElement;
+                            img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${option.value}/${option.value}-plain.svg`;
+                          }}
+                        />
 
-                      <MdClose
-                        size={16}
-                        className=" h-full w-full rounded-r-md bg-red-400 px-0.5 text-primary"
-                        onClick={() => removeLanguage(index)}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+                        <span
+                          className={`block truncate ${
+                            selected ? 'font-medium' : 'font-normal'
+                          }`}
+                        >
+                          {option.label}
+                        </span>
 
-            <Transition
-              as={Fragment}
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-              afterLeave={() => setQuery('')}
-            >
-              <Combobox.Options className="absolute bottom-full right-0   max-h-60 w-full overflow-auto rounded-md bg-red-400 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {filteredOptions.length === 0 && query !== '' ? (
-                  <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
-                    Nothing found.
-                  </div>
-                ) : (
-                  filteredOptions.map((option, index) => (
-                    <Combobox.Option
-                      key={index}
-                      className={({ active }) =>
-                        `relative cursor-default  select-none py-2 pl-10 pr-4 ${
-                          active ? 'bg-teal-600 text-white' : 'text-gray-900'
-                        }`
-                      }
-                      value={option}
-                    >
-                      {({ selected, active }) => (
-                        <>
+                        {selected ? (
                           <span
-                            className={`block truncate ${
-                              selected ? 'font-medium' : 'font-normal'
+                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                              active ? 'text-white' : 'text-teal-600'
                             }`}
                           >
-                            {option.label}
+                            <MdTaskAlt className={'text-success'} size={16} />
                           </span>
-                          {selected ? (
-                            <span
-                              className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                active ? 'text-white' : 'text-teal-600'
-                              }`}
-                            >
-                              <MdTaskAlt className={'text-success'} />
-                            </span>
-                          ) : null}
-                        </>
-                      )}
-                    </Combobox.Option>
-                  ))
-                )}
-              </Combobox.Options>
-            </Transition>
+                        ) : null}
+                      </div>
+                    )}
+                  </Combobox.Option>
+                ))
+              )}
+            </Combobox.Options>
+          </div>
+
+          <div
+            className={`  ${
+              selectedOptions.length === 0
+                ? 'flex-nowrap'
+                : 'grid w-full grid-cols-4 '
+            }   gap-4 rounded-md  py-2`}
+          >
+            {selectedOptions.length === 0 && (
+              <p>No {label.toLowerCase()} added.</p>
+            )}
+            {selectedOptions?.map((sOption, index) => {
+              return (
+                <div
+                  key={index}
+                  className=" flex w-full  flex-row items-center justify-between gap-3 rounded-md  bg-secondary_s "
+                >
+                  <div className="flex flex-row items-center gap-1 p-1">
+                    <Image
+                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${sOption.value}/${sOption.value}-original.svg`}
+                      width={16}
+                      height={16}
+                      alt={sOption.label}
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${sOption.value}/${sOption.value}-plain.svg`;
+                      }}
+                    />
+                    <p>{sOption.label}</p>
+                  </div>
+
+                  <MdClose
+                    size={20}
+                    className=" h-full  rounded-r-md  bg-secondary_s_2  px-0.5  text-primary"
+                    onClick={() => removeLanguage(index)}
+                  />
+                </div>
+              );
+            })}
           </div>
         </Combobox>
       </div>
