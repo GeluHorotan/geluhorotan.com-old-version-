@@ -7,6 +7,7 @@ type Props = {
   error: string;
   id: string;
   labelColor?: string;
+  backgroundColor: string;
   label: string;
   icon?: ReactNode;
   placeholder?: string;
@@ -25,6 +26,7 @@ const Input = ({
   label,
   placeholder,
   labelColor,
+  backgroundColor,
   icon,
 }: Props) => {
   return (
@@ -33,19 +35,25 @@ const Input = ({
         {label}
       </label>
 
-      <div className=" relative w-full ">
+      <div className={`relative w-full ${labelColor}`}>
         <input
           placeholder={placeholder || ''}
           name={name}
           type={type}
           id={id}
-          className={`peer relative w-full rounded-lg bg-primary_t py-2  indent-8 outline-none transition-all  duration-200  ease-in-out`}
+          className={`peer relative w-full rounded-lg ${backgroundColor} py-2  ${
+            icon ? 'indent-8' : 'px-4'
+          } outline-none transition-all  duration-200  ease-in-out `}
           value={value}
           onChange={onChangeHandler}
           onBlur={onBlurHandler}
         />
 
-        <div className=" absolute top-2/4 left-2 -translate-y-2/4 ">{icon}</div>
+        {icon && (
+          <div className=" absolute top-2/4 left-2 -translate-y-2/4 ">
+            {icon}
+          </div>
+        )}
       </div>
       <span className="absolute top-full w-full  whitespace-pre-wrap text-red-500 ">
         <p className="font-light">{error}</p>

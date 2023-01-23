@@ -52,7 +52,7 @@ const ProjectForm: React.FC = () => {
   });
 
   return (
-    <div className="flex    h-full w-full flex-col items-center justify-between   ">
+    <div className="flex   h-full w-full flex-col items-center justify-between   ">
       <Formik
         validateOnBlur
         validateOnChange
@@ -102,8 +102,8 @@ const ProjectForm: React.FC = () => {
           handleBlur,
           handleChange,
         }) => (
-          <Form className={'flex h-full  w-full flex-col  py-4 '}>
-            <div className=" flex h-full  flex-col justify-center  gap-20">
+          <Form className={'flex min-h-full w-full  flex-col   py-4 '}>
+            <div className=" flex h-full  flex-col justify-between  gap-20">
               <Tabs
                 list={tabList}
                 selectedIndex={selectedIndex}
@@ -115,6 +115,7 @@ const ProjectForm: React.FC = () => {
                 >
                   <Field
                     labelColor={'text-primary'}
+                    backgroundColor="bg-secondary_s"
                     label="Full project name"
                     id="fullProjectName"
                     name="fullProjectName"
@@ -127,6 +128,7 @@ const ProjectForm: React.FC = () => {
                   />
                   <Field
                     labelColor={'text-primary'}
+                    backgroundColor="bg-secondary_s"
                     label="Abbreviation"
                     id="abbreviation"
                     name="abbreviation"
@@ -141,6 +143,7 @@ const ProjectForm: React.FC = () => {
                   <div className="grid grid-cols-2 gap-20 space-x-1">
                     <Field
                       labelColor={'text-primary'}
+                      backgroundColor="bg-secondary_s"
                       label="Start Date"
                       id="startDate"
                       name="startDate"
@@ -153,6 +156,7 @@ const ProjectForm: React.FC = () => {
                     />
                     <Field
                       labelColor={'text-primary'}
+                      backgroundColor="bg-secondary_s"
                       label="End Date"
                       id="endDate"
                       name="endDate"
@@ -169,6 +173,7 @@ const ProjectForm: React.FC = () => {
                 <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
                     labelColor={'text-primary'}
+                    backgroundColor="bg-secondary_s"
                     label="Description"
                     id="desc"
                     name="desc"
@@ -183,6 +188,7 @@ const ProjectForm: React.FC = () => {
                 <ProjectWrapper desc="Did you work alone on this project ? What technologies have you used ?">
                   <Field
                     setFieldValue={setFieldValue}
+                    backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
                     name="technologies"
                     value={technologies}
@@ -197,6 +203,7 @@ const ProjectForm: React.FC = () => {
                   />
                   <Field
                     setFieldValue={setFieldValue}
+                    backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
                     name="team"
                     value={team}

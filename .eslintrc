@@ -13,6 +13,7 @@
         "endOfLine": "auto"
       }
     ],
+
     "no-underscore-dangle": "warn",
     "no-nested-ternary": ["off"],
     "consistent-return": ["off"],
@@ -56,6 +57,7 @@
             "endOfLine": "auto"
           }
         ],
+        "tailwind/class-order": "off",
         "tailwindcss/no-custom-classname": "off",
         "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
         "react/require-default-props": "off", // Allow non-defined react props as undefined

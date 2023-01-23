@@ -7,9 +7,9 @@ type Props = {
 
 const ProjectWrapper = ({ children, desc }: Props) => {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-8  ">
       <p>{desc}</p>
-      <div className="flex flex-col gap-4">{children}</div>
+      <div className="flex h-full flex-col gap-4  ">{children}</div>
     </div>
   );
 };

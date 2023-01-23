@@ -13,8 +13,8 @@ type Items = {
 const Tabs = ({ list, setActiveTab, className, children, ...props }: Items) => {
   return (
     <Tab.Group {...props} as={'div'}>
-      <div className="flex flex-col gap-8">
-        <Tab.List className="flex   w-full  ">
+      <div className="flex flex-col  gap-8">
+        <Tab.List className="flex w-full   ">
           {list.map((item, index) => (
             <Tab
               key={index}

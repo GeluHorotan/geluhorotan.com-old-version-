@@ -8,6 +8,7 @@ type Props = {
   id: string;
 
   label: string;
+  backgroundColor: string;
   labelColor?: string;
   placeholder?: string;
   onChangeHandler: () => void;
@@ -24,10 +25,11 @@ const TextArea = ({
   id,
   label,
   placeholder,
+  backgroundColor,
   labelColor,
 }: Props) => {
   return (
-    <div className="relative flex h-full flex-col gap-1  ">
+    <div className="relative  flex h-full flex-col gap-1  ">
       <label htmlFor={name} className={`${labelColor || 'text-secondary'}`}>
         {label}
       </label>
@@ -40,7 +42,7 @@ const TextArea = ({
           name={name}
           // type={type}
           id={id}
-          className={`peer relative h-full w-full rounded-lg bg-secondary_s py-2 outline-none  transition-all  duration-200 ease-in-out`}
+          className={`peer relative h-full w-full rounded-lg  ${backgroundColor} py-2 px-4 outline-none  transition-all  duration-200 ease-in-out`}
           value={value}
           onChange={onChangeHandler}
           onBlur={onBlurHandler}

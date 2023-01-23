@@ -12,7 +12,7 @@ type Props = {
   name: string;
   error: string;
   id: string;
-  labelColor?: string;
+  color?: string;
   label: string;
   croppedImage: string;
   setCroppedImage: React.Dispatch<React.SetStateAction<string | undefined>>;

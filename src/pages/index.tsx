@@ -3,15 +3,12 @@ import { useRef, useState } from 'react';
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import ModalWrapper from '@/components/ModalWrapper';
-import ProfilePicture from '@/components/ProfilePicture';
 import HeroIllustration from '@/components/svgs/HeroIllustration';
-import { useAlert } from '@/context/hooks/useAlert';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const { createAlert, updateAlert } = useAlert();
 
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
@@ -35,16 +32,7 @@ export default function Home() {
             Gelu Horotan <br />
             <span className="text-accent_s"> Software Engineer</span>
           </h1>
-          <button
-            onClick={() => {
-              const id = createAlert('Tester');
-              setTimeout(() => {
-                updateAlert(id, 'Succes', true);
-              }, 2000);
-            }}
-          >
-            TEST
-          </button>
+
           <Button
             rounded
             className=" bg-accent p-2  text-secondary"
@@ -54,11 +42,8 @@ export default function Home() {
             SEE MY PROJECTS
           </Button>
         </div>
-        <ProfilePicture size={'large'}></ProfilePicture>
-        <ProfilePicture size={'medium'}></ProfilePicture>
-        <ProfilePicture size={'small'}></ProfilePicture>
+
         <HeroIllustration />
-        {/* <Image src={'/test.jpg'} width={64} height={64}></Image> */}
       </div>
       <div
         ref={myRef}
