@@ -5,9 +5,11 @@ import { useAuth } from '@/context/hooks/useAuth';
 
 type Props = {
   size?: string;
+  imageSrc?: string;
+  userFirstName?: string;
 };
 
-const ProfilePicture = ({ size }: Props) => {
+const ProfilePicture = ({ size, imageSrc, userFirstName }: Props) => {
   const { user } = useAuth();
 
   const dimensions: { [key: string]: number } = {
@@ -23,10 +25,12 @@ const ProfilePicture = ({ size }: Props) => {
     <Image
       width={width}
       height={height}
-      alt={`${user?.firstName}'s profile picture`}
-      src={user?.profilePicture}
+      alt={`${
+        !userFirstName ? user?.firstName : userFirstName
+      }'s profile picture`}
+      src={!imageSrc ? user?.profilePicture : imageSrc}
       className={'rounded-full'}
-    ></Image>
+    />
   );
 };
 
