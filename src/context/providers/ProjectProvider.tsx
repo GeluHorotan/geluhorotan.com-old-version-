@@ -1,5 +1,7 @@
 import axios from 'axios';
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+
+import Role from '@/utils/roles';
 
 type Props = {
   children: React.ReactNode;
@@ -22,6 +24,16 @@ type ProjectDetails = {
   }[];
 };
 
+type Developers = { value: string; label: string; profilePicture: string }[];
+
+type Error = {
+  response: {
+    data: {
+      errors: Array<{ msg: string }>;
+    };
+  };
+};
+
 type Projects = {
   fullProjectName: string;
   desc: string;
@@ -36,7 +48,13 @@ type Projects = {
 type State = {
   projects: Projects;
 
+  error: Error;
+  developers: Developers;
+  isLoading: boolean;
+
+  setDevelopers: React.Dispatch<React.SetStateAction<Developers | undefined>>;
   setProjects: React.Dispatch<React.SetStateAction<Projects | undefined>>;
+  fetchUsers: (role: number) => Promise<Error | undefined>;
   addProject: (details: ProjectDetails) => Promise<Error | undefined>;
 };
 
@@ -44,6 +62,13 @@ export const ProjectContext = createContext<State>({} as State);
 
 export const ProjectProvider = ({ children }: Props) => {
   const [projects, setProjects] = useState([]);
+  const [developers, setDevelopers] = useState([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error>();
+
+  useEffect(() => {
+    fetchUsers(Role.Developer);
+  }, []);
 
   const addProject = async ({
     fullProjectName,
@@ -68,17 +93,52 @@ export const ProjectProvider = ({ children }: Props) => {
         },
       });
       setProjects(res.data);
+      setError(undefined);
       return res.data;
-    } catch (error) {
-      return error;
+    } catch (err: any) {
+      setError(err);
+      return err;
+    }
+  };
+
+  const fetchUsers = async (role = Role.User) => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get(`/api/users?filterByRole=${role}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': `${localStorage.getItem('token')}`,
+        },
+      });
+      setError(undefined);
+      setDevelopers(
+        res.data.map((user: any) => {
+          return {
+            value: user.firstName,
+            label: `${user.firstName} ${user.lastName}`,
+            profilePicture: user.profilePicture,
+          };
+        })
+      );
+      setIsLoading(false);
+      return res.data;
+    } catch (err: any) {
+      setIsLoading(false);
+      setError(err);
+      return err;
     }
   };
 
   return (
     <ProjectContext.Provider
-      // displayName='Project Context'
+      // displayName="Project Context"
       value={{
         projects,
+        error,
+        isLoading,
+        developers,
+        setDevelopers,
+        fetchUsers,
         setProjects,
         addProject,
       }}

@@ -1,0 +1,23 @@
+export const technologyOptions = [
+  { value: 'csharp', label: 'C#' },
+  { value: 'cplusplus', label: 'C++' },
+  { value: 'go', label: 'Go' },
+  { value: 'java', label: 'Java' },
+  { value: 'javascript', label: 'JavaScript' },
+  { value: 'php', label: 'PHP' },
+  { value: 'python', label: 'Python' },
+  { value: 'ruby', label: 'Ruby' },
+  { value: 'swift', label: 'Swift' },
+  { value: 'angularjs', label: 'Angular' },
+
+  { value: 'flask', label: 'Flask' },
+  { value: 'laravel', label: 'Laravel' },
+  { value: 'nodejs', label: 'Node.js' },
+  { value: 'rails', label: 'Rails' },
+  { value: 'react', label: 'React' },
+  { value: 'vuejs', label: 'Vue.js' },
+  { value: 'django', label: 'Django' },
+  { value: 'express', label: 'Express' },
+  { value: 'nuxtjs', label: 'Nuxt' },
+  { value: 'svelte', label: 'Svelte' },
+];

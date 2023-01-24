@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 
 import { useAlert } from '@/context/hooks/useAlert';
-import Role from '@/utils/roles';
 
 type Props = {
   children: React.ReactNode;
@@ -12,16 +11,7 @@ type Callbacks = {
   onAuthSuccess: () => void;
 };
 
-type Error = {
-  response: {
-    data: {
-      errors: Array<{ msg: string }>;
-    };
-  };
-};
-
-type User = {
-  avatar?: string;
+export type User = {
   email: string;
   firstName: string;
   lastName: string;
@@ -51,7 +41,7 @@ type State = {
   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>;
   register: (credentials: RegisterCredentials) => Promise<Error | undefined>;
   fetchUser: () => Promise<Error | undefined>;
-  fetchAllUsers: (role: number) => Promise<Error | undefined>;
+
   logout: () => Promise<void>;
 
   setCallbacks: React.Dispatch<React.SetStateAction<Callbacks | undefined>>;
@@ -259,21 +249,6 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
 
-  const fetchAllUsers = async (role = Role.User) => {
-    try {
-      const res = await axios.get(`/api/users?filterByRole=${role}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-auth-token': `${localStorage.getItem('token')}`,
-        },
-      });
-
-      return res.data;
-    } catch (err) {
-      return err;
-    }
-  };
-
   return (
     <AuthContext.Provider
       // displayName="Auth Context"
@@ -288,7 +263,7 @@ export const AuthProvider = ({ children }: Props) => {
         register,
         updateProfile,
         fetchUser,
-        fetchAllUsers,
+
         setCallbacks,
       }}
     >

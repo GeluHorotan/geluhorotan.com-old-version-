@@ -30,11 +30,11 @@ const HeadlessCombobox = ({
   labelColor,
   setFieldValue,
   options,
+
   ...props
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
-  const [techSrc, setTechSrc] = useState('');
 
   const filteredOptions =
     query === ''
@@ -99,7 +99,7 @@ const HeadlessCombobox = ({
                   >
                     {({ selected, active }) => (
                       <div className="flex flex-row items-center gap-3">
-                        <span>{index}.</span>
+                        <span>{index + 1}.</span>
                         <Image
                           src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${option.value}/${option.value}-original.svg`}
                           width={24}

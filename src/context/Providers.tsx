@@ -16,9 +16,9 @@ export const Providers = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
       <AlertProvider>
-        <ProjectProvider>
-          <AuthProvider>{children}</AuthProvider>
-        </ProjectProvider>
+        <AuthProvider>
+          <ProjectProvider>{children}</ProjectProvider>
+        </AuthProvider>
       </AlertProvider>
     </QueryClientProvider>
   );
