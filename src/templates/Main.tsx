@@ -12,6 +12,7 @@ const Main = ({ children, meta }: IMainProps) => {
   return (
     <>
       {meta}
+
       <Navigation />
       {children}
       <AlertWrapper />

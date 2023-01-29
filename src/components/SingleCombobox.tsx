@@ -15,6 +15,8 @@ type Props = {
   labelColor?: string;
   placeholder?: string;
   setSelectedOptions: React.Dispatch<SetStateAction<any[]>>;
+  setFieldValue: (field: string, value: any) => void;
+
   selectedOptions: any[];
 
   options: any[];
@@ -27,15 +29,13 @@ const SingleCombobox = ({
   id,
   label,
   labelColor,
-
+  setFieldValue,
   setSelectedOptions,
   selectedOptions,
   options,
 }: Props) => {
   const [selectedOption, setSelectedOption] = useState(undefined);
   const [query, setQuery] = useState('');
-
-  console.log(selectedOption, 'TEST');
 
   const filteredOptions =
     query === ''
@@ -49,8 +49,9 @@ const SingleCombobox = ({
 
   useEffect(() => {
     if (selectedOptions) {
-      setSelectedOptions((prevState) => {
-        return prevState.map((option: any) => {
+      setFieldValue(
+        name,
+        selectedOptions.map((option: any) => {
           if (option.value === value) {
             return {
               ...option,
@@ -58,8 +59,8 @@ const SingleCombobox = ({
             };
           }
           return option;
-        });
-      });
+        })
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
@@ -88,10 +89,7 @@ const SingleCombobox = ({
                 selectedOption ? selectedOption.label : 'Select a role'
               }
             />
-            <Combobox.Button
-              className=" flex    items-center "
-              onClick={() => setQuery('')}
-            >
+            <Combobox.Button className=" flex    items-center ">
               <IoIosArrowForward className="rotate-90 transition-all duration-200 ease-in-out " />
             </Combobox.Button>
 

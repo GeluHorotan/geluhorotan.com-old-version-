@@ -76,6 +76,8 @@ export const ProjectProvider = ({ children }: Props) => {
     startDate,
     endDate,
     technologies,
+    team,
+    abbreviation,
   }: ProjectDetails) => {
     const body = JSON.stringify({
       fullProjectName,
@@ -83,10 +85,12 @@ export const ProjectProvider = ({ children }: Props) => {
       startDate,
       endDate,
       technologies,
+      team,
+      abbreviation,
     });
 
     try {
-      const res = await axios.post('/backend/projects', body, {
+      const res = await axios.post('/api/projects', body, {
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': `${localStorage.getItem('token')}`,

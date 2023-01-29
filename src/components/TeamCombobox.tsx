@@ -4,7 +4,6 @@ import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
 
-import { useProject } from '@/context/hooks/useProject';
 import { rolesOptions } from '@/utils/comboboxOptions';
 
 import ProfilePicture from './ProfilePicture';
@@ -39,12 +38,11 @@ const TeamCombobox = ({
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
-  const { developers } = useProject();
 
   const filteredOptions =
     query === ''
-      ? developers
-      : developers.filter((person) =>
+      ? options
+      : options.filter((person) =>
           person.value
             .toUpperCase()
             .replace(/\s+/g, '')
@@ -65,11 +63,9 @@ const TeamCombobox = ({
     setFieldValue(name, newEntries);
   };
 
-  const handleOnChange = (value: React.SetStateAction<any[]>) => {
+  const handleOnChange = (value: never[]) => {
     setSelectedOptions(value);
   };
-
-  console.log(selectedOptions, 'ss TC');
 
   return (
     <div className="relative flex flex-col gap-1  ">
@@ -83,7 +79,7 @@ const TeamCombobox = ({
             <Combobox.Input
               className="w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out"
               onChange={(event) => setQuery(event.target.value)}
-              placeholder={'Select the tech stack'}
+              // placeholder={`Select the ${name}`}
             />
             <Combobox.Button className=" absolute right-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center pr-2 ">
               <IoIosArrowForward className="rotate-90 transition-all duration-200 ease-in-out " />
@@ -110,9 +106,8 @@ const TeamCombobox = ({
                         <span>{index + 1}.</span>
                         <ProfilePicture
                           imageSrc={option.profilePicture}
-                          size={'small'}
+                          size="small"
                         ></ProfilePicture>
-
                         <span
                           className={`block truncate ${
                             selected ? 'font-medium' : 'font-normal'
@@ -145,9 +140,9 @@ const TeamCombobox = ({
                 : 'grid w-full grid-cols-2 '
             }   flex    gap-4 rounded-md py-2`}
           >
-            {/* {selectedOptions.length === 0 && (
+            {selectedOptions.length === 0 && (
               <p>No {label.toLowerCase()} added.</p>
-            )} */}
+            )}
             {selectedOptions?.map((sOption, index) => {
               return (
                 <div
@@ -169,6 +164,7 @@ const TeamCombobox = ({
                       setSelectedOptions={setSelectedOptions}
                       selectedOptions={selectedOptions}
                       options={rolesOptions}
+                      setFieldValue={setFieldValue}
                     ></SingleCombobox>
                   </div>
                   <MdClose

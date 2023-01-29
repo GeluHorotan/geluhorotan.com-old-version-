@@ -4,14 +4,15 @@ import { Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
+import Button from '@/components/Button';
 import TextArea from '@/components/form/TextArea';
+import HeadlessCombobox from '@/components/HeadlessCombobox';
 import Tabs from '@/components/Tab';
+import TeamCombobox from '@/components/TeamCombobox';
 import { useProject } from '@/context/hooks/useProject';
 // Combobox Options
 import { technologyOptions } from '@/utils/comboboxOptions';
 
-import HeadlessCombobox from '../HeadlessCombobox';
-import TeamCombobox from '../TeamCombobox';
 import FormProgressBar from './FormProgressBar';
 import Input from './Input';
 import ProjectWrapper from './ProjectWrapper';
@@ -28,7 +29,6 @@ const ProjectForm: React.FC = () => {
       .min(3, 'The name is way too short!')
       .max(15, 'The name is way too long!')
       .required('This field is required!'),
-    technologies: Yup.array().required('This field is required!'),
   });
 
   return (
@@ -106,6 +106,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.fullProjectName}
                     as={Input}
                   />
+
                   <Field
                     labelColor={'text-primary'}
                     backgroundColor="bg-secondary_s"
@@ -200,16 +201,20 @@ const ProjectForm: React.FC = () => {
               </Tabs>
               <FormProgressBar />
               <div className="flex  w-full items-center justify-center gap-16">
-                <button
+                <Button
+                  type="button"
                   onClick={() => setSelectedIndex((prevState) => prevState - 1)}
                 >
                   PREV
-                </button>
-                <button
+                </Button>
+                <Button
+                  type={
+                    selectedIndex === tabList.length - 1 ? 'submit' : 'button'
+                  }
                   onClick={() => setSelectedIndex((prevState) => prevState + 1)}
                 >
-                  NEXT
-                </button>
+                  {selectedIndex === tabList.length - 1 ? 'SUBMIT' : 'NEXT'}
+                </Button>
               </div>
             </div>
           </Form>

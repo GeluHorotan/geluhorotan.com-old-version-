@@ -27,7 +27,7 @@ const ModalWrapper = ({
         <Dialog.Panel
           className={`${
             !backgroundColor ? 'bg-primary_t' : backgroundColor
-          } flex h-3/4 w-1/2 flex-col   items-center justify-between rounded-[3rem] p-7`}
+          } flex h-3/4 min-h-full  w-1/2 flex-col   items-center justify-between rounded-[3rem] p-7`}
         >
           <div className="flex w-full items-center  justify-between">
             <h5 className="text-secondary">{title} </h5>
