@@ -1,24 +1,25 @@
 // Form
+// Components
 import { Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
-import { useProject } from '@//context/hooks/useProject';
+import TextArea from '@/components/form/TextArea';
 import Tabs from '@/components/Tab';
+import { useProject } from '@/context/hooks/useProject';
 // Combobox Options
 import { technologyOptions } from '@/utils/comboboxOptions';
 
+import HeadlessCombobox from '../HeadlessCombobox';
+import TeamCombobox from '../TeamCombobox';
 import FormProgressBar from './FormProgressBar';
-import HeadlessCombobox from './HeadlessCombobox';
-// Components
 import Input from './Input';
 import ProjectWrapper from './ProjectWrapper';
-import TextArea from './TextArea';
 
 const ProjectForm: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const { addProject } = useProject();
+  const { addProject, developers } = useProject();
 
   const tabList = ['general', 'description', 'additional'];
 
@@ -188,11 +189,11 @@ const ProjectForm: React.FC = () => {
                     value={team}
                     id={'team'}
                     isMulti
-                    options={technologyOptions}
+                    options={developers}
                     label="Team"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    as={HeadlessCombobox}
+                    as={TeamCombobox}
                     error={errors.team}
                   />
                 </ProjectWrapper>

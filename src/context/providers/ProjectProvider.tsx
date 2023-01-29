@@ -114,7 +114,7 @@ export const ProjectProvider = ({ children }: Props) => {
       setDevelopers(
         res.data.map((user: any) => {
           return {
-            value: user.firstName,
+            value: `${user.firstName} ${user.lastName}`,
             label: `${user.firstName} ${user.lastName}`,
             profilePicture: user.profilePicture,
           };

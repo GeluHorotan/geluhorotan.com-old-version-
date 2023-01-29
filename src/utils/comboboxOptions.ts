@@ -20,4 +20,23 @@ export const technologyOptions = [
   { value: 'express', label: 'Express' },
   { value: 'nuxtjs', label: 'Nuxt' },
   { value: 'svelte', label: 'Svelte' },
+  { value: 'tailwindcss', label: 'Tailwind' },
+];
+
+export const rolesOptions = [
+  { value: 'project_manager', label: 'Project Manager' },
+  { value: 'scrum_master', label: 'Scrum Master' },
+  { value: 'developer', label: 'Developer' },
+  { value: 'qa_engineer', label: 'QA Engineer' },
+  { value: 'devops_engineer', label: 'DevOps Engineer' },
+  { value: 'architect', label: 'Architect' },
+  { value: 'technical_lead', label: 'Technical Lead' },
+  { value: 'product_owner', label: 'Product Owner' },
+  { value: 'frontend developer', label: 'Frontend Developer' },
+  { value: 'backend developer', label: 'Backend Developer' },
+  { value: 'fullstack developer', label: 'Fullstack Developer' },
+  { value: 'web developer', label: 'Web Developer' },
+  { value: 'web developer', label: 'Web Developer' },
+  { value: 'system administrator', label: 'System Administrator' },
+  { value: 'database administrator', label: 'Database Administrator' },
 ];
