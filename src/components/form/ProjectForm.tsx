@@ -26,9 +26,31 @@ const ProjectForm: React.FC = () => {
 
   const ProjectSchema = Yup.object().shape({
     fullProjectName: Yup.string()
-      .min(3, 'The name is way too short!')
-      .max(15, 'The name is way too long!')
-      .required('This field is required!'),
+      .min(3, 'The project name must be longer than 3 characters!')
+      .max(15, 'The project name must not be longer than 15 characters!')
+      .required('The project name is required!'),
+    desc: Yup.string()
+      .min(
+        10,
+        'The description of the project must be longer than 10 characters!'
+      )
+      .max(
+        100,
+        'The description of the project must not be longer than 100 characters! '
+      )
+      .required('The description is required!'),
+    startDate: Yup.date().required(
+      'The starting date of the project is required!'
+    ),
+    endDate: Yup.date().required('The ending date of the project is required!'),
+    technologies: Yup.array()
+      .min(2, 'The tech stack must contain more technologies!')
+      .max(5, 'The tech stack must contain less technologies!')
+      .required('The tech stack is required!'),
+    team: Yup.array()
+      .min(1, 'The team must be made from more than one developer!')
+      .max(5, 'The team cannot have more than 5 developers!')
+      .required('The team that worked on the project is required.'),
   });
 
   return (

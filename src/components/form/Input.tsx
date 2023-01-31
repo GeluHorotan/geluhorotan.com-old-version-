@@ -49,7 +49,7 @@ const Input = ({
             {label}
           </label>
 
-          <div className={`relative w-full  ${labelColor}`}>
+          <div className={`relative w-full   ${labelColor}`}>
             <TooltipTrigger asChild>
               <input
                 placeholder={placeholder || ''}
