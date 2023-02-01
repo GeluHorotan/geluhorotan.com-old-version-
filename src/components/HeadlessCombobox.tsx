@@ -1,6 +1,9 @@
 import { Combobox } from '@headlessui/react';
+// Framer motion
+import { motion, useAnimationControls } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { BiErrorCircle } from 'react-icons/bi';
 import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
@@ -42,7 +45,7 @@ const HeadlessCombobox = ({
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
-  console.log(error);
+  const controls = useAnimationControls();
 
   const filteredOptions =
     query === ''
@@ -58,6 +61,11 @@ const HeadlessCombobox = ({
     setFieldValue(name, selectedOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOptions]);
+  useEffect(() => {
+    if (error) {
+      controls.start({ x: [0, 3, 0] });
+    }
+  }, [error]);
 
   const removeEntry = (index: number) => {
     // Remove the language from the array
@@ -75,10 +83,33 @@ const HeadlessCombobox = ({
   return (
     <TooltipProvider>
       <Tooltip>
-        <div className="relative flex flex-col gap-1  ">
-          <label htmlFor={name} className={`${labelColor || 'text-secondary'}`}>
+        <motion.div
+          initial={{ x: 0 }}
+          animate={controls}
+          transition={{ type: 'spring', duration: 0.1 }}
+          className="relative flex flex-col gap-1  "
+        >
+          <label
+            htmlFor={name}
+            className={`${labelColor || 'text-secondary'} ${
+              !error || 'text-error'
+            } flex items-center gap-1`}
+          >
+            {error && (
+              <TooltipTrigger className="flex ">
+                <BiErrorCircle
+                  className={`${error ? 'text-error' : labelColor}`}
+                  size={16}
+                ></BiErrorCircle>
+              </TooltipTrigger>
+            )}
             {label}
           </label>
+          {error && (
+            <TooltipContent className="bg-primary text-secondary">
+              <p>{error}</p>
+            </TooltipContent>
+          )}
 
           <div className=" relative w-full ">
             <Combobox
@@ -87,16 +118,14 @@ const HeadlessCombobox = ({
               multiple
             >
               <div className="relative flex flex-col   ">
-                <TooltipTrigger asChild>
-                  <Combobox.Input
-                    className="w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out"
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder={'Select the tech stack'}
-                  />
-                </TooltipTrigger>
-                <TooltipContent className="bg-primary text-secondary">
-                  <p>{error}</p>
-                </TooltipContent>
+                <Combobox.Input
+                  className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
+                    error ? 'border border-error' : ''
+                  } `}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={'Select the tech stack'}
+                />
+
                 <Combobox.Button className=" absolute right-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center pr-2 ">
                   <IoIosArrowForward className="rotate-90 transition-all duration-200 ease-in-out " />
                 </Combobox.Button>
@@ -199,7 +228,7 @@ const HeadlessCombobox = ({
               </div>
             </Combobox>
           </div>
-        </div>
+        </motion.div>
       </Tooltip>
     </TooltipProvider>
   );

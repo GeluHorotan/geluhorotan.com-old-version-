@@ -1,19 +1,13 @@
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+// Components
+import LoginForm from '@/components/form/LoginForm';
+import RegisterForm from '@/components/form/RegisterForm';
 import Tabs from '@/components/Tab';
 import { useAuth } from '@/context/hooks/useAuth';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
-
-// Components
-const LoginForm = dynamic(() => import('../components/form/LoginForm'), {
-  suspense: true,
-});
-const RegisterForm = dynamic(() => import('../components/form/RegisterForm'), {
-  suspense: true,
-});
 
 function Signin() {
   const router = useRouter();

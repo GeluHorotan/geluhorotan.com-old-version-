@@ -1,6 +1,7 @@
 import { motion, useAnimationControls } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
+import { BiErrorCircle } from 'react-icons/bi';
 
 import {
   Tooltip,
@@ -42,7 +43,7 @@ const Input = ({
 
   useEffect(() => {
     if (error) {
-      controls.start({ x: [0, 5, 0, 5, 0] });
+      controls.start({ x: [0, 3, 0] });
     }
   }, [error]);
 
@@ -59,39 +60,54 @@ const Input = ({
             htmlFor={name}
             className={`${labelColor || 'text-secondary'} ${
               !error || 'text-error'
-            } flex items-center gap-0.5`}
+            } flex items-center gap-1`}
           >
+            {!icon && error && (
+              <TooltipTrigger className="flex ">
+                <BiErrorCircle
+                  className={`${error ? 'text-error' : labelColor}`}
+                  size={16}
+                ></BiErrorCircle>
+              </TooltipTrigger>
+            )}
             {label}
           </label>
 
           <div className={`relative w-full   ${labelColor}`}>
-            <TooltipTrigger asChild>
-              <input
-                placeholder={placeholder || ''}
-                name={name}
-                type={type}
-                id={id}
-                className={`peer relative w-full rounded-lg ${backgroundColor} py-2  ${
-                  icon ? 'indent-8' : 'px-4'
-                }  outline-none ${
-                  error ? 'border border-error' : ''
-                }  transition-all  duration-100 ease-in-out `}
-                value={value}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
-              />
-            </TooltipTrigger>
+            <input
+              placeholder={placeholder || ''}
+              name={name}
+              type={type}
+              id={id}
+              className={`peer relative w-full rounded-lg ${
+                backgroundColor || 'bg-primary_t text-secondary '
+              } py-2  ${icon ? 'indent-8' : 'px-4'}  outline-none ${
+                error ? 'border border-error' : ''
+              }   `}
+              value={value}
+              onChange={onChangeHandler}
+              onBlur={onBlurHandler}
+            />
+
+            {icon && (
+              <div className=" absolute top-2/4 left-2 -translate-y-2/4 ">
+                {!error ? (
+                  icon
+                ) : (
+                  <TooltipTrigger className="flex ">
+                    <BiErrorCircle
+                      className="text-error"
+                      size={16}
+                    ></BiErrorCircle>
+                  </TooltipTrigger>
+                )}
+              </div>
+            )}
 
             {error && (
               <TooltipContent className="bg-primary text-secondary">
                 <p>{error}</p>
               </TooltipContent>
-            )}
-
-            {icon && (
-              <div className=" absolute top-2/4 left-2 -translate-y-2/4 ">
-                {icon}
-              </div>
             )}
           </div>
         </motion.div>

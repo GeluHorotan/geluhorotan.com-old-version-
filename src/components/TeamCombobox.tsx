@@ -1,5 +1,8 @@
 import { Combobox } from '@headlessui/react';
+// Framer motion
+import { motion, useAnimationControls } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
+import { BiErrorCircle } from 'react-icons/bi';
 import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
@@ -44,6 +47,7 @@ const TeamCombobox = ({
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
+  const controls = useAnimationControls();
 
   const filteredOptions =
     query === ''
@@ -59,6 +63,11 @@ const TeamCombobox = ({
     setFieldValue(name, selectedOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOptions]);
+  useEffect(() => {
+    if (error) {
+      controls.start({ x: [0, 3, 0] });
+    }
+  }, [error]);
 
   const removeEntry = (index: number) => {
     // Remove the language from the array
@@ -76,10 +85,33 @@ const TeamCombobox = ({
   return (
     <TooltipProvider>
       <Tooltip>
-        <div className="relative flex flex-col gap-1  ">
-          <label htmlFor={name} className={`${labelColor || 'text-secondary'}`}>
+        <motion.div
+          initial={{ x: 0 }}
+          animate={controls}
+          transition={{ type: 'spring', duration: 0.1 }}
+          className="relative flex flex-col gap-1  "
+        >
+          <label
+            htmlFor={name}
+            className={`${labelColor || 'text-secondary'} ${
+              !error || 'text-error'
+            } flex items-center gap-1`}
+          >
+            {error && (
+              <TooltipTrigger className="flex ">
+                <BiErrorCircle
+                  className={`${error ? 'text-error' : labelColor}`}
+                  size={16}
+                ></BiErrorCircle>
+              </TooltipTrigger>
+            )}
             {label}
           </label>
+          {error && (
+            <TooltipContent className="bg-primary text-secondary">
+              <p>{error}</p>
+            </TooltipContent>
+          )}
 
           <div className=" relative w-full ">
             <Combobox
@@ -90,7 +122,9 @@ const TeamCombobox = ({
               <div className="relative flex flex-col   ">
                 <TooltipTrigger asChild>
                   <Combobox.Input
-                    className="w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out"
+                    className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
+                      error ? 'border border-error' : ''
+                    } `}
                     onChange={(event) => setQuery(event.target.value)}
                     // placeholder={`Select the ${name}`}
                   />
@@ -197,7 +231,7 @@ const TeamCombobox = ({
               </div>
             </Combobox>
           </div>
-        </div>
+        </motion.div>
       </Tooltip>
     </TooltipProvider>
   );

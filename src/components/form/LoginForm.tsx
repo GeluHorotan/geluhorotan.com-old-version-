@@ -31,7 +31,7 @@ const LoginForm = ({ className, rounded }: Props) => {
       }}
     >
       {({ values: { email, password }, errors, handleBlur, handleChange }) => (
-        <Form className={'flex flex-col gap-8 py-4'}>
+        <Form className={'flex h-1/2 flex-col justify-center  gap-8 py-4'}>
           <Field
             label="Email"
             id="email"
