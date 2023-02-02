@@ -24,7 +24,7 @@ import FormIcon from './FormIcon';
 // import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 // Components
 import Input from './Input';
-import InputImage from './InputImage';
+import InputCropImage from './InputCropImage';
 
 type Props = {
   className?: string;
@@ -191,7 +191,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                       type="file"
                       value={profilePicture}
                       error={errors.profilePicture}
-                      as={InputImage}
+                      as={InputCropImage}
                       croppedImage={croppedImage}
                       setCroppedImage={setCroppedImage}
                       setIsOpen={setIsOpen}

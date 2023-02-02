@@ -123,7 +123,7 @@ const HeadlessCombobox = ({
                     error ? 'border border-error' : ''
                   } `}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder={'Select the tech stack'}
+                  placeholder={`Select the ${name}.`}
                 />
 
                 <Combobox.Button className=" absolute right-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center pr-2 ">

@@ -15,6 +15,7 @@ import { technologyOptions } from '@/utils/comboboxOptions';
 
 import FormProgressBar from './FormProgressBar';
 import Input from './Input';
+import InputImage from './InputImage';
 import ProjectWrapper from './ProjectWrapper';
 
 const ProjectForm: React.FC = () => {
@@ -29,6 +30,7 @@ const ProjectForm: React.FC = () => {
       .min(3, 'The project name must be longer than 3 characters!')
       .max(15, 'The project name must not be longer than 15 characters!')
       .required('The project name is required!'),
+    url: Yup.string().url().required('The url is required!'),
     desc: Yup.string()
       .min(
         10,
@@ -60,43 +62,51 @@ const ProjectForm: React.FC = () => {
         validateOnChange
         initialValues={{
           fullProjectName: '',
-          abbreviation: '',
+          url: '',
           desc: '',
           startDate: '',
           endDate: '',
           technologies: [],
           team: [],
+          images: {
+            mobile: '',
+            header: '',
+            gallery: [],
+          },
         }}
         validationSchema={ProjectSchema}
         onSubmit={async ({
           fullProjectName,
-          abbreviation,
+          url,
           desc,
           startDate,
           endDate,
           technologies,
           team,
+          images,
         }) => {
           await addProject({
             fullProjectName,
-            abbreviation,
+            url,
             desc,
             startDate,
             endDate,
             technologies,
             team,
+            images,
           });
         }}
       >
         {({
           values: {
             fullProjectName,
-            abbreviation,
+            url,
             desc,
             startDate,
             endDate,
             technologies,
             team,
+            images,
           },
           setFieldValue,
           errors,
@@ -105,7 +115,7 @@ const ProjectForm: React.FC = () => {
           handleChange,
         }) => (
           <Form className={'flex min-h-full w-full  flex-col   py-4 '}>
-            <div className=" flex h-full  flex-col justify-between  gap-20">
+            <div className=" flex h-full  flex-col justify-center  gap-20 ">
               <Tabs
                 list={tabList}
                 selectedIndex={selectedIndex}
@@ -132,14 +142,14 @@ const ProjectForm: React.FC = () => {
                   <Field
                     labelColor={'text-primary'}
                     backgroundColor="bg-secondary_s"
-                    label="Abbreviation"
-                    id="abbreviation"
-                    name="abbreviation"
+                    label="URL"
+                    id="url"
+                    name="url"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
                     type="input"
-                    value={abbreviation}
-                    error={errors.abbreviation}
+                    value={url}
+                    error={errors.url}
                     as={Input}
                   />
 
@@ -219,6 +229,46 @@ const ProjectForm: React.FC = () => {
                     as={TeamCombobox}
                     error={errors.team}
                   />
+                  <div className="grid grid-cols-2 gap-20 space-x-1 ">
+                    <Field
+                      setFieldValue={setFieldValue}
+                      backgroundColor="bg-secondary_s"
+                      labelColor="text-primary"
+                      name="images.mobile"
+                      value={images.mobile}
+                      id={'mobileImage'}
+                      label="Mobile Image"
+                      as={InputImage}
+                      error={errors.images}
+                      type="file"
+                    />
+
+                    <Field
+                      setFieldValue={setFieldValue}
+                      backgroundColor="bg-secondary_s"
+                      labelColor="text-primary"
+                      name="images.header"
+                      value={images.header}
+                      id={'header'}
+                      label="Header Image"
+                      as={InputImage}
+                      error={errors.images}
+                      type="file"
+                    />
+                  </div>
+                  <Field
+                    setFieldValue={setFieldValue}
+                    backgroundColor="bg-secondary_s"
+                    labelColor="text-primary"
+                    name="images.gallery"
+                    value={images.gallery}
+                    id={'gallery'}
+                    label="Gallery Image"
+                    as={InputImage}
+                    error={errors.images}
+                    type="file"
+                    multiple
+                  />
                 </ProjectWrapper>
               </Tabs>
               <FormProgressBar />
@@ -229,14 +279,18 @@ const ProjectForm: React.FC = () => {
                 >
                   PREV
                 </Button>
-                <Button
-                  type={
-                    selectedIndex === tabList.length - 1 ? 'submit' : 'button'
-                  }
-                  onClick={() => setSelectedIndex((prevState) => prevState + 1)}
-                >
-                  {selectedIndex === tabList.length - 1 ? 'SUBMIT' : 'NEXT'}
-                </Button>
+                {selectedIndex === tabList.length - 1 ? (
+                  <Button
+                    type="button"
+                    onClick={() =>
+                      setSelectedIndex((prevState) => prevState - 1)
+                    }
+                  >
+                    NEXT
+                  </Button>
+                ) : (
+                  <Button type="submit">SUBMIT</Button>
+                )}
               </div>
             </div>
           </Form>

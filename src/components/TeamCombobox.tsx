@@ -42,8 +42,6 @@ const TeamCombobox = ({
   labelColor,
   setFieldValue,
   options,
-
-  ...props
 }: Props) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
@@ -120,18 +118,14 @@ const TeamCombobox = ({
               multiple
             >
               <div className="relative flex flex-col   ">
-                <TooltipTrigger asChild>
-                  <Combobox.Input
-                    className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
-                      error ? 'border border-error' : ''
-                    } `}
-                    onChange={(event) => setQuery(event.target.value)}
-                    // placeholder={`Select the ${name}`}
-                  />
-                </TooltipTrigger>
-                <TooltipContent className="bg-primary text-secondary">
-                  <p>{error}</p>
-                </TooltipContent>
+                <Combobox.Input
+                  className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
+                    error ? 'border border-error' : ''
+                  } `}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={`Select the ${name}.`}
+                />
+
                 <Combobox.Button className=" absolute right-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center pr-2 ">
                   <IoIosArrowForward className="rotate-90 transition-all duration-200 ease-in-out " />
                 </Combobox.Button>

@@ -9,8 +9,8 @@ type Props = {
 
 type ProjectDetails = {
   fullProjectName: string;
+  url: string;
 
-  abbreviation: string;
   desc: string;
   startDate: string;
   endDate: string;
@@ -22,6 +22,11 @@ type ProjectDetails = {
     value: string;
     label: string;
   }[];
+  images: {
+    gallery: string[];
+    mobile: string;
+    header: string;
+  };
 };
 
 type Developers = { value: string; label: string; profilePicture: string }[];
@@ -77,7 +82,8 @@ export const ProjectProvider = ({ children }: Props) => {
     endDate,
     technologies,
     team,
-    abbreviation,
+    url,
+    images,
   }: ProjectDetails) => {
     const body = JSON.stringify({
       fullProjectName,
@@ -86,7 +92,8 @@ export const ProjectProvider = ({ children }: Props) => {
       endDate,
       technologies,
       team,
-      abbreviation,
+      url,
+      images,
     });
 
     try {
