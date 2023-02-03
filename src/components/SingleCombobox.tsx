@@ -1,6 +1,5 @@
 import { Combobox } from '@headlessui/react';
-import type { SetStateAction } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 
@@ -9,32 +8,34 @@ type Props = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   value: string;
+  fieldValue: {
+    profilePicture: string;
+    label: string;
+    value: string;
+    role: string;
+  }[];
   error?: string;
   id: string;
   label: string;
   labelColor?: string;
   placeholder?: string;
-  setSelectedOptions: React.Dispatch<SetStateAction<any[]>>;
   setFieldValue: (field: string, value: any) => void;
-
-  selectedOptions: any[];
-
+  index: number;
   options: any[];
 };
 
+type Value = {
+  value: string;
+  label: string;
+};
+
 const SingleCombobox = ({
-  value,
   name,
-  error,
-  id,
-  label,
-  labelColor,
+  fieldValue,
   setFieldValue,
-  setSelectedOptions,
-  selectedOptions,
+  index,
   options,
 }: Props) => {
-  const [selectedOption, setSelectedOption] = useState(undefined);
   const [query, setQuery] = useState('');
 
   const filteredOptions =
@@ -47,46 +48,22 @@ const SingleCombobox = ({
             .includes(query.toUpperCase().replace(/\s+/g, ''))
         );
 
-  useEffect(() => {
-    if (selectedOptions) {
-      setFieldValue(
-        name,
-        selectedOptions.map((option: any) => {
-          if (option.value === value) {
-            return {
-              ...option,
-              role: selectedOption?.label,
-            };
-          }
-          return option;
-        })
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]);
-
-  const removeEntry = () => {
-    setSelectedOption(undefined);
-  };
-
-  const handleOnChange = (value: any) => {
-    setSelectedOption(value);
+  const handleOnChange = (value: Value) => {
+    setFieldValue(name, { ...fieldValue[index], role: value.label });
   };
 
   return (
     <div className="relative flex flex-col gap-1   ">
-      {/* <label htmlFor={name} className={`${labelColor || 'text-secondary'}`}>
-        {label}
-      </label> */}
-
       <div className=" relative  ">
         <Combobox onChange={handleOnChange}>
           <div className="relative flex   ">
             <Combobox.Input
               className=" rounded-lg bg-transparent outline-none  duration-200 ease-in-out placeholder:font-light placeholder:text-primary"
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value);
+              }}
               placeholder={
-                selectedOption ? selectedOption.label : 'Select a role'
+                fieldValue ? fieldValue[index].role : 'Select a role'
               }
             />
             <Combobox.Button className=" flex    items-center ">

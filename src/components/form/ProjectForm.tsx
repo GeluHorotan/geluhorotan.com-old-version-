@@ -204,7 +204,7 @@ const ProjectForm: React.FC = () => {
                     backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
                     name="technologies"
-                    value={technologies}
+                    fieldValue={technologies}
                     id={'technologies'}
                     isMulti
                     options={technologyOptions}
@@ -219,7 +219,7 @@ const ProjectForm: React.FC = () => {
                     backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
                     name="team"
-                    value={team}
+                    fieldValue={team}
                     id={'team'}
                     isMulti
                     options={developers}
@@ -229,6 +229,7 @@ const ProjectForm: React.FC = () => {
                     as={TeamCombobox}
                     error={errors.team}
                   />
+
                   <div className="grid grid-cols-2 gap-20 space-x-1 ">
                     <Field
                       setFieldValue={setFieldValue}
@@ -279,18 +280,12 @@ const ProjectForm: React.FC = () => {
                 >
                   PREV
                 </Button>
-                {selectedIndex === tabList.length - 1 ? (
-                  <Button
-                    type="button"
-                    onClick={() =>
-                      setSelectedIndex((prevState) => prevState - 1)
-                    }
-                  >
-                    NEXT
-                  </Button>
-                ) : (
-                  <Button type="submit">SUBMIT</Button>
-                )}
+                <Button
+                  type="button"
+                  onClick={() => setSelectedIndex((prevState) => prevState + 1)}
+                >
+                  NEXT
+                </Button>
               </div>
             </div>
           </Form>

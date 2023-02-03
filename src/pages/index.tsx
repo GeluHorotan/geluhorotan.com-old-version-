@@ -4,11 +4,13 @@ import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import ModalWrapper from '@/components/ModalWrapper';
 import HeroIllustration from '@/components/svgs/HeroIllustration';
+import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
+  const { projects } = useProject();
 
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
@@ -47,9 +49,13 @@ export default function Home() {
       </div>
       <div
         ref={myRef}
-        className="flex h-screen w-full items-center justify-center gap-20 scroll-smooth bg-red-700"
+        className="flex h-screen w-full flex-col items-center justify-center gap-10 scroll-smooth "
       >
-        <Button type="button" onClick={() => setIsOpen(true)}>
+        <Button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className=" rounded-lg bg-slate-300 p-2"
+        >
           ADD PROJECT
           <ModalWrapper
             title="Add Project"
@@ -60,6 +66,66 @@ export default function Home() {
             <ProjectForm />
           </ModalWrapper>
         </Button>
+        <div className="flex w-11/12 items-center justify-center gap-20 bg-red-400">
+          {projects?.map((project, i) => {
+            return (
+              <div
+                key={project._id}
+                className={
+                  'flex w-full flex-col items-center justify-center bg-blue-400'
+                }
+              >
+                <h3> {project.fullProjectName}</h3>
+                <p>{project.desc}</p>
+                <div className="flex items-center justify-center gap-10 rounded-lg bg-red-400">
+                  {/* {project.team?.map(
+                    (
+                      dev: {
+                        _id: Key;
+                        profilePicture: string;
+                        label:
+                          | string
+                          | number
+                          | boolean
+                          | ReactElement<
+                              any,
+                              string | JSXElementConstructor<any>
+                            >
+                          | ReactFragment
+                          | ReactPortal;
+                        role:
+                          | string
+                          | number
+                          | boolean
+                          | ReactElement<
+                              any,
+                              string | JSXElementConstructor<any>
+                            >
+                          | ReactFragment
+                          | ReactPortal;
+                      },
+                      i: any
+                    ) => {
+                      return (
+                        <div
+                          key={dev._id}
+                          className="flex flex-col items-center gap-4"
+                        >
+                          <ProfilePicture
+                            imageSrc={dev.profilePicture}
+                            size="medium"
+                          ></ProfilePicture>
+                          <h6>{dev.label}</h6>
+                          <p>{dev?.role}</p>
+                        </div>
+                      );
+                    }
+                  )} */}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div></div>
     </Main>

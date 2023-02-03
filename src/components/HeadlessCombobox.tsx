@@ -19,7 +19,11 @@ type Props = {
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-  value: any;
+  fieldValue: {
+    value: string;
+    label: string;
+    role: string;
+  }[];
   error: string;
   id: string;
   label: string;
@@ -32,18 +36,15 @@ type Props = {
 };
 
 const HeadlessCombobox = ({
-  value,
+  fieldValue,
   name,
   error,
-  id,
+
   label,
   labelColor,
   setFieldValue,
   options,
-
-  ...props
 }: Props) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
   const controls = useAnimationControls();
 
@@ -58,26 +59,22 @@ const HeadlessCombobox = ({
         );
 
   useEffect(() => {
-    setFieldValue(name, selectedOptions);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOptions]);
-  useEffect(() => {
     if (error) {
       controls.start({ x: [0, 3, 0] });
     }
   }, [error]);
 
   const removeEntry = (index: number) => {
-    // Remove the language from the array
-    const newEntries = [...selectedOptions];
+    // Create a copy of the current team array
+    const newEntries = [...fieldValue];
+    // Remove the language from the copy of the array
     newEntries.splice(index, 1);
-    setSelectedOptions(newEntries);
     // Update the values object with the new array
     setFieldValue(name, newEntries);
   };
 
-  const handleOnChange = (value: never[]) => {
-    setSelectedOptions(value);
+  const handleOnChange = (value: any[]) => {
+    setFieldValue(name, value);
   };
 
   return (
@@ -112,11 +109,7 @@ const HeadlessCombobox = ({
           )}
 
           <div className=" relative w-full ">
-            <Combobox
-              value={selectedOptions}
-              onChange={handleOnChange}
-              multiple
-            >
+            <Combobox onChange={handleOnChange} multiple>
               <div className="relative flex flex-col   ">
                 <Combobox.Input
                   className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
@@ -190,15 +183,15 @@ const HeadlessCombobox = ({
 
               <div
                 className={`  ${
-                  selectedOptions.length === 0
+                  fieldValue.length === 0
                     ? 'flex-nowrap'
                     : 'grid w-full grid-cols-4 '
                 }   gap-4 rounded-md  py-2`}
               >
-                {selectedOptions.length === 0 && (
+                {fieldValue.length === 0 && (
                   <p>No {label.toLowerCase()} added.</p>
                 )}
-                {selectedOptions?.map((sOption, index) => {
+                {fieldValue?.map((sOption, index) => {
                   return (
                     <div
                       key={index}

@@ -6,6 +6,11 @@ import Role from '@/utils/roles';
 type Props = {
   children: React.ReactNode;
 };
+type User = {
+  firstName: string;
+  lastName: string;
+  profilePicture: string;
+};
 
 type ProjectDetails = {
   fullProjectName: string;
@@ -21,6 +26,7 @@ type ProjectDetails = {
   team: {
     value: string;
     label: string;
+    role: string;
   }[];
   images: {
     gallery: string[];
@@ -29,7 +35,12 @@ type ProjectDetails = {
   };
 };
 
-type Developers = { value: string; label: string; profilePicture: string }[];
+type Developers = {
+  value: string;
+  label: string;
+  profilePicture: string;
+  position: null | string;
+}[];
 
 type Error = {
   response: {
@@ -40,6 +51,8 @@ type Error = {
 };
 
 type Projects = {
+  _id: string;
+
   fullProjectName: string;
   desc: string;
   startDate: string;
@@ -48,6 +61,12 @@ type Projects = {
     value: string;
     label: string;
   }[];
+  team: Developers;
+  images: {
+    gallery: string[];
+    mobile: string;
+    header: string;
+  };
 }[];
 
 type State = {
@@ -67,12 +86,16 @@ export const ProjectContext = createContext<State>({} as State);
 
 export const ProjectProvider = ({ children }: Props) => {
   const [projects, setProjects] = useState([]);
-  const [developers, setDevelopers] = useState([]);
+  const [developers, setDevelopers] = useState<Developers>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
   useEffect(() => {
     fetchUsers(Role.Developer);
+  }, []);
+
+  useEffect(() => {
+    fetchProjects();
   }, []);
 
   const addProject = async ({
@@ -103,9 +126,24 @@ export const ProjectProvider = ({ children }: Props) => {
           'x-auth-token': `${localStorage.getItem('token')}`,
         },
       });
-      setProjects(res.data);
+      fetchProjects();
       setError(undefined);
       return res.data;
+    } catch (err: any) {
+      setError(err);
+      return err;
+    }
+  };
+
+  const fetchProjects = async () => {
+    try {
+      const res = await axios.get('/api/projects', {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': `${localStorage.getItem('token')}`,
+        },
+      });
+      setProjects(res.data);
     } catch (err: any) {
       setError(err);
       return err;
@@ -123,11 +161,12 @@ export const ProjectProvider = ({ children }: Props) => {
       });
       setError(undefined);
       setDevelopers(
-        res.data.map((user: any) => {
+        res.data.map((user: User) => {
           return {
             value: `${user.firstName} ${user.lastName}`,
             label: `${user.firstName} ${user.lastName}`,
             profilePicture: user.profilePicture,
+            role: '',
           };
         })
       );

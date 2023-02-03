@@ -22,13 +22,17 @@ type Props = {
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-
   error: string;
   id: string;
   label: string;
   labelColor?: string;
   placeholder?: string;
-
+  fieldValue: {
+    profilePicture: string;
+    label: string;
+    value: string;
+    role: string;
+  }[];
   setFieldValue: (field: string, value: any) => void;
 
   options: any[];
@@ -37,13 +41,12 @@ type Props = {
 const TeamCombobox = ({
   name,
   error,
-  id,
+  fieldValue,
   label,
   labelColor,
   setFieldValue,
   options,
 }: Props) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
   const [query, setQuery] = useState('');
   const controls = useAnimationControls();
 
@@ -58,26 +61,22 @@ const TeamCombobox = ({
         );
 
   useEffect(() => {
-    setFieldValue(name, selectedOptions);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOptions]);
-  useEffect(() => {
     if (error) {
       controls.start({ x: [0, 3, 0] });
     }
   }, [error]);
 
   const removeEntry = (index: number) => {
-    // Remove the language from the array
-    const newEntries = [...selectedOptions];
+    // Create a copy of the current team array
+    const newEntries = [...fieldValue];
+    // Remove the language from the copy of the array
     newEntries.splice(index, 1);
-    setSelectedOptions(newEntries);
     // Update the values object with the new array
     setFieldValue(name, newEntries);
   };
 
-  const handleOnChange = (value: never[]) => {
-    setSelectedOptions(value);
+  const handleOnChange = (value: any[]) => {
+    setFieldValue(name, value);
   };
 
   return (
@@ -112,11 +111,7 @@ const TeamCombobox = ({
           )}
 
           <div className=" relative w-full ">
-            <Combobox
-              value={selectedOptions}
-              onChange={handleOnChange}
-              multiple
-            >
+            <Combobox multiple onChange={handleOnChange}>
               <div className="relative flex flex-col   ">
                 <Combobox.Input
                   className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
@@ -183,15 +178,15 @@ const TeamCombobox = ({
 
               <div
                 className={`  ${
-                  selectedOptions?.length === 0
+                  fieldValue?.length === 0
                     ? 'flex-nowrap'
                     : 'grid w-full grid-cols-2 '
                 }   flex    gap-4 rounded-md py-2`}
               >
-                {selectedOptions.length === 0 && (
+                {fieldValue.length === 0 && (
                   <p>No {label.toLowerCase()} added.</p>
                 )}
-                {selectedOptions?.map((sOption, index) => {
+                {fieldValue?.map((sOption, index) => {
                   return (
                     <div
                       key={index}
@@ -205,12 +200,12 @@ const TeamCombobox = ({
                       <div className=" flex h-full  flex-col  items-start justify-center  ">
                         <h6>{sOption.label}</h6>
                         <SingleCombobox
-                          name={'team'}
+                          name={`team[${index}]`}
+                          fieldValue={fieldValue}
+                          index={index}
                           id={'team'}
                           label={'Team'}
                           value={sOption.value}
-                          setSelectedOptions={setSelectedOptions}
-                          selectedOptions={selectedOptions}
                           options={rolesOptions}
                           setFieldValue={setFieldValue}
                         ></SingleCombobox>
