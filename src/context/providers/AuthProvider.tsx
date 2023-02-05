@@ -15,7 +15,7 @@ export type User = {
   email: string;
   firstName: string;
   lastName: string;
-  verified: boolean;
+  isEmailVerified: boolean;
   _id: string;
   __v: number;
   profilePicture: string;
