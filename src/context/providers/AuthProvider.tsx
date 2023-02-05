@@ -41,10 +41,22 @@ type State = {
   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>;
   register: (credentials: RegisterCredentials) => Promise<Error | undefined>;
   fetchUser: () => Promise<Error | undefined>;
-
+  verifyEmail: (params: VerifyMailParams) => Promise<Error | undefined>;
+  resendEmailVerification: (
+    params: ResendEmailVerificationParams
+  ) => Promise<Error | undefined>;
   logout: () => Promise<void>;
 
   setCallbacks: React.Dispatch<React.SetStateAction<Callbacks | undefined>>;
+};
+
+type VerifyMailParams = {
+  user_id: string;
+  verification_token: string;
+};
+
+type ResendEmailVerificationParams = {
+  user_id: string;
 };
 
 type LoginCredentials = {
@@ -180,6 +192,37 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
 
+  const verifyEmail = async ({
+    user_id,
+    verification_token,
+  }: VerifyMailParams) => {
+    const body = { user_id, verification_token };
+
+    try {
+      const res = await axios.put('/api/users/email-verification', body);
+      return res;
+    } catch (err: any) {
+      console.error(err);
+      return err;
+    }
+  };
+
+  const resendEmailVerification = async ({
+    user_id,
+  }: ResendEmailVerificationParams) => {
+    const body = { user_id };
+    try {
+      const res = await axios.post(
+        '/api/users/resend-email-verification',
+        body
+      );
+      return res.data;
+    } catch (err: any) {
+      console.error(err, 'err');
+      return err.response.data;
+    }
+  };
+
   const fetchUser = async () => {
     setIsLoading(true);
 
@@ -263,7 +306,8 @@ export const AuthProvider = ({ children }: Props) => {
         register,
         updateProfile,
         fetchUser,
-
+        verifyEmail,
+        resendEmailVerification,
         setCallbacks,
       }}
     >

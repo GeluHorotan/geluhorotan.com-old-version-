@@ -78,10 +78,7 @@ const Navigation = () => {
             </li>
           ) : (
             <Dropdown data={dropdownData} title={`GElusan`}>
-              <span className="text-secondary dark:text-primary">
-                {user.firstName}&nbsp;
-                {user.lastName}
-              </span>
+              <span className="text-secondary dark:text-primary">YES</span>
               <ProfilePicture />
             </Dropdown>
           )}
