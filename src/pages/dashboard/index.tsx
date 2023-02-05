@@ -32,7 +32,7 @@ function Dashboard() {
                 </h6>
 
                 <div className="flex items-center gap-4">
-                  {user?.verified ? (
+                  {user?.isEmailVerified ? (
                     <MdVerified size={24} color={'blue'} />
                   ) : (
                     <GoUnverified size={24} color={'blue'} />

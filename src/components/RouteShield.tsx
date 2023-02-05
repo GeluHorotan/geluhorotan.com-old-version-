@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const protectedRoutes = ['/verified', '/dashboard'];
+const protectedRoutes = ['/dashboard'];
 
 const routeIsProtected = (url: string) => {
   return Boolean(protectedRoutes.find((route) => url.includes(route)));
@@ -15,10 +15,14 @@ const routeIsProtected = (url: string) => {
 
 export const RouteShield = ({ children }: Props) => {
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
-  const authIsDefined = typeof isAuthenticated !== 'undefined';
-  const isAuthorized = routeIsProtected(router.asPath) ? isAuthenticated : true;
+  const authIsDefined =
+    typeof isAuthenticated !== 'undefined' ||
+    typeof user?.isEmailVerified !== 'undefined';
+  const isAuthorized = routeIsProtected(router.asPath)
+    ? isAuthenticated && user?.isEmailVerified
+    : true;
 
   const redirect = () => {
     router.replace('/?redirected=true');
