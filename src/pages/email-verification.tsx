@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import Button from '@/components/Button';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -19,8 +19,7 @@ type Params = {
 };
 
 const EmailVerification: NextPage<Props> = ({ query }: Props) => {
-  const [message, setMessage] = useState();
-  const { verifyEmail, resendEmailVerification } = useAuth();
+  const { verifyEmail, resendEmailVerification, message } = useAuth();
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { user_id, verification_token } = query;
 
@@ -44,10 +43,16 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
         />
       }
     >
-      <div>TEST</div>
-      <Button type="button" onClick={() => resendEmail({ user_id })}>
-        RESEND
-      </Button>
+      <div className="container flex flex-col items-center justify-center">
+        {message && (
+          <div className="flex h-96 w-96 flex-col items-center justify-center rounded-lg bg-primary_t">
+            <div className="">{message}</div>
+            <Button type="button" onClick={() => resendEmail({ user_id })}>
+              RESEND
+            </Button>
+          </div>
+        )}
+      </div>
     </Main>
   );
 };

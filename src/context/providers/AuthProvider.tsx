@@ -25,6 +25,7 @@ type State = {
   isLoading: boolean;
   isAuthenticated: boolean | undefined;
   user?: User;
+  message: string;
   error?:
     | Error
     | {
@@ -37,6 +38,7 @@ type State = {
         };
       };
   setError: React.Dispatch<React.SetStateAction<Error | undefined>>;
+  setMessage?: React.Dispatch<React.SetStateAction<string | undefined>>;
   login: (credentials: LoginCredentials) => Promise<Error | undefined>;
   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>;
   register: (credentials: RegisterCredentials) => Promise<Error | undefined>;
@@ -82,7 +84,7 @@ export const AuthContext = createContext<State>({} as State);
 
 export const AuthProvider = ({ children }: Props) => {
   const { createAlert, updateAlert } = useAlert();
-
+  const [message, setMessage] = useState();
   const [user, setUser] = useState();
   const [error, setError] = useState<Error>();
   const [isLoading, setIsLoading] = useState(true);
@@ -197,12 +199,17 @@ export const AuthProvider = ({ children }: Props) => {
     verification_token,
   }: VerifyMailParams) => {
     const body = { user_id, verification_token };
-
+    setIsLoading(true);
     try {
       const res = await axios.put('/api/users/email-verification', body);
+      setIsLoading(false);
+      if (res.data?.msg) {
+        setMessage(res.data.msg);
+      }
       return res;
     } catch (err: any) {
-      console.error(err);
+      setError(err);
+      setIsLoading(false);
       return err;
     }
   };
@@ -216,9 +223,12 @@ export const AuthProvider = ({ children }: Props) => {
         '/api/users/resend-email-verification',
         body
       );
-      return res.data;
+      if (res.data?.msg) {
+        setMessage(res.data.msg);
+      }
+      return res;
     } catch (err: any) {
-      console.error(err, 'err');
+      setError(err);
       return err.response.data;
     }
   };
@@ -300,6 +310,7 @@ export const AuthProvider = ({ children }: Props) => {
         isAuthenticated,
         user,
         error,
+        message,
         setError,
         login,
         logout,
