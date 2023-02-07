@@ -177,20 +177,20 @@ export const AuthProvider = ({ children }: Props) => {
 
     try {
       const res = await axios.post('/api/users', body, config);
-      localStorage.setItem('token', JSON.stringify(res.data.token));
+      localStorage.setItem('token', JSON.stringify(res.data.data));
 
       setError(undefined);
       setIsAuthenticated(false);
       setIsLoading(false);
-      updateAlert(alertId, 'Register succesfully!', true);
-      return res.data;
+      updateAlert(alertId, res.data.msg, res.data.success);
+      console.log(res, 'err');
+      return res;
     } catch (err: any) {
       setIsLoading(false);
-      err.response.data.errors.map((error: { msg: string }) => {
-        return updateAlert(alertId, error.msg, false);
-      });
-
-      return err;
+      const res = err.response.data;
+      console.log(err.response, 'err');
+      updateAlert(alertId, res.error, res.success);
+      return res;
     }
   };
 
