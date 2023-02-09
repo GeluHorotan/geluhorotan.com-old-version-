@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from 'react';
 
 import { useAlert } from '@/context/hooks/useAlert';
 
+import type { Response } from '../types';
+
 type Props = {
   children: React.ReactNode;
 };
@@ -25,7 +27,11 @@ type State = {
   isLoading: boolean;
   isAuthenticated: boolean | undefined;
   user?: User;
-  message: string;
+  message?: {
+    success: boolean;
+    data?: any;
+    msg: string;
+  };
   error?:
     | Error
     | {
@@ -38,15 +44,12 @@ type State = {
         };
       };
   setError: React.Dispatch<React.SetStateAction<Error | undefined>>;
-  setMessage?: React.Dispatch<React.SetStateAction<string | undefined>>;
   login: (credentials: LoginCredentials) => Promise<Error | undefined>;
   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>;
   register: (credentials: RegisterCredentials) => Promise<Error | undefined>;
   fetchUser: () => Promise<Error | undefined>;
-  verifyEmail: (params: VerifyMailParams) => Promise<Error | undefined>;
-  resendEmailVerification: (
-    params: ResendEmailVerificationParams
-  ) => Promise<Error | undefined>;
+  verifyEmail: (params: VerifyMailParams) => any;
+  resendEmailVerification: (params: ResendEmailVerificationParams) => any;
   logout: () => Promise<void>;
 
   setCallbacks: React.Dispatch<React.SetStateAction<Callbacks | undefined>>;
@@ -83,8 +86,10 @@ type RegisterCredentials = {
 export const AuthContext = createContext<State>({} as State);
 
 export const AuthProvider = ({ children }: Props) => {
+  // Alerts
   const { createAlert, updateAlert } = useAlert();
-  const [message, setMessage] = useState();
+
+  // State
   const [user, setUser] = useState();
   const [error, setError] = useState<Error>();
   const [isLoading, setIsLoading] = useState(true);
@@ -101,22 +106,23 @@ export const AuthProvider = ({ children }: Props) => {
   }, [isAuthenticated]);
 
   const logout = async () => {
+    const alertId = createAlert(`Logging out...`);
     setIsLoading(true);
 
     localStorage.removeItem('token');
     localStorage.removeItem('user');
 
-    createAlert(`You're now logged out. `);
     setUser(undefined);
     setIsAuthenticated(false);
     setIsLoading(false);
+    updateAlert(alertId, `You're now logged out!`, true);
   };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
+      setIsLoading(true);
       setIsAuthenticated(true);
-
       // Test the current stored token
       const fetchCurrentUser = async () => {
         try {
@@ -126,13 +132,15 @@ export const AuthProvider = ({ children }: Props) => {
               'x-auth-token': `${localStorage.getItem('token')}`,
             },
           });
-          localStorage.setItem('user', JSON.stringify(res.data));
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+          setError(undefined);
           setIsLoading(false);
 
           return res.data;
-        } catch (err) {
-          await logout();
-          return err;
+        } catch (err: any) {
+          setError(err);
+          setIsLoading(false);
+          return err.response;
         }
       };
       fetchCurrentUser();
@@ -158,6 +166,8 @@ export const AuthProvider = ({ children }: Props) => {
     password,
     profilePicture,
   }: RegisterCredentials) => {
+    setIsLoading(true);
+    const alertId = createAlert(`Registering user...`);
     const body = JSON.stringify({
       firstName,
       lastName,
@@ -172,25 +182,23 @@ export const AuthProvider = ({ children }: Props) => {
       },
     };
 
-    setIsLoading(true);
-    const alertId = createAlert(`Registering user...`);
-
     try {
       const res = await axios.post('/api/users', body, config);
-      localStorage.setItem('token', JSON.stringify(res.data.data));
+
+      localStorage.setItem('token', JSON.stringify(res.data.token));
 
       setError(undefined);
       setIsAuthenticated(false);
-      setIsLoading(false);
       updateAlert(alertId, res.data.msg, res.data.success);
-      console.log(res, 'err');
-      return res;
-    } catch (err: any) {
       setIsLoading(false);
-      const res = err.response.data;
-      console.log(err.response, 'err');
-      updateAlert(alertId, res.error, res.success);
-      return res;
+
+      return res.data;
+    } catch (err: any) {
+      setError(err);
+
+      updateAlert(alertId, err.response.msg, err.response.success);
+      setIsLoading(false);
+      return err.response;
     }
   };
 
@@ -198,38 +206,41 @@ export const AuthProvider = ({ children }: Props) => {
     user_id,
     verification_token,
   }: VerifyMailParams) => {
-    const body = { user_id, verification_token };
     setIsLoading(true);
+    const body = { user_id, verification_token };
     try {
-      const res = await axios.put('/api/users/email-verification', body);
+      const res = await axios.put('/api/users/email-confirmation', body);
+
+      setError(undefined);
       setIsLoading(false);
-      if (res.data?.msg) {
-        setMessage(res.data.msg);
-      }
-      return res;
+      return res.data;
     } catch (err: any) {
+      const { data } = err.response;
       setError(err);
       setIsLoading(false);
-      return err;
+      return data;
     }
   };
 
   const resendEmailVerification = async ({
     user_id,
   }: ResendEmailVerificationParams) => {
+    setIsLoading(true);
     const body = { user_id };
     try {
       const res = await axios.post(
-        '/api/users/resend-email-verification',
+        '/api/users/resend-email-confirmation',
         body
       );
-      if (res.data?.msg) {
-        setMessage(res.data.msg);
-      }
-      return res;
+
+      setError(undefined);
+      setIsLoading(false);
+      return res.data;
     } catch (err: any) {
+      const { data } = err.response;
       setError(err);
-      return err.response.data;
+      setIsLoading(false);
+      return data;
     }
   };
 
@@ -244,21 +255,23 @@ export const AuthProvider = ({ children }: Props) => {
         },
       });
 
-      localStorage.setItem('user', JSON.stringify(res.data));
+      localStorage.setItem('user', JSON.stringify(res.data.user));
       setIsAuthenticated(true);
-      setUser(res.data);
+      setUser(res.data.user);
       setError(undefined);
       setIsLoading(false);
       return res.data;
     } catch (err: any) {
+      const { data } = err.response;
+      setError(err);
       setIsLoading(false);
-      return err;
+      return data;
     }
   };
 
   const login = async ({ email, password }: LoginCredentials) => {
-    const body = { email, password };
     setIsLoading(true);
+    const body = { email, password };
 
     try {
       const res = await axios.post('/api/auth', body);
@@ -272,8 +285,11 @@ export const AuthProvider = ({ children }: Props) => {
 
       return res.data;
     } catch (err: any) {
+      const { data } = err.response;
+      setError(err);
       setIsLoading(false);
-      return err;
+      console.log(data);
+      return data;
     }
   };
 
@@ -289,16 +305,16 @@ export const AuthProvider = ({ children }: Props) => {
       });
 
       setError(undefined);
-      setIsLoading(false);
 
       await fetchUser();
+      setIsLoading(false);
       return res.data;
     } catch (err: any) {
+      const { data } = err.response;
       await logout();
-
+      setError(err);
       setIsLoading(false);
-
-      return err;
+      return data;
     }
   };
 
@@ -310,7 +326,6 @@ export const AuthProvider = ({ children }: Props) => {
         isAuthenticated,
         user,
         error,
-        message,
         setError,
         login,
         logout,

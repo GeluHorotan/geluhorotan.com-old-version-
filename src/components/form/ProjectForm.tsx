@@ -286,6 +286,7 @@ const ProjectForm: React.FC = () => {
                 >
                   NEXT
                 </Button>
+                <Button type="submit">SUBMIT</Button>
               </div>
             </div>
           </Form>

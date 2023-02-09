@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Button from '@/components/Button';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -13,25 +13,16 @@ type Props = {
   };
 };
 
-type Params = {
-  user_id: string;
-  verification_token?: string;
-};
-
 const EmailVerification: NextPage<Props> = ({ query }: Props) => {
-  const { verifyEmail, resendEmailVerification, message } = useAuth();
+  const { verifyEmail, resendEmailVerification } = useAuth();
+  const [message, setMessage] = useState<any>();
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { user_id, verification_token } = query;
 
-  const checkEmail = async ({ user_id, verification_token }: Params) => {
-    await verifyEmail({ user_id, verification_token });
-  };
-
-  const resendEmail = async ({ user_id }: Params) => {
-    await resendEmailVerification({ user_id });
-  };
   useEffect(() => {
-    checkEmail({ user_id, verification_token });
+    verifyEmail({ user_id, verification_token }).then((res: Response) =>
+      setMessage(res)
+    );
   }, []);
 
   return (
@@ -44,14 +35,19 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
       }
     >
       <div className="container flex flex-col items-center justify-center">
-        {message && (
-          <div className="flex h-96 w-96 flex-col items-center justify-center rounded-lg bg-primary_t">
-            <div className="">{message}</div>
-            <Button type="button" onClick={() => resendEmail({ user_id })}>
-              RESEND
-            </Button>
-          </div>
-        )}
+        <div className="flex h-96 w-96 flex-col items-center justify-center rounded-lg bg-primary_t">
+          <div className="">{message && message.msg}</div>
+          <Button
+            type="button"
+            onClick={() =>
+              resendEmailVerification({ user_id }).then((res: any) =>
+                setMessage(res)
+              )
+            }
+          >
+            RESEND
+          </Button>
+        </div>
       </div>
     </Main>
   );

@@ -34,12 +34,7 @@
     // Configuration for TypeScript files
     {
       "files": ["**/*.ts", "**/*.tsx"],
-      "plugins": [
-        "@typescript-eslint",
-        "unused-imports",
-        "tailwindcss",
-        "simple-import-sort"
-      ],
+      "plugins": ["@typescript-eslint", "tailwindcss", "simple-import-sort"],
       "extends": [
         "plugin:tailwindcss/recommended",
         "airbnb-typescript",
@@ -70,8 +65,8 @@
         "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
         "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
         "@typescript-eslint/no-unused-vars": "off",
-        "unused-imports/no-unused-imports": "warn",
-        "unused-imports/no-unused-vars": "warn",
+        // "unused-imports/no-unused-imports": "warn",
+        // "unused-imports/no-unused-vars": "warn",
         "@typescript-eslint/no-shadow": "off",
         "@typescript-eslint/no-use-before-define": "off",
         "no-underscore-dangle": "off",

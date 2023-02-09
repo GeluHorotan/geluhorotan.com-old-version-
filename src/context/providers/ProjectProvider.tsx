@@ -71,10 +71,9 @@ type Projects = {
 
 type State = {
   projects: Projects;
-
+  isLoading: boolean;
   error: Error;
   developers: Developers;
-  isLoading: boolean;
 
   setDevelopers: React.Dispatch<React.SetStateAction<Developers | undefined>>;
   setProjects: React.Dispatch<React.SetStateAction<Projects | undefined>>;
@@ -87,7 +86,7 @@ export const ProjectContext = createContext<State>({} as State);
 export const ProjectProvider = ({ children }: Props) => {
   const [projects, setProjects] = useState([]);
   const [developers, setDevelopers] = useState<Developers>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>();
 
   useEffect(() => {
@@ -108,6 +107,7 @@ export const ProjectProvider = ({ children }: Props) => {
     url,
     images,
   }: ProjectDetails) => {
+    setIsLoading(true);
     const body = JSON.stringify({
       fullProjectName,
       desc,
@@ -128,10 +128,12 @@ export const ProjectProvider = ({ children }: Props) => {
       });
       fetchProjects();
       setError(undefined);
+      setIsLoading(false);
       return res.data;
     } catch (err: any) {
       setError(err);
-      return err;
+      setIsLoading(false);
+      return err.response;
     }
   };
 
@@ -143,10 +145,13 @@ export const ProjectProvider = ({ children }: Props) => {
           'x-auth-token': `${localStorage.getItem('token')}`,
         },
       });
-      setProjects(res.data);
+      setProjects(res.data.projects);
+      setError(undefined);
+      setIsLoading(false);
     } catch (err: any) {
       setError(err);
-      return err;
+      setIsLoading(false);
+      return err.response;
     }
   };
 
@@ -161,7 +166,7 @@ export const ProjectProvider = ({ children }: Props) => {
       });
       setError(undefined);
       setDevelopers(
-        res.data.map((user: User) => {
+        res.data.users.map((user: User) => {
           return {
             value: `${user.firstName} ${user.lastName}`,
             label: `${user.firstName} ${user.lastName}`,
@@ -170,12 +175,13 @@ export const ProjectProvider = ({ children }: Props) => {
           };
         })
       );
+      setError(undefined);
       setIsLoading(false);
       return res.data;
     } catch (err: any) {
-      setIsLoading(false);
       setError(err);
-      return err;
+      setIsLoading(false);
+      return err.response;
     }
   };
 
