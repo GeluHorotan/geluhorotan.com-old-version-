@@ -1,5 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
+// Icons
+import { SiGmail } from 'react-icons/si';
 
 import Button from '@/components/Button';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -25,6 +27,8 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
     );
   }, []);
 
+  const decodedHtml = { __html: message && message.msg };
+
   return (
     <Main
       meta={
@@ -35,18 +39,37 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
       }
     >
       <div className="container flex flex-col items-center justify-center">
-        <div className="flex h-96 w-96 flex-col items-center justify-center rounded-lg bg-primary_t">
-          <div className="">{message && message.msg}</div>
-          <Button
-            type="button"
-            onClick={() =>
-              resendEmailVerification({ user_id }).then((res: any) =>
-                setMessage(res)
-              )
-            }
-          >
-            RESEND
-          </Button>
+        <div className="relative flex   flex-col items-center justify-center gap-4 rounded-lg border border-accent bg-primary p-8">
+          <SiGmail size={400} className="text-accent opacity-40"></SiGmail>
+
+          <h5
+            className="text-center"
+            dangerouslySetInnerHTML={decodedHtml}
+          ></h5>
+          <div className="flex items-center justify-center gap-2">
+            <Button
+              type="button"
+              onClick={() =>
+                resendEmailVerification({ user_id }).then((res: any) =>
+                  setMessage(res)
+                )
+              }
+              className="rounded-lg bg-primary_t py-1 px-3"
+            >
+              BACK TO HOMEPAGE
+            </Button>
+            <Button
+              type="button"
+              onClick={() =>
+                resendEmailVerification({ user_id }).then((res: any) =>
+                  setMessage(res)
+                )
+              }
+              className="rounded-lg bg-accent py-1 px-3"
+            >
+              RESEND
+            </Button>
+          </div>
         </div>
       </div>
     </Main>
