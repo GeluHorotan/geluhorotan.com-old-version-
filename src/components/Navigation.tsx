@@ -77,8 +77,8 @@ const Navigation = () => {
               <Link href="/signin">SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown data={dropdownData} title={`GElusan`}>
-              <span className="text-secondary dark:text-primary">YES</span>
+            <Dropdown data={dropdownData} title={`test`}>
+              <span className="text-secondary dark:text-primary">TEST02</span>
               <ProfilePicture />
             </Dropdown>
           )}

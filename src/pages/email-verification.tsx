@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
 // Icons
-import { SiGmail } from 'react-icons/si';
+import { GoUnverified, GoVerified } from 'react-icons/go';
 
 import Button from '@/components/Button';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -18,11 +18,12 @@ type Props = {
 const EmailVerification: NextPage<Props> = ({ query }: Props) => {
   const { verifyEmail, resendEmailVerification } = useAuth();
   const [message, setMessage] = useState<any>();
+
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { user_id, verification_token } = query;
 
   useEffect(() => {
-    verifyEmail({ user_id, verification_token }).then((res: Response) =>
+    verifyEmail({ user_id, verification_token }).then((res: any) =>
       setMessage(res)
     );
   }, []);
@@ -39,38 +40,39 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
       }
     >
       <div className="container flex flex-col items-center justify-center">
-        <div className="relative flex   flex-col items-center justify-center gap-4 rounded-lg border border-accent bg-primary p-8">
-          <SiGmail size={400} className="text-accent opacity-40"></SiGmail>
-
-          <h5
-            className="text-center"
-            dangerouslySetInnerHTML={decodedHtml}
-          ></h5>
-          <div className="flex items-center justify-center gap-2">
-            <Button
-              type="button"
-              onClick={() =>
-                resendEmailVerification({ user_id }).then((res: any) =>
-                  setMessage(res)
-                )
-              }
-              className="rounded-lg bg-primary_t py-1 px-3"
-            >
-              BACK TO HOMEPAGE
-            </Button>
-            <Button
-              type="button"
-              onClick={() =>
-                resendEmailVerification({ user_id }).then((res: any) =>
-                  setMessage(res)
-                )
-              }
-              className="rounded-lg bg-accent py-1 px-3"
-            >
-              RESEND
-            </Button>
+        {message && (
+          <div className="relative flex w-full    flex-col items-center justify-center gap-10   ">
+            {message.success && (
+              <GoVerified size={300} className="text-success " />
+            )}
+            {!message.success && (
+              <GoUnverified size={300} className="text-error " />
+            )}
+            <div className="flex w-1/2  flex-col items-center justify-center gap-4 ">
+              <h5
+                className="w-full   text-center"
+                dangerouslySetInnerHTML={decodedHtml}
+              ></h5>
+              <div className="flex items-center justify-center gap-2">
+                <Button
+                  type="button"
+                  className="rounded-lg border-2 border-primary_t_2  py-1 px-3"
+                >
+                  HOME
+                </Button>
+                {!message.success && (
+                  <Button
+                    type="button"
+                    onClick={() => resendEmailVerification({ user_id })}
+                    className="rounded-lg bg-accent py-1 px-3"
+                  >
+                    RESEND
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Main>
   );

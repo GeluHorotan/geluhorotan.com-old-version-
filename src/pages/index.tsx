@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
-// import io from 'socket.io-client';
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import ModalWrapper from '@/components/ModalWrapper';
 import HeroIllustration from '@/components/svgs/HeroIllustration';
+import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
@@ -12,20 +12,14 @@ import { Main } from '@/templates/Main';
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects } = useProject();
-
+  const { user } = useAuth();
+  console.log(user, 'user state');
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
     if (myRef.current !== null) {
       myRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
-
-  // const endpoint = 'http://localhost:8080';
-  // const socket = io(endpoint);
-
-  // socket.on('test', (message) => {
-  //   console.log(message);
-  // });
 
   return (
     <Main

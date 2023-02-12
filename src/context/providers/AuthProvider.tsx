@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
+import io from 'socket.io-client';
 
 import { useAlert } from '@/context/hooks/useAlert';
 
@@ -86,6 +87,10 @@ type RegisterCredentials = {
 export const AuthContext = createContext<State>({} as State);
 
 export const AuthProvider = ({ children }: Props) => {
+  // Websocket
+  const endpoint = 'http://localhost:8080';
+  const socket = io(endpoint);
+
   // Alerts
   const { createAlert, updateAlert } = useAlert();
 
@@ -96,8 +101,8 @@ export const AuthProvider = ({ children }: Props) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(
     undefined
   );
-
   const [callbacks, setCallbacks] = useState<Callbacks>();
+
   useEffect(() => {
     if (isAuthenticated) {
       callbacks?.onAuthSuccess();
@@ -138,9 +143,10 @@ export const AuthProvider = ({ children }: Props) => {
 
           return res.data;
         } catch (err: any) {
+          const { data } = err.response;
           setError(err);
           setIsLoading(false);
-          return err.response;
+          return data;
         }
       };
       fetchCurrentUser();
@@ -156,6 +162,10 @@ export const AuthProvider = ({ children }: Props) => {
     window.addEventListener('logout', async () => {
       await logout();
     });
+    socket.on('email-confirmation', (updatedUser) => {
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -166,8 +176,8 @@ export const AuthProvider = ({ children }: Props) => {
     password,
     profilePicture,
   }: RegisterCredentials) => {
-    setIsLoading(true);
     const alertId = createAlert(`Registering user...`);
+    setIsLoading(true);
     const body = JSON.stringify({
       firstName,
       lastName,
@@ -185,20 +195,21 @@ export const AuthProvider = ({ children }: Props) => {
     try {
       const res = await axios.post('/api/users', body, config);
 
-      localStorage.setItem('token', JSON.stringify(res.data.token));
+      // localStorage.setItem('token', JSON.stringify(res.data.token));
 
       setError(undefined);
       setIsAuthenticated(false);
-      updateAlert(alertId, res.data.msg, res.data.success);
       setIsLoading(false);
+      updateAlert(alertId, res.data.msg, res.data.success);
 
       return res.data;
     } catch (err: any) {
+      const { data } = err.response;
       setError(err);
 
-      updateAlert(alertId, err.response.msg, err.response.success);
       setIsLoading(false);
-      return err.response;
+      updateAlert(alertId, data.msg, data.success);
+      return data;
     }
   };
 
@@ -213,6 +224,7 @@ export const AuthProvider = ({ children }: Props) => {
 
       setError(undefined);
       setIsLoading(false);
+
       return res.data;
     } catch (err: any) {
       const { data } = err.response;
@@ -225,6 +237,9 @@ export const AuthProvider = ({ children }: Props) => {
   const resendEmailVerification = async ({
     user_id,
   }: ResendEmailVerificationParams) => {
+    const alertId = createAlert(
+      `Please wait while we log you in. Sit tight, this won't take long!`
+    );
     setIsLoading(true);
     const body = { user_id };
     try {
@@ -235,11 +250,13 @@ export const AuthProvider = ({ children }: Props) => {
 
       setError(undefined);
       setIsLoading(false);
+      updateAlert(alertId, res.data.msg, res.data.success);
       return res.data;
     } catch (err: any) {
       const { data } = err.response;
       setError(err);
       setIsLoading(false);
+      updateAlert(alertId, data.msg, data.success);
       return data;
     }
   };
@@ -270,6 +287,7 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   const login = async ({ email, password }: LoginCredentials) => {
+    const alertId = createAlert(`Logging in...`);
     setIsLoading(true);
     const body = { email, password };
 
@@ -280,7 +298,7 @@ export const AuthProvider = ({ children }: Props) => {
 
       await fetchUser();
       setError(undefined);
-
+      updateAlert(alertId, res.data.msg, res.data.success);
       setIsLoading(false);
 
       return res.data;
@@ -288,13 +306,17 @@ export const AuthProvider = ({ children }: Props) => {
       const { data } = err.response;
       setError(err);
       setIsLoading(false);
-      console.log(data);
+      updateAlert(alertId, data.msg, data.success);
+
       return data;
     }
   };
 
   const updateProfile = async (body: UpdateCredentials) => {
     setIsLoading(true);
+    const alertId = createAlert(
+      `Please wait while we log you in. Sit tight, this won't take long!`
+    );
 
     try {
       const res = await axios.put('/api/profile/update', body, {
@@ -308,12 +330,14 @@ export const AuthProvider = ({ children }: Props) => {
 
       await fetchUser();
       setIsLoading(false);
+      updateAlert(alertId, res.data.msg, res.data.success);
       return res.data;
     } catch (err: any) {
       const { data } = err.response;
       await logout();
       setError(err);
       setIsLoading(false);
+      updateAlert(alertId, data.msg, data.success);
       return data;
     }
   };
