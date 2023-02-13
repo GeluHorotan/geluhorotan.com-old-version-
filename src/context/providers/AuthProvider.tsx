@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
 import { useAlert } from '@/context/hooks/useAlert';
+import { socketEndpoint } from '@/utils/socketConnection';
 
 import type { Response } from '../types';
 
@@ -88,8 +89,8 @@ export const AuthContext = createContext<State>({} as State);
 
 export const AuthProvider = ({ children }: Props) => {
   // Websocket
-  const endpoint = 'http://localhost:8080';
-  const socket = io(endpoint);
+
+  const socket = io(socketEndpoint);
 
   // Alerts
   const { createAlert, updateAlert } = useAlert();
