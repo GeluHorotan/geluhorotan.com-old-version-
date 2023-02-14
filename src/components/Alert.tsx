@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion, useAnimationControls } from 'framer-motion';
+import React, { useEffect } from 'react';
 import { MdClose, MdErrorOutline, MdTaskAlt } from 'react-icons/md';
 
 import { useAlert } from '@/context/hooks/useAlert';
@@ -8,10 +8,14 @@ type Props = {
   id: string;
   message: string;
   isFulfilled: boolean;
+  isPending: boolean;
+  alertTitle: string;
 };
 
-const Alert = ({ id, message, isFulfilled }: Props) => {
-  const { deleteAlert } = useAlert();
+const Alert = ({ id, message, isFulfilled, isPending, alertTitle }: Props) => {
+  const { deleteAlert, alertDuration } = useAlert();
+
+  const decodedHtml = { __html: message && message };
 
   return (
     <motion.div
@@ -19,25 +23,37 @@ const Alert = ({ id, message, isFulfilled }: Props) => {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 100, opacity: 0 }}
       transition={{ duration: 0.1 }}
-      className="relative h-16  cursor-pointer rounded-xl bg-secondary p-2 text-primary"
+      className=" relative cursor-pointer bg-gray-800  "
     >
-      <div className="flex h-full w-full   items-center justify-between ">
-        <div className="flex  items-center  justify-center   gap-2">
-          {isFulfilled ? (
-            <MdTaskAlt size={24} className={'text-success'} />
-          ) : (
-            <MdErrorOutline size={24} className={'text-error'} />
-          )}
+      {!isPending && (
+        <motion.div
+          initial={{ width: '100%' }}
+          animate={{ width: '0%' }}
+          transition={{ duration: alertDuration + 0.3 }}
+          className={`absolute top-0 left-0 h-1  ${
+            isFulfilled ? 'bg-success' : isPending ? 'bg-blue-400' : 'bg-error'
+          } `}
+        ></motion.div>
+      )}
 
-          <p className="text-base text-primary">{message}</p>
+      <div className="relative flex  items-center justify-between   p-5">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <h6 className=" tracking-tight text-secondary_t">{alertTitle}</h6>
+            {isFulfilled ? (
+              <MdTaskAlt size={18} className={'text-success'} />
+            ) : (
+              <MdErrorOutline size={18} className={'text-error'} />
+            )}
+          </div>
+          <p
+            className="  text-base text-secondary_s_2"
+            dangerouslySetInnerHTML={decodedHtml}
+          ></p>
         </div>
-        <div className="flex  h-full items-start">
-          <MdClose
-            size={16}
-            className=" text-primary"
-            onClick={() => deleteAlert(id)}
-          />
-        </div>
+        <p className=" text-blue-400" onClick={() => deleteAlert(id)}>
+          Dismiss
+        </p>
       </div>
     </motion.div>
   );

@@ -2,8 +2,8 @@ import React, { createContext, useState } from 'react';
 import short from 'short-uuid';
 
 type Alerts = {
+  alertTitle: string;
   message: string;
-
   isFulfilled?: boolean;
   isPending: boolean;
   id: string;
@@ -11,13 +11,14 @@ type Alerts = {
 
 type State = {
   alerts: {
+    alertTitle: string;
     message: string;
     isFulfilled?: boolean;
     isPending: boolean;
-
     id: string;
   }[];
-  createAlert: (msg: string) => string;
+  alertDuration: number;
+  createAlert: (alertTitle: string, isPending?: boolean) => string;
   updateAlert: (id: string, message: string, isSuccess: boolean) => void;
   deleteAlert: (id: string) => void;
   setAlerts: React.Dispatch<React.SetStateAction<Alerts>>;
@@ -31,15 +32,17 @@ export const AlertContext = createContext<State>({} as State);
 
 export const AlertProvider = ({ children }: Props) => {
   const [alerts, setAlerts] = useState<Alerts>([]);
+  const [alertDuration, setAlertDuration] = useState<number>(5);
 
   const deleteAlert = (id: string) => {
     setAlerts((prevState) => prevState.filter((alert) => alert.id !== id));
   };
 
-  const createAlert = (message: string, isPending = true) => {
+  const createAlert = (alertTitle: string, isPending = true) => {
     const id = short.generate();
+    const message = 'Please wait...';
 
-    setAlerts((alerts) => [...alerts, { id, message, isPending }]);
+    setAlerts((alerts) => [...alerts, { id, alertTitle, message, isPending }]);
 
     return id;
   };
@@ -60,7 +63,7 @@ export const AlertProvider = ({ children }: Props) => {
     );
     setTimeout(() => {
       return deleteAlert(id);
-    }, 1000);
+    }, 5000);
   };
 
   return (
@@ -68,6 +71,7 @@ export const AlertProvider = ({ children }: Props) => {
       // displayName="Alert Context"
       value={{
         alerts,
+        alertDuration,
         createAlert,
         setAlerts,
         deleteAlert,
