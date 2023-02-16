@@ -23,7 +23,7 @@ const Alert = ({ id, message, isFulfilled, isPending, alertTitle }: Props) => {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 100, opacity: 0 }}
       transition={{ duration: 0.1 }}
-      className=" relative cursor-pointer bg-gray-800  "
+      className=" relative cursor-pointer bg-gray-800 "
     >
       {!isPending && (
         <motion.div
@@ -36,21 +36,22 @@ const Alert = ({ id, message, isFulfilled, isPending, alertTitle }: Props) => {
         ></motion.div>
       )}
 
-      <div className="relative flex  items-center justify-between   p-5">
-        <div className="flex flex-col gap-1">
+      <div className="relative flex  items-center justify-between   py-5 px-4">
+        <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <h6 className=" tracking-tight text-secondary_t">{alertTitle}</h6>
             {isFulfilled ? (
               <MdTaskAlt size={18} className={'text-success'} />
             ) : (
               <MdErrorOutline size={18} className={'text-error'} />
             )}
+            <h6 className=" tracking-tight text-secondary_t">{alertTitle}</h6>
           </div>
           <p
             className="  text-base text-secondary_s_2"
             dangerouslySetInnerHTML={decodedHtml}
-          ></p>
+          />
         </div>
+
         <p className=" text-blue-400" onClick={() => deleteAlert(id)}>
           Dismiss
         </p>

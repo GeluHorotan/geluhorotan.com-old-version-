@@ -24,7 +24,6 @@ const Main = ({ children, meta }: IMainProps) => {
       )}
       <Navigation />
       {children}
-      <AlertWrapper />
     </>
   );
 };

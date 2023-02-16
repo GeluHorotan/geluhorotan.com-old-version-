@@ -61,9 +61,9 @@ export const AlertProvider = ({ children }: Props) => {
         return alert;
       })
     );
-    setTimeout(() => {
-      return deleteAlert(id);
-    }, 5000);
+    // setTimeout(() => {
+    //   return deleteAlert(id);
+    // }, alertDuration * 1000);
   };
 
   return (
