@@ -1,9 +1,11 @@
 import React, { createContext, useState } from 'react';
 import short from 'short-uuid';
 
+import Spinner from '@/components/Spinner';
+
 type Alerts = {
   alertTitle: string;
-  message: string;
+  message: string | React.ReactNode;
   isFulfilled?: boolean;
   isPending: boolean;
   id: string;
@@ -12,7 +14,7 @@ type Alerts = {
 type State = {
   alerts: {
     alertTitle: string;
-    message: string;
+    message: string | React.ReactNode;
     isFulfilled?: boolean;
     isPending: boolean;
     id: string;
@@ -40,7 +42,7 @@ export const AlertProvider = ({ children }: Props) => {
 
   const createAlert = (alertTitle: string, isPending = true) => {
     const id = short.generate();
-    const message = 'Please wait...';
+    const message = <Spinner size={4} />;
 
     setAlerts((alerts) => [...alerts, { id, alertTitle, message, isPending }]);
 
@@ -61,9 +63,9 @@ export const AlertProvider = ({ children }: Props) => {
         return alert;
       })
     );
-    // setTimeout(() => {
-    //   return deleteAlert(id);
-    // }, alertDuration * 1000);
+    setTimeout(() => {
+      return deleteAlert(id);
+    }, alertDuration * 1000);
   };
 
   return (

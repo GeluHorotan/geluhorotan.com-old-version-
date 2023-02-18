@@ -9,7 +9,7 @@ const AlertWrapper = () => {
   const { alerts } = useAlert();
 
   return (
-    <div className="fixed right-5 bottom-5 flex w-80  flex-col justify-center gap-2  ">
+    <div className="fixed right-5 bottom-5 flex w-80  flex-col justify-center gap-4  ">
       <AnimatePresence>
         {alerts.map((alert) => {
           return (
