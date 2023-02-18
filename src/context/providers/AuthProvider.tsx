@@ -90,7 +90,7 @@ export const AuthContext = createContext<State>({} as State);
 export const AuthProvider = ({ children }: Props) => {
   // Websocket
 
-  const socket = io(socketEndpoint);
+  const socket = io('https://geluhorotancom-horotangelu17.b4a.run');
 
   // Alerts
   const { createAlert, updateAlert } = useAlert();
@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }: Props) => {
   }, [isAuthenticated]);
 
   const logout = async () => {
-    const alertId = createAlert(`Logging out...`);
+    const alertId = createAlert('Logout');
     setIsLoading(true);
 
     localStorage.removeItem('token');
@@ -164,9 +164,14 @@ export const AuthProvider = ({ children }: Props) => {
       await logout();
     });
     socket.on('email-confirmation', (updatedUser) => {
+      // console.log(message);
       setUser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
     });
+    socket.on('test', (message) => {
+      console.log(message);
+    });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -177,7 +182,7 @@ export const AuthProvider = ({ children }: Props) => {
     password,
     profilePicture,
   }: RegisterCredentials) => {
-    const alertId = createAlert(`Registering user...`);
+    const alertId = createAlert('Register');
     setIsLoading(true);
     const body = JSON.stringify({
       firstName,
@@ -238,9 +243,7 @@ export const AuthProvider = ({ children }: Props) => {
   const resendEmailVerification = async ({
     user_id,
   }: ResendEmailVerificationParams) => {
-    const alertId = createAlert(
-      `Please wait while we log you in. Sit tight, this won't take long!`
-    );
+    const alertId = createAlert('Resend Email Verification');
     setIsLoading(true);
     const body = { user_id };
     try {
@@ -272,7 +275,6 @@ export const AuthProvider = ({ children }: Props) => {
           'x-auth-token': `${localStorage.getItem('token')}`,
         },
       });
-
       localStorage.setItem('user', JSON.stringify(res.data.user));
       setIsAuthenticated(true);
       setUser(res.data.user);
@@ -281,6 +283,7 @@ export const AuthProvider = ({ children }: Props) => {
       return res.data;
     } catch (err: any) {
       const { data } = err.response;
+
       setError(err);
       setIsLoading(false);
       return data;
@@ -288,26 +291,28 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   const login = async ({ email, password }: LoginCredentials) => {
-    const alertId = createAlert(`Logging in...`);
+    const alertId = createAlert('Login');
+
     setIsLoading(true);
     const body = { email, password };
 
     try {
       const res = await axios.post('/api/auth', body);
 
+      updateAlert(alertId, res.data.msg, res.data.success);
       localStorage.setItem('token', res.data.token);
 
       await fetchUser();
       setError(undefined);
-      updateAlert(alertId, res.data.msg, res.data.success);
       setIsLoading(false);
 
       return res.data;
     } catch (err: any) {
       const { data } = err.response;
+      updateAlert(alertId, data.msg, data.success);
+      console.log(data, 'login data err');
       setError(err);
       setIsLoading(false);
-      updateAlert(alertId, data.msg, data.success);
 
       return data;
     }
@@ -315,9 +320,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   const updateProfile = async (body: UpdateCredentials) => {
     setIsLoading(true);
-    const alertId = createAlert(
-      `Please wait while we log you in. Sit tight, this won't take long!`
-    );
+    const alertId = createAlert('Update Profile');
 
     try {
       const res = await axios.put('/api/profile/update', body, {

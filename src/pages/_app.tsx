@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
 
+import AlertWrapper from '@/components/AlertWrapper';
 import { RouteShield } from '@/components/RouteShield';
 import { Providers } from '@/context/Providers';
 
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Providers>
         <RouteShield>
           <Component {...pageProps} />
+          <AlertWrapper />
         </RouteShield>
       </Providers>
     </>

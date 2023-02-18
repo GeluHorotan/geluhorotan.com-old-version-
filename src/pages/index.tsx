@@ -13,7 +13,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects } = useProject();
   const { user } = useAuth();
-  console.log(user, 'user state');
+
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
     if (myRef.current !== null) {

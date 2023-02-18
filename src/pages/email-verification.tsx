@@ -66,7 +66,7 @@ const EmailVerification: NextPage<Props> = ({ query }: Props) => {
                     onClick={() => resendEmailVerification({ user_id })}
                     className="rounded-lg bg-accent py-1 px-3"
                   >
-                    RESEND
+                    RESEND EMAIL
                   </Button>
                 )}
               </div>
