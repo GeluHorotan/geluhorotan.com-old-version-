@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { HiOutlineChevronRight } from 'react-icons/hi';
 
 import { useAuth } from '@/context/hooks/useAuth';
 
@@ -41,7 +42,7 @@ const Navigation = () => {
 
       {
         name: 'Log out',
-        to: '#',
+
         isNew: true,
         id: 4,
         action: logout,
@@ -70,16 +71,23 @@ const Navigation = () => {
             })}
           </div>
         </ul>
-        <ul className="flex items-center  justify-between gap-12">
+        <ul className="flex items-center  justify-between gap-12 ">
           {!isAuthenticated ? (
             <li className="navigation-item ">
               {' '}
               <Link href="/signin">SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown data={dropdownData} title={`test`}>
-              <span className="text-secondary dark:text-primary">TEST02</span>
-              <ProfilePicture />
+            <Dropdown data={dropdownData} secondLabel={user?.email}>
+              <div className="flex  items-center justify-between gap-6 ">
+                <div className="flex  items-center justify-between gap-3 ">
+                  <ProfilePicture size="small" />
+                  <span className="text-secondary dark:text-primary">
+                    {user?.firstName}&nbsp;{user?.lastName}
+                  </span>
+                </div>
+                <HiOutlineChevronRight className="rotate-90 text-secondary dark:text-primary"></HiOutlineChevronRight>
+              </div>
             </Dropdown>
           )}
           <DarkMode />
