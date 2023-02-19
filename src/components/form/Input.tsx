@@ -73,17 +73,17 @@ const Input = ({
             {label}
           </label>
 
-          <div className={`relative w-full   ${labelColor}`}>
+          <div className={` relative w-full    `}>
             <input
+              className={`peer relative w-full appearance-none rounded-lg text-base font-light text-secondary ${
+                backgroundColor || 'bg-primary_t'
+              } py-2 ${icon ? 'indent-8' : 'px-4'} outline-none ${
+                error ? 'border border-error' : ''
+              } `}
               placeholder={placeholder || ''}
               name={name}
               type={type}
               id={id}
-              className={`peer relative w-full rounded-lg ${
-                backgroundColor || 'bg-primary_t text-secondary '
-              } py-2  ${icon ? 'indent-8' : 'px-4'}  outline-none ${
-                error ? 'border border-error' : ''
-              }   `}
               value={value}
               onChange={onChangeHandler}
               onBlur={onBlurHandler}
