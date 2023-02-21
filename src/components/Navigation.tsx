@@ -13,7 +13,7 @@ import Logo from './svgs/Logo';
 
 const Navigation = () => {
   const { isAuthenticated, user, logout } = useAuth();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery('(max-width: 1012px)');
 
   const navItems = [
     { id: 1, name: 'home' },

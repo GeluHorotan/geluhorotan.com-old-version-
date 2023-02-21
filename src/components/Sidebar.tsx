@@ -1,64 +1,113 @@
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as FiIcons from 'react-icons/fi';
+import { motion, useCycle } from 'framer-motion';
+import type { FC } from 'react';
+import * as React from 'react';
+import { useRef } from 'react';
+
+import SidebarToggler from '@/components/SidebarToggler';
+import { useDimensions } from '@/customHooks/useDimensions';
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: 'circle(30px at 40px 40px)',
+
+    transition: {
+      delay: 0.5,
+      type: 'spring',
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+const SidebarVariant = {
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
+
+const ItemVariant = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 },
+    },
+  },
+};
+
+const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF'];
+
+interface SidebarItemProps {
+  i: number;
+}
+
+const SidebarItem: FC<SidebarItemProps> = ({ i }) => {
+  const style = { border: `2px solid ${colors[i]}` };
+  return (
+    <motion.li
+      variants={ItemVariant}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      TEST
+    </motion.li>
+  );
+};
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const sidebarItems = [
-    { id: 1, name: 'home', icon: <FaIcons.FaHome size="28" /> },
-    { id: 2, name: 'about', icon: <FaIcons.FaAws size="28" /> },
-    { id: 3, name: 'projects', icon: <FaIcons.FaBitcoin size="28" /> },
-    { id: 4, name: 'contact', icon: <FaIcons.FaAngellist size="28" /> },
-  ];
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
 
-  const handleOpenState = () => setIsOpen((prevState) => !prevState);
   return (
     <>
-      <div
-        className={`${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } absolute z-10 h-screen w-full bg-black opacity-50  `}
-        onClick={handleOpenState}
-      ></div>
-      <div className=" absolute left-7 z-30 mt-4 md:hidden">
-        <FiIcons.FiBarChart2
-          className="rotate-90  text-accent"
-          size={30}
-          onClick={handleOpenState}
-        />
-      </div>
-      <div
-        className={`${
-          isOpen ? ' translate-x-0' : '-translate-x-full'
-        }  fixed z-20 flex  h-screen  w-max flex-col gap-3 bg-gradient-to-r from-primary to-primary_s px-4 py-20 text-secondary shadow-lg duration-200   ease-in-out `}
+      <motion.nav
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        ref={containerRef}
+        custom={height}
+        className={`fixed inset-0 w-full ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }  `}
       >
-        {sidebarItems.map((item) => {
-          return (
-            <SideBarIcon
-              key={item.id}
-              name={item.name}
-              icon={item.icon}
-            ></SideBarIcon>
-          );
-        })}
-      </div>
+        <motion.div
+          className={`fixed inset-0 w-full  bg-red-400`}
+          variants={sidebar}
+        >
+          <motion.ul
+            variants={SidebarVariant}
+            className=" absolute top-28 w-56 p-6"
+          >
+            {itemIds.map((i) => (
+              <SidebarItem i={i} key={i} />
+            ))}
+          </motion.ul>
+        </motion.div>
+      </motion.nav>
+      <SidebarToggler toggle={() => toggleOpen()} />
     </>
   );
 };
 
-type SidebarProps = {
-  name: string;
-  icon: React.ReactNode;
-};
-
-const SideBarIcon = ({ icon, name }: SidebarProps) => (
-  <div className="sidebar-item-container">
-    <div className="sidebar-icon ">
-      {icon}
-      {/* &lt;/&gt; */}
-    </div>
-    <p>{name}</p>
-  </div>
-);
+const itemIds = [0, 1, 2, 3, 4];
 
 export default Sidebar;
