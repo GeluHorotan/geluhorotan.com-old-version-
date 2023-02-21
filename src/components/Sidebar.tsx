@@ -90,19 +90,19 @@ const Sidebar = () => {
         }  `}
       >
         <motion.div
-          className={`fixed inset-0 w-full  bg-red-400`}
+          className={`fixed inset-0 w-full  bg-secondary dark:bg-primary`}
           variants={sidebar}
         >
           <motion.ul
             variants={SidebarVariant}
-            className=" absolute top-28 w-56 p-6"
+            className=" absolute top-28 flex w-56 flex-col gap-8 bg-blue-400 p-6"
           >
             {itemIds.map((i) => (
               <SidebarItem i={i} key={i} />
             ))}
           </motion.ul>
         </motion.div>
-        <SidebarToggler toggle={() => toggleOpen()} />
+        <SidebarToggler toggle={() => toggleOpen()} isOpen={isOpen} />
       </motion.nav>
     </>
   );
