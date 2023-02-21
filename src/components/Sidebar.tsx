@@ -17,7 +17,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(30px at 40px 40px)',
+    clipPath: 'circle(0px at 0px 0px)',
 
     transition: {
       delay: 0.5,
@@ -102,8 +102,8 @@ const Sidebar = () => {
             ))}
           </motion.ul>
         </motion.div>
+        <SidebarToggler toggle={() => toggleOpen()} />
       </motion.nav>
-      <SidebarToggler toggle={() => toggleOpen()} />
     </>
   );
 };

@@ -24,7 +24,7 @@ interface Props {
 const SidebarToggler: FC<Props> = ({ toggle }) => (
   <button
     onClick={toggle}
-    className=" fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none "
+    className=" pointer-events-auto fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none "
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
