@@ -30,11 +30,13 @@ function Signin() {
         />
       }
     >
-      <div className="container flex items-center   justify-center  ">
-        <Tabs list={tabList}>
-          <LoginForm className="rounded-b-3xl" />
-          <RegisterForm className="rounded-b-3xl" />
-        </Tabs>
+      <div className="container flex items-center justify-center    ">
+        <div className="w-1/2 ">
+          <Tabs list={tabList}>
+            <LoginForm className="rounded-b-3xl" />
+            <RegisterForm className="rounded-b-3xl" />
+          </Tabs>
+        </div>
       </div>
     </Main>
   );

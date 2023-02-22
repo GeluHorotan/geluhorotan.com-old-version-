@@ -126,8 +126,6 @@ const ProjectForm: React.FC = () => {
                   desc={`What is the project's name ? When have you started and finished ?`}
                 >
                   <Field
-                    labelColor={'text-primary'}
-                    backgroundColor="bg-secondary_s"
                     label="Full project name"
                     id="fullProjectName"
                     name="fullProjectName"
@@ -140,8 +138,6 @@ const ProjectForm: React.FC = () => {
                   />
 
                   <Field
-                    labelColor={'text-primary'}
-                    backgroundColor="bg-secondary_s"
                     label="URL"
                     id="url"
                     name="url"
@@ -155,8 +151,6 @@ const ProjectForm: React.FC = () => {
 
                   <div className="grid grid-cols-2 gap-20 space-x-1">
                     <Field
-                      labelColor={'text-primary'}
-                      backgroundColor="bg-secondary_s"
                       label="Start Date"
                       id="startDate"
                       name="startDate"
@@ -168,8 +162,6 @@ const ProjectForm: React.FC = () => {
                       as={Input}
                     />
                     <Field
-                      labelColor={'text-primary'}
-                      backgroundColor="bg-secondary_s"
                       label="End Date"
                       id="endDate"
                       name="endDate"
@@ -185,8 +177,6 @@ const ProjectForm: React.FC = () => {
 
                 <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
-                    labelColor={'text-primary'}
-                    backgroundColor="bg-secondary_s"
                     label="Description"
                     id="desc"
                     name="desc"
@@ -201,8 +191,6 @@ const ProjectForm: React.FC = () => {
                 <ProjectWrapper desc="Did you work alone on this project ? What technologies have you used ?">
                   <Field
                     setFieldValue={setFieldValue}
-                    backgroundColor="bg-secondary_s"
-                    labelColor="text-primary"
                     name="technologies"
                     fieldValue={technologies}
                     id={'technologies'}
@@ -216,8 +204,6 @@ const ProjectForm: React.FC = () => {
                   />
                   <Field
                     setFieldValue={setFieldValue}
-                    backgroundColor="bg-secondary_s"
-                    labelColor="text-primary"
                     name="team"
                     fieldValue={team}
                     id={'team'}
@@ -233,8 +219,6 @@ const ProjectForm: React.FC = () => {
                   <div className="grid grid-cols-2 gap-20 space-x-1 ">
                     <Field
                       setFieldValue={setFieldValue}
-                      backgroundColor="bg-secondary_s"
-                      labelColor="text-primary"
                       name="images.mobile"
                       value={images.mobile}
                       id={'mobileImage'}
@@ -246,8 +230,6 @@ const ProjectForm: React.FC = () => {
 
                     <Field
                       setFieldValue={setFieldValue}
-                      backgroundColor="bg-secondary_s"
-                      labelColor="text-primary"
                       name="images.header"
                       value={images.header}
                       id={'header'}
@@ -259,8 +241,6 @@ const ProjectForm: React.FC = () => {
                   </div>
                   <Field
                     setFieldValue={setFieldValue}
-                    backgroundColor="bg-secondary_s"
-                    labelColor="text-primary"
                     name="images.gallery"
                     value={images.gallery}
                     id={'gallery'}

@@ -16,7 +16,7 @@ type Props = {
   name: string;
   error: string;
   id: string;
-  labelColor?: string;
+
   backgroundColor: string;
   label: string;
   icon?: ReactNode;
@@ -35,8 +35,7 @@ const Input = ({
   id,
   label,
   placeholder,
-  labelColor,
-  backgroundColor,
+
   icon,
 }: Props) => {
   const controls = useAnimationControls();
@@ -54,18 +53,20 @@ const Input = ({
           initial={{ x: 0 }}
           animate={controls}
           transition={{ type: 'spring', duration: 0.1 }}
-          className="relative flex flex-col gap-1  "
+          className="relative flex w-full flex-col gap-1  "
         >
           <label
             htmlFor={name}
-            className={`${labelColor || 'text-secondary'} ${
-              !error || 'text-error'
-            } flex items-center gap-1`}
+            className={` ${
+              !error ? 'text-primary dark:text-secondary' : 'text-error'
+            } flex items-center gap-1 `}
           >
             {!icon && error && (
               <TooltipTrigger className="flex ">
                 <BiErrorCircle
-                  className={`${error ? 'text-error' : labelColor}`}
+                  className={`${
+                    error ? 'text-error' : 'text-primary dark:text-secondary'
+                  }`}
                   size={16}
                 ></BiErrorCircle>
               </TooltipTrigger>
@@ -73,13 +74,11 @@ const Input = ({
             {label}
           </label>
 
-          <div className={` relative w-full    `}>
+          <div className={` relative    `}>
             <input
-              className={`peer relative w-full appearance-none rounded-lg text-base font-light text-secondary ${
-                backgroundColor || 'bg-primary_t'
-              } py-2 ${icon ? 'indent-8' : 'px-4'} outline-none ${
-                error ? 'border border-error' : ''
-              } `}
+              className={`peer relative w-full appearance-none rounded-lg  bg-primary_t py-2 pr-4 text-base font-light text-secondary ${
+                icon ? 'indent-8' : 'px-4'
+              } outline-none  `}
               placeholder={placeholder || ''}
               name={name}
               type={type}
@@ -105,7 +104,7 @@ const Input = ({
             )}
 
             {error && (
-              <TooltipContent className="bg-primary text-secondary">
+              <TooltipContent>
                 <p>{error}</p>
               </TooltipContent>
             )}
