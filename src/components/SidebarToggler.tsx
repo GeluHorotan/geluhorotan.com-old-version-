@@ -1,7 +1,9 @@
 import type { SVGMotionProps } from 'framer-motion';
 import { motion } from 'framer-motion';
 import type { FC } from 'react';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import type { Theme } from '@/customHooks/useDarkMode';
 
 const Path = (
   props: JSX.IntrinsicAttributes &
@@ -16,15 +18,30 @@ const Path = (
   />
 );
 
-interface Props {
+interface SidebarTogglerProps {
   toggle?: any;
   isOpen: boolean;
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }
 
-const SidebarToggler: FC<Props> = ({ toggle, isOpen }) => {
-  const isDarkMode = !!(
-    typeof window !== 'undefined' && localStorage.getItem('theme') === 'light'
+const SidebarToggler: FC<SidebarTogglerProps> = ({
+  toggle,
+  isOpen,
+  theme,
+  setTheme,
+}) => {
+  const [isDarkMode, setIsDarkMode] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark'
   );
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      setIsDarkMode(false);
+    } else {
+      setIsDarkMode(true);
+    }
+  }, [theme]);
 
   const pathClassNames =
     isOpen && isDarkMode
@@ -36,7 +53,8 @@ const SidebarToggler: FC<Props> = ({ toggle, isOpen }) => {
   return (
     <button
       onClick={toggle}
-      className=" pointer-events-auto fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none "
+      className={`
+      } pointer-events-auto fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none `}
     >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
@@ -44,7 +62,7 @@ const SidebarToggler: FC<Props> = ({ toggle, isOpen }) => {
             closed: { d: 'M 2 2.5 L 20 2.5' },
             open: { d: 'M 3 16.5 L 17 2.5' },
           }}
-          className={`${pathClassNames}`}
+          className={`${pathClassNames} transition-colors duration-700`}
         />
         <Path
           d="M 2 9.423 L 20 9.423"
@@ -53,14 +71,14 @@ const SidebarToggler: FC<Props> = ({ toggle, isOpen }) => {
             open: { opacity: 0 },
           }}
           transition={{ duration: 0.1 }}
-          className={`${pathClassNames}`}
+          className={`${pathClassNames} transition-colors duration-700`}
         />
         <Path
           variants={{
             closed: { d: 'M 2 16.346 L 20 16.346' },
             open: { d: 'M 3 2.5 L 17 16.346' },
           }}
-          className={`${pathClassNames}`}
+          className={`${pathClassNames} transition-colors duration-700`}
         />
       </svg>
     </button>

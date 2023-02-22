@@ -32,7 +32,7 @@ export default function Home() {
     >
       <div className={'flex  h-screen  w-full items-center justify-evenly  '}>
         <div className="flex h-screen  w-1/2 flex-col justify-center ">
-          <h1 className="p-2 text-secondary   dark:text-primary">
+          <h1 className="p-2 text-primary   dark:text-secondary">
             Gelu Horotan <br />
             <span className="text-accent_s"> Software Engineer</span>
           </h1>

@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import type { FC } from 'react';
 import React from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 
 import { useAuth } from '@/context/hooks/useAuth';
+import type { Theme } from '@/customHooks/useDarkMode';
 import useMediaQuery from '@/customHooks/useMediaQuery';
 
 import DarkMode from './DarkMode';
@@ -11,7 +13,12 @@ import ProfilePicture from './ProfilePicture';
 import Sidebar from './Sidebar';
 import Logo from './svgs/Logo';
 
-const Navigation = () => {
+interface NavProps {
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+}
+
+const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const { isAuthenticated, user, logout } = useAuth();
   const isMobile = useMediaQuery('(max-width: 1012px)');
 
@@ -57,7 +64,7 @@ const Navigation = () => {
       {!isMobile && (
         <nav
           className={
-            ' flex w-full  flex-row items-center justify-between   bg-primary py-3 px-14   dark:bg-secondary'
+            ' flex w-full  flex-row items-center justify-between   bg-secondary py-3 px-14 dark:bg-primary  '
           }
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-16  ">
@@ -65,7 +72,7 @@ const Navigation = () => {
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {
                 return (
-                  <li key={item.id} className="navigation-item ">
+                  <li key={item.id} className="navigation-item">
                     <Link href={`/${item.name === 'home' ? '' : item.name}`}>
                       {item.name}
                     </Link>
@@ -85,20 +92,20 @@ const Navigation = () => {
                 <div className="flex  items-center justify-between gap-6 ">
                   <div className="flex  items-center justify-between gap-3 ">
                     <ProfilePicture size="small" />
-                    <span className="text-secondary dark:text-primary">
+                    <span className="text-primary dark:text-secondary">
                       {user?.firstName}&nbsp;{user?.lastName}
                     </span>
                   </div>
-                  <HiOutlineChevronRight className="rotate-90 text-secondary dark:text-primary"></HiOutlineChevronRight>
+                  <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary"></HiOutlineChevronRight>
                 </div>
               </Dropdown>
             )}
-            <DarkMode />
+            <DarkMode theme={theme} setTheme={setTheme} />
           </ul>
         </nav>
       )}
 
-      {isMobile && <Sidebar />}
+      {isMobile && <Sidebar theme={theme} setTheme={setTheme} />}
     </>
   );
 };

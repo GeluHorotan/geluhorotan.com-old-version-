@@ -1,31 +1,30 @@
 import { motion } from 'framer-motion';
+import type { FC } from 'react';
 import { HiOutlineLightBulb, HiOutlineMoon } from 'react-icons/hi';
 
-import useDarkMode from '@/customHooks/useDarkMode';
+import type { Theme } from '@/customHooks/useDarkMode';
 import useMount from '@/customHooks/useMount';
 
-const DarkMode = () => {
-  const [colorTheme, setTheme] = useDarkMode();
+interface DarkModeProps {
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+}
+
+const DarkMode: FC<DarkModeProps> = ({ theme, setTheme }) => {
   const [isMounted] = useMount();
 
-  if (isMounted)
+  if (isMounted) {
     return (
       <div className="flex items-center gap-4">
         <HiOutlineLightBulb
-          className="text-secondary dark:text-primary"
+          className="text-primary dark:text-secondary"
           size={24}
         />
         <div
           className={`flex h-6 w-12 cursor-pointer  items-center rounded-full bg-secondary_s_2 p-1 ${
-            colorTheme === 'light' && isMounted
-              ? 'justify-start'
-              : colorTheme === 'dark' && isMounted
-              ? 'justify-end'
-              : ''
-          }  `}
-          onClick={() =>
-            colorTheme === 'light' ? setTheme('light') : setTheme('dark')
-          }
+            theme === 'light' ? 'justify-start' : 'justify-end'
+          }`}
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         >
           <motion.span
             layout
@@ -37,10 +36,11 @@ const DarkMode = () => {
             className="h-4 w-4 rounded-full bg-secondary_t_2 "
           />
         </div>
-
-        <HiOutlineMoon className="text-secondary dark:text-primary" size={24} />
+        <HiOutlineMoon className="text-primary dark:text-secondary" size={24} />
       </div>
     );
+  }
+  return null;
 };
 
 export default DarkMode;
