@@ -8,16 +8,21 @@ import useMount from '@/customHooks/useMount';
 interface DarkModeProps {
   theme: Theme;
   setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  reverseColor?: boolean;
 }
 
-const DarkMode: FC<DarkModeProps> = ({ theme, setTheme }) => {
+const DarkMode: FC<DarkModeProps> = ({ theme, setTheme, reverseColor }) => {
   const [isMounted] = useMount();
 
   if (isMounted) {
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <HiOutlineLightBulb
-          className="text-primary dark:text-secondary"
+          className={`${
+            !reverseColor
+              ? 'text-primary dark:text-secondary'
+              : 'text-secondary dark:text-primary'
+          }`}
           size={24}
         />
         <div
@@ -36,7 +41,14 @@ const DarkMode: FC<DarkModeProps> = ({ theme, setTheme }) => {
             className="h-4 w-4 rounded-full bg-secondary_t_2 "
           />
         </div>
-        <HiOutlineMoon className="text-primary dark:text-secondary" size={24} />
+        <HiOutlineMoon
+          className={`${
+            !reverseColor
+              ? 'text-primary dark:text-secondary'
+              : 'text-secondary dark:text-primary'
+          }`}
+          size={24}
+        />
       </div>
     );
   }

@@ -64,7 +64,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
       {!isMobile && (
         <nav
           className={
-            ' flex w-full  flex-row items-center justify-between   bg-secondary py-3 px-14 dark:bg-primary  '
+            ' fixed flex  w-full flex-row items-center justify-between   bg-secondary py-3 px-14 dark:bg-primary  '
           }
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-16  ">
@@ -105,7 +105,16 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
         </nav>
       )}
 
-      {isMobile && <Sidebar theme={theme} setTheme={setTheme} />}
+      {isMobile && (
+        <Sidebar
+          theme={theme}
+          setTheme={setTheme}
+          dropdownData={dropdownData}
+          navItems={navItems}
+          user={user}
+          isAuthenticated={isAuthenticated}
+        />
+      )}
     </>
   );
 };

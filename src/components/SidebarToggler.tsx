@@ -29,6 +29,7 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
   toggle,
   isOpen,
   theme,
+
   setTheme,
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -45,16 +46,17 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
 
   const pathClassNames =
     isOpen && isDarkMode
-      ? 'stroke-primary'
+      ? 'stroke-secondary'
       : !isOpen && !isDarkMode
-      ? 'stroke-primary'
-      : 'stroke-secondary';
+      ? 'stroke-secondary'
+      : 'stroke-primary';
 
   return (
     <button
       onClick={toggle}
       className={`
-      } pointer-events-auto fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none `}
+    pointer-events-auto fixed inset-4 z-50 h-12 w-12 cursor-pointer select-none rounded-full border-none bg-transparent outline-none
+  `}
     >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path

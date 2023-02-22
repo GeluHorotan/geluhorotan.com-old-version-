@@ -33,13 +33,18 @@ interface Props {
     }[];
   };
   secondLabel: string;
+  reverseColor?: boolean;
 }
 
-const Dropdown: FC<Props> = ({ children, data, secondLabel }) => {
+const Dropdown: FC<Props> = ({ children, data, secondLabel, reverseColor }) => {
   const router = useRouter();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>{children}</DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        className={`${reverseColor && 'text-secondary dark:text-primary'} `}
+      >
+        {children}
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>
           {data?.header}
