@@ -23,7 +23,6 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const isMobile = useMediaQuery('(max-width: 1012px)');
 
   const navItems = [
-    { id: 1, name: 'home' },
     { id: 2, name: 'about' },
     { id: 3, name: 'projects' },
     { id: 4, name: 'contact' },
