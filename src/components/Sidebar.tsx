@@ -2,7 +2,10 @@ import { motion, useCycle } from 'framer-motion';
 import Link from 'next/dist/client/link';
 import type { FC, Key } from 'react';
 import { useEffect, useRef } from 'react';
+import { AiOutlineGithub, AiOutlineTwitter } from 'react-icons/ai';
+import { FiGithub } from 'react-icons/fi';
 import { HiOutlineChevronRight } from 'react-icons/hi';
+import { TiSocialLinkedin } from 'react-icons/ti';
 
 import SidebarToggler from '@/components/SidebarToggler';
 import type { User } from '@/context/providers/AuthProvider';
@@ -12,7 +15,6 @@ import { useDimensions } from '@/customHooks/useDimensions';
 import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
 import ProfilePicture from './ProfilePicture';
-import Separator from './Separator';
 import Logo from './svgs/Logo';
 
 const sidebar = {
@@ -226,11 +228,25 @@ const Sidebar: FC<SidebarProps> = ({
         >
           <motion.ul
             variants={SidebarVariant}
-            className=" flex w-full flex-col items-start justify-center  gap-4 px-8  "
+            className=" flex w-full flex-col items-start justify-center  gap-8 px-5 "
           >
-            {navItems.map((item: { id: number; name: string }, i: Key) => (
-              <SidebarItem key={i} item={item} />
-            ))}
+            <div className="flex flex-col gap-4">
+              {navItems.map((item: { id: number; name: string }, i: Key) => (
+                <SidebarItem key={i} item={item} />
+              ))}
+            </div>
+            <div className="my-4 flex  flex-col  gap-4">
+              <ul className="flex flex-col items-start gap-2 text-secondary_s_2 underline ">
+                <li>Support</li>
+                <li>Privacy Policy</li>
+                <li>Terms of use</li>
+              </ul>
+              <div className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2">
+                <AiOutlineGithub size={24}></AiOutlineGithub>
+                <TiSocialLinkedin size={24}></TiSocialLinkedin>
+                <AiOutlineTwitter size={24}></AiOutlineTwitter>
+              </div>
+            </div>
           </motion.ul>
         </motion.div>
       </motion.nav>
