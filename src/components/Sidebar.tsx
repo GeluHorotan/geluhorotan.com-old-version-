@@ -176,17 +176,43 @@ const Sidebar: FC<SidebarProps> = ({
       <motion.div
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
-        className="fixed inset-0 z-50 flex h-16 items-center justify-between "
+        className="fixed inset-0 z-50 flex h-16 items-center justify-between px-5 "
       >
-        <SidebarToggler
-          toggle={() => toggleOpen()}
-          isOpen={isOpen}
-          theme={theme}
-          setTheme={setTheme}
-        />
-        <Logo size={48} />
-        <div className="flex  items-center gap-2">
-          <DarkMode theme={theme} setTheme={setTheme}></DarkMode>
+        <div className="flex items-center gap-4">
+          <SidebarToggler
+            toggle={() => toggleOpen()}
+            isOpen={isOpen}
+            theme={theme}
+            setTheme={setTheme}
+          />
+          <Logo size={48} />
+        </div>
+        <div className="flex  items-center  ">
+          {!isAuthenticated ? (
+            <Link
+              href="/signin"
+              className=" text-xl font-medium text-primary dark:text-secondary"
+              // onClick={() => toggleOpen()}
+            >
+              SIGN IN
+            </Link>
+          ) : (
+            <motion.div>
+              <Dropdown
+                data={dropdownData}
+                secondLabel={user?.email}
+                reverseColor
+              >
+                <div className="flex  items-center justify-between gap-4">
+                  <div className="flex  items-center justify-between gap-2 ">
+                    <ProfilePicture size="small" className="rounded-lg" />
+                    <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary" />
+                  </div>
+                  <DarkMode theme={theme} setTheme={setTheme}></DarkMode>
+                </div>
+              </Dropdown>
+            </motion.div>
+          )}
         </div>
       </motion.div>
       <motion.nav
@@ -206,35 +232,6 @@ const Sidebar: FC<SidebarProps> = ({
             variants={SidebarVariant}
             className=" flex w-full flex-col items-start justify-center  gap-1 px-8  "
           >
-            <motion.li variants={ItemVariant} className="my-4">
-              {!isAuthenticated ? (
-                <Link
-                  href="/signin"
-                  className=" text-xl font-medium text-primary dark:text-secondary"
-                  onClick={() => toggleOpen()}
-                >
-                  Sign in
-                </Link>
-              ) : (
-                <motion.div>
-                  <Dropdown
-                    data={dropdownData}
-                    secondLabel={user?.email}
-                    reverseColor
-                  >
-                    <div className="flex  items-center justify-between gap-6 ">
-                      <div className="flex  items-center justify-between gap-3 ">
-                        <ProfilePicture size="small" />
-                        <span className="text-primary dark:text-secondary">
-                          {user?.firstName}&nbsp;{user?.lastName}
-                        </span>
-                      </div>
-                      <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary"></HiOutlineChevronRight>
-                    </div>
-                  </Dropdown>
-                </motion.div>
-              )}
-            </motion.li>
             {navItems.map((item: { id: number; name: string }, i: Key) => (
               <SidebarItem key={i} item={item} />
             ))}
