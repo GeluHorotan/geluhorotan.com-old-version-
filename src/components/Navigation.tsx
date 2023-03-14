@@ -66,7 +66,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
             ' fixed flex  w-full flex-row items-center justify-between   bg-secondary py-3 px-14 dark:bg-primary  '
           }
         >
-          <ul className="flex w-1/2 flex-row items-center justify-start gap-16  ">
+          <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">
             <Logo size={36} />
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {
@@ -80,7 +80,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
               })}
             </div>
           </ul>
-          <ul className="flex items-center  justify-between gap-12 ">
+          <ul className="flex items-center  justify-between gap-6 ">
             {!isAuthenticated ? (
               <li className="navigation-item ">
                 {' '}

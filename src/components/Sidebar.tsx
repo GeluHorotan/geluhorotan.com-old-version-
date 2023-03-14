@@ -99,7 +99,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ item }) => {
     >
       <Link
         href={`/${item.name === 'home' ? '' : item.name}`}
-        className=" text-xl font-medium text-primary dark:text-secondary"
+        className=" text-xl font-medium uppercase tracking-widest text-primary dark:text-secondary"
       >
         {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
       </Link>
@@ -178,7 +178,7 @@ const Sidebar: FC<SidebarProps> = ({
         animate={isOpen ? 'open' : 'closed'}
         className="fixed inset-0 z-50 flex h-16 items-center justify-between px-5 "
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <SidebarToggler
             toggle={() => toggleOpen()}
             isOpen={isOpen}
@@ -187,32 +187,27 @@ const Sidebar: FC<SidebarProps> = ({
           />
           <Logo size={48} />
         </div>
-        <div className="flex  items-center  ">
+        <div className="flex  items-center justify-between gap-6  ">
           {!isAuthenticated ? (
             <Link
               href="/signin"
-              className=" text-xl font-medium text-primary dark:text-secondary"
-              // onClick={() => toggleOpen()}
+              className="   text-primary dark:text-secondary"
             >
               SIGN IN
             </Link>
           ) : (
-            <motion.div>
-              <Dropdown
-                data={dropdownData}
-                secondLabel={user?.email}
-                reverseColor
-              >
-                <div className="flex  items-center justify-between gap-4">
-                  <div className="flex  items-center justify-between gap-2 ">
-                    <ProfilePicture size="small" className="rounded-lg" />
-                    <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary" />
-                  </div>
-                  <DarkMode theme={theme} setTheme={setTheme}></DarkMode>
-                </div>
-              </Dropdown>
-            </motion.div>
+            <Dropdown
+              data={dropdownData}
+              secondLabel={user?.email}
+              reverseColor
+            >
+              <div className="flex  items-center justify-between gap-2 ">
+                <ProfilePicture size="small" className="rounded-lg" />
+                <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary" />
+              </div>
+            </Dropdown>
           )}
+          <DarkMode theme={theme} setTheme={setTheme}></DarkMode>
         </div>
       </motion.div>
       <motion.nav
@@ -222,7 +217,8 @@ const Sidebar: FC<SidebarProps> = ({
         ref={containerRef}
         className={`fixed inset-0 z-40 flex h-16 w-full  items-center justify-between ${
           isOpen ? 'border-b border-primary' : ''
-        }   `}
+        }  
+           `}
       >
         <motion.div
           className={`fixed bottom-0 z-40 flex h-[calc(100%-4rem)]  w-full items-start justify-center bg-secondary py-20 dark:bg-primary`}
@@ -230,7 +226,7 @@ const Sidebar: FC<SidebarProps> = ({
         >
           <motion.ul
             variants={SidebarVariant}
-            className=" flex w-full flex-col items-start justify-center  gap-1 px-8  "
+            className=" flex w-full flex-col items-start justify-center  gap-4 px-8  "
           >
             {navItems.map((item: { id: number; name: string }, i: Key) => (
               <SidebarItem key={i} item={item} />
