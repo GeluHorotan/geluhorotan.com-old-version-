@@ -3,7 +3,7 @@ import Link from 'next/dist/client/link';
 import type { FC, Key } from 'react';
 import { useEffect, useRef } from 'react';
 import { AiOutlineGithub, AiOutlineTwitter } from 'react-icons/ai';
-import { FiGithub } from 'react-icons/fi';
+import { BiCopyright } from 'react-icons/bi';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { TiSocialLinkedin } from 'react-icons/ti';
 
@@ -242,10 +242,15 @@ const Sidebar: FC<SidebarProps> = ({
                 <li>Terms of use</li>
               </ul>
               <div className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2">
-                <AiOutlineGithub size={24}></AiOutlineGithub>
-                <TiSocialLinkedin size={24}></TiSocialLinkedin>
-                <AiOutlineTwitter size={24}></AiOutlineTwitter>
+                <AiOutlineGithub size={24} />
+                <TiSocialLinkedin size={24} />
+                <AiOutlineTwitter size={24} />
               </div>
+            </div>
+            <div className="flex items-center gap-2 text-secondary">
+              {new Date().getFullYear()}
+              <BiCopyright className="text-primary_t_2 dark:text-accent_t_2" />
+              <p>All right reserved.</p>
             </div>
           </motion.ul>
         </motion.div>
