@@ -143,7 +143,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
           }) => (
             <Form
               className={
-                'flex h-1/2 flex-col  justify-center gap-8  py-4 text-primary'
+                'flex h-1/2 w-full  flex-col justify-center gap-8  py-4 text-primary'
               }
             >
               <div className="relative flex w-max flex-col items-center justify-center gap-1 self-center rounded-full  text-secondary">
@@ -312,10 +312,10 @@ const RegisterForm = ({ className, rounded }: Props) => {
               </div>
               <Button
                 type="submit"
-                className="mb-4 w-full self-center bg-secondary_s_2 py-2  px-4 uppercase text-primary"
+                className="mb-4 w-full rounded-lg   bg-accent2 py-2   uppercase text-primary dark:text-primary"
                 rounded
               >
-                Register
+                REGISTER
               </Button>
             </Form>
           )}

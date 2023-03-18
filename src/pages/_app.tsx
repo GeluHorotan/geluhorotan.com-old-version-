@@ -7,6 +7,7 @@ import type { ReactElement, ReactNode } from 'react';
 import AlertWrapper from '@/components/AlertWrapper';
 import { RouteShield } from '@/components/RouteShield';
 import { Providers } from '@/context/Providers';
+import useDarkMode from '@/customHooks/useDarkMode';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -17,11 +18,13 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const [theme, setTheme] = useDarkMode();
+
   return (
     <>
       <Providers>
         <RouteShield>
-          <Component {...pageProps} />
+          <Component {...pageProps} test={'test'} setTheme={setTheme} />
           <AlertWrapper />
         </RouteShield>
       </Providers>

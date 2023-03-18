@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
+import { cn } from '@/utils/cn';
+
 type Props = {
   children: React.ReactNode;
   className?: string;
@@ -24,9 +26,10 @@ const Button = ({
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.1, ease: 'easeInOut' }}
       type={type}
-      className={`${className} ${
-        rounded && 'rounded-full'
-      } flex w-max items-center justify-center  `}
+      className={cn(
+        'flex items-center  justify-center rounded-full text-primary dark:text-secondary',
+        className
+      )}
       {...rest}
     >
       {children}

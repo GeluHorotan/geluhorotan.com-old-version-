@@ -4,14 +4,17 @@ import AlertWrapper from '@/components/AlertWrapper';
 import Navigation from '@/components/Navigation';
 import Reminder from '@/components/Reminder';
 import { useAuth } from '@/context/hooks/useAuth';
+import useDarkMode from '@/customHooks/useDarkMode';
 
 type IMainProps = {
   meta: ReactNode;
   children: ReactNode;
+  test?: string;
 };
 
 const Main = ({ children, meta }: IMainProps) => {
   const { user } = useAuth();
+  const [theme, setTheme] = useDarkMode();
   return (
     <>
       {meta}
@@ -22,7 +25,7 @@ const Main = ({ children, meta }: IMainProps) => {
           account features.
         </Reminder>
       )}
-      <Navigation />
+      <Navigation theme={theme} setTheme={setTheme} />
       {children}
     </>
   );
