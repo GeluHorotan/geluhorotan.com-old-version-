@@ -31,8 +31,8 @@ export default function Home() {
         />
       }
     >
-      <div className={'flex  h-screen  w-full items-center justify-evenly  '}>
-        <div className="flex h-screen  w-1/2 flex-col justify-center ">
+      <div className={'container  flex items-center justify-between  '}>
+        <div className="flex h-screen  w-1/2 flex-col justify-center  ">
           <h1 className="p-2 text-primary   dark:text-secondary">
             Gelu Horotan <br />
             <span className="text-accent_s"> Software Engineer</span>
@@ -52,13 +52,13 @@ export default function Home() {
       </div>
       <div
         ref={myRef}
-        className="flex h-screen w-full flex-col items-center justify-center gap-10 scroll-smooth "
+        className="container flex flex-col items-center justify-center  "
       >
         {user && user.role === Role.Admin && (
           <Button
             type="button"
             onClick={() => setIsOpen(true)}
-            className=" rounded-lg bg-slate-300 p-2"
+            className=" self-end  rounded-lg bg-secondary_s px-4 py-2 dark:bg-primary_t"
           >
             ADD PROJECT
             <ModalWrapper

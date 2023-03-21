@@ -11,7 +11,7 @@
     @apply text-primary dark:text-secondary uppercase;
   }
   .container {
-    @apply bg-secondary dark:bg-primary text-primary_s_2  dark:text-secondary_s_2 min-w-full w-full h-screen;
+    @apply bg-secondary dark:bg-primary text-primary dark:text-secondary min-w-full w-full h-screen px-20;
   }
 
   body {
