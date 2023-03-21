@@ -67,7 +67,9 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
           }
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">
-            <Logo size={36} />
+            <Link href="/">
+              <Logo size={36} />
+            </Link>
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {
                 return (

@@ -187,7 +187,9 @@ const Sidebar: FC<SidebarProps> = ({
             theme={theme}
             setTheme={setTheme}
           />
-          <Logo size={48} />
+          <Link href="/">
+            <Logo size={36} />
+          </Link>
         </div>
         <div className="flex  items-center justify-between gap-6  ">
           {!isAuthenticated ? (
