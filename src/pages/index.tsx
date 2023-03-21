@@ -8,6 +8,7 @@ import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+import Role from '@/utils/roles';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,20 +54,22 @@ export default function Home() {
         ref={myRef}
         className="flex h-screen w-full flex-col items-center justify-center gap-10 scroll-smooth "
       >
-        <Button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className=" rounded-lg bg-slate-300 p-2"
-        >
-          ADD PROJECT
-          <ModalWrapper
-            title="Add Project"
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
+        {user && user.role === Role.Admin && (
+          <Button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className=" rounded-lg bg-slate-300 p-2"
           >
-            <ProjectForm />
-          </ModalWrapper>
-        </Button>
+            ADD PROJECT
+            <ModalWrapper
+              title="Add Project"
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            >
+              <ProjectForm />
+            </ModalWrapper>
+          </Button>
+        )}
       </div>
       <div></div>
     </Main>
