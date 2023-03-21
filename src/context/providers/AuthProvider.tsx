@@ -16,6 +16,7 @@ type Callbacks = {
 };
 
 export type User = {
+  role: number;
   email: string;
   firstName: string;
   lastName: string;
