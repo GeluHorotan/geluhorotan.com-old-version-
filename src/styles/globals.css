@@ -65,4 +65,9 @@
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-size-adjust: none !important;
   }
+
+  .text-shadow {
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+      2px 2px 0 #000;
+  }
 }

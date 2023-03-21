@@ -53,9 +53,9 @@ export default function Home() {
       </section>
       <section
         ref={myRef}
-        className="flex h-screen w-full flex-col items-center justify-center bg-red-400  "
+        className="flex h-screen w-full flex-col items-center justify-center bg-red-400 px-20  "
       >
-        {user && user.role === Role.Admin && (
+        {/* {user && user.role === Role.Admin && (
           <Button
             type="button"
             onClick={() => setIsOpen(true)}
@@ -70,10 +70,22 @@ export default function Home() {
               <ProjectForm />
             </ModalWrapper>
           </Button>
-        )}
-        <div className="flex items-center justify-center gap-4">
-          {projects?.map((project) => {
-            return <div key={project._id}>{project.fullProjectName}</div>;
+        )} */}
+        <div className="flex  w-full  justify-between gap-4  bg-blue-400">
+          {projects?.map((project, i) => {
+            return (
+              <div
+                key={project._id}
+                className="flex w-1/4 flex-col items-center justify-center bg-secondary"
+              >
+                {project.fullProjectName}
+                <div>
+                  <h2 className="text-shadow text-[15rem]  font-bold text-secondary ">
+                    {i}
+                  </h2>
+                </div>
+              </div>
+            );
           })}
         </div>
       </section>
