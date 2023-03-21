@@ -180,7 +180,7 @@ const Sidebar: FC<SidebarProps> = ({
         animate={isOpen ? 'open' : 'closed'}
         className="fixed inset-0 z-50 flex h-16 items-center justify-between px-5 "
       >
-        <div className="flex items-center gap-6">
+        <div className="flex items-center ">
           <SidebarToggler
             toggle={() => toggleOpen()}
             isOpen={isOpen}
@@ -237,21 +237,27 @@ const Sidebar: FC<SidebarProps> = ({
             </div>
             <div className="my-4 flex  flex-col  gap-4">
               <ul className="flex flex-col items-start gap-2 text-secondary_s_2 underline ">
-                <li>Support</li>
-                <li>Privacy Policy</li>
-                <li>Terms of use</li>
+                <motion.li variants={ItemVariant}>Support</motion.li>
+                <motion.li variants={ItemVariant}>Privacy Policy</motion.li>
+                <motion.li variants={ItemVariant}>Terms of use</motion.li>
               </ul>
-              <div className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2">
+              <motion.div
+                variants={ItemVariant}
+                className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2"
+              >
                 <AiOutlineGithub size={24} />
                 <TiSocialLinkedin size={24} />
                 <AiOutlineTwitter size={24} />
-              </div>
+              </motion.div>
             </div>
-            <div className="flex items-center gap-2 text-secondary">
+            <motion.div
+              variants={ItemVariant}
+              className="flex items-center gap-2 text-secondary"
+            >
               {new Date().getFullYear()}
               <BiCopyright className="text-primary_t_2 dark:text-accent_t_2" />
               <p>All right reserved.</p>
-            </div>
+            </motion.div>
           </motion.ul>
         </motion.div>
       </motion.nav>
