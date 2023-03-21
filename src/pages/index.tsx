@@ -14,6 +14,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects } = useProject();
   const { user } = useAuth();
+  console.log(projects);
 
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
@@ -31,7 +32,7 @@ export default function Home() {
         />
       }
     >
-      <div className={'container  flex items-center justify-between  '}>
+      <section className={'container  flex items-center justify-between  '}>
         <div className="flex h-screen  w-1/2 flex-col justify-center  ">
           <h1 className="p-2 text-primary   dark:text-secondary">
             Gelu Horotan <br />
@@ -49,16 +50,16 @@ export default function Home() {
         </div>
 
         <HeroIllustration />
-      </div>
-      <div
+      </section>
+      <section
         ref={myRef}
-        className="container flex flex-col items-center justify-center  "
+        className="flex h-screen w-full flex-col items-center justify-center bg-red-400  "
       >
         {user && user.role === Role.Admin && (
           <Button
             type="button"
             onClick={() => setIsOpen(true)}
-            className=" self-end  rounded-lg bg-secondary_s px-4 py-2 dark:bg-primary_t"
+            className="  self-end  rounded-lg bg-secondary_s px-4 py-2 dark:bg-primary_t"
           >
             ADD PROJECT
             <ModalWrapper
@@ -70,8 +71,13 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
-      </div>
-      <div></div>
+        <div className="flex items-center justify-center gap-4">
+          {projects?.map((project) => {
+            return <div key={project._id}>{project.fullProjectName}</div>;
+          })}
+        </div>
+      </section>
+      <section className="container"></section>
     </Main>
   );
 }
