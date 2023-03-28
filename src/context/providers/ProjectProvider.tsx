@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { Key } from 'react';
 import React, { createContext, useEffect, useState } from 'react';
 
 import Role from '@/utils/roles';
@@ -36,6 +37,7 @@ type ProjectDetails = {
 };
 
 type Developers = {
+  [x: string]: Key;
   value: string;
   label: string;
   profilePicture: string;

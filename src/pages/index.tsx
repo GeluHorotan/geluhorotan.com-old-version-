@@ -1,8 +1,11 @@
-import { useRef, useState } from 'react';
+import dateFormat, { masks } from 'dateformat';
+import Image from 'next/dist/client/image';
+import { Fragment, useRef, useState } from 'react';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import ModalWrapper from '@/components/ModalWrapper';
+import ProfilePicture from '@/components/ProfilePicture';
 import HeroIllustration from '@/components/svgs/HeroIllustration';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
@@ -53,9 +56,9 @@ export default function Home() {
       </section>
       <section
         ref={myRef}
-        className="flex h-screen w-full flex-col items-center justify-center bg-red-400 px-20  "
+        className="flex h-max w-full flex-col items-center justify-center  px-20  "
       >
-        {/* {user && user.role === Role.Admin && (
+        {user && user.role === Role.Admin && (
           <Button
             type="button"
             onClick={() => setIsOpen(true)}
@@ -70,19 +73,59 @@ export default function Home() {
               <ProjectForm />
             </ModalWrapper>
           </Button>
-        )} */}
-        <div className="flex  w-full  justify-between gap-4  bg-blue-400">
+        )}
+        <div className=" flex w-full flex-col justify-center  gap-14    ">
           {projects?.map((project, i) => {
             return (
               <div
                 key={project._id}
-                className="flex w-1/4 flex-col items-center justify-center bg-secondary"
+                className="relative mx-20 flex h-max w-1/2 flex-col items-center justify-evenly gap-4 rounded-3xl bg-secondary p-2 odd:self-end even:self-start"
               >
-                {project.fullProjectName}
-                <div>
-                  <h2 className="text-shadow text-[15rem]  font-bold text-secondary ">
-                    {i}
-                  </h2>
+                <Image
+                  alt="img"
+                  src={project.images.header}
+                  width={555}
+                  height={555}
+                  className="h-max w-full rounded-3xl"
+                ></Image>
+
+                <div className="flex h-full w-full items-center    px-6 ">
+                  <div>
+                    {project.team.map((dev) => {
+                      return (
+                        <ProfilePicture
+                          size="medium"
+                          imageSrc={dev.profilePicture}
+                          key={dev._id}
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex w-full flex-col items-end justify-center gap-4   ">
+                    <div className="flex flex-col items-end justify-center  ">
+                      <h2 className="  text-4xl font-bold uppercase tracking-widest text-primary ">
+                        {project.fullProjectName}
+                      </h2>
+                      <p>
+                        {dateFormat(project.startDate, 'mmmm dS yyyy')} -{' '}
+                        {dateFormat(project.endDate, 'mmmm dS yyyy')}
+                      </p>
+                    </div>
+                    <div className="flex w-full items-center justify-end gap-4 ">
+                      <Button
+                        type="button"
+                        className="rounded-3xl bg-primary py-1 px-3"
+                      >
+                        VISIT
+                      </Button>
+                      <Button
+                        type="button"
+                        className="rounded-3xl bg-primary py-1 px-3"
+                      >
+                        LEARN MORE
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             );
