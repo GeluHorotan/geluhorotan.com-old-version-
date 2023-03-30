@@ -79,54 +79,74 @@ export default function Home() {
             return (
               <div
                 key={project._id}
-                className="relative mx-20 flex h-max w-1/2 flex-col items-center justify-evenly gap-4 rounded-3xl bg-secondary p-2 odd:self-end even:self-start"
+                className="flex items-center justify-evenly  even:flex-row-reverse "
               >
-                <Image
-                  alt="img"
-                  src={project.images.header}
-                  width={555}
-                  height={555}
-                  className="h-max w-full rounded-3xl"
-                ></Image>
-
-                <div className="flex h-full w-full items-center    px-6 ">
-                  <div>
-                    {project.team.map((dev) => {
-                      return (
-                        <ProfilePicture
-                          size="medium"
-                          imageSrc={dev.profilePicture}
-                          key={dev._id}
-                        />
-                      );
-                    })}
-                  </div>
-                  <div className="flex w-full flex-col items-end justify-center gap-4   ">
-                    <div className="flex flex-col items-end justify-center  ">
-                      <h2 className="  text-4xl font-bold uppercase tracking-widest text-primary ">
-                        {project.fullProjectName}
-                      </h2>
-                      <p>
-                        {dateFormat(project.startDate, 'mmmm dS yyyy')} -{' '}
-                        {dateFormat(project.endDate, 'mmmm dS yyyy')}
-                      </p>
-                    </div>
-                    <div className="flex w-full items-center justify-end gap-4 ">
-                      <Button
-                        type="button"
-                        className="rounded-3xl bg-primary py-1 px-3"
-                      >
-                        VISIT
-                      </Button>
-                      <Button
-                        type="button"
-                        className="rounded-3xl bg-primary py-1 px-3"
-                      >
-                        LEARN MORE
-                      </Button>
-                    </div>
-                  </div>
+                <div
+                  className={`flex w-1/3 flex-col justify-center  text-primary dark:text-secondary ${
+                    i % 2 === 0
+                      ? 'items-end text-end'
+                      : 'items-start text-start'
+                  }`}
+                >
+                  <p>
+                    {dateFormat(project.startDate, 'mmmm dS yyyy')} -{' '}
+                    {dateFormat(project.endDate, 'mmmm dS yyyy')}
+                  </p>
+                  <h2 className="  text-4xl font-bold uppercase tracking-widest ">
+                    {project.fullProjectName}
+                  </h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores earum temporibus odit eligendi enim error
+                    laborum, libero mollitia qui reiciendis voluptatibus sit
+                    voluptas, commodi dignissimos beatae? Dolorem, autem in?
+                    Commodi!
+                  </p>
                 </div>
+                <div className="w-1/2">
+                  <Image
+                    alt="img"
+                    src={project.images.header}
+                    width={1280}
+                    height={720}
+                    className="  rounded-3xl"
+                  ></Image>
+                </div>
+
+                {/* <div
+                  key={project._id}
+                  className="relative  flex h-max   flex-col items-center justify-evenly gap-4 rounded-3xl bg-secondary p-2 odd:self-end even:self-start"
+                > */}
+                {/* <div className="flex h-full w-full items-center    px-6 ">
+                    <div>
+                      {project.team.map((dev) => {
+                        return (
+                          <ProfilePicture
+                            size="medium"
+                            imageSrc={dev.profilePicture}
+                            key={dev._id}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div className="flex w-full flex-col items-end justify-center gap-4   ">
+                      <div className="flex w-full items-center justify-end gap-4 ">
+                        <Button
+                          type="button"
+                          className="rounded-3xl bg-primary py-1 px-3"
+                        >
+                          VISIT
+                        </Button>
+                        <Button
+                          type="button"
+                          className="rounded-3xl bg-primary py-1 px-3"
+                        >
+                          LEARN MORE
+                        </Button>
+                      </div>
+                    </div>
+                  </div> */}
+                {/* </div> */}
               </div>
             );
           })}
