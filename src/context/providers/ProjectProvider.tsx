@@ -16,7 +16,8 @@ type User = {
 type ProjectDetails = {
   fullProjectName: string;
   url: string;
-
+  domain: string;
+  shortDesc: string;
   desc: string;
   startDate: string;
   endDate: string;
@@ -54,8 +55,9 @@ type Error = {
 
 type Projects = {
   _id: string;
-
+  domain: string;
   fullProjectName: string;
+  shortDesc: string;
   desc: string;
   startDate: string;
   endDate: string;
@@ -101,6 +103,8 @@ export const ProjectProvider = ({ children }: Props) => {
 
   const addProject = async ({
     fullProjectName,
+    domain,
+    shortDesc,
     desc,
     startDate,
     endDate,
@@ -112,6 +116,8 @@ export const ProjectProvider = ({ children }: Props) => {
     setIsLoading(true);
     const body = JSON.stringify({
       fullProjectName,
+      domain,
+      shortDesc,
       desc,
       startDate,
       endDate,

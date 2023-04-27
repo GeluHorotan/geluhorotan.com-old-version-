@@ -31,6 +31,23 @@ const ProjectForm: React.FC = () => {
       .max(15, 'The project name must not be longer than 15 characters!')
       .required('The project name is required!'),
     url: Yup.string().url().required('The url is required!'),
+    domain: Yup.string()
+      .min(3, 'The domain of the project must be longer than 3 characters!')
+      .max(
+        45,
+        'The domain of the project must not be longer than 15 characters!'
+      )
+      .required('The domain of the project is required!'),
+    shortDesc: Yup.string()
+      .min(
+        10,
+        'The description of the project must be longer than 10 characters!'
+      )
+      .max(
+        20,
+        'The description of the project must not be longer than 100 characters! '
+      )
+      .required('The description is required!'),
     desc: Yup.string()
       .min(
         10,
@@ -56,13 +73,15 @@ const ProjectForm: React.FC = () => {
   });
 
   return (
-    <div className="flex   h-full w-full flex-col items-center justify-between   ">
+    <div className="flex min-h-full w-full flex-col items-center  py-4  ">
       <Formik
         validateOnBlur
         validateOnChange
         initialValues={{
           fullProjectName: '',
           url: '',
+          domain: '',
+          shortDesc: '',
           desc: '',
           startDate: '',
           endDate: '',
@@ -78,6 +97,8 @@ const ProjectForm: React.FC = () => {
         onSubmit={async ({
           fullProjectName,
           url,
+          domain,
+          shortDesc,
           desc,
           startDate,
           endDate,
@@ -88,6 +109,8 @@ const ProjectForm: React.FC = () => {
           await addProject({
             fullProjectName,
             url,
+            domain,
+            shortDesc,
             desc,
             startDate,
             endDate,
@@ -101,6 +124,8 @@ const ProjectForm: React.FC = () => {
           values: {
             fullProjectName,
             url,
+            domain,
+            shortDesc,
             desc,
             startDate,
             endDate,
@@ -114,8 +139,8 @@ const ProjectForm: React.FC = () => {
           handleBlur,
           handleChange,
         }) => (
-          <Form className={'flex min-h-full w-full  flex-col   py-4 '}>
-            <div className=" flex h-full  flex-col justify-center  gap-20 ">
+          <Form className={'flex h-full  w-full  flex-col justify-center     '}>
+            <div className=" flex  h-full flex-col justify-center gap-10  ">
               <Tabs
                 list={tabList}
                 selectedIndex={selectedIndex}
@@ -176,6 +201,28 @@ const ProjectForm: React.FC = () => {
                 </ProjectWrapper>
 
                 <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
+                  <Field
+                    label="Project domain"
+                    id="domain"
+                    name="domain"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    type="input"
+                    value={domain}
+                    error={errors.domain}
+                    as={Input}
+                  />
+                  <Field
+                    label="Short description"
+                    id="shortDesc"
+                    name="shortDesc"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    type="input"
+                    value={shortDesc}
+                    error={errors.shortDesc}
+                    as={TextArea}
+                  />
                   <Field
                     label="Description"
                     id="desc"
@@ -252,21 +299,27 @@ const ProjectForm: React.FC = () => {
                   />
                 </ProjectWrapper>
               </Tabs>
-              <FormProgressBar />
-              <div className="flex  w-full items-center justify-center gap-16">
-                <Button
-                  type="button"
-                  onClick={() => setSelectedIndex((prevState) => prevState - 1)}
-                >
-                  PREV
-                </Button>
-                <Button
-                  type="button"
-                  onClick={() => setSelectedIndex((prevState) => prevState + 1)}
-                >
-                  NEXT
-                </Button>
-                <Button type="submit">SUBMIT</Button>
+              <div className="flex  flex-col ">
+                <FormProgressBar />
+                <div className="flex  w-full items-center justify-center gap-16">
+                  <Button
+                    type="button"
+                    onClick={() =>
+                      setSelectedIndex((prevState) => prevState - 1)
+                    }
+                  >
+                    PREV
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() =>
+                      setSelectedIndex((prevState) => prevState + 1)
+                    }
+                  >
+                    NEXT
+                  </Button>
+                  <Button type="submit">SUBMIT</Button>
+                </div>
               </div>
             </div>
           </Form>

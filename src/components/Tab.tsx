@@ -13,14 +13,14 @@ type Items = {
 const Tabs = ({ list, setActiveTab, className, children, ...props }: Items) => {
   return (
     <Tab.Group {...props} as={'div'}>
-      <div className="flex   flex-col gap-8">
-        <Tab.List className="flex w-full gap-1 ">
+      <div className="flex   flex-col gap-8 ">
+        <Tab.List className="flex w-full gap-1   [&>*:last-child]:rounded-tr-lg [&>*:first-child]:rounded-tl-lg  ">
           {list.map((item, index) => (
             <Tab
               key={index}
               className={`w-full   bg-accent2 outline-none ui-selected:bg-accent ui-selected:text-secondary ${
                 className || ''
-              }     duration-250      p-2 font-medium uppercase leading-5  text-primary transition-all ease-in-out odd:rounded-tl-lg even:rounded-tr-lg focus:outline-none`}
+              }     duration-250      p-2 font-medium uppercase leading-5  text-primary transition-all ease-in-out focus:outline-none  `}
               onClick={() => {
                 if (setActiveTab) {
                   return setActiveTab(index);
@@ -32,7 +32,7 @@ const Tabs = ({ list, setActiveTab, className, children, ...props }: Items) => {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className={'min-h-[40rem] '}>
+        <Tab.Panels className={''}>
           {children.map((item, index) => {
             return (
               <Tab.Panel key={index} className="flex h-full items-center ">

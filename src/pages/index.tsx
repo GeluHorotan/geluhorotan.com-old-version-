@@ -69,6 +69,8 @@ export default function Home() {
               title="Add Project"
               isOpen={isOpen}
               setIsOpen={setIsOpen}
+              backgroundColor="bg-secondary"
+              className="bg-secondary"
             >
               <ProjectForm />
             </ModalWrapper>
