@@ -56,7 +56,7 @@ const TextArea = ({
         >
           <label
             htmlFor={name}
-            className={`${labelColor || 'text-secondary'} ${
+            className={`${labelColor || 'text-primary'} ${
               !error || 'text-error'
             } flex items-center gap-1`}
           >

@@ -56,7 +56,7 @@ export default function Home() {
       </section>
       <section
         ref={myRef}
-        className="flex h-max w-full flex-col items-center justify-center  px-20  "
+        className="flex h-max w-full flex-col items-center justify-center  gap-8 px-20 "
       >
         {user && user.role === Role.Admin && (
           <Button
@@ -76,54 +76,24 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
-        <div className="   grid grid-cols-2 gap-14  ">
+        <div className=" grid h-screen w-full grid-cols-2 grid-rows-2  gap-14 bg-red-400 ">
           {projects?.map((project, i) => {
             return (
               <div
                 key={project._id}
-                className="flex flex-col items-center justify-center gap-4  "
+                className="flex h-full flex-col items-center justify-center gap-4 rounded-3xl "
               >
-                <div className="flex  w-full items-center justify-start gap-4">
-                  <Image
-                    src={project.images.header}
-                    width={240}
-                    height={240}
-                    className="rounded-2xl"
-                    alt={`${project.fullProjectName}'s image`}
-                  />
-                  <div className="flex h-full flex-col justify-center gap-1 text-secondary ">
-                    <h2 className="">{project.fullProjectName}</h2>
-                    <div className="flex w-full items-center justify-start gap-2">
-                      <p>
-                        {' '}
-                        {project.team.map((worker, i) => {
-                          return worker.role;
-                        })}
-                        {/* {dateFormat(project.startDate, 'mmmm dS yyyy')} -{' '}
-                        {dateFormat(project.endDate, 'mmmm dS yyyy')} */}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex w-full flex-col items-start gap-2 text-secondary_s_2 ">
-                  <p>
-                    {project.desc}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Enim qui, inventore accusantium nulla eveniet ullam sed, vel
-                    tempora blanditiis facilis et labore deleniti quis? Ab
-                    possimus veniam excepturi impedit libero.
-                  </p>
-                  <div className="flex w-full items-center justify-start gap-1">
-                    <Button
-                      type="button"
-                      className=" rounded-2xl bg-accent py-1 px-3"
-                    >
-                      TEST LEARN MORE
-                    </Button>
-                    <Button type="button" className="  py-1 px-3 underline">
-                      VISIT
-                    </Button>
-                  </div>
+                <Image
+                  src={project.images.header}
+                  width={1280}
+                  height={720}
+                  className=" "
+                  alt={`${project.fullProjectName}'s image`}
+                />
+                <div className="flex  flex-col items-start justify-center  p-2 text-secondary">
+                  <p>{project.domain ? project.domain : 'Automotive'}</p>
+                  <h3 className="uppercase">{project.fullProjectName}</h3>
+                  <p>{project.desc}</p>
                 </div>
               </div>
             );

@@ -38,16 +38,6 @@ const ProjectForm: React.FC = () => {
         'The domain of the project must not be longer than 15 characters!'
       )
       .required('The domain of the project is required!'),
-    shortDesc: Yup.string()
-      .min(
-        10,
-        'The description of the project must be longer than 10 characters!'
-      )
-      .max(
-        20,
-        'The description of the project must not be longer than 100 characters! '
-      )
-      .required('The description is required!'),
     desc: Yup.string()
       .min(
         10,
@@ -58,10 +48,6 @@ const ProjectForm: React.FC = () => {
         'The description of the project must not be longer than 100 characters! '
       )
       .required('The description is required!'),
-    startDate: Yup.date().required(
-      'The starting date of the project is required!'
-    ),
-    endDate: Yup.date().required('The ending date of the project is required!'),
     technologies: Yup.array()
       .min(2, 'The tech stack must contain more technologies!')
       .max(5, 'The tech stack must contain less technologies!')
@@ -81,10 +67,7 @@ const ProjectForm: React.FC = () => {
           fullProjectName: '',
           url: '',
           domain: '',
-          shortDesc: '',
           desc: '',
-          startDate: '',
-          endDate: '',
           technologies: [],
           team: [],
           images: {
@@ -98,10 +81,7 @@ const ProjectForm: React.FC = () => {
           fullProjectName,
           url,
           domain,
-          shortDesc,
           desc,
-          startDate,
-          endDate,
           technologies,
           team,
           images,
@@ -110,10 +90,7 @@ const ProjectForm: React.FC = () => {
             fullProjectName,
             url,
             domain,
-            shortDesc,
             desc,
-            startDate,
-            endDate,
             technologies,
             team,
             images,
@@ -125,10 +102,7 @@ const ProjectForm: React.FC = () => {
             fullProjectName,
             url,
             domain,
-            shortDesc,
             desc,
-            startDate,
-            endDate,
             technologies,
             team,
             images,
@@ -160,6 +134,7 @@ const ProjectForm: React.FC = () => {
                     value={fullProjectName}
                     error={errors.fullProjectName}
                     as={Input}
+                    backgroundColor="bg-secondary_s"
                   />
 
                   <Field
@@ -172,37 +147,11 @@ const ProjectForm: React.FC = () => {
                     value={url}
                     error={errors.url}
                     as={Input}
+                    backgroundColor="bg-secondary_s"
                   />
 
-                  <div className="grid grid-cols-2 gap-20 space-x-1">
-                    <Field
-                      label="Start Date"
-                      id="startDate"
-                      name="startDate"
-                      onChangeHandler={handleChange}
-                      onBlurHandler={handleBlur}
-                      type="date"
-                      value={startDate}
-                      error={errors.startDate}
-                      as={Input}
-                    />
-                    <Field
-                      label="End Date"
-                      id="endDate"
-                      name="endDate"
-                      onChangeHandler={handleChange}
-                      onBlurHandler={handleBlur}
-                      type="date"
-                      value={endDate}
-                      error={errors.endDate}
-                      as={Input}
-                    />
-                  </div>
-                </ProjectWrapper>
-
-                <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
-                    label="Project domain"
+                    label="Domain"
                     id="domain"
                     name="domain"
                     onChangeHandler={handleChange}
@@ -211,18 +160,11 @@ const ProjectForm: React.FC = () => {
                     value={domain}
                     error={errors.domain}
                     as={Input}
+                    backgroundColor="bg-secondary_s"
                   />
-                  <Field
-                    label="Short description"
-                    id="shortDesc"
-                    name="shortDesc"
-                    onChangeHandler={handleChange}
-                    onBlurHandler={handleBlur}
-                    type="input"
-                    value={shortDesc}
-                    error={errors.shortDesc}
-                    as={TextArea}
-                  />
+                </ProjectWrapper>
+
+                <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
                     label="Description"
                     id="desc"
@@ -232,6 +174,7 @@ const ProjectForm: React.FC = () => {
                     type="input"
                     value={desc}
                     error={errors.desc}
+                    backgroundColor="bg-secondary_s"
                     as={TextArea}
                   />
                 </ProjectWrapper>
@@ -301,7 +244,7 @@ const ProjectForm: React.FC = () => {
               </Tabs>
               <div className="flex  flex-col ">
                 <FormProgressBar />
-                <div className="flex  w-full items-center justify-center gap-16">
+                <div className="flex  w-full items-center justify-center gap-16 ">
                   <Button
                     type="button"
                     onClick={() =>
@@ -318,7 +261,9 @@ const ProjectForm: React.FC = () => {
                   >
                     NEXT
                   </Button>
-                  <Button type="submit">SUBMIT</Button>
+                  <Button type="submit" className="bg-red-400">
+                    SUBMIT
+                  </Button>
                 </div>
               </div>
             </div>

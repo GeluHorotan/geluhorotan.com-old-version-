@@ -35,6 +35,7 @@ const Input = ({
   id,
   label,
   placeholder,
+  backgroundColor,
 
   icon,
 }: Props) => {
@@ -58,7 +59,7 @@ const Input = ({
           <label
             htmlFor={name}
             className={` ${
-              !error ? 'text-primary dark:text-secondary' : 'text-error'
+              !error ? 'text-primary' : 'text-error'
             } flex items-center gap-1 `}
           >
             {!icon && error && (
@@ -76,7 +77,9 @@ const Input = ({
 
           <div className={` relative    `}>
             <input
-              className={`peer relative w-full appearance-none rounded-lg  bg-primary_t py-2 pr-4 text-base font-light text-secondary ${
+              className={`peer relative w-full appearance-none rounded-lg  ${
+                backgroundColor || 'bg-primary_t'
+              } py-2 pr-4 text-base font-light text-secondary ${
                 icon ? 'indent-8' : 'px-4'
               } outline-none  `}
               placeholder={placeholder || ''}

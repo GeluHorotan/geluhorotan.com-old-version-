@@ -17,10 +17,7 @@ type ProjectDetails = {
   fullProjectName: string;
   url: string;
   domain: string;
-  shortDesc: string;
   desc: string;
-  startDate: string;
-  endDate: string;
   technologies: {
     value: string;
     label: string;
@@ -57,10 +54,7 @@ type Projects = {
   _id: string;
   domain: string;
   fullProjectName: string;
-  shortDesc: string;
   desc: string;
-  startDate: string;
-  endDate: string;
   technologies: {
     value: string;
     label: string;
@@ -104,10 +98,7 @@ export const ProjectProvider = ({ children }: Props) => {
   const addProject = async ({
     fullProjectName,
     domain,
-    shortDesc,
     desc,
-    startDate,
-    endDate,
     technologies,
     team,
     url,
@@ -117,10 +108,7 @@ export const ProjectProvider = ({ children }: Props) => {
     const body = JSON.stringify({
       fullProjectName,
       domain,
-      shortDesc,
       desc,
-      startDate,
-      endDate,
       technologies,
       team,
       url,
