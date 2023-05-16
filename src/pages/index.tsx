@@ -1,5 +1,6 @@
 import dateFormat, { masks } from 'dateformat';
 import Image from 'next/dist/client/image';
+import Link from 'next/link';
 import { Fragment, useRef, useState } from 'react';
 
 import Button from '@/components/Button';
@@ -76,24 +77,40 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
-        <div className=" grid h-screen w-full grid-cols-2 grid-rows-2  gap-14 bg-red-400 ">
+        <div className=" grid h-screen w-full grid-cols-2 grid-rows-2  gap-14 ">
           {projects?.map((project, i) => {
             return (
               <div
                 key={project._id}
-                className="flex h-full flex-col items-center justify-center gap-4 rounded-3xl "
+                className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl "
               >
                 <Image
                   src={project.images.header}
-                  width={1280}
-                  height={720}
-                  className=" "
+                  width={512}
+                  height={480}
+                  className=" w-full rounded-3xl bg-secondary_s_2 p-2"
                   alt={`${project.fullProjectName}'s image`}
                 />
-                <div className="flex  flex-col items-start justify-center  p-2 text-secondary">
+                <div className="flex  w-full flex-row items-start justify-between  p-2 text-secondary">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col">
+                      <h3 className="uppercase">{project.fullProjectName}</h3>
+                      <p>{project.desc}</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Link
+                        href="#"
+                        className="rounded-3xl bg-accent2 px-2 py-1 text-primary"
+                      >
+                        LEARN MORE
+                      </Link>
+                      <Link href="#" className="text-accent underline">
+                        VISIT SITE
+                      </Link>
+                    </div>
+                  </div>
+
                   <p>{project.domain ? project.domain : 'Automotive'}</p>
-                  <h3 className="uppercase">{project.fullProjectName}</h3>
-                  <p>{project.desc}</p>
                 </div>
               </div>
             );
