@@ -36,6 +36,8 @@ export type ProjectDetails = {
 };
 
 type Developers = {
+  _id: string;
+  profilePicture: string;
   value: string;
   label: string;
   role: string;
