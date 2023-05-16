@@ -18,7 +18,6 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects } = useProject();
   const { user } = useAuth();
-  console.log(projects);
 
   const myRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
@@ -99,7 +98,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-4">
                       <Link
-                        href="#"
+                        href={`/project/${project.fullProjectName}`}
                         className="rounded-3xl bg-accent2 px-2 py-1 text-primary"
                       >
                         LEARN MORE

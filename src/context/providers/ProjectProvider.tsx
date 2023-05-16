@@ -13,7 +13,7 @@ type User = {
   profilePicture: string;
 };
 
-type ProjectDetails = {
+export type ProjectDetails = {
   fullProjectName: string;
   url: string;
   domain: string;
@@ -35,11 +35,9 @@ type ProjectDetails = {
 };
 
 type Developers = {
-  [x: string]: Key;
   value: string;
   label: string;
-  profilePicture: string;
-  position: null | string;
+  role: string;
 }[];
 
 type Error = {
@@ -53,6 +51,7 @@ type Error = {
 type Projects = {
   _id: string;
   domain: string;
+  url: string;
   fullProjectName: string;
   desc: string;
   technologies: {
