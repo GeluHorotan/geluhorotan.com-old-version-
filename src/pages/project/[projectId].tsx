@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import Image from 'next/dist/client/image';
 import { useEffect, useState } from 'react';
 
 import { useProject } from '@/context/hooks/useProject';
@@ -11,6 +11,7 @@ type ProjectState = {
   domain: string;
   desc: string;
   technologies: {
+    _id: string;
     value: string;
     label: string;
   }[];
@@ -29,10 +30,10 @@ type ProjectState = {
 const ProjectID = () => {
   const [project, setProject] = useState<ProjectState | undefined>();
   const { projects } = useProject();
-  console.log(projects);
+  const { fullProjectName, images, desc, domain, technologies } = project ?? {};
+
   const getProjectName = () => {
     const { pathname } = window.location;
-    console.log(pathname, 'path');
     // Remove the leading and trailing slashes (if present)
     const trimmedPathname = pathname.replace(/^\/|\/$/g, '');
     // Extract the last segment of the pathname
@@ -58,20 +59,65 @@ const ProjectID = () => {
   }, [projects]);
 
   console.log(project);
-  return (
-    <Main
-      meta={
-        <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Keep your account information up-to-date with my user friendly dashboard. `}
-        />
-      }
-    >
-      <section className={'container  flex items-center justify-center   '}>
-        {project && project.fullProjectName}
-      </section>
-    </Main>
-  );
+  if (project)
+    return (
+      <Main
+        meta={
+          <Meta
+            title="Gelu Horotan - Software Engineer"
+            description={`Keep your account information up-to-date with my user friendly dashboard. `}
+          />
+        }
+      >
+        <section className={'container gap-10  '}>
+          <div className=" flex h-full w-full flex-col items-center justify-center gap-10 px-20 ">
+            <Image
+              src={images.header}
+              objectFit="cover"
+              layout="fill"
+              className=" w-full"
+              alt={`${project.fullProjectName}'s image`}
+            />
+
+            <div className="flex flex-col items-center justify-center">
+              <p className="uppercase tracking-widest text-primary_t_2 dark:text-secondary_s_2 ">
+                {domain}
+              </p>
+              <h1 className="">{fullProjectName}</h1>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <h6 className="text-primary_t_2 dark:text-secondary_s_2">
+                Tech Stack
+              </h6>
+              <div className="flex items-center justify-center gap-4">
+                {technologies.map((technology, i) => {
+                  return (
+                    <div
+                      key={technology._id}
+                      className=" flex flex-col items-center justify-center"
+                    >
+                      <Image
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
+                        width={40}
+                        height={40}
+                        alt={technology.label}
+                        onError={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
+                        }}
+                      />
+                      <p className="text-primary_t_2 dark:text-secondary_s_2">
+                        {technology.label}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+      </Main>
+    );
 };
 
 export default ProjectID;

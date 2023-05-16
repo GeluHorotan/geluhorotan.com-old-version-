@@ -1,12 +1,10 @@
-import dateFormat, { masks } from 'dateformat';
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
-import { Fragment, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import ModalWrapper from '@/components/ModalWrapper';
-import ProfilePicture from '@/components/ProfilePicture';
 import HeroIllustration from '@/components/svgs/HeroIllustration';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';

@@ -21,6 +21,7 @@ export type ProjectDetails = {
   technologies: {
     value: string;
     label: string;
+    _id: string;
   }[];
   team: {
     value: string;
@@ -57,6 +58,7 @@ type Projects = {
   technologies: {
     value: string;
     label: string;
+    _id: string;
   }[];
   team: Developers;
   images: {
