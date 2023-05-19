@@ -30,6 +30,7 @@ const Meta = (props: IMetaProps) => {
           key="apple"
         />
         <link rel="stylesheet" href="https://use.typekit.net/lmd6idu.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/lmd6idu.css" />
         <link
           rel="icon"
           type="image/png"

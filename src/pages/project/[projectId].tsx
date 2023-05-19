@@ -1,6 +1,8 @@
 import Image from 'next/dist/client/image';
 import { useEffect, useState } from 'react';
+import { AiFillGithub } from 'react-icons/ai';
 import { MdAccountBalance } from 'react-icons/md';
+import { TfiWorld } from 'react-icons/tfi';
 
 import ProfilePicture from '@/components/ProfilePicture';
 import { useProject } from '@/context/hooks/useProject';
@@ -62,7 +64,6 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
-
   console.log(project);
   if (project)
     return (
@@ -74,105 +75,90 @@ const ProjectID = () => {
           />
         }
       >
-        <section className="flex h-max w-full flex-col items-center justify-center  gap-8 px-20 ">
-          <div className=" flex h-max w-full flex-col items-center justify-center gap-10 ">
-            <Image
-              src={images.header}
-              width={0}
-              height={0}
-              //   fill
-              sizes="100vw"
-              className="h-auto w-full"
-              alt={`${project.fullProjectName}'s image`}
-            />
+        <section className="container flex flex-col items-center justify-center">
+          <Image
+            src={images.header}
+            alt={fullProjectName}
+            width={1280}
+            height={720}
+          ></Image>
 
-            <div className="flex flex-col items-center justify-center">
-              <p className="uppercase tracking-widest text-primary_t_2 dark:text-secondary_s_2 ">
-                {domain}
-              </p>
-              <h1 className="text-primary dark:text-secondary">
-                {fullProjectName}
-              </h1>
-            </div>
+          <div className="mx-auto flex h-full w-4/6 flex-col items-center justify-center gap-20  py-6">
             <div className="flex flex-col items-center justify-center gap-2">
-              <h6 className="text-primary_t dark:text-secondary_s">
-                Tech Stack
-              </h6>
-              <div className="flex items-center justify-center gap-6">
-                {technologies.map((technology, i) => {
-                  return (
-                    <div
-                      key={technology._id}
-                      className=" flex flex-col items-center justify-center gap-1"
-                    >
-                      <Image
-                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
-                        width={40}
-                        height={40}
-                        alt={technology.label}
-                        onError={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
-                        }}
-                      />
-                      <p className="text-primary_t_2 dark:text-secondary_s_2">
-                        {technology.label}
-                      </p>
-                    </div>
-                  );
-                })}
+              <h1 className="futura-heavy">{fullProjectName}</h1>
+              <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2">
+                <AiFillGithub
+                  size={28}
+                  className="cursor-pointer transition-all duration-150 ease-in-out hover:scale-110"
+                />
+                <TfiWorld
+                  size={24}
+                  className="cursor-pointer transition-all duration-150 ease-in-out hover:scale-110"
+                ></TfiWorld>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center gap-2">
-              <h6 className="text-primary_t dark:text-secondary_s">Team</h6>
-              <div className="flex items-center justify-center gap-6">
+            <div className="flex w-full   flex-wrap  gap-3  p-1">
+              <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
+                LINES OF CODE
+                <p>98.820</p>
+              </div>
+              <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
+                DOMAIN
+                <p className="">{domain}</p>
+              </div>
+              <div className="flex flex-[1_1_33%] items-center justify-center gap-4 rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
+                TECHNOLOGIES
+                <div className="flex items-center justify-center gap-2">
+                  {technologies.map((technology, i) => {
+                    return (
+                      <div
+                        key={technology._id}
+                        className="flex items-center justify-center gap-1"
+                      >
+                        <Image
+                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
+                          width={32}
+                          height={32}
+                          alt={technology.label}
+                          onError={(e) => {
+                            const img = e.target as HTMLImageElement;
+                            img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
+                          }}
+                        />
+                        <p>{technology.label}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* to place later */}
+            </div>
+            <div className="flex flex-col  gap-6 self-start rounded-xl    font-bold tracking-widest text-secondary">
+              CONTRIBUTORS
+              <div className="flex items-center justify-center gap-2">
                 {team.map((member, i) => {
                   return (
                     <div
                       key={member._id}
-                      className=" flex flex-col items-center justify-center gap-1"
+                      className="flex flex-col items-center justify-center gap-1"
                     >
                       <ProfilePicture
                         imageSrc={member.profilePicture}
-                        userFirstName={member.value}
-                        size="small"
+                        size="medium"
                       />
-                      <p className="text-primary_t_2 dark:text-secondary_s_2">
-                        {member.label} - {member.role}
-                      </p>
+                      <p>{member.label}</p>
                     </div>
                   );
                 })}
               </div>
             </div>
-
-            <div className="flex  flex-col items-center justify-center gap-2">
-              <h6 className="text-primary_t dark:text-secondary_s">
-                Main Features
-              </h6>
-              <div className="grid grid-cols-2 gap-10">
-                <div className="flex flex-col items-center justify-center rounded-xl bg-primary_t_2 p-6 dark:bg-secondary_s_2">
-                  <MdAccountBalance size={32}></MdAccountBalance>
-                  User Account
-                </div>
-                <div className="flex flex-col items-center justify-center rounded-xl bg-primary_t_2 p-6 dark:bg-secondary_s_2">
-                  <MdAccountBalance size={32}></MdAccountBalance>
-                  User Account
-                </div>
-                <div className="flex flex-col items-center justify-center rounded-xl bg-primary_t_2 p-6 dark:bg-secondary_s_2">
-                  <MdAccountBalance size={32}></MdAccountBalance>
-                  User Account
-                </div>
-                <div className="flex flex-col items-center justify-center rounded-xl bg-primary_t_2 p-6 dark:bg-secondary_s_2">
-                  <MdAccountBalance size={32}></MdAccountBalance>
-                  User Account
-                </div>
-              </div>
+            <div className="flex flex-col  gap-6 self-start    font-bold tracking-widest text-secondary">
+              DESCRIPTION
+              <p className="indent-8">{desc}</p>
             </div>
-            <p className="text-secondary"> {desc}</p>
           </div>
         </section>
-        <section className="container"></section>
       </Main>
     );
 };
