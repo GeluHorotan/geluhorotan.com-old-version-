@@ -1,9 +1,10 @@
 import Image from 'next/dist/client/image';
-import { useEffect, useState } from 'react';
-import { AiFillGithub } from 'react-icons/ai';
+import { Fragment, useEffect, useState } from 'react';
+import { AiFillGithub, AiOutlineArrowLeft } from 'react-icons/ai';
 import { MdAccountBalance } from 'react-icons/md';
 import { TfiWorld } from 'react-icons/tfi';
 
+import Button from '@/components/Button';
 import ProfilePicture from '@/components/ProfilePicture';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
@@ -76,14 +77,19 @@ const ProjectID = () => {
         }
       >
         <section className="container flex flex-col items-center justify-center">
-          <Image
-            src={images.header}
-            alt={fullProjectName}
-            width={1280}
-            height={720}
-          ></Image>
-
-          <div className="mx-auto flex h-full w-4/6 flex-col items-center justify-center gap-20  py-6">
+          <div className="container flex  flex-col items-center justify-center gap-6 ">
+            <Button
+              type="button"
+              className="flex items-center justify-center gap-1 self-start !text-primary_t_2 underline"
+            >
+              <AiOutlineArrowLeft size={16} /> BACK TO PROJECTS
+            </Button>
+            <Image
+              src={images.header}
+              alt={fullProjectName}
+              width={1280}
+              height={720}
+            />
             <div className="flex flex-col items-center justify-center gap-2">
               <h1 className="futura-heavy">{fullProjectName}</h1>
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2">
@@ -97,6 +103,8 @@ const ProjectID = () => {
                 ></TfiWorld>
               </div>
             </div>
+          </div>
+          <div className="mx-auto flex h-full w-4/6 flex-col items-center justify-center gap-20  py-6">
             <div className="flex w-full   flex-wrap  gap-3  p-1">
               <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
                 LINES OF CODE
