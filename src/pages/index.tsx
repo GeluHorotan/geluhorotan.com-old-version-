@@ -1,6 +1,7 @@
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { HiOutlineExternalLink } from 'react-icons/hi';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -85,29 +86,33 @@ export default function Home() {
                   src={project.images.header}
                   width={512}
                   height={480}
-                  className=" w-full rounded-3xl bg-secondary_s_2 p-2"
+                  className=" w-full  p-2"
                   alt={`${project.fullProjectName}'s image`}
                 />
-                <div className="flex  w-full flex-row items-start justify-between  p-2 text-secondary">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex flex-col">
-                      <h3 className="uppercase">{project.fullProjectName}</h3>
-                      <p>{project.desc}</p>
+                <div className="flex   w-full flex-row items-start justify-between  p-2 text-primary dark:text-secondary">
+                  <div className="flex w-full flex-col gap-6 ">
+                    <div className="  flex flex-col gap-2  ">
+                      <h3 className="futura-heavy uppercase  tracking-wider">
+                        {project.fullProjectName}
+                      </h3>
+
+                      <p className="line-clamp-3">{project.desc}</p>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-6 tracking-widest">
                       <Link
                         href={`/project/${project.fullProjectName}`}
-                        className="rounded-3xl bg-accent2 px-2 py-1 text-primary"
+                        className="rounded-xl bg-accent  px-3 py-1 text-secondary "
                       >
                         LEARN MORE
                       </Link>
-                      <Link href="#" className="text-accent underline">
-                        VISIT SITE
+                      <Link
+                        href="#"
+                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-3 py-1 text-primary dark:text-secondary "
+                      >
+                        <HiOutlineExternalLink size={16} /> VISIT
                       </Link>
                     </div>
                   </div>
-
-                  <p>{project.domain ? project.domain : 'Automotive'}</p>
                 </div>
               </div>
             );

@@ -65,6 +65,7 @@ module.exports = {
     require('@headlessui/tailwindcss'),
     require('tailwindcss-animate'),
     { prefix: 'ui' },
+    require('@tailwindcss/line-clamp'),
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('tailwindcss-writing-mode')({
       variants: ['responsive', 'hover'],
