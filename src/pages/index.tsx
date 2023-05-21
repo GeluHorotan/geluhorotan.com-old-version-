@@ -89,6 +89,7 @@ export default function Home() {
                   className="h-full w-full object-cover p-2"
                   alt={`${project.fullProjectName}'s image`}
                 />
+                {/* Test */}
                 <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
                   <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
                     <div className="  flex flex-col gap-2  ">
