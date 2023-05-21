@@ -31,6 +31,16 @@ const ProjectForm: React.FC = () => {
       .max(15, 'The project name must not be longer than 15 characters!')
       .required('The project name is required!'),
     url: Yup.string().url().required('The url is required!'),
+    githubRepo: Yup.string()
+      .min(
+        3,
+        'The github repo name of the project must be longer than 3 characters!'
+      )
+      .max(
+        45,
+        'The github repo name of the project must not be longer than 15 characters!'
+      )
+      .required('The github repo name of the project is required!'),
     domain: Yup.string()
       .min(3, 'The domain of the project must be longer than 3 characters!')
       .max(
@@ -42,10 +52,6 @@ const ProjectForm: React.FC = () => {
       .min(
         10,
         'The description of the project must be longer than 10 characters!'
-      )
-      .max(
-        100,
-        'The description of the project must not be longer than 100 characters! '
       )
       .required('The description is required!'),
     technologies: Yup.array()
@@ -66,6 +72,7 @@ const ProjectForm: React.FC = () => {
         initialValues={{
           fullProjectName: '',
           url: '',
+          githubRepo: '',
           domain: '',
           desc: '',
           technologies: [],
@@ -80,6 +87,7 @@ const ProjectForm: React.FC = () => {
         onSubmit={async ({
           fullProjectName,
           url,
+          githubRepo,
           domain,
           desc,
           technologies,
@@ -89,6 +97,7 @@ const ProjectForm: React.FC = () => {
           await addProject({
             fullProjectName,
             url,
+            githubRepo,
             domain,
             desc,
             technologies,
@@ -101,6 +110,7 @@ const ProjectForm: React.FC = () => {
           values: {
             fullProjectName,
             url,
+            githubRepo,
             domain,
             desc,
             technologies,
@@ -149,7 +159,21 @@ const ProjectForm: React.FC = () => {
                     as={Input}
                     backgroundColor="bg-secondary_s"
                   />
+                  <Field
+                    label="Github Repo"
+                    id="githubRepo"
+                    name="githubRepo"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    type="input"
+                    value={githubRepo}
+                    error={errors.githubRepo}
+                    as={Input}
+                    backgroundColor="bg-secondary_s"
+                  />
+                </ProjectWrapper>
 
+                <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
                     label="Domain"
                     id="domain"
@@ -162,9 +186,6 @@ const ProjectForm: React.FC = () => {
                     as={Input}
                     backgroundColor="bg-secondary_s"
                   />
-                </ProjectWrapper>
-
-                <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
                   <Field
                     label="Description"
                     id="desc"

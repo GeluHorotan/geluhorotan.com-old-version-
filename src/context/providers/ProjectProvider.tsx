@@ -16,6 +16,7 @@ type User = {
 export type ProjectDetails = {
   fullProjectName: string;
   url: string;
+  githubRepo: string;
   domain: string;
   desc: string;
   technologies: {
@@ -54,6 +55,7 @@ type Error = {
 type Projects = {
   _id: string;
   domain: string;
+  githubRepo: string;
   url: string;
   fullProjectName: string;
   desc: string;
@@ -100,6 +102,7 @@ export const ProjectProvider = ({ children }: Props) => {
 
   const addProject = async ({
     fullProjectName,
+    githubRepo,
     domain,
     desc,
     technologies,
@@ -111,6 +114,7 @@ export const ProjectProvider = ({ children }: Props) => {
     const body = JSON.stringify({
       fullProjectName,
       domain,
+      githubRepo,
       desc,
       technologies,
       team,
