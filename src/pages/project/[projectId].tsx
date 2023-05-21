@@ -5,12 +5,14 @@ import { MdAccountBalance } from 'react-icons/md';
 import { TfiWorld } from 'react-icons/tfi';
 
 import Button from '@/components/Button';
+import LinesOfCode from '@/components/LinesOfCode';
 import ProfilePicture from '@/components/ProfilePicture';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 type ProjectState = {
+  githubRepo: string;
   fullProjectName: string;
   url: string;
   domain: string;
@@ -105,10 +107,10 @@ const ProjectID = () => {
                 ></TfiWorld>
               </div>
             </div>
-            <div className="flex w-full   flex-wrap  gap-3  p-1">
+            <div className="flex w-full   flex-wrap  gap-4  p-1">
               <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
                 LINES OF CODE
-                <p>98.820</p>
+                <LinesOfCode repoName={project.githubRepo} />
               </div>
               <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
                 DOMAIN
@@ -121,12 +123,12 @@ const ProjectID = () => {
                     return (
                       <div
                         key={technology._id}
-                        className="flex items-center justify-center gap-1"
+                        className="flex items-center justify-center gap-2"
                       >
                         <Image
                           src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
-                          width={32}
-                          height={32}
+                          width={24}
+                          height={24}
                           alt={technology.label}
                           onError={(e) => {
                             const img = e.target as HTMLImageElement;
@@ -149,13 +151,16 @@ const ProjectID = () => {
                   return (
                     <div
                       key={member._id}
-                      className="flex flex-col items-center justify-center gap-1"
+                      className=" flex  items-center justify-center gap-4 "
                     >
                       <ProfilePicture
                         imageSrc={member.profilePicture}
                         size="medium"
                       />
-                      <p>{member.label}</p>
+                      <div className="flex flex-col items-start">
+                        {member.label}
+                        <p className="text-sm">{member.role}</p>
+                      </div>
                     </div>
                   );
                 })}
