@@ -1,4 +1,5 @@
 import Image from 'next/dist/client/image';
+import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { AiFillGithub, AiOutlineArrowLeft } from 'react-icons/ai';
 import { MdAccountBalance } from 'react-icons/md';
@@ -78,86 +79,88 @@ const ProjectID = () => {
           />
         }
       >
-        <section className="container  flex flex-col items-center justify-center ">
-          <div className="flex h-screen  w-full flex-col items-center justify-center gap-6  ">
-            <Button
-              type="button"
-              className="flex w-full  items-center justify-center gap-1 self-start  !text-accent2 underline"
+        <section className="container flex flex-col items-center justify-center  max-lg:px-7 ">
+          <div className="mt-14 flex h-max  w-full flex-col items-center justify-center gap-6  ">
+            <Link
+              href="/"
+              className="flex  items-center justify-center gap-1 self-start  tracking-widest !text-accent underline dark:!text-accent2"
             >
               <AiOutlineArrowLeft size={16} /> BACK
-            </Button>
+            </Link>
             <Image
               src={images.header}
               alt={fullProjectName}
               width={1280}
               height={720}
+              className="w-full"
             />
-          </div>
-          <div className="mx-auto flex h-full w-4/6 flex-col items-center justify-center gap-20  py-6">
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-2 ">
               <h1 className="futura-heavy">{fullProjectName}</h1>
-              <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2">
+              <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
                 <AiFillGithub
                   size={28}
-                  className="cursor-pointer transition-all duration-150 ease-in-out hover:scale-110"
+                  className="cursor-pointer drop-shadow-lg transition-all duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
                 />
                 <TfiWorld
                   size={24}
-                  className="cursor-pointer transition-all duration-150 ease-in-out hover:scale-110"
-                ></TfiWorld>
+                  className="cursor-pointer drop-shadow-lg transition-all duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                />
               </div>
             </div>
-            <div className="flex w-full   flex-wrap  gap-4  p-1">
-              <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
+          </div>
+          <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
+            <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
+              <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 LINES OF CODE
                 <LinesOfCode repoName={project.githubRepo} />
               </div>
-              <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
+              <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 DOMAIN
-                <p className="">{domain}</p>
+                <p>{domain}</p>
               </div>
-              <div className="flex flex-[1_1_33%] items-center justify-center gap-4 rounded-xl border border-accent2 px-6 py-2 font-bold tracking-widest text-secondary">
-                TECHNOLOGIES
-                <div className="flex items-center justify-center gap-2">
-                  {technologies.map((technology, i) => {
-                    return (
-                      <div
-                        key={technology._id}
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Image
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
-                          width={24}
-                          height={24}
-                          alt={technology.label}
-                          onError={(e) => {
-                            const img = e.target as HTMLImageElement;
-                            img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
-                          }}
-                        />
-                        <p>{technology.label}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* to place later */}
             </div>
-            <div className="flex flex-col  gap-6 self-start rounded-xl    font-bold tracking-widest text-secondary">
+
+            <div className="flex flex-col gap-6 self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center">
+              TECHNOLOGIES
+              <div className="flex items-center justify-center gap-4 ">
+                {technologies.map((technology, i) => {
+                  return (
+                    <div
+                      key={technology._id}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <Image
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
+                        width={24}
+                        height={24}
+                        alt={technology.label}
+                        onError={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
+                        }}
+                        className="drop-shadow-lg dark:drop-shadow-none"
+                      />
+                      <p>{technology.label}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center">
               CONTRIBUTORS
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-2 ">
                 {team.map((member, i) => {
                   return (
                     <div
                       key={member._id}
-                      className=" flex  items-center justify-center gap-4 "
+                      className=" flex  items-center justify-center gap-4 max-md:flex-col  "
                     >
                       <ProfilePicture
                         imageSrc={member.profilePicture}
                         size="medium"
+                        className="drop-shadow-lg dark:drop-shadow-none"
                       />
-                      <div className="flex flex-col items-start">
+                      <div className="flex flex-col items-start max-md:items-center">
                         {member.label}
                         <p className="text-sm">{member.role}</p>
                       </div>
@@ -166,9 +169,24 @@ const ProjectID = () => {
                 })}
               </div>
             </div>
-            <div className="flex flex-col  gap-6 self-start    font-bold tracking-widest text-secondary">
+
+            <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
               DESCRIPTION
-              <p className="indent-8">{desc}</p>
+              <p className="text-justify indent-8 ">{desc}</p>
+            </div>
+            <div className="grid grid-cols-1 items-center justify-center gap-4">
+              {images.gallery.map((image, i) => {
+                return (
+                  <Image
+                    src={image}
+                    key={i}
+                    alt={fullProjectName}
+                    width={1920}
+                    height={1080}
+                    className="w-full"
+                  />
+                );
+              })}
             </div>
           </div>
         </section>

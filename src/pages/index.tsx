@@ -80,25 +80,25 @@ export default function Home() {
             return (
               <div
                 key={project._id}
-                className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl "
+                className="flex h-full min-h-full w-full flex-col items-center justify-center gap-4    "
               >
                 <Image
                   src={project.images.header}
                   width={512}
                   height={480}
-                  className=" w-full  p-2"
+                  className="h-full w-full object-cover p-2"
                   alt={`${project.fullProjectName}'s image`}
                 />
-                <div className="flex   w-full flex-row items-start justify-between  p-2 text-primary dark:text-secondary">
-                  <div className="flex w-full flex-col gap-6 ">
+                <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
+                  <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
                     <div className="  flex flex-col gap-2  ">
                       <h3 className="futura-heavy uppercase  tracking-wider">
                         {project.fullProjectName}
                       </h3>
 
-                      <p className="line-clamp-3">{project.desc}</p>
+                      <p className="h-full line-clamp-3">{project.desc}</p>
                     </div>
-                    <div className="flex items-center gap-6 tracking-widest">
+                    <div className="flex items-center gap-6  tracking-widest">
                       <Link
                         href={`/project/${project.fullProjectName}`}
                         className="rounded-xl bg-accent  px-3 py-1 text-secondary "

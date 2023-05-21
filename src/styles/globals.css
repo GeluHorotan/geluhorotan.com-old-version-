@@ -66,7 +66,7 @@ select:-webkit-autofill:focus {
     @apply text-primary dark:text-secondary uppercase;
   }
   .container {
-    @apply bg-secondary dark:bg-primary text-primary dark:text-secondary min-w-full w-full min-h-screen px-20 max-md:px-4;
+    @apply bg-secondary dark:bg-primary text-primary dark:text-secondary min-w-full w-full min-h-screen px-20 max-md:px-4 mt-16;
   }
 
   body {

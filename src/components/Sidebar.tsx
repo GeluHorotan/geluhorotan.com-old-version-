@@ -178,7 +178,7 @@ const Sidebar: FC<SidebarProps> = ({
       <motion.div
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
-        className="fixed inset-0 z-50 flex h-16 items-center justify-between px-5 "
+        className="fixed inset-0 z-50 flex h-16 items-center justify-between  px-7 "
       >
         <div className="flex items-center ">
           <SidebarToggler
@@ -219,8 +219,8 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         ref={containerRef}
-        className={`fixed inset-0 z-40 flex h-16 w-full  items-center justify-between ${
-          isOpen ? 'border-b border-primary' : ''
+        className={` fixed inset-0 z-40 flex h-16 w-full  items-center justify-between bg-secondary dark:bg-primary ${
+          isOpen ? 'border-b border-primary dark:border-secondary' : ''
         }  
            `}
       >
