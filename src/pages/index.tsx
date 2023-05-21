@@ -55,7 +55,7 @@ export default function Home() {
       </section>
       <section
         ref={myRef}
-        className="flex h-max w-full flex-col items-center justify-center  gap-8 px-20 "
+        className="container flex h-max w-full flex-col items-center justify-center gap-8   "
       >
         {user && user.role === Role.Admin && (
           <Button
@@ -75,7 +75,7 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
-        <div className=" grid h-screen w-full grid-cols-2 grid-rows-2  gap-14 ">
+        <div className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 ">
           {projects?.map((project, i) => {
             return (
               <div
