@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { DiResponsive } from 'react-icons/di';
 import { GrHostMaintenance, GrVmMaintenance } from 'react-icons/gr';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode } from 'react-icons/md';
-import { SiSitepoint } from 'react-icons/si';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -63,35 +63,29 @@ export default function Home() {
         </div>
         <Showcase>
           <ShowcaseEntry
-            icon={<SiSitepoint size={48} />}
-            title={'Website Development'}
+            icon={<MdDeveloperMode size={40} />}
+            title={'Responsive'}
           >
-            Building fully functional and visually appealing websites using
-            modern web technologies. From static websites to dynamic web
-            applications, I can create responsive and user-friendly experiences
-            tailored to your specific needs. Let me bring your ideas to life on
-            the web!
+            Creating user-centric web experiences that seamlessly adapt to
+            various screen sizes and devices.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={<MdDeveloperMode size={48} />}
+            icon={<MdDeveloperMode size={40} />}
             title={'Front-end Development'}
           >
-            Crafting engaging user interfaces and seamless user experiences
-            using HTML, CSS, and JavaScript. I specialize in converting design
-            mockups into pixel-perfect, interactive web interfaces. With
-            attention to detail and a focus on performance, I can enhance your
-            website&apos;s frontend to captivate and delight your users.
+            Proficiency in leveraging the latest frontend technologies.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={<GrVmMaintenance size={48} className="text-secondary" />}
-            title={'Website Maintenance and Optimization'}
+            icon={
+              <GrVmMaintenance
+                size={40}
+                className="text-secondary"
+                color={'white'}
+              />
+            }
+            title={'Performance'}
           >
-            Keeping your website up-to-date, secure, and optimized for
-            performance. I offer regular maintenance services, ensuring that
-            your website runs smoothly, remains compatible with the latest web
-            standards, and stays protected against vulnerabilities.
-            Additionally, I can optimize your website&apos;s speed and
-            performance, improving its loading time and overall user experience.
+            Proficiency in leveraging the latest frontend technologies.
           </ShowcaseEntry>
         </Showcase>
       </section>
