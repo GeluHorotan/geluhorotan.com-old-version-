@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
-import { DiResponsive } from 'react-icons/di';
-import { GrHostMaintenance, GrVmMaintenance } from 'react-icons/gr';
+import { AiOutlineLayout } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi';
-import { MdDeveloperMode } from 'react-icons/md';
+import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -40,10 +39,12 @@ export default function Home() {
       }
     >
       <section
-        className={'container flex flex-col items-center justify-between  '}
+        className={
+          ' container flex  !h-[calc(100vh-13.25rem)] !min-h-0 flex-col items-center  justify-start  '
+        }
       >
-        <div className="flex w-full items-center justify-between">
-          <div className="flex h-screen  w-1/2 flex-col justify-center  ">
+        <div className="relative flex h-full w-full items-center justify-between ">
+          <div className="flex   w-1/2 flex-col justify-center   ">
             <h1 className="p-2 text-primary   dark:text-secondary">
               Gelu Horotan <br />
               <span className="text-accent_s"> Software Engineer</span>
@@ -61,37 +62,32 @@ export default function Home() {
 
           <HeroIllustration />
         </div>
+      </section>
+      <div className="mb-20  w-full px-20 text-secondary  ">
         <Showcase>
           <ShowcaseEntry
-            icon={<MdDeveloperMode size={40} />}
-            title={'Responsive'}
+            icon={<AiOutlineLayout size={32} />}
+            title={'Enagaging UI'}
           >
-            Creating user-centric web experiences that seamlessly adapt to
-            various screen sizes and devices.
+            Crafting captivating and user-centric interfaces.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={<MdDeveloperMode size={40} />}
-            title={'Front-end Development'}
+            icon={<MdSpeed size={32} />}
+            title={`Performance Optimization`}
           >
-            Proficiency in leveraging the latest frontend technologies.
+            Optimizing website performance for lightning-fast loading.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={
-              <GrVmMaintenance
-                size={40}
-                className="text-secondary"
-                color={'white'}
-              />
-            }
-            title={'Performance'}
+            icon={<MdDeveloperMode size={32} />}
+            title={'Responsive Design'}
           >
-            Proficiency in leveraging the latest frontend technologies.
+            Designing websites that adapt seamlessly across devices.
           </ShowcaseEntry>
         </Showcase>
-      </section>
+      </div>
       <section
         ref={myRef}
-        className="container flex h-max w-full flex-col items-center justify-center gap-8   "
+        className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8 "
       >
         {user && user.role === Role.Admin && (
           <Button

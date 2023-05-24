@@ -79,7 +79,7 @@ const ProjectID = () => {
           />
         }
       >
-        <section className="container flex flex-col items-center justify-center  max-lg:px-7 ">
+        <section className="container !mt-16 flex flex-col items-center  justify-center max-lg:px-7 ">
           <div className="mt-14 flex h-max  w-full flex-col items-center justify-center gap-6  ">
             <Link
               href="/"
