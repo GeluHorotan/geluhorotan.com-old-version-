@@ -44,20 +44,26 @@ export default function Home() {
         }
       >
         <div className="relative flex h-full w-full items-center justify-between ">
-          <div className="flex   w-1/2 flex-col justify-center   ">
-            <h1 className="p-2 text-primary   dark:text-secondary">
-              Gelu Horotan <br />
-              <span className="text-accent_s"> Software Engineer</span>
+          <div className="flex   w-1/2 flex-col justify-center gap-6   ">
+            <h1 className="  text-primary dark:text-secondary">
+              Transforming Visions <br />
+              into <span className="text-accent_s">Pixel Perfection</span>
             </h1>
-
-            <Button
-              rounded
-              className=" bg-accent p-2  text-secondary"
-              type="button"
-              onClick={executeScroll}
-            >
-              SEE MY PROJECTS
-            </Button>
+            <div className="flex flex-col items-start gap-2">
+              <p>
+                Discover a curated collection of meticulously crafted projects
+                that embody cutting-edge creativity, executed with precision and
+                adhering to industry best practices for exceptional quality.
+              </p>
+              <Button
+                rounded
+                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary"
+                type="button"
+                onClick={executeScroll}
+              >
+                TO PROJECTS
+              </Button>
+            </div>
           </div>
 
           <HeroIllustration />
