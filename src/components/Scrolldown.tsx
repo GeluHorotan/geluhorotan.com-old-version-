@@ -68,7 +68,7 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
           style={{
             fill: 'none',
             stroke: '#fff',
-            strokeWidth: '10px',
+            strokeWidth: '20px',
           }}
         />
         <path
@@ -77,11 +77,11 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
           style={{
             fill: 'none',
             stroke: '#fff',
-            strokeWidth: '10px',
+            strokeWidth: '20px',
           }}
         />
       </svg>
-      <h6 className="text-lg font-extralight">Scroll Down</h6>
+      <h6 className="text-lg font-bold tracking-wider">Scroll Down</h6>
     </div>
   );
 };

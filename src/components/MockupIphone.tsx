@@ -17,7 +17,7 @@ const MockupIphone = () => {
       viewBox="0 0 213.04 429.61"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <path
             id="Path_5"
             data-name="Path 5"
@@ -33,16 +33,16 @@ const MockupIphone = () => {
           y2="6.048"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#68595f" />
-          <stop offset="0.02" stop-color="#896e80" />
-          <stop offset="0.04" stop-color="#5e3b5b" />
-          <stop offset="0.08" stop-color="#2b1d2a" />
-          <stop offset="0.11" stop-color="#704a6a" />
-          <stop offset="0.9" stop-color="#615060" />
-          <stop offset="0.94" stop-color="#2b1d2a" />
-          <stop offset="0.96" stop-color="#5e3b5b" />
-          <stop offset="0.98" stop-color="#845675" />
-          <stop offset="1" stop-color="#5b4a5c" />
+          <stop offset="0" stopColor="#68595f" />
+          <stop offset="0.02" stopColor="#896e80" />
+          <stop offset="0.04" stopColor="#5e3b5b" />
+          <stop offset="0.08" stopColor="#2b1d2a" />
+          <stop offset="0.11" stopColor="#704a6a" />
+          <stop offset="0.9" stopColor="#615060" />
+          <stop offset="0.94" stopColor="#2b1d2a" />
+          <stop offset="0.96" stopColor="#5e3b5b" />
+          <stop offset="0.98" stopColor="#845675" />
+          <stop offset="1" stopColor="#5b4a5c" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-2"
@@ -52,12 +52,12 @@ const MockupIphone = () => {
           y2="6.031"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#676067" />
-          <stop offset="0.06" stop-color="#654e63" />
-          <stop offset="0.19" stop-color="#786f77" />
-          <stop offset="0.81" stop-color="#786f77" />
-          <stop offset="0.92" stop-color="#654e63" />
-          <stop offset="1" stop-color="#676067" />
+          <stop offset="0" stopColor="#676067" />
+          <stop offset="0.06" stopColor="#654e63" />
+          <stop offset="0.19" stopColor="#786f77" />
+          <stop offset="0.81" stopColor="#786f77" />
+          <stop offset="0.92" stopColor="#654e63" />
+          <stop offset="1" stopColor="#676067" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-3"
@@ -67,16 +67,16 @@ const MockupIphone = () => {
           y2="23.742"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#68595f" />
-          <stop offset="0.02" stop-color="#896e80" />
-          <stop offset="0.04" stop-color="#5e3b5b" />
-          <stop offset="0.08" stop-color="#2d1e2c" />
-          <stop offset="0.11" stop-color="#704a6a" />
-          <stop offset="0.9" stop-color="#615060" />
-          <stop offset="0.94" stop-color="#2d1e2c" />
-          <stop offset="0.96" stop-color="#5e3b5b" />
-          <stop offset="0.98" stop-color="#845675" />
-          <stop offset="1" stop-color="#5b4a5c" />
+          <stop offset="0" stopColor="#68595f" />
+          <stop offset="0.02" stopColor="#896e80" />
+          <stop offset="0.04" stopColor="#5e3b5b" />
+          <stop offset="0.08" stopColor="#2d1e2c" />
+          <stop offset="0.11" stopColor="#704a6a" />
+          <stop offset="0.9" stopColor="#615060" />
+          <stop offset="0.94" stopColor="#2d1e2c" />
+          <stop offset="0.96" stopColor="#5e3b5b" />
+          <stop offset="0.98" stopColor="#845675" />
+          <stop offset="1" stopColor="#5b4a5c" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-4"
@@ -93,11 +93,11 @@ const MockupIphone = () => {
           x2="0.493"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#68595f" />
-          <stop offset="0.05" stop-color="#2d1e2c" />
-          <stop offset="0.52" stop-color="#5e3b5b" />
-          <stop offset="0.96" stop-color="#2d1e2c" />
-          <stop offset="1" stop-color="#5b4a5c" />
+          <stop offset="0" stopColor="#68595f" />
+          <stop offset="0.05" stopColor="#2d1e2c" />
+          <stop offset="0.52" stopColor="#5e3b5b" />
+          <stop offset="0.96" stopColor="#2d1e2c" />
+          <stop offset="1" stopColor="#5b4a5c" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-6"
@@ -147,8 +147,8 @@ const MockupIphone = () => {
           y2="-0.015"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#666" />
-          <stop offset="1" stop-color="#010104" />
+          <stop offset="0" stopColor="#666" />
+          <stop offset="1" stopColor="#010104" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-13"
@@ -158,8 +158,8 @@ const MockupIphone = () => {
           y2="-114.391"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#0b131c" />
-          <stop offset="1" stop-color="#354039" />
+          <stop offset="0" stopColor="#0b131c" />
+          <stop offset="1" stopColor="#354039" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-14"
@@ -169,21 +169,21 @@ const MockupIphone = () => {
           y2="0.148"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#231f20" />
-          <stop offset="0.08" stop-color="#212226" />
-          <stop offset="0.2" stop-color="#1f2c37" />
-          <stop offset="0.33" stop-color="#1a3c53" />
-          <stop offset="0.47" stop-color="#13537b" />
-          <stop offset="0.62" stop-color="#0a70ae" />
-          <stop offset="0.78" stop-color="#0093eb" />
-          <stop offset="0.78" stop-color="#0095ee" />
-          <stop offset="0.8" stop-color="#0387d6" />
-          <stop offset="0.84" stop-color="#0d689f" />
-          <stop offset="0.88" stop-color="#154d71" />
-          <stop offset="0.91" stop-color="#1b394e" />
-          <stop offset="0.95" stop-color="#1f2a34" />
-          <stop offset="0.98" stop-color="#222225" />
-          <stop offset="1" stop-color="#231f20" />
+          <stop offset="0" stopColor="#231f20" />
+          <stop offset="0.08" stopColor="#212226" />
+          <stop offset="0.2" stopColor="#1f2c37" />
+          <stop offset="0.33" stopColor="#1a3c53" />
+          <stop offset="0.47" stopColor="#13537b" />
+          <stop offset="0.62" stopColor="#0a70ae" />
+          <stop offset="0.78" stopColor="#0093eb" />
+          <stop offset="0.78" stopColor="#0095ee" />
+          <stop offset="0.8" stopColor="#0387d6" />
+          <stop offset="0.84" stopColor="#0d689f" />
+          <stop offset="0.88" stopColor="#154d71" />
+          <stop offset="0.91" stopColor="#1b394e" />
+          <stop offset="0.95" stopColor="#1f2a34" />
+          <stop offset="0.98" stopColor="#222225" />
+          <stop offset="1" stopColor="#231f20" />
         </linearGradient>
         <radialGradient
           id="radial-gradient"
@@ -193,17 +193,17 @@ const MockupIphone = () => {
           gradientTransform="translate(0)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#231f20" />
-          <stop offset="0.2" stop-color="#165068" />
-          <stop offset="0.38" stop-color="#0c78a1" />
-          <stop offset="0.54" stop-color="#0594cb" />
-          <stop offset="0.66" stop-color="#01a6e4" />
-          <stop offset="0.73" stop-color="#00adee" />
-          <stop offset="0.76" stop-color="#01a5e3" />
-          <stop offset="0.81" stop-color="#0693c8" />
-          <stop offset="0.87" stop-color="#0d749b" />
-          <stop offset="0.94" stop-color="#184a5e" />
-          <stop offset="1" stop-color="#231f20" />
+          <stop offset="0" stopColor="#231f20" />
+          <stop offset="0.2" stopColor="#165068" />
+          <stop offset="0.38" stopColor="#0c78a1" />
+          <stop offset="0.54" stopColor="#0594cb" />
+          <stop offset="0.66" stopColor="#01a6e4" />
+          <stop offset="0.73" stopColor="#00adee" />
+          <stop offset="0.76" stopColor="#01a5e3" />
+          <stop offset="0.81" stopColor="#0693c8" />
+          <stop offset="0.87" stopColor="#0d749b" />
+          <stop offset="0.94" stopColor="#184a5e" />
+          <stop offset="1" stopColor="#231f20" />
         </radialGradient>
         <radialGradient
           id="radial-gradient-2"
@@ -213,13 +213,13 @@ const MockupIphone = () => {
           gradientTransform="translate(0)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#ccc" />
-          <stop offset="0.02" stop-color="#c4c4c4" />
-          <stop offset="0.22" stop-color="#898989" />
-          <stop offset="0.41" stop-color="#585858" />
-          <stop offset="0.59" stop-color="#313131" />
-          <stop offset="0.75" stop-color="#161616" />
-          <stop offset="0.89" stop-color="#050505" />
+          <stop offset="0" stopColor="#ccc" />
+          <stop offset="0.02" stopColor="#c4c4c4" />
+          <stop offset="0.22" stopColor="#898989" />
+          <stop offset="0.41" stopColor="#585858" />
+          <stop offset="0.59" stopColor="#313131" />
+          <stop offset="0.75" stopColor="#161616" />
+          <stop offset="0.89" stopColor="#050505" />
           <stop offset="1" />
         </radialGradient>
       </defs>
@@ -249,7 +249,7 @@ const MockupIphone = () => {
             transform="translate(5.35 3.28)"
             fill="#1d1d1b"
           />
-          <g id="Group_3" data-name="Group 3" clip-path="url(#clip-path)">
+          <g id="Group_3" data-name="Group 3" clipPath="url(#clipPath)">
             <image
               id="Rectangle_4"
               data-name="Rectangle 4"

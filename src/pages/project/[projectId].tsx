@@ -89,7 +89,7 @@ const ProjectID = () => {
               height={720}
               className=" w-full "
             />
-            <Scrolldown className="max-[600px]:bottom-40 " />
+            <Scrolldown className=" " />
           </div>
           <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex flex-col items-center justify-center gap-2 ">
