@@ -9,6 +9,7 @@ import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
 import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
+import Scrolldown from '@/components/Scrolldown';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -40,11 +41,11 @@ export default function Home() {
     >
       <section
         className={
-          ' container mt-[4.25rem] flex flex-col  items-center justify-center    '
+          ' container mt-[4.25rem] flex flex-col  items-center justify-center  '
         }
       >
-        <div className="flex h-full w-full items-center justify-between   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
-          <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
+        <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[10rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
+          <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-start  ">
             <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
               into Pixel
@@ -70,8 +71,9 @@ export default function Home() {
             </div>
           </div>
 
-          <MockupIphone></MockupIphone>
+          <MockupIphone />
         </div>
+        <Scrolldown />
       </section>
       <section className="container flex !h-max !min-h-max  items-center justify-center   py-20 ">
         <Showcase>

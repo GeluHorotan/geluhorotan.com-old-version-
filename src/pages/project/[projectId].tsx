@@ -8,6 +8,7 @@ import { TfiWorld } from 'react-icons/tfi';
 import Button from '@/components/Button';
 import LinesOfCode from '@/components/LinesOfCode';
 import ProfilePicture from '@/components/ProfilePicture';
+import Scrolldown from '@/components/Scrolldown';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
@@ -80,14 +81,15 @@ const ProjectID = () => {
         }
       >
         <section className="container !mt-16 flex flex-col items-center  justify-center max-lg:px-7 ">
-          <div className="flex h-[calc(100vh-4rem)] w-full items-center justify-center ">
+          <div className="relative flex h-[calc(100vh-4rem)] w-full items-center  justify-center  ">
             <Image
               src={images.header}
               alt={fullProjectName}
               width={1280}
               height={720}
-              className="w-full"
+              className=" w-full "
             />
+            <Scrolldown className="max-[600px]:bottom-40 " />
           </div>
           <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex flex-col items-center justify-center gap-2 ">

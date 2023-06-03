@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/dist/client/router';
 import type { FC } from 'react';
-import { HiOutlineChevronRight } from 'react-icons/hi';
 
 import {
   DropdownMenu,
@@ -17,8 +16,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/primitives/DropdownMenu';
-
-import Button from './Button';
 
 interface Props {
   children: React.ReactNode;
