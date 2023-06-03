@@ -80,13 +80,7 @@ const ProjectID = () => {
         }
       >
         <section className="container !mt-16 flex flex-col items-center  justify-center max-lg:px-7 ">
-          <div className="mt-14 flex h-max  w-full flex-col items-center justify-center gap-6  ">
-            <Link
-              href="/"
-              className="flex  items-center justify-center gap-1 self-start  tracking-widest !text-accent underline dark:!text-accent2"
-            >
-              <AiOutlineArrowLeft size={16} /> BACK
-            </Link>
+          <div className="flex h-[calc(100vh-4rem)] w-full items-center justify-center ">
             <Image
               src={images.header}
               alt={fullProjectName}
@@ -94,21 +88,21 @@ const ProjectID = () => {
               height={720}
               className="w-full"
             />
+          </div>
+          <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex flex-col items-center justify-center gap-2 ">
               <h1 className="futura-heavy">{fullProjectName}</h1>
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
                 <AiFillGithub
                   size={28}
-                  className="cursor-pointer drop-shadow-lg transition-all duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                  className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
                 />
                 <TfiWorld
                   size={24}
-                  className="cursor-pointer drop-shadow-lg transition-all duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                  className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
                 />
               </div>
             </div>
-          </div>
-          <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
               <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 LINES OF CODE
