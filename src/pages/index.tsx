@@ -40,7 +40,7 @@ export default function Home() {
     >
       <section
         className={
-          ' container mt-[4.25rem]  flex  flex-col items-center justify-center    '
+          ' container mt-[4.25rem] flex flex-col  items-center justify-center    '
         }
       >
         <div className="relative flex h-full w-full items-center justify-between ">
@@ -69,31 +69,57 @@ export default function Home() {
           <HeroIllustration />
         </div>
       </section>
-      {/* <div className="mb-20  w-full px-20 text-secondary  ">
+      <section className="container flex !h-max !min-h-max  items-center justify-center   py-20 ">
         <Showcase>
           <ShowcaseEntry
-            icon={<AiOutlineLayout size={32} />}
+            icon={<AiOutlineLayout size={64} />}
             title={'Enagaging UI'}
+            number={1}
           >
-            Crafting captivating and user-centric interfaces.
+            With a passion for user-centric design and expertise in frontend
+            technologies, I specialize in crafting engaging user interfaces that
+            captivate audiences. By seamlessly blending aesthetics and
+            functionality, I create visually stunning and intuitive web
+            solutions. Through meticulous attention to detail, strategic use of
+            animations, and seamless navigation, I ensure memorable and
+            impactful user experiences. I take pride in designing interfaces
+            that not only meet client goals but also leave a lasting impression
+            on users.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={<MdSpeed size={32} />}
+            icon={<MdSpeed size={64} />}
             title={`Performance Optimization`}
+            number={2}
           >
-            Optimizing website performance for lightning-fast loading.
+            I am committed to optimizing website performance to its fullest
+            potential. By implementing advanced techniques, meticulous code
+            optimization, and strategic asset compression, I ensure
+            lightning-fast loading times and seamless user interactions. Through
+            efficient caching strategies, browser compatibility, and
+            performance-enhancing methodologies, I deliver superior user
+            experiences. By prioritizing performance, I help businesses thrive
+            in today&apos;s digital landscape, providing a competitive edge and
+            driving success.
           </ShowcaseEntry>
           <ShowcaseEntry
-            icon={<MdDeveloperMode size={32} />}
+            icon={<MdDeveloperMode size={64} />}
             title={'Responsive Design'}
+            number={3}
           >
-            Designing websites that adapt seamlessly across devices.
+            With a mobile-first approach and deep expertise in responsive design
+            principles, I specialize in creating seamless and user-friendly
+            websites. By utilizing fluid layouts, flexible grids, and media
+            queries, I ensure consistent experiences across devices. Through
+            meticulous attention to detail, accessibility considerations, and a
+            focus on usability, I deliver websites that adapt effortlessly to
+            any screen size or device. I prioritize responsive design to provide
+            inclusive experiences that cater to diverse audiences.
           </ShowcaseEntry>
         </Showcase>
-      </div> */}
+      </section>
       <section
         ref={myRef}
-        className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8 "
+        className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8  "
       >
         {user && user.role === Role.Admin && (
           <Button

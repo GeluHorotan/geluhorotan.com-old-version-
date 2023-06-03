@@ -26,7 +26,7 @@ const Main = ({ children, meta }: IMainProps) => {
         </Reminder>
       )}
       <Navigation theme={theme} setTheme={setTheme} />
-      {children}
+      <div className="flex flex-col gap-20">{children}</div>
     </>
   );
 };

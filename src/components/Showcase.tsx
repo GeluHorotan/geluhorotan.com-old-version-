@@ -9,7 +9,7 @@ type Props = {
 
 const Showcase: FC<Props> = ({ children }) => {
   return (
-    <div className="grid  w-2/3 grid-cols-3  items-center justify-center gap-12 max-[1362px]:w-full   max-[960px]:grid-cols-2  max-md:grid-cols-1 ">
+    <div className="grid w-full grid-cols-3 items-center  justify-center gap-20  max-[1400px]:w-full max-[1000px]:grid-cols-1  ">
       {children}
     </div>
   );
