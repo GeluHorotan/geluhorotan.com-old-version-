@@ -47,7 +47,11 @@ export default function Home() {
           <div className="flex   w-1/2 flex-col justify-center gap-6   ">
             <h1 className="  text-primary dark:text-secondary">
               Transforming Visions <br />
-              into <span className="text-accent_s">Pixel Perfection</span>
+              into Pixel
+              <span className="text-accent_s dark:text-accent2_s">
+                {' '}
+                Perfection
+              </span>
             </h1>
             <div className="flex flex-col items-start gap-2">
               <p>
@@ -57,7 +61,7 @@ export default function Home() {
               </p>
               <Button
                 rounded
-                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary"
+                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary dark:bg-accent2 dark:text-primary"
                 type="button"
                 onClick={executeScroll}
               >
@@ -153,7 +157,7 @@ export default function Home() {
                   className="h-full w-full object-cover p-2"
                   alt={`${project.fullProjectName}'s image`}
                 />
-                {/* Test23 */}
+
                 <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
                   <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
                     <div className="  flex flex-col gap-2  ">
@@ -166,13 +170,13 @@ export default function Home() {
                     <div className="flex items-center gap-6  tracking-widest">
                       <Link
                         href={`/project/${project.fullProjectName}`}
-                        className="rounded-xl bg-accent  px-3 py-1 text-secondary "
+                        className="rounded-xl bg-accent px-3 py-1  text-secondary dark:bg-accent2 dark:text-primary "
                       >
                         LEARN MORE
                       </Link>
                       <Link
                         href="#"
-                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-3 py-1 text-primary dark:text-secondary "
+                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
                       >
                         <HiOutlineExternalLink size={16} /> VISIT
                       </Link>

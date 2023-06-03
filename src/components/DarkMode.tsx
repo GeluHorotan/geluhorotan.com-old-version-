@@ -27,7 +27,7 @@ const DarkMode: FC<DarkModeProps> = ({ theme, setTheme, reverseColor }) => {
         />
         <div
           className={`relative flex h-6 w-12 cursor-pointer  items-center rounded-full ${
-            theme === 'light' ? 'bg-secondary_s_2' : 'bg-accent'
+            theme === 'light' ? 'bg-secondary_s_2' : 'bg-accent2'
           } p-1 ${theme === 'light' ? 'justify-start' : 'justify-end'}`}
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         >
@@ -39,7 +39,9 @@ const DarkMode: FC<DarkModeProps> = ({ theme, setTheme, reverseColor }) => {
               stiffness: 700,
               damping: 30,
             }}
-            className="z-10 h-4 w-4 rounded-full  bg-secondary_t_2"
+            className={`z-10 h-4 w-4 rounded-full ${
+              theme === 'light' ? 'bg-secondary' : 'bg-primary'
+            } `}
           />
         </div>
         <HiOutlineMoon
