@@ -7,10 +7,10 @@ import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
+import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
-import HeroIllustration from '@/components/svgs/HeroIllustration';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
@@ -43,9 +43,9 @@ export default function Home() {
           ' container mt-[4.25rem] flex flex-col  items-center justify-center    '
         }
       >
-        <div className="relative flex h-full w-full items-center justify-between ">
-          <div className="flex   w-1/2 flex-col justify-center gap-6   ">
-            <h1 className="  text-primary dark:text-secondary">
+        <div className="flex h-full w-full items-center justify-between   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
+          <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
+            <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
               into Pixel
               <span className="text-accent_s dark:text-accent2_s">
@@ -53,7 +53,7 @@ export default function Home() {
                 Perfection
               </span>
             </h1>
-            <div className="flex flex-col items-start gap-2">
+            <div className="flex flex-col items-start gap-4 ">
               <p>
                 Discover a curated collection of meticulously crafted projects
                 that embody cutting-edge creativity, executed with precision and
@@ -70,7 +70,7 @@ export default function Home() {
             </div>
           </div>
 
-          <HeroIllustration />
+          <MockupIphone></MockupIphone>
         </div>
       </section>
       <section className="container flex !h-max !min-h-max  items-center justify-center   py-20 ">

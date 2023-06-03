@@ -8,8 +8,9 @@ export const technologyOptions = [
   { value: 'python', label: 'Python' },
   { value: 'ruby', label: 'Ruby' },
   { value: 'swift', label: 'Swift' },
+  { value: 'typescript', label: 'Typescript' },
   { value: 'angularjs', label: 'Angular' },
-
+  { value: 'nextjs', label: 'Next.js' },
   { value: 'flask', label: 'Flask' },
   { value: 'laravel', label: 'Laravel' },
   { value: 'nodejs', label: 'Node.js' },

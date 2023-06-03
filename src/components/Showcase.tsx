@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import ShowcaseEntry from './ShowcaseEntry';
-
 type Props = {
   children: React.ReactNode;
 };

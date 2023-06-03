@@ -57,6 +57,10 @@ select:-webkit-autofill:focus {
     2px 2px 0 #000;
 }
 
+.circle-icon {
+  transform: rotate(-90deg) translate(6rem) rotate(90deg);
+}
+
 @layer components {
   .theme-color {
     @apply bg-secondary dark:bg-primary;
