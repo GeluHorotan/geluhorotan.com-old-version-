@@ -40,7 +40,7 @@ export default function Home() {
     >
       <section
         className={
-          ' container flex  !h-[calc(100vh-13.25rem)] !min-h-0 flex-col items-center  justify-start  '
+          ' container mt-[4.25rem]  flex  flex-col items-center justify-center    '
         }
       >
         <div className="relative flex h-full w-full items-center justify-between ">
@@ -69,7 +69,7 @@ export default function Home() {
           <HeroIllustration />
         </div>
       </section>
-      <div className="mb-20  w-full px-20 text-secondary  ">
+      {/* <div className="mb-20  w-full px-20 text-secondary  ">
         <Showcase>
           <ShowcaseEntry
             icon={<AiOutlineLayout size={32} />}
@@ -90,7 +90,7 @@ export default function Home() {
             Designing websites that adapt seamlessly across devices.
           </ShowcaseEntry>
         </Showcase>
-      </div>
+      </div> */}
       <section
         ref={myRef}
         className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8 "
