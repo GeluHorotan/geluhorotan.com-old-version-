@@ -38,8 +38,9 @@ const AboutEntry: FC<Props> = ({
       <div className="relative h-screen w-[50vw] overflow-hidden  max-[850px]:h-[50vh] max-[850px]:w-full">
         <Image
           src={imgSrc}
-          alt="test"
+          alt={id}
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="inset-0 block h-auto w-full object-cover object-center"
         />
       </div>

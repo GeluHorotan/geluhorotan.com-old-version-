@@ -198,7 +198,7 @@ const Sidebar: FC<SidebarProps> = ({
         animate={isOpen ? 'open' : 'closed'}
         className={` ${
           isScrolled ? 'bg-secondary py-3 dark:bg-primary' : 'py-5'
-        }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20  transition-all   duration-150 ease-in-out  `}
+        }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20 transition-all  duration-150   ease-in-out max-md:px-4  `}
       >
         <div className="flex items-center ">
           <SidebarToggler
