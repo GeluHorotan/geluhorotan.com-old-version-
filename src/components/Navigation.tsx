@@ -63,7 +63,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
       {!isMobile && (
         <nav
           className={
-            ' fixed top-0 z-50 flex w-full flex-row items-center justify-between   bg-secondary py-4 px-14 dark:bg-primary  '
+            ' fixed top-0 z-50 flex w-full flex-row items-center justify-between    py-4 px-14  '
           }
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">
