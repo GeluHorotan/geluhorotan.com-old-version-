@@ -69,7 +69,6 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
-  console.log(project);
   if (project)
     return (
       <Main

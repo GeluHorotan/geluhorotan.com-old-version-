@@ -1,18 +1,33 @@
 import type { NextPage } from 'next';
-import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import AboutEntry from '@/components/AboutEntry';
-import AboutNavCard from '@/components/AboutNavCard';
 import AboutTechEntry from '@/components/AboutTechEntry';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+
+const Scroll = require('react-scroll');
+
+const { Element } = Scroll;
+const { scroller } = Scroll;
 
 type Props = {
   children?: React.ReactNode;
 };
 
 const About: NextPage<Props> = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const scrollTo = urlParams.get('scrollTo');
+  const scrollDuration = urlParams.get('scrollDuration');
+  useEffect(() => {
+    if (scrollTo) {
+      scroller.scrollTo(scrollTo, {
+        smooth: true,
+        duration: scrollDuration,
+      });
+    }
+  }, []);
+
   return (
     <Main
       meta={
@@ -76,6 +91,7 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
 
       <AboutEntry
+        id="engaging"
         imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685910938/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_k8aamj.jpg"
         title="Crafting Captivating and User-Centric Interfaces"
         colorScheme="reverse"
@@ -90,9 +106,11 @@ const About: NextPage<Props> = () => {
         I take pride in designing interfaces that not only meet client goals but
         also leave a lasting impression.
       </AboutEntry>
+
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
+        id="performance"
         imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911161/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_fk7coh.jpg"
         title="Enhancing Website Performance for Lightning-Fast Loading"
         colorScheme="normal"
@@ -111,6 +129,7 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
+        id="responsive"
         imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911383/About%20Photos/photo-1605379399642-870262d3d051_pjov25.avif"
         title="Designing Websites that Seamlessly Adapt Across Devices"
         colorScheme="reverse"
@@ -126,7 +145,7 @@ const About: NextPage<Props> = () => {
         experiences that cater to diverse audiences.
       </AboutEntry>
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+      <div className="h-20 w-full bg-accent dark:bg-accent2" id="test"></div>
     </Main>
   );
 };

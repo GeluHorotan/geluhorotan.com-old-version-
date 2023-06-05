@@ -10,6 +10,7 @@ import ProjectForm from '@/components/form/ProjectForm';
 import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
 import Scrolldown from '@/components/Scrolldown';
+import ScrollTo from '@/components/ScrollTo';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -24,11 +25,6 @@ export default function Home() {
   const { user } = useAuth();
 
   const myRef = useRef<HTMLDivElement>(null);
-  const executeScroll = () => {
-    if (myRef.current !== null) {
-      myRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
 
   return (
     <Main
@@ -60,14 +56,17 @@ export default function Home() {
                 that embody cutting-edge creativity, executed with precision and
                 adhering to industry best practices for exceptional quality.
               </p>
-              <Button
-                rounded
-                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary dark:bg-accent2 dark:text-primary"
-                type="button"
-                onClick={executeScroll}
+
+              <ScrollTo
+                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary
+              dark:bg-accent2 dark:text-primary"
+                to="target"
+                smooth
+                delay={100}
+                duration={500}
               >
                 TO PROJECTS
-              </Button>
+              </ScrollTo>
             </div>
           </div>
 
@@ -78,9 +77,11 @@ export default function Home() {
       <section className="container flex !h-max !min-h-max  items-center justify-center   py-20 ">
         <Showcase>
           <ShowcaseEntry
+            scrollToId="engaging"
             icon={<AiOutlineLayout size={64} />}
             title={'Enagaging UI'}
             number={1}
+            scrollDuration={1500}
           >
             With a passion for user-centric design and expertise in frontend
             technologies, I specialize in crafting engaging user interfaces that
@@ -93,9 +94,11 @@ export default function Home() {
             on users.
           </ShowcaseEntry>
           <ShowcaseEntry
+            scrollToId="performance"
             icon={<MdSpeed size={64} />}
             title={`Performance Optimization`}
             number={2}
+            scrollDuration={2000}
           >
             I am committed to optimizing website performance to its fullest
             potential. By implementing advanced techniques, meticulous code
@@ -108,9 +111,11 @@ export default function Home() {
             driving success.
           </ShowcaseEntry>
           <ShowcaseEntry
+            scrollToId="responsive"
             icon={<MdDeveloperMode size={64} />}
             title={'Responsive Design'}
             number={3}
+            scrollDuration={2500}
           >
             With a mobile-first approach and deep expertise in responsive design
             principles, I specialize in creating seamless and user-friendly
@@ -125,6 +130,7 @@ export default function Home() {
       </section>
       <section
         ref={myRef}
+        id="target"
         className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8  "
       >
         {user && user.role === Role.Admin && (

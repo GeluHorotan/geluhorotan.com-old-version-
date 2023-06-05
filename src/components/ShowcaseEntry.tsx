@@ -3,13 +3,22 @@ import type { FC } from 'react';
 import React from 'react';
 
 type Props = {
+  scrollDuration?: number;
+  scrollToId?: string;
   children: React.ReactNode;
   icon?: React.ReactNode;
   title: string;
   number: number;
 };
 
-const ShowcaseEntry: FC<Props> = ({ children, icon, title, number }) => {
+const ShowcaseEntry: FC<Props> = ({
+  children,
+  scrollDuration,
+  icon,
+  title,
+  number,
+  scrollToId,
+}) => {
   return (
     <div className=" relative z-20 flex  h-full flex-col items-start justify-center gap-6   p-4 text-primary dark:text-secondary ">
       <div className="flex items-center justify-start gap-2  ">
@@ -23,7 +32,7 @@ const ShowcaseEntry: FC<Props> = ({ children, icon, title, number }) => {
             0{number}
           </h3>
           <Link
-            href="#"
+            href={`/about?scrollTo=${scrollToId}&scrollDuration=${scrollDuration}`}
             className="rounded-xl bg-accent px-3 py-1 text-secondary dark:bg-accent2 dark:text-primary"
           >
             READ MORE

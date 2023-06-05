@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 type Props = {
+  id: string;
   imgSrc: string;
   children: React.ReactNode;
   title: string;
@@ -17,6 +18,7 @@ type ColorMap = {
 
 const AboutEntry: FC<Props> = ({
   children,
+  id,
   title,
   imgSrc,
   colorScheme,
@@ -28,6 +30,7 @@ const AboutEntry: FC<Props> = ({
   };
   return (
     <section
+      id={id}
       className={`${colorMap[colorScheme as keyof ColorMap]} container  flex ${
         isReversed && 'flex-row-reverse'
       }  items-center justify-center  !px-0 max-[850px]:!h-max  max-[850px]:!min-h-max max-[850px]:flex-col max-[850px]:gap-20 max-[850px]:pb-20 `}
