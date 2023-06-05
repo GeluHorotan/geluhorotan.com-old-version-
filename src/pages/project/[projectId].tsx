@@ -69,6 +69,8 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
+
+  console.log(project);
   if (project)
     return (
       <Main
@@ -79,14 +81,13 @@ const ProjectID = () => {
           />
         }
       >
-        <section className="container !mt-16 flex flex-col items-center  justify-center max-lg:px-7 ">
-          <div className="relative flex h-[calc(100vh-4rem)] w-full items-center  justify-center  ">
+        <section className="container !mt-16  flex flex-col items-center justify-center   py-10 max-lg:px-7 ">
+          <div className="relative flex h-[75vh]  w-full items-center justify-center max-[1090px]:h-[50vh] max-md:h-[25vh]   ">
             <Image
               src={images.header}
               alt={fullProjectName}
-              width={1280}
-              height={720}
-              className=" w-full "
+              fill={true}
+              className="inset-0 block h-auto w-full object-contain object-center"
             />
             <Scrolldown className=" " />
           </div>
