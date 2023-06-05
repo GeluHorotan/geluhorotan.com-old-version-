@@ -3,6 +3,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import AboutEntry from '@/components/AboutEntry';
+import AboutNavCard from '@/components/AboutNavCard';
+import AboutTechEntry from '@/components/AboutTechEntry';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
@@ -20,33 +22,53 @@ const About: NextPage<Props> = () => {
         />
       }
     >
-      <section className="container flex  flex-col items-start justify-center gap-20   ">
-        <div className="flex h-full  flex-col  justify-center gap-4">
+      <section className=" container flex !h-max  items-center justify-center gap-40 py-40  max-[1100px]:flex-col  ">
+        <div className="flex h-full w-1/2 flex-col justify-center gap-10  max-[1100px]:w-full">
           <h1 className="futura-heavy relative    tracking-widest ">ABOUT</h1>
-          <div className="flex w-1/2 flex-col gap-8 max-[1076px]:w-full">
-            <p className="">
+          <div className="flex w-full flex-col gap-8 max-[1076px]:w-full">
+            <h4 className="">
               Detail-oriented professional and critical thinker with a flair for
-              creating elegant solutions in the least amount of time. Highly
-              motivated to use my skills and knowledge to bring value to your
-              company.
-            </p>
+              creating elegant solutions in the least amount of time.
+            </h4>
             <p>
+              {' '}
               Driven by curiosity and inspired by my best friend&apos;s
               encouragement, I embarked on my coding journey in November 2021.
               Despite initial doubts about my math skills, I discovered that
-              programming transcends traditional barriers. Starting with C and
-              Python, I quickly grasped the fundamentals and drew upon my
-              background in graphic design to excel in frontend development. In
-              February 2022, I immersed myself in HTML, CSS, and React,
-              harnessing my creativity to craft captivating user interfaces.
+              programming transcends traditional barriers.{' '}
+            </p>
+            <p>
+              {' '}
+              Starting with C and Python, I quickly grasped the fundamentals and
+              drew upon my background in graphic design to excel in frontend
+              development. In February 2022, I immersed myself in HTML, CSS, and
+              React, harnessing my creativity to craft captivating user
+              interfaces.
+            </p>
+            <p>
               Determined to learn and grow, I ventured into freelancing,
               tackling projects for friends while continuously expanding my
               knowledge. Eager to broaden my expertise, I delved into Next.js,
               Tailwind CSS, TypeScript, and even Node.js to gain a deeper
-              understanding of backend technologies. With an unwavering passion
-              and relentless drive, I am poised to make a lasting impact in the
-              world of frontend development.
+              understanding of backend technologies.
             </p>
+            <p>
+              {' '}
+              With an unwavering passion and relentless drive, I am poised to
+              make a lasting impact in the world of frontend development.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-start justify-center gap-2 max-[1100px]:items-center">
+          <h6 className="tracking-widedst">TECH</h6>
+
+          <div className="rounded- flex w-full flex-col items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
+            <AboutTechEntry techName={'javascript'} />
+
+            <AboutTechEntry techName={'react'} />
+            <AboutTechEntry techName={'typescript'} />
+            <AboutTechEntry techName={'nodejs'} />
+            <AboutTechEntry techName={'tailwindcss'} />
           </div>
         </div>
       </section>
@@ -55,7 +77,7 @@ const About: NextPage<Props> = () => {
 
       <AboutEntry
         imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685910938/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_k8aamj.jpg"
-        title="Engaging UI"
+        title="Crafting Captivating and User-Centric Interfaces"
         colorScheme="reverse"
       >
         {' '}
@@ -72,9 +94,9 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
         imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911161/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_fk7coh.jpg"
-        title="Performance"
+        title="Enhancing Website Performance for Lightning-Fast Loading"
         colorScheme="normal"
-        // isReversed
+        isReversed
       >
         {' '}
         Performance I am committed to optimizing website performance to its
@@ -90,7 +112,7 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
         imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911383/About%20Photos/photo-1605379399642-870262d3d051_pjov25.avif"
-        title="Responsive Design"
+        title="Designing Websites that Seamlessly Adapt Across Devices"
         colorScheme="reverse"
       >
         {' '}
