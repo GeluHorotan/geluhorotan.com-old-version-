@@ -22,7 +22,7 @@ module.exports = withBundleAnalyzer({
   // You can remove `basePath` if you don't need it.
   reactStrictMode: false,
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'www.res.cloudinary.com'],
   },
   async rewrites() {
     return [
