@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 
 import { useAuth } from '@/context/hooks/useAuth';
@@ -19,6 +19,7 @@ interface NavProps {
 }
 
 const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
   const isMobile = useMediaQuery('(max-width: 1012px)');
 
@@ -58,17 +59,40 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
     ],
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 10; // Adjust this value to determine the scroll threshold
+
+      if (window.pageYOffset > threshold) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {!isMobile && (
         <nav
-          className={
-            ' fixed top-0 z-50 flex w-full flex-row items-center justify-between    py-4 px-14  '
-          }
+          className={` ${
+            isScrolled ? 'bg-secondary py-3 dark:bg-primary' : 'py-5'
+          }  fixed top-0 z-50 flex w-full flex-row items-center justify-between px-20 transition-all duration-150   ease-in-out  `}
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">
             <Link href="/">
-              <Logo size={36} />
+              <div
+                className={`${
+                  isScrolled ? 'text-4xl' : 'text-5xl'
+                }  duration-250 text-secondary transition-all ease-in-out`}
+              >
+                HG
+              </div>
             </Link>
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {
