@@ -206,6 +206,7 @@ const Sidebar: FC<SidebarProps> = ({
             isOpen={isOpen}
             theme={theme}
             setTheme={setTheme}
+            isScrolled={isScrolled}
           />
           <Link href="/">
             <div
@@ -249,7 +250,7 @@ const Sidebar: FC<SidebarProps> = ({
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center bg-secondary p-20 dark:bg-primary`}
+          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center bg-secondary p-20 dark:bg-primary max-md:px-4`}
           variants={sidebar}
         >
           <motion.ul

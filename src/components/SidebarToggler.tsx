@@ -21,12 +21,14 @@ const Path = (
 interface SidebarTogglerProps {
   toggle?: any;
   isOpen: boolean;
+  isScrolled: boolean;
   theme: Theme;
   setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }
 
 const SidebarToggler: FC<SidebarTogglerProps> = ({
   toggle,
+  isScrolled,
   isOpen,
   theme,
   setTheme,
@@ -52,7 +54,11 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
      h-12  w-12 cursor-pointer  rounded-full border-none   outline-none
   `}
     >
-      <svg width="23" height="23" viewBox="0 0 23 23">
+      <svg
+        width={`${isScrolled ? '20' : '23'}`}
+        height={`${isScrolled ? '20' : '23'}`}
+        viewBox="0 0 23 23"
+      >
         <Path
           variants={{
             closed: { d: 'M 2 2.5 L 20 2.5' },
