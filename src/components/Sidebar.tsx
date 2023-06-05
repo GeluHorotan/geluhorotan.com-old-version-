@@ -1,7 +1,7 @@
 import { motion, useCycle } from 'framer-motion';
 import Link from 'next/dist/client/link';
 import type { FC, Key } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { BiCopyright } from 'react-icons/bi';
 import { HiOutlineChevronRight } from 'react-icons/hi';
@@ -97,7 +97,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ item }) => {
   return (
     <motion.li
       variants={ItemVariant}
-      className="flex w-full flex-col items-start justify-center  "
+      className="flex w-full flex-col items-start justify-center   "
     >
       <Link
         href={`/${item.name === 'home' ? '' : item.name}`}
@@ -117,6 +117,7 @@ const Sidebar: FC<SidebarProps> = ({
   user,
   isAuthenticated,
 }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -173,12 +174,31 @@ const Sidebar: FC<SidebarProps> = ({
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 10; // Adjust this value to determine the scroll threshold
+
+      if (window.pageYOffset > threshold) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <motion.div
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
-        className="fixed inset-0 z-50 flex h-[4.25rem] items-center justify-between  px-7 "
+        className={` ${
+          isScrolled ? 'bg-secondary py-3 dark:bg-primary' : 'py-5'
+        }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20  transition-all   duration-150 ease-in-out  `}
       >
         <div className="flex items-center ">
           <SidebarToggler
@@ -188,7 +208,13 @@ const Sidebar: FC<SidebarProps> = ({
             setTheme={setTheme}
           />
           <Link href="/">
-            <Logo size={36} />
+            <div
+              className={`${
+                isScrolled ? 'text-4xl' : 'text-5xl'
+              }  duration-250 text-primary transition-all ease-in-out dark:text-secondary`}
+            >
+              HG
+            </div>
           </Link>
         </div>
         <div className="flex  items-center justify-between gap-6  ">
@@ -219,13 +245,11 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         ref={containerRef}
-        className={` fixed inset-0 z-40 flex h-[4.25rem] w-full  items-center justify-between bg-secondary dark:bg-primary ${
-          isOpen ? 'border-b border-primary dark:border-secondary' : ''
-        }  
+        className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between  bg-secondary  dark:bg-primary   
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center bg-secondary py-20 dark:bg-primary`}
+          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center bg-secondary p-20 dark:bg-primary`}
           variants={sidebar}
         >
           <motion.ul

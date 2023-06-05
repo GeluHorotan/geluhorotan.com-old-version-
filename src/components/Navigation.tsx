@@ -89,7 +89,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
               <div
                 className={`${
                   isScrolled ? 'text-4xl' : 'text-5xl'
-                }  duration-250 text-secondary transition-all ease-in-out`}
+                }  duration-250 text-primary transition-all ease-in-out dark:text-secondary`}
               >
                 HG
               </div>
