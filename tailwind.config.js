@@ -14,16 +14,18 @@ module.exports = {
       chevronRight:
         'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);',
     },
+
+    // Changing dark scheme to #121212 as primary color;
+    // Old primary color was #1A1A1A with tints as follows #343434, #484848 and shadows as follows  #151515, #0d0d0d
     extend: {
       colors: {
-        primary_s_2: '#0d0d0d',
-        primary_s: '#151515',
-        primary: '#1A1A1A',
-        primary_t: '#343434',
-        primary_t_2: '#484848',
+        primary_s_2: '#090909',
+        primary_s: '#0e0e0e',
+        primary: '#121212',
+        primary_t: '#414141',
+        primary_t_2: '#717171',
         secondary_s_2: '#94848e',
         secondary_s: '#c6b0bd',
-        // F7DCEC
         secondary: '#F7DCEC',
         secondary_t: '#f9e3f0',
         secondary_t_2: '#faeaf4',
