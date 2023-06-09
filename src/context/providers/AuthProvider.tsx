@@ -91,7 +91,7 @@ export const AuthContext = createContext<State>({} as State);
 export const AuthProvider = ({ children }: Props) => {
   // Websocket
 
-  const socket = io('https://geluhorotancom-horotangelu17.b4a.run');
+  // const socket = io('https://geluhorotancom-horotangelu17.b4a.run');
 
   // Alerts
   const { createAlert, updateAlert } = useAlert();
@@ -164,14 +164,14 @@ export const AuthProvider = ({ children }: Props) => {
     window.addEventListener('logout', async () => {
       await logout();
     });
-    socket.on('email-confirmation', (updatedUser) => {
-      // console.log(message);
-      setUser(updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-    });
-    socket.on('test', (message) => {
-      console.log(message);
-    });
+    // socket.on('email-confirmation', (updatedUser) => {
+    //   // console.log(message);
+    //   setUser(updatedUser);
+    //   localStorage.setItem('user', JSON.stringify(updatedUser));
+    // });
+    // socket.on('test', (message) => {
+    //   console.log(message);
+    // });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

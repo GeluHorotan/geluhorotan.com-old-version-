@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineLayout } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
+import { scroller } from 'react-scroll';
 
 import Button from '@/components/Button';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -24,7 +25,27 @@ export default function Home() {
   const { projects } = useProject();
   const { user } = useAuth();
 
-  const myRef = useRef<HTMLDivElement>(null);
+  const urlParams = new URLSearchParams(window.location.search);
+  const scrollTo = urlParams.get('scrollTo');
+  const scrollDuration = urlParams.get('scrollDuration');
+
+  useEffect(() => {
+    if (scrollTo) {
+      scroller.scrollTo(scrollTo, {
+        smooth: true,
+        duration: scrollDuration,
+      });
+    }
+    // Delay clearing the query parameters by 2 seconds
+    const timeout = setTimeout(() => {
+      const newUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, newUrl);
+    }, parseInt(scrollDuration, 10));
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [scrollTo, scrollDuration]);
 
   return (
     <Main
@@ -60,7 +81,7 @@ export default function Home() {
               <ScrollTo
                 className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary
               dark:bg-accent2 dark:text-primary"
-                to="target"
+                to="projects"
                 smooth
                 delay={100}
                 duration={500}
@@ -129,8 +150,7 @@ export default function Home() {
         </Showcase>
       </section>
       <section
-        ref={myRef}
-        id="target"
+        id="projects"
         className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8  "
       >
         {user && user.role === Role.Admin && (

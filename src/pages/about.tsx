@@ -1,15 +1,11 @@
 import type { NextPage } from 'next';
 import React, { useEffect } from 'react';
+import { scroller } from 'react-scroll';
 
 import AboutEntry from '@/components/AboutEntry';
 import AboutTechEntry from '@/components/AboutTechEntry';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
-
-const Scroll = require('react-scroll');
-
-const { Element } = Scroll;
-const { scroller } = Scroll;
 
 type Props = {
   children?: React.ReactNode;
@@ -19,6 +15,7 @@ const About: NextPage<Props> = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const scrollTo = urlParams.get('scrollTo');
   const scrollDuration = urlParams.get('scrollDuration');
+
   useEffect(() => {
     if (scrollTo) {
       scroller.scrollTo(scrollTo, {
@@ -26,7 +23,16 @@ const About: NextPage<Props> = () => {
         duration: scrollDuration,
       });
     }
-  }, []);
+    // Delay clearing the query parameters by 2 seconds
+    const timeout = setTimeout(() => {
+      const newUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, newUrl);
+    }, parseInt(scrollDuration, 10));
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [scrollTo, scrollDuration]);
 
   return (
     <Main

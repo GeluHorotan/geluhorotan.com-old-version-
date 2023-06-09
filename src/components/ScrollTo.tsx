@@ -1,14 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import * as Scroll from 'react-scroll';
-import {
-  animateScroll as scroll,
-  Element,
-  Events,
-  Link,
-  scroller,
-  scrollSpy,
-} from 'react-scroll';
+import { animateScroll as scroll, Link } from 'react-scroll';
 
 type Props = {
   children: React.ReactNode;
