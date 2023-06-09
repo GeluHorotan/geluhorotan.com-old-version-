@@ -9,6 +9,7 @@ type Props = {
   title: string;
   isReversed?: boolean;
   colorScheme: keyof ColorMap;
+  objectPosition?: string;
 };
 
 type ColorMap = {
@@ -23,6 +24,7 @@ const AboutEntry: FC<Props> = ({
   imgSrc,
   colorScheme,
   isReversed,
+  objectPosition,
 }) => {
   const colorMap: ColorMap = {
     reverse: 'bg-primary text-secondary dark:bg-secondary dark:text-primary',
@@ -41,7 +43,9 @@ const AboutEntry: FC<Props> = ({
           alt={id}
           fill={true}
           sizes="(max-width: 1920) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="inset-0 block h-auto w-full object-cover object-center"
+          className={`${
+            objectPosition || 'object-center'
+          } inset-0 block h-auto w-full object-cover `}
         />
       </div>
       <aside className="flex w-1/2 flex-col gap-6  px-8 max-[850px]:w-full">
