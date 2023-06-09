@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import AlertWrapper from '@/components/AlertWrapper';
+import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import Reminder from '@/components/Reminder';
 import { useAuth } from '@/context/hooks/useAuth';
@@ -27,6 +28,7 @@ const Main = ({ children, meta }: IMainProps) => {
       )}
       <Navigation theme={theme} setTheme={setTheme} />
       {children}
+      <Footer />
     </>
   );
 };
