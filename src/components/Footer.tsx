@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import React from 'react';
+import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
+import { TiSocialLinkedin } from 'react-icons/ti';
 import { Link as ScrollLink } from 'react-scroll';
 
 type Props = {
@@ -10,12 +12,13 @@ type Props = {
 type FooterItemProps = {
   children?: React.ReactNode;
   href: string;
+  target?: string;
 };
 
-const FooterItem: FC<FooterItemProps> = ({ children, href }) => {
+const FooterItem: FC<FooterItemProps> = ({ children, href, target }) => {
   return (
-    <Link href={href}>
-      <p className=" text-start font-extralight uppercase tracking-widest">
+    <Link href={href} target={target || ''}>
+      <p className="flex items-center gap-2 text-start font-extralight tracking-widest transition-all duration-150 ease-in-out hover:translate-x-1 hover:text-accent2">
         {children}
       </p>
     </Link>
@@ -24,11 +27,11 @@ const FooterItem: FC<FooterItemProps> = ({ children, href }) => {
 
 const Footer: FC<Props> = ({ children }) => {
   return (
-    <div className=" flex h-[50vh] flex-col items-center justify-center  border-b-8 border-b-accent2 bg-primary py-14 px-20 text-secondary">
-      <div className="grid h-full grid-cols-3 gap-40  ">
+    <div className=" flex h-[50vh] flex-col items-center justify-between border-b-8  border-b-accent2 bg-primary p-20  text-secondary  max-[1012px]:h-max max-[1012px]:gap-10 max-[1012px]:px-8  max-[1012px]:py-6  ">
+      <div className="flex w-full justify-center gap-40 max-[1012px]:flex-col max-[1012px]:gap-6 ">
         {' '}
-        <div className="flex flex-col items-center justify-center  ">
-          <div className="flex h-1/2 w-max flex-col items-start justify-start gap-4 ">
+        <div className="flex h-full flex-col items-center justify-center   ">
+          <div className="flex h-full  w-full flex-col items-start justify-start gap-4 ">
             <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
               Navigation
             </p>
@@ -43,8 +46,8 @@ const Footer: FC<Props> = ({ children }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center  ">
-          <div className="flex h-1/2 w-max flex-col items-start justify-start gap-4 ">
+        <div className="flex flex-col items-center justify-center   ">
+          <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
             <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
               Legal
             </p>
@@ -59,13 +62,30 @@ const Footer: FC<Props> = ({ children }) => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center  ">
-          <div className="flex h-1/2 w-max flex-col items-start justify-start gap-4 ">
+          <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
             <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
               Socials
             </p>
             <div className="flex flex-col gap-2">
-              <FooterItem href="#">Github</FooterItem>
-              <FooterItem href="#">LinkedIn</FooterItem>
+              <FooterItem
+                href="https://github.com/GeluHorotan"
+                target={'_blank'}
+              >
+                {' '}
+                <AiFillGithub size={20} /> Github
+              </FooterItem>
+              <FooterItem
+                href="https://www.linkedin.com/in/gelu-horotan/"
+                target={'_blank'}
+              >
+                <TiSocialLinkedin size={20} /> LinkedIn
+              </FooterItem>
+              <FooterItem
+                href="https://twitter.com/oxymoron365"
+                target={'_blank'}
+              >
+                <AiOutlineTwitter size={20} /> Twitter
+              </FooterItem>
             </div>
           </div>
         </div>

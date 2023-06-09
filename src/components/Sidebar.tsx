@@ -2,7 +2,11 @@ import { motion, useCycle } from 'framer-motion';
 import Link from 'next/dist/client/link';
 import type { FC, Key } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { AiOutlineGithub, AiOutlineTwitter } from 'react-icons/ai';
+import {
+  AiFillGithub,
+  AiOutlineGithub,
+  AiOutlineTwitter,
+} from 'react-icons/ai';
 import { BiCopyright } from 'react-icons/bi';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { TiSocialLinkedin } from 'react-icons/ti';
@@ -272,9 +276,9 @@ const Sidebar: FC<SidebarProps> = ({
                 variants={ItemVariant}
                 className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2"
               >
-                <AiOutlineGithub size={24} />
+                <AiFillGithub size={20} />
                 <TiSocialLinkedin size={24} />
-                <AiOutlineTwitter size={24} />
+                <AiOutlineTwitter size={20} />
               </motion.div>
             </div>
             <motion.div
