@@ -92,7 +92,7 @@ const About: NextPage<Props> = () => {
 
       <AboutEntry
         id="engaging"
-        imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685910938/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_k8aamj.jpg"
+        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686317800/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_bjunnz.webp"
         title="Crafting Captivating and User-Centric Interfaces"
         colorScheme="reverse"
       >
@@ -111,7 +111,7 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
         id="performance"
-        imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911161/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_fk7coh.jpg"
+        imgSrc="  https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911161/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_fk7coh.png"
         title="Enhancing Website Performance for Lightning-Fast Loading"
         colorScheme="normal"
         isReversed
@@ -130,7 +130,7 @@ const About: NextPage<Props> = () => {
       <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       <AboutEntry
         id="responsive"
-        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1685911383/About%20Photos/photo-1605379399642-870262d3d051_pjov25.avif"
+        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686003498/About%20Photos/3_fjdmhi.png"
         title="Designing Websites that Seamlessly Adapt Across Devices"
         colorScheme="reverse"
       >
