@@ -42,7 +42,7 @@ const AboutEntry: FC<Props> = ({
           src={imgSrc}
           alt={id}
           fill={true}
-          // sizes="(max-width: 1920) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768) 75vw, (min-width: 769) 100vh"
           className={`${
             objectPosition || 'object-center'
           } inset-0 block h-auto w-full object-cover `}
