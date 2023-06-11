@@ -24,6 +24,7 @@ export type User = {
   _id: string;
   __v: number;
   profilePicture: string;
+  termsAndConditions: boolean;
 };
 
 type State = {
@@ -51,20 +52,9 @@ type State = {
   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>;
   register: (credentials: RegisterCredentials) => Promise<Error | undefined>;
   fetchUser: () => Promise<Error | undefined>;
-  verifyEmail: (params: VerifyMailParams) => any;
-  resendEmailVerification: (params: ResendEmailVerificationParams) => any;
   logout: () => Promise<void>;
 
   setCallbacks: React.Dispatch<React.SetStateAction<Callbacks | undefined>>;
-};
-
-type VerifyMailParams = {
-  user_id: string;
-  verification_token: string;
-};
-
-type ResendEmailVerificationParams = {
-  user_id: string;
 };
 
 type LoginCredentials = {
@@ -84,6 +74,7 @@ type RegisterCredentials = {
   email: string;
   password: string;
   profilePicture?: string;
+  termsAndConditions: boolean;
 };
 
 export const AuthContext = createContext<State>({} as State);
@@ -182,6 +173,7 @@ export const AuthProvider = ({ children }: Props) => {
     email,
     password,
     profilePicture,
+    termsAndConditions,
   }: RegisterCredentials) => {
     const alertId = createAlert('Register');
     setIsLoading(true);
@@ -191,6 +183,7 @@ export const AuthProvider = ({ children }: Props) => {
       email,
       password,
       profilePicture,
+      termsAndConditions,
     });
 
     const config = {
@@ -214,52 +207,6 @@ export const AuthProvider = ({ children }: Props) => {
       const { data } = err.response;
       setError(err);
 
-      setIsLoading(false);
-      updateAlert(alertId, data.msg, data.success);
-      return data;
-    }
-  };
-
-  const verifyEmail = async ({
-    user_id,
-    verification_token,
-  }: VerifyMailParams) => {
-    setIsLoading(true);
-    const body = { user_id, verification_token };
-    try {
-      const res = await axios.put('/api/users/email-confirmation', body);
-
-      setError(undefined);
-      setIsLoading(false);
-
-      return res.data;
-    } catch (err: any) {
-      const { data } = err.response;
-      setError(err);
-      setIsLoading(false);
-      return data;
-    }
-  };
-
-  const resendEmailVerification = async ({
-    user_id,
-  }: ResendEmailVerificationParams) => {
-    const alertId = createAlert('Resend Email Verification');
-    setIsLoading(true);
-    const body = { user_id };
-    try {
-      const res = await axios.post(
-        '/api/users/resend-email-confirmation',
-        body
-      );
-
-      setError(undefined);
-      setIsLoading(false);
-      updateAlert(alertId, res.data.msg, res.data.success);
-      return res.data;
-    } catch (err: any) {
-      const { data } = err.response;
-      setError(err);
       setIsLoading(false);
       updateAlert(alertId, data.msg, data.success);
       return data;
@@ -311,7 +258,7 @@ export const AuthProvider = ({ children }: Props) => {
     } catch (err: any) {
       const { data } = err.response;
       updateAlert(alertId, data.msg, data.success);
-      console.log(data, 'login data err');
+
       setError(err);
       setIsLoading(false);
 
@@ -361,8 +308,6 @@ export const AuthProvider = ({ children }: Props) => {
         register,
         updateProfile,
         fetchUser,
-        verifyEmail,
-        resendEmailVerification,
         setCallbacks,
       }}
     >

@@ -15,10 +15,9 @@ type Props = {
   name: string;
   error: string;
   id: string;
-
-  label: string;
-  backgroundColor: string;
   labelColor?: string;
+  label: string;
+  backgroundColor?: string;
   placeholder?: string;
   onChangeHandler: () => void;
   onBlurHandler: () => void;
@@ -52,13 +51,13 @@ const TextArea = ({
           initial={{ x: 0 }}
           animate={controls}
           transition={{ type: 'spring', duration: 0.1 }}
-          className="relative flex flex-col gap-1  "
+          className="relative flex  flex-col gap-1   "
         >
           <label
             htmlFor={name}
-            className={`${labelColor || 'text-primary'} ${
-              !error || 'text-error'
-            } flex items-center gap-1`}
+            className={` ${!error || 'text-error'} ${
+              labelColor || 'text-primary dark:text-secondary'
+            }  flex items-center gap-1`}
           >
             {error && (
               <TooltipTrigger className="flex ">
@@ -85,11 +84,7 @@ const TextArea = ({
               placeholder={placeholder || ''}
               name={name}
               id={id}
-              className={`peer relative w-full rounded-lg ${
-                backgroundColor || 'bg-primary_t text-secondary '
-              } py-2 px-4  outline-none ${
-                error ? 'border border-error' : ''
-              }   `}
+              className={`peer relative  w-full  border-b-2 border-b-accent bg-transparent  py-2 outline-none dark:border-b-accent2   `}
               value={value}
               onChange={onChangeHandler}
               onBlur={onBlurHandler}

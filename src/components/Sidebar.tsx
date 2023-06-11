@@ -201,8 +201,8 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         className={` ${
-          isScrolled ? 'bg-secondary py-3 dark:bg-primary' : 'py-5'
-        }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20 transition-all  duration-150   ease-in-out max-md:px-4  `}
+          isScrolled ? 'bg-[#E2C9D8] py-3 dark:bg-[#282828] ' : 'py-5'
+        }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20  max-md:px-4  `}
       >
         <div className="flex items-center ">
           <SidebarToggler
@@ -250,11 +250,11 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         ref={containerRef}
-        className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between  bg-secondary  dark:bg-primary   
+        className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between  bg-[#E2C9D8] dark:bg-[#282828]   
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center bg-secondary p-20 dark:bg-primary max-md:px-4`}
+          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center  bg-[#E2C9D8] p-20 dark:bg-[#282828] max-md:px-4`}
           variants={sidebar}
         >
           <motion.ul
@@ -267,14 +267,13 @@ const Sidebar: FC<SidebarProps> = ({
               ))}
             </div>
             <div className="my-4 flex  flex-col  gap-4">
-              <ul className="flex flex-col items-start gap-2 text-secondary_s_2 underline ">
-                <motion.li variants={ItemVariant}>Support</motion.li>
+              <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
                 <motion.li variants={ItemVariant}>Privacy Policy</motion.li>
                 <motion.li variants={ItemVariant}>Terms of use</motion.li>
               </ul>
               <motion.div
                 variants={ItemVariant}
-                className="flex items-center gap-2 text-primary_t_2 dark:text-accent_t_2"
+                className="flex items-center gap-2 text-accent dark:text-accent2"
               >
                 <AiFillGithub size={20} />
                 <TiSocialLinkedin size={24} />
@@ -283,10 +282,10 @@ const Sidebar: FC<SidebarProps> = ({
             </div>
             <motion.div
               variants={ItemVariant}
-              className="flex items-center gap-2 text-secondary"
+              className="flex items-center gap-2 text-primary dark:text-secondary"
             >
               {new Date().getFullYear()}
-              <BiCopyright className="text-primary_t_2 dark:text-accent_t_2" />
+              <BiCopyright />
               <p>All right reserved.</p>
             </motion.div>
           </motion.ul>

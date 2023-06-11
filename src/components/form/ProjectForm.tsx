@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import Button from '@/components/Button';
 import TextArea from '@/components/form/TextArea';
 import HeadlessCombobox from '@/components/HeadlessCombobox';
-import Tabs from '@/components/Tab';
+import Tabs from '@/components/Tabs';
 import TeamCombobox from '@/components/TeamCombobox';
 import { useProject } from '@/context/hooks/useProject';
 // Combobox Options
@@ -145,6 +145,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.fullProjectName}
                     as={Input}
                     backgroundColor="bg-secondary_s"
+                    labelColor="text-primary"
                   />
 
                   <Field
@@ -158,6 +159,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.url}
                     as={Input}
                     backgroundColor="bg-secondary_s"
+                    labelColor="text-primary"
                   />
                   <Field
                     label="Github Repo"
@@ -169,6 +171,7 @@ const ProjectForm: React.FC = () => {
                     value={githubRepo}
                     error={errors.githubRepo}
                     as={Input}
+                    labelColor="text-primary"
                     backgroundColor="bg-secondary_s"
                   />
                 </ProjectWrapper>
@@ -185,6 +188,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.domain}
                     as={Input}
                     backgroundColor="bg-secondary_s"
+                    labelColor="text-primary"
                   />
                   <Field
                     label="Description"
@@ -197,6 +201,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.desc}
                     backgroundColor="bg-secondary_s"
                     as={TextArea}
+                    labelColor="text-primary"
                   />
                 </ProjectWrapper>
                 <ProjectWrapper desc="Did you work alone on this project ? What technologies have you used ?">
@@ -212,6 +217,7 @@ const ProjectForm: React.FC = () => {
                     onChange={handleChange}
                     as={HeadlessCombobox}
                     error={errors.technologies}
+                    labelColor="text-primary"
                   />
                   <Field
                     setFieldValue={setFieldValue}
@@ -225,6 +231,7 @@ const ProjectForm: React.FC = () => {
                     onChange={handleChange}
                     as={TeamCombobox}
                     error={errors.team}
+                    labelColor="text-primary"
                   />
 
                   <div className="grid grid-cols-2 gap-20 space-x-1 ">
@@ -237,6 +244,7 @@ const ProjectForm: React.FC = () => {
                       as={InputImage}
                       error={errors.images}
                       type="file"
+                      labelColor="text-primary"
                     />
 
                     <Field
@@ -248,6 +256,7 @@ const ProjectForm: React.FC = () => {
                       as={InputImage}
                       error={errors.images}
                       type="file"
+                      labelColor="text-primary"
                     />
                   </div>
                   <Field
@@ -260,6 +269,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.images}
                     type="file"
                     multiple
+                    labelColor="text-primary"
                   />
                 </ProjectWrapper>
               </Tabs>

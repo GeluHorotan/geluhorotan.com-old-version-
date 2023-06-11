@@ -44,7 +44,6 @@ const LoginForm = ({ className, rounded }: Props) => {
             value={email}
             error={errors.email}
             as={Input}
-            icon={<FormIcon icon={<AiOutlineMail />} error={errors.email} />}
           />
           <Field
             label="Password"
@@ -56,15 +55,14 @@ const LoginForm = ({ className, rounded }: Props) => {
             value={password}
             error={errors.password}
             as={Input}
-            icon={<FormIcon icon={<AiOutlineLock />} error={errors.password} />}
           />
 
           <Button
             type="submit"
-            className="mb-4 w-full rounded-lg   bg-accent2 py-2   uppercase text-primary dark:text-primary"
+            className="mb-4 w-max rounded-lg border-2 border-accent    px-6 py-2 font-bold   uppercase text-primary dark:border-accent2 dark:text-secondary"
             rounded
           >
-            LOGIN
+            CONNECT
           </Button>
         </Form>
       )}

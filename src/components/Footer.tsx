@@ -18,7 +18,7 @@ type FooterItemProps = {
 const FooterItem: FC<FooterItemProps> = ({ children, href, target }) => {
   return (
     <Link href={href} target={target || ''}>
-      <p className="flex items-center gap-2 text-start font-extralight tracking-widest transition-all duration-150 ease-in-out hover:translate-x-1 hover:text-accent2">
+      <p className="flex items-center gap-2 text-start font-extralight tracking-widest transition-all duration-150 ease-in-out hover:translate-x-1 ">
         {children}
       </p>
     </Link>
@@ -27,12 +27,12 @@ const FooterItem: FC<FooterItemProps> = ({ children, href, target }) => {
 
 const Footer: FC<Props> = ({ children }) => {
   return (
-    <div className=" flex h-[50vh] flex-col items-center justify-between border-b-8  border-b-accent2 bg-primary p-20  text-secondary  max-[1012px]:h-max max-[1012px]:gap-10 max-[1012px]:px-8  max-[1012px]:py-6  ">
+    <div className=" flex h-[50vh] flex-col items-center justify-between  bg-accent p-20  text-secondary dark:bg-accent2 dark:text-primary max-[1012px]:h-max max-[1012px]:gap-10 max-[1012px]:px-8  max-[1012px]:py-6  ">
       <div className="flex w-full justify-center gap-40 max-[1012px]:flex-col max-[1012px]:gap-6 ">
         {' '}
         <div className="flex h-full flex-col items-center justify-center   ">
           <div className="flex h-full  w-full flex-col items-start justify-start gap-4 ">
-            <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
+            <p className="font-semibold  uppercase tracking-[0.2rem] ">
               Navigation
             </p>
             <div className="flex flex-col gap-2">
@@ -48,9 +48,7 @@ const Footer: FC<Props> = ({ children }) => {
         </div>
         <div className="flex flex-col items-center justify-center   ">
           <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
-            <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
-              Legal
-            </p>
+            <p className="font-semibold  uppercase tracking-[0.2rem] ">Legal</p>
             <div className="flex flex-col gap-2">
               <FooterItem href={'/terms-and-conditions'}>
                 Terms and Conditions
@@ -63,7 +61,7 @@ const Footer: FC<Props> = ({ children }) => {
         </div>
         <div className="flex flex-col items-center justify-center  ">
           <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
-            <p className="font-semibold  uppercase tracking-[0.2rem] text-primary_t_2">
+            <p className="font-semibold  uppercase tracking-[0.2rem] ">
               Socials
             </p>
             <div className="flex flex-col gap-2">
@@ -90,7 +88,7 @@ const Footer: FC<Props> = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="h-[0.1rem] w-full bg-primary_t"></div>
+      <div className="h-[0.1rem] w-full bg-primary "></div>
       <div className="">
         <p className="tracking-widest">
           All rights reserved &copy; Gelu Horotan {new Date().getFullYear()}{' '}

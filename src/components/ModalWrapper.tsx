@@ -22,14 +22,14 @@ const ModalWrapper = ({
 }: Props) => {
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-      <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
+      <div className="fixed inset-0  bg-black/60" aria-hidden="true" />
       <div className="fixed inset-0 flex items-center justify-center  ">
         <Dialog.Panel
           className={`${
             !backgroundColor ? 'bg-primary_t' : backgroundColor
           } relative flex h-5/6  w-1/2  flex-col  items-center justify-between  rounded-lg p-7`}
         >
-          <div className="absolute top-0 left-0 z-50 flex w-full items-center justify-between  py-2 px-4 ">
+          <div className="absolute top-0 left-0 z-50 flex w-full items-center justify-between  py-2 px-4  ">
             <h5 className="text-primary">{title} </h5>
             <IoMdClose
               size={32}

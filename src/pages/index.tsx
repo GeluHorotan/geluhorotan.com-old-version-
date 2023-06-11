@@ -7,6 +7,7 @@ import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
 import { scroller } from 'react-scroll';
 
 import Button from '@/components/Button';
+import ContactForm from '@/components/form/ContactForm';
 import ProjectForm from '@/components/form/ProjectForm';
 import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
@@ -151,7 +152,7 @@ export default function Home() {
       </section>
       <section
         id="projects"
-        className="container flex h-max w-full flex-col items-center justify-center gap-8 !bg-red-400 "
+        className="container flex h-max w-full flex-col items-center justify-center gap-8  "
       >
         {user && user.role === Role.Admin && (
           <Button
@@ -204,7 +205,7 @@ export default function Home() {
                       </Link>
                       <Link
                         href="#"
-                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
+                        className="flex items-center justify-center gap-2 rounded-xl border border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
                       >
                         <HiOutlineExternalLink size={16} /> VISIT
                       </Link>
@@ -216,7 +217,21 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="container flex items-center justify-center !bg-blue-400"></section>
+      <section className="container flex  items-center justify-center ">
+        <div className="flex w-1/2 flex-col gap-12 ">
+          <div className="flex w-1/2 flex-col gap-4">
+            <h2 className="futura-heavy tracking-wider">
+              Let&apos;s connect
+              <span className="text-accent dark:text-accent2">!</span>{' '}
+            </h2>
+            <p>
+              Can&apos;t wait to meet you. <br />
+              Please note that the fields marked with * are required!{' '}
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
     </Main>
   );
 }

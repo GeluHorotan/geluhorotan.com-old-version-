@@ -20,7 +20,7 @@ const ShowcaseEntry: FC<Props> = ({
   scrollToId,
 }) => {
   return (
-    <div className=" relative z-20 flex  h-full flex-col items-start justify-center gap-6   p-4 text-primary dark:text-secondary ">
+    <div className=" relative  flex  h-full flex-col items-start justify-center gap-6   p-4 text-primary dark:text-secondary ">
       <div className="flex items-center justify-start gap-2  ">
         <div className="text-accent dark:text-accent2"> {icon}</div>
         <h6 className="break-words ">{title}</h6>
@@ -33,7 +33,7 @@ const ShowcaseEntry: FC<Props> = ({
           </h3>
           <Link
             href={`/about?scrollTo=${scrollToId}&scrollDuration=${scrollDuration}`}
-            className="rounded-xl bg-accent px-3 py-1 text-secondary dark:bg-accent2 dark:text-primary"
+            className="rounded-xl border border-accent  px-3 py-1 text-primary dark:border-accent2 dark:text-secondary"
           >
             READ MORE
           </Link>

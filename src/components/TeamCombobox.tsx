@@ -114,9 +114,7 @@ const TeamCombobox = ({
             <Combobox multiple onChange={handleOnChange}>
               <div className="relative flex flex-col   ">
                 <Combobox.Input
-                  className={`w-full rounded-lg bg-secondary_s p-2 outline-none  duration-200 ease-in-out ${
-                    error ? 'border border-error' : ''
-                  } `}
+                  className={`w-full  border-b-2 border-b-accent  bg-transparent p-2 outline-none duration-200  ease-in-out dark:border-b-accent2 `}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={`Select the ${name}.`}
                 />

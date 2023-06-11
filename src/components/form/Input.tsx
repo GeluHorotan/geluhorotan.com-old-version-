@@ -16,11 +16,12 @@ type Props = {
   name: string;
   error: string;
   id: string;
-
+  labelColo?: string;
+  isRequired: boolean;
   backgroundColor: string;
   label: string;
-  icon?: ReactNode;
   placeholder?: string;
+  labelColor?: string;
   onChangeHandler: () => void;
   onBlurHandler: () => void;
 };
@@ -36,8 +37,8 @@ const Input = ({
   label,
   placeholder,
   backgroundColor,
-
-  icon,
+  labelColor,
+  isRequired,
 }: Props) => {
   const controls = useAnimationControls();
 
@@ -58,30 +59,26 @@ const Input = ({
         >
           <label
             htmlFor={name}
-            className={` ${
-              !error ? 'text-primary' : 'text-error'
-            } flex items-center gap-1 `}
+            className={` flex items-center
+             gap-1 ${labelColor || 'text-primary dark:text-secondary'} `}
           >
-            {!icon && error && (
+            {error && (
               <TooltipTrigger className="flex ">
                 <BiErrorCircle
                   className={`${
                     error ? 'text-error' : 'text-primary dark:text-secondary'
                   }`}
                   size={16}
-                ></BiErrorCircle>
+                />
               </TooltipTrigger>
             )}
-            {label}
+            {label}&nbsp;
+            {isRequired && '*'}
           </label>
 
-          <div className={` relative    `}>
+          <div className={` relative   `}>
             <input
-              className={`peer relative w-full appearance-none rounded-lg  ${
-                backgroundColor || 'bg-primary_t'
-              } py-2 pr-4 text-base font-light text-secondary ${
-                icon ? 'indent-8' : 'px-4'
-              } outline-none  `}
+              className={`peer relative w-full appearance-none  border-b-2 border-b-accent  bg-transparent py-2 pr-4 text-base font-light text-primary outline-none placeholder:text-secondary_s_2 dark:border-b-accent2  dark:text-secondary `}
               placeholder={placeholder || ''}
               name={name}
               type={type}
@@ -90,21 +87,6 @@ const Input = ({
               onChange={onChangeHandler}
               onBlur={onBlurHandler}
             />
-
-            {icon && (
-              <div className=" absolute top-2/4 left-2 -translate-y-2/4 ">
-                {!error ? (
-                  icon
-                ) : (
-                  <TooltipTrigger className="flex ">
-                    <BiErrorCircle
-                      className="text-error"
-                      size={16}
-                    ></BiErrorCircle>
-                  </TooltipTrigger>
-                )}
-              </div>
-            )}
 
             {error && (
               <TooltipContent>
