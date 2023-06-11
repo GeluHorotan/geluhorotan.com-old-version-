@@ -151,7 +151,7 @@ export default function Home() {
       </section>
       <section
         id="projects"
-        className="container flex h-max !min-h-0 w-full flex-col items-center justify-center gap-8  "
+        className="container flex h-max w-full flex-col items-center justify-center gap-8 !bg-red-400 "
       >
         {user && user.role === Role.Admin && (
           <Button
@@ -216,7 +216,7 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="container"></section>
+      <section className="container flex items-center justify-center !bg-blue-400"></section>
     </Main>
   );
 }
