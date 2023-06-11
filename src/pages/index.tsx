@@ -218,8 +218,8 @@ export default function Home() {
         </div>
       </section>
       <section className="container flex  items-center justify-center ">
-        <div className="flex w-1/2 flex-col gap-12 ">
-          <div className="flex w-1/2 flex-col gap-4">
+        <div className="flex w-1/2 flex-col gap-12 max-[800px]:w-full ">
+          <div className="flex w-full flex-col gap-4">
             <h2 className="futura-heavy tracking-wider">
               Let&apos;s connect
               <span className="text-accent dark:text-accent2">!</span>{' '}

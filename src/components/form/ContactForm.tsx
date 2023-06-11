@@ -150,9 +150,9 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
           <Field
             label={
               <div>
-                * I agree that my personal information provided above may be
-                used to contact me regarding this inquiry. <br /> For further
-                information, please read our &nbsp;
+                I agree that my personal information provided above may be used
+                to contact me regarding this inquiry. <br /> For further
+                information, please read our&nbsp;
                 <Link
                   href="/terms-and-conditions"
                   key="privacy"
@@ -160,7 +160,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
                 >
                   privacy policy
                 </Link>
-                .
+                . *
               </div>
             }
             id="consent"
@@ -170,7 +170,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             type="checkbox"
             value={consent}
             error={errors.consent}
-            labelColor={'text-secondary'}
+            labelColor={'text-primary dark:text-secondary'}
             as={Checkbox}
             isRequired
           />

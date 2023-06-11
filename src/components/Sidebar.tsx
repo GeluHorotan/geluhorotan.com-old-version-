@@ -224,10 +224,7 @@ const Sidebar: FC<SidebarProps> = ({
         </div>
         <div className="flex  items-center justify-between gap-6  ">
           {!isAuthenticated ? (
-            <Link
-              href="/signin"
-              className="   text-primary dark:text-secondary"
-            >
+            <Link href="/login" className="   text-primary dark:text-secondary">
               SIGN IN
             </Link>
           ) : (
@@ -250,11 +247,11 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         ref={containerRef}
-        className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between  bg-[#E2C9D8] dark:bg-[#282828]   
+        className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between    
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-[calc(100vh-4.25rem)]  w-full items-start justify-center  bg-[#E2C9D8] p-20 dark:bg-[#282828] max-md:px-4`}
+          className={`fixed bottom-0 z-40 flex h-screen  w-full items-start justify-center  bg-[#E2C9D8] p-20 py-40 dark:bg-[#282828] max-md:px-4`}
           variants={sidebar}
         >
           <motion.ul

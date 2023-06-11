@@ -110,7 +110,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
             {!isAuthenticated ? (
               <li className="navigation-item ">
                 {' '}
-                <Link href="/signin">SIGN IN</Link>
+                <Link href="/login">SIGN IN</Link>
               </li>
             ) : (
               <Dropdown data={dropdownData} secondLabel={user?.email}>

@@ -27,10 +27,10 @@ const ModalWrapper = ({
         <Dialog.Panel
           className={`${
             !backgroundColor ? 'bg-primary_t' : backgroundColor
-          } relative flex h-5/6  w-1/2  flex-col  items-center justify-between  rounded-lg p-7`}
+          } relative flex h-5/6  w-11/12 flex-col items-center  justify-between rounded-lg  p-7 `}
         >
-          <div className="absolute top-0 left-0 z-50 flex w-full items-center justify-between  py-2 px-4  ">
-            <h5 className="text-primary">{title} </h5>
+          <div className="absolute top-0 left-0 z-50 flex w-full items-center justify-between py-2 px-4 text-secondary  ">
+            <h5 className="">{title} </h5>
             <IoMdClose
               size={32}
               onClick={() => setIsOpen(false)}

@@ -158,14 +158,14 @@ const RegisterForm = ({ className, rounded }: Props) => {
               }
             >
               <div className="flex flex-col justify-center gap-8">
-                <div className="relative flex w-max flex-col-reverse items-start justify-center gap-1  rounded-full   text-secondary">
+                <div className="relative flex  w-max flex-col-reverse items-start justify-center gap-1  rounded-full   text-secondary">
                   <div className="flex items-center justify-center gap-2">
                     {croppedImage && (
                       <Image
                         src={croppedImage}
                         alt="Profile Picture"
-                        width={32}
-                        height={32}
+                        width={64}
+                        height={64}
                         className={`rounded-full `}
                       />
                     )}
@@ -185,13 +185,12 @@ const RegisterForm = ({ className, rounded }: Props) => {
 
                   <Button
                     type="button"
-                    className={` h-8 w-8 rounded-lg bg-primary_t  text-secondary ${
+                    className={` h-16 w-16 rounded-full bg-primary_t  text-secondary ${
                       !croppedImage ? 'show' : 'hidden'
                     }`}
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     <MdAddAPhoto size={16} />
-
                     <ModalWrapper
                       isOpen={isOpen}
                       setIsOpen={setIsOpen}
@@ -231,13 +230,15 @@ const RegisterForm = ({ className, rounded }: Props) => {
                       </TooltipContent>
                     )}
                     <span
-                      className={`${errors.profilePicture ? 'text-error' : ''}`}
+                      className={`${
+                        errors.profilePicture ? 'text-error' : ''
+                      } text-primary dark:text-secondary`}
                     >
                       Profile picture *
                     </span>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 space-x-1">
+                <div className="grid grid-cols-2 space-x-1 max-[960px]:grid-cols-1 max-[960px]:gap-8 max-[960px]:space-x-0">
                   <Field
                     label="First name"
                     id="firstName"
@@ -276,7 +277,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                   as={Input}
                   isRequired
                 />
-                <div className="grid grid-cols-2 space-x-1">
+                <div className="grid grid-cols-2 space-x-1 max-[960px]:grid-cols-1 max-[960px]:gap-8 max-[960px]:space-x-0">
                   <Field
                     label="Password"
                     id="password"
@@ -313,14 +314,14 @@ const RegisterForm = ({ className, rounded }: Props) => {
                 <Field
                   label={
                     <div>
-                      * I agree to the&nbsp;
+                      I agree to the&nbsp;
                       <Link
                         href="/terms-and-conditions"
                         className="text-accent dark:text-accent2"
                       >
                         terms and conditions
                       </Link>
-                      .
+                      . *
                     </div>
                   }
                   id="termsAndConditions"
@@ -330,7 +331,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                   type="checkbox"
                   value={termsAndConditions}
                   error={errors.termsAndConditions}
-                  labelColor={'text-secondary'}
+                  labelColor={'dark:text-secondary text-primary'}
                   as={Checkbox}
                   isRequired
                 />

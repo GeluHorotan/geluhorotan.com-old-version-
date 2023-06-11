@@ -34,8 +34,8 @@ const Register: NextPage<Props> = () => {
         />
       }
     >
-      <section className="container flex items-center justify-center   ">
-        <div className="mt-40 w-1/2">
+      <section className="container flex items-center justify-center !py-40  ">
+        <div className=" w-1/2 max-[960px]:w-full">
           <div className="flex w-full flex-col items-start justify-center gap-12  ">
             <div className="flex w-full flex-col gap-4  ">
               <h2 className="futura-heavy tracking-wider">
