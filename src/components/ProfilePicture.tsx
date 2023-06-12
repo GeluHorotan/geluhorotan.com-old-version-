@@ -9,11 +9,13 @@ type Props = {
   imageSrc?: string;
   userFirstName?: string;
   className?: string;
+  isScrolled?: boolean;
 };
 
 const ProfilePicture = ({
   size,
   imageSrc,
+  isScrolled,
   userFirstName,
   className,
   ...props
@@ -22,7 +24,6 @@ const ProfilePicture = ({
 
   const dimensions: { [key: string]: number } = {
     small: 36,
-
     medium: 75,
     large: 150,
   };
@@ -32,8 +33,8 @@ const ProfilePicture = ({
 
   return (
     <Image
-      width={width}
-      height={height}
+      width={isScrolled ? 24 : width}
+      height={isScrolled ? 24 : width}
       alt={`${
         !userFirstName ? user?.firstName : userFirstName
       }'s profile picture`}

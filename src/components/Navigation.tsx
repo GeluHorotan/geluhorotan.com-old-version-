@@ -81,7 +81,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
       {!isMobile && (
         <nav
           className={` ${
-            isScrolled ? '   bg-[#E2C9D8] py-3 dark:bg-[#282828]' : 'py-5'
+            isScrolled ? '    bg-secondary py-3 dark:bg-primary' : 'py-5'
           }  fixed top-0 z-50 flex w-full flex-row items-center justify-between px-20 transition-all duration-150   ease-in-out  `}
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">

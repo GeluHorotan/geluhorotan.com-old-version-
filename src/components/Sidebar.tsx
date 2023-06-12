@@ -201,10 +201,10 @@ const Sidebar: FC<SidebarProps> = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         className={` ${
-          isScrolled ? 'bg-[#E2C9D8] py-3 dark:bg-[#282828] ' : 'py-5'
+          isScrolled ? ' bg-secondary py-3 dark:bg-primary ' : 'py-5'
         }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20  max-md:px-4  `}
       >
-        <div className="flex items-center ">
+        <div className="flex items-center justify-center gap-3    ">
           <SidebarToggler
             toggle={() => toggleOpen()}
             isOpen={isOpen}
@@ -212,11 +212,11 @@ const Sidebar: FC<SidebarProps> = ({
             setTheme={setTheme}
             isScrolled={isScrolled}
           />
-          <Link href="/">
+          <Link href="/" className="">
             <div
               className={`${
-                isScrolled ? 'text-4xl' : 'text-5xl'
-              }  duration-250 text-primary transition-all ease-in-out dark:text-secondary`}
+                isScrolled ? 'text-2xl' : 'text-3xl'
+              }  duration-250 text-accent transition-all ease-in-out dark:text-accent2`}
             >
               HG
             </div>
@@ -234,12 +234,15 @@ const Sidebar: FC<SidebarProps> = ({
               reverseColor
             >
               <div className="flex  items-center justify-between gap-2 ">
-                <ProfilePicture size="small" className="rounded-lg" />
-                <HiOutlineChevronRight className="rotate-90 text-primary dark:text-secondary" />
+                <ProfilePicture
+                  size="small"
+                  className="rounded-lg"
+                  isScrolled={isScrolled}
+                />
+                <HiOutlineChevronRight className="rotate-90 text-accent dark:text-accent2" />
               </div>
             </Dropdown>
           )}
-          <DarkMode theme={theme} setTheme={setTheme}></DarkMode>
         </div>
       </motion.div>
       <motion.nav
@@ -251,18 +254,26 @@ const Sidebar: FC<SidebarProps> = ({
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-screen  w-full items-start justify-center  bg-[#E2C9D8] p-20 py-40 dark:bg-[#282828] max-md:px-4`}
+          className={`fixed bottom-0 z-40 flex h-screen  w-full items-start justify-center  bg-secondary p-20 py-40 dark:bg-primary max-md:px-4`}
           variants={sidebar}
         >
           <motion.ul
             variants={SidebarVariant}
             className=" flex w-full flex-col items-start justify-center  gap-8 px-5 "
           >
+            <motion.div variants={ItemVariant}>
+              <DarkMode
+                theme={theme}
+                setTheme={setTheme}
+                isScrolled={isScrolled}
+              />
+            </motion.div>
             <div className="flex flex-col gap-4">
               {navItems.map((item: { id: number; name: string }, i: Key) => (
                 <SidebarItem key={i} item={item} />
               ))}
             </div>
+
             <div className="my-4 flex  flex-col  gap-4">
               <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
                 <motion.li variants={ItemVariant}>Privacy Policy</motion.li>

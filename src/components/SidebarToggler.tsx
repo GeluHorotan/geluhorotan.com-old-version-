@@ -51,12 +51,12 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
     <button
       onClick={() => toggle()}
       className={`
-     h-12  w-12 cursor-pointer  rounded-full border-none   outline-none
+     cursor-pointer  rounded-full border-none    outline-none
   `}
     >
       <svg
-        width={`${isScrolled ? '20' : '23'}`}
-        height={`${isScrolled ? '20' : '23'}`}
+        width={`${isScrolled ? '18' : '23'}`}
+        height={`${isScrolled ? '18' : '23'}`}
         viewBox="0 0 23 23"
       >
         <Path
@@ -64,23 +64,23 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
             closed: { d: 'M 2 2.5 L 20 2.5' },
             open: { d: 'M 3 16.5 L 17 2.5' },
           }}
-          className={`${pathClassNames} transition-colors duration-700`}
+          className={`stroke-accent transition-colors duration-700 dark:stroke-accent2  `}
         />
         <Path
-          d="M 2 9.423 L 20 9.423"
+          d="M 2 9.423 L 13 9.423"
           variants={{
             closed: { opacity: 1 },
             open: { opacity: 0 },
           }}
           transition={{ duration: 0.1 }}
-          className={`${pathClassNames} transition-colors duration-700`}
+          className={`stroke-accent transition-colors duration-700 dark:stroke-accent2`}
         />
         <Path
           variants={{
             closed: { d: 'M 2 16.346 L 20 16.346' },
             open: { d: 'M 3 2.5 L 17 16.346' },
           }}
-          className={`${pathClassNames} transition-colors duration-700`}
+          className={`stroke-accent transition-colors duration-700 dark:stroke-accent2`}
         />
       </svg>
     </button>
