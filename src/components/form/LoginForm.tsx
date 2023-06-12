@@ -1,14 +1,12 @@
 // Form
 import { Field, Form, Formik } from 'formik';
-// Icons
-import { AiOutlineLock, AiOutlineMail } from 'react-icons/ai';
 
+// Icons
 import { useAuth } from '@//context/hooks/useAuth';
 import Button from '@/components/Button';
 // Components
 import Input from '@/components/form/Input';
-
-import FormIcon from './FormIcon';
+import useButtonCooldown from '@/context/hooks/useButtonCooldown';
 
 type Props = {
   className?: string;
@@ -17,6 +15,7 @@ type Props = {
 
 const LoginForm = ({ className, rounded }: Props) => {
   const { login } = useAuth();
+  const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
 
   return (
     <Formik
@@ -27,6 +26,7 @@ const LoginForm = ({ className, rounded }: Props) => {
         password: '',
       }}
       onSubmit={async ({ email, password }) => {
+        handleClick();
         await login({ email, password });
       }}
     >
@@ -59,8 +59,9 @@ const LoginForm = ({ className, rounded }: Props) => {
 
           <Button
             type="submit"
-            className="mb-4 w-max rounded-lg border-2 border-accent    px-6 py-2 font-bold   uppercase text-primary dark:border-accent2 dark:text-secondary"
+            className=" mb-4 w-max rounded-lg border-2  border-accent  px-6 py-2 font-bold   uppercase transition-all duration-75 ease-in-out  disabled:!border-secondary_s_2 disabled:!text-secondary_s_2  dark:border-accent2 "
             rounded
+            disabled={isButtonDisabled}
           >
             CONNECT
           </Button>

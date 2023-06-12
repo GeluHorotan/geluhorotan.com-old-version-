@@ -8,6 +8,7 @@ import { useAuth } from '@//context/hooks/useAuth';
 import Button from '@/components/Button';
 // Components
 import Input from '@/components/form/Input';
+import useButtonCooldown from '@/context/hooks/useButtonCooldown';
 import { useContact } from '@/context/hooks/useContact';
 
 import Checkbox from './Checkbox';
@@ -41,6 +42,7 @@ const ContactSchema = Yup.object().shape({
 });
 
 const ContactForm: FC<Props> = ({ className, rounded }) => {
+  const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
   const { sendMessage } = useContact();
 
   return (
@@ -64,6 +66,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
         message,
         consent,
       }) => {
+        handleClick();
         await sendMessage({
           firstName,
           lastName,
@@ -177,8 +180,9 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
 
           <Button
             type="submit"
-            className="mb-4 w-max rounded-lg border border-accent    px-6 py-2 font-bold   uppercase text-primary dark:border-accent2 dark:text-secondary"
+            className=" mb-4 w-max rounded-lg border-2  border-accent  px-6 py-2 font-bold   uppercase transition-all duration-75 ease-in-out  disabled:!border-secondary_s_2 disabled:!text-secondary_s_2  dark:border-accent2 "
             rounded
+            disabled={isButtonDisabled}
           >
             SEND MESSAGE
           </Button>

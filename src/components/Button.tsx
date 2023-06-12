@@ -8,6 +8,7 @@ type Props = {
   className?: string;
   rounded?: boolean;
   eventName?: string;
+  disabled?: boolean;
   onClick?: () => void;
   type: 'button' | 'submit' | 'reset';
 };
@@ -16,7 +17,8 @@ const Button = ({
   children,
   className,
   rounded,
-
+  onClick,
+  disabled,
   type,
   ...rest
 }: Props) => {
@@ -27,10 +29,12 @@ const Button = ({
       transition={{ duration: 0.1, ease: 'easeInOut' }}
       type={type}
       className={cn(
-        'flex items-center  justify-center rounded-full text-primary dark:text-secondary',
+        'flex items-center  justify-center rounded-full text-primary dark:text-secondary ',
         className
       )}
       {...rest}
+      onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </motion.button>

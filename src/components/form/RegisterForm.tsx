@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import { useAuth } from '@//context/hooks/useAuth';
 import Button from '@/components/Button';
 import ModalWrapper from '@/components/ModalWrapper';
+import useButtonCooldown from '@/context/hooks/useButtonCooldown';
 
 import {
   Tooltip,
@@ -90,6 +91,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const RegisterForm = ({ className, rounded }: Props) => {
+  const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
   const { register } = useAuth();
   const [passVisible, setPassVisible] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -125,6 +127,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
             termsAndConditions,
           }) => {
             if (password === password2) {
+              handleClick();
               await register({
                 firstName,
                 lastName,
@@ -337,8 +340,9 @@ const RegisterForm = ({ className, rounded }: Props) => {
                 />
                 <Button
                   type="submit"
-                  className="mb-4 w-max rounded-lg border-2 border-accent    px-6 py-2 font-bold   uppercase text-primary dark:border-accent2 dark:text-secondary"
+                  className=" mb-4 w-max rounded-lg border-2  border-accent  px-6 py-2 font-bold   uppercase transition-all duration-75 ease-in-out  disabled:!border-secondary_s_2 disabled:!text-secondary_s_2  dark:border-accent2 "
                   rounded
+                  disabled={isButtonDisabled}
                 >
                   REGISTER
                 </Button>
