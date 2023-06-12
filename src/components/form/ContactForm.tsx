@@ -8,6 +8,7 @@ import { useAuth } from '@//context/hooks/useAuth';
 import Button from '@/components/Button';
 // Components
 import Input from '@/components/form/Input';
+import { useContact } from '@/context/hooks/useContact';
 
 import Checkbox from './Checkbox';
 
@@ -40,6 +41,8 @@ const ContactSchema = Yup.object().shape({
 });
 
 const ContactForm: FC<Props> = ({ className, rounded }) => {
+  const { sendMessage } = useContact();
+
   return (
     <Formik
       validateOnBlur
@@ -53,16 +56,6 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
         message: '',
         consent: false,
       }}
-      // onSubmit={async ({
-      //   firstName,
-      //   lastName,
-      //   email,
-      //   subject,
-      //   message,
-      //   consent,
-      // }) => {
-      //   await login({ firstName, lastName, email, subject, message, consent });
-      // }}
       onSubmit={async ({
         firstName,
         lastName,
@@ -71,7 +64,14 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
         message,
         consent,
       }) => {
-        console.log('object');
+        await sendMessage({
+          firstName,
+          lastName,
+          email,
+          subject,
+          message,
+          consent,
+        });
       }}
     >
       {({
