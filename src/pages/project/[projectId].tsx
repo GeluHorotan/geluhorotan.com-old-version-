@@ -33,7 +33,6 @@ type ProjectState = {
   }[];
   images: {
     gallery: string[];
-    mobile: string;
     header: string;
   };
 };

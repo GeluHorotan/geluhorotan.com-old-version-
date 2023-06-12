@@ -22,7 +22,7 @@ const Alert = ({ id, message, isFulfilled, isPending, alertTitle }: Props) => {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 100, opacity: 0 }}
       transition={{ duration: 0.1 }}
-      className=" relative cursor-pointer bg-gray-800 "
+      className=" relative cursor-pointer  bg-[#2B2A4C] dark:bg-[#413543]  "
     >
       <motion.div
         initial={{ width: '100%' }}
@@ -47,7 +47,7 @@ const Alert = ({ id, message, isFulfilled, isPending, alertTitle }: Props) => {
               <MdErrorOutline size={18} className={'text-error'} />
             )}
 
-            <h6 className=" tracking-tight text-secondary_t">{alertTitle}</h6>
+            <h6 className=" tracking-tight text-secondary ">{alertTitle}</h6>
           </div>
           <p className="  text-base text-secondary_s_2">{message && message}</p>
         </div>
