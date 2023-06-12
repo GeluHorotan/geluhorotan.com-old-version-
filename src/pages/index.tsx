@@ -174,6 +174,9 @@ export default function Home() {
           </Button>
         )}
         {isLoading && <Spinner size={'large'} />}
+        <Spinner size={'small'} />
+        <Spinner size={'medium'} />
+        <Spinner size={'large'} />
         <div className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 ">
           {projects?.map((project, i) => {
             return (

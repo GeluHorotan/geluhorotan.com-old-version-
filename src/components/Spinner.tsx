@@ -6,9 +6,9 @@ interface Props {
 
 const Spinner: FC<Props> = ({ size }) => {
   const dimensions: { [key: string]: string } = {
-    small: 'h-6 w-6 border-[0.2rem]',
-    medium: 'h-12 w-12 border-[0.4rem]',
-    large: 'h-24 w-24 border-[0.6rem]',
+    small: 'h-4 w-4 border-[0.2rem]',
+    medium: 'h-8 w-8 border-[0.3rem]',
+    large: 'h-12 w-12 border-[0.4rem]',
   };
 
   return (
