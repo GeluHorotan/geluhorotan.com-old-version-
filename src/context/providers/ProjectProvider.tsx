@@ -142,12 +142,7 @@ export const ProjectProvider = ({ children }: Props) => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('/api/projects', {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-auth-token': `${localStorage.getItem('token')}`,
-        },
-      });
+      const res = await axios.get('/api/projects');
       setProjects(res.data.projects);
       setError(undefined);
       setIsLoading(false);
