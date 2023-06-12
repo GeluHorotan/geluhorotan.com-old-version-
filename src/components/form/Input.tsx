@@ -18,7 +18,7 @@ type Props = {
   id: string;
   labelColo?: string;
   isRequired: boolean;
-  backgroundColor: string;
+  reverseTextColor: boolean;
   label: string;
   placeholder?: string;
   labelColor?: string;
@@ -36,7 +36,7 @@ const Input = ({
   id,
   label,
   placeholder,
-  backgroundColor,
+  reverseTextColor,
   labelColor,
   isRequired,
 }: Props) => {
@@ -78,7 +78,11 @@ const Input = ({
 
           <div className={` relative   `}>
             <input
-              className={`peer relative w-full appearance-none  border-b-2 border-b-accent  bg-transparent py-2 pr-4 text-base font-light text-primary outline-none placeholder:text-secondary_s_2 dark:border-b-accent2  dark:text-secondary `}
+              className={`peer relative w-full appearance-none  border-b-2 border-b-accent  bg-transparent py-2 pr-4 text-base font-light text-primary outline-none placeholder:text-secondary_s_2 dark:border-b-accent2  ${
+                reverseTextColor
+                  ? 'text-secondary dark:text-primary'
+                  : 'text-primary dark:text-secondary'
+              } `}
               placeholder={placeholder || ''}
               name={name}
               type={type}

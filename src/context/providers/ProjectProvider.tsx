@@ -31,7 +31,6 @@ export type ProjectDetails = {
   }[];
   images: {
     gallery: string[];
-    mobile: string;
     header: string;
   };
 };
@@ -67,7 +66,6 @@ type Projects = {
   team: Developers;
   images: {
     gallery: string[];
-    mobile: string;
     header: string;
   };
 }[];

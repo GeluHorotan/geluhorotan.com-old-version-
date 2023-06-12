@@ -78,7 +78,6 @@ const ProjectForm: React.FC = () => {
           technologies: [],
           team: [],
           images: {
-            mobile: '',
             header: '',
             gallery: [],
           },
@@ -144,7 +143,7 @@ const ProjectForm: React.FC = () => {
                     value={fullProjectName}
                     error={errors.fullProjectName}
                     as={Input}
-                    backgroundColor="bg-secondary_s"
+                    reverseTextColor
                     labelColor="text-primary"
                   />
 
@@ -158,8 +157,8 @@ const ProjectForm: React.FC = () => {
                     value={url}
                     error={errors.url}
                     as={Input}
-                    backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
+                    reverseTextColor
                   />
                   <Field
                     label="Github Repo"
@@ -172,7 +171,7 @@ const ProjectForm: React.FC = () => {
                     error={errors.githubRepo}
                     as={Input}
                     labelColor="text-primary"
-                    backgroundColor="bg-secondary_s"
+                    reverseTextColor
                   />
                 </ProjectWrapper>
 
@@ -187,8 +186,8 @@ const ProjectForm: React.FC = () => {
                     value={domain}
                     error={errors.domain}
                     as={Input}
-                    backgroundColor="bg-secondary_s"
                     labelColor="text-primary"
+                    reverseTextColor
                   />
                   <Field
                     label="Description"
@@ -199,9 +198,9 @@ const ProjectForm: React.FC = () => {
                     type="input"
                     value={desc}
                     error={errors.desc}
-                    backgroundColor="bg-secondary_s"
                     as={TextArea}
                     labelColor="text-primary"
+                    reverseTextColor
                   />
                 </ProjectWrapper>
                 <ProjectWrapper desc="Did you work alone on this project ? What technologies have you used ?">
@@ -218,6 +217,7 @@ const ProjectForm: React.FC = () => {
                     as={HeadlessCombobox}
                     error={errors.technologies}
                     labelColor="text-primary"
+                    reverseTextColor
                   />
                   <Field
                     setFieldValue={setFieldValue}
@@ -231,22 +231,11 @@ const ProjectForm: React.FC = () => {
                     onChange={handleChange}
                     as={TeamCombobox}
                     error={errors.team}
+                    reverseTextColor
                     labelColor="text-primary"
                   />
 
                   <div className="grid grid-cols-2 gap-20 space-x-1 ">
-                    <Field
-                      setFieldValue={setFieldValue}
-                      name="images.mobile"
-                      value={images.mobile}
-                      id={'mobileImage'}
-                      label="Mobile Image"
-                      as={InputImage}
-                      error={errors.images}
-                      type="file"
-                      labelColor="text-primary"
-                    />
-
                     <Field
                       setFieldValue={setFieldValue}
                       name="images.header"
@@ -257,20 +246,22 @@ const ProjectForm: React.FC = () => {
                       error={errors.images}
                       type="file"
                       labelColor="text-primary"
+                      reverseTextColor
+                    />
+                    <Field
+                      setFieldValue={setFieldValue}
+                      name="images.gallery"
+                      value={images.gallery}
+                      id={'gallery'}
+                      label="Gallery Image"
+                      as={InputImage}
+                      error={errors.images}
+                      type="file"
+                      multiple
+                      labelColor="text-primary"
+                      reverseTextColor
                     />
                   </div>
-                  <Field
-                    setFieldValue={setFieldValue}
-                    name="images.gallery"
-                    value={images.gallery}
-                    id={'gallery'}
-                    label="Gallery Image"
-                    as={InputImage}
-                    error={errors.images}
-                    type="file"
-                    multiple
-                    labelColor="text-primary"
-                  />
                 </ProjectWrapper>
               </Tabs>
               <div className="flex  flex-col ">

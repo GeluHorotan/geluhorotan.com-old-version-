@@ -42,7 +42,7 @@ export const AlertProvider = ({ children }: Props) => {
 
   const createAlert = (alertTitle: string, isPending = true) => {
     const id = short.generate();
-    const message = <Spinner size={4} />;
+    const message = <Spinner size={'small'} />;
 
     setAlerts((alerts) => [...alerts, { id, alertTitle, message, isPending }]);
 

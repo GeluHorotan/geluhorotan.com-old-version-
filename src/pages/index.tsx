@@ -15,6 +15,7 @@ import Scrolldown from '@/components/Scrolldown';
 import ScrollTo from '@/components/ScrollTo';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
+import Spinner from '@/components/Spinner';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
 import { Meta } from '@/layouts/Meta';
@@ -23,7 +24,7 @@ import Role from '@/utils/roles';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const { projects } = useProject();
+  const { projects, isLoading } = useProject();
   const { user } = useAuth();
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -172,6 +173,7 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
+        {isLoading && <Spinner size={'large'} />}
         <div className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 ">
           {projects?.map((project, i) => {
             return (
