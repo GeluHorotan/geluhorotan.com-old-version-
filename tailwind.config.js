@@ -64,6 +64,11 @@ module.exports = {
   },
   // #343434
   plugins: [
+    require('tailwindcss-text-fill'),
+    require('tailwindcss-autofill'),
+    require('tailwindcss-shadow-fill'),
+    require('tailwindcss-text-fill'),
+    require('@tailwindcss/forms'),
     require('@headlessui/tailwindcss'),
     require('tailwindcss-animate'),
     { prefix: 'ui' },
@@ -74,4 +79,12 @@ module.exports = {
     }),
     require('autoprefixer'),
   ],
+  variants: {
+    extend: {
+      // Enable `autofill` variant for plugins you want
+      borderColor: ['autofill'],
+      shadowFill: ['autofill'],
+      textFill: ['autofill'],
+    },
+  },
 };

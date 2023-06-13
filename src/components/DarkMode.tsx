@@ -20,7 +20,6 @@ const DarkMode: FC<DarkModeProps> = ({
   isScrolled,
 }) => {
   const [isMounted] = useMount();
-  const isMobile = useMediaQuery('(max-width: 1012px)');
 
   if (isMounted) {
     return (

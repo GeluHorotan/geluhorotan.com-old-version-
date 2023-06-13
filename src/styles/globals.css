@@ -45,7 +45,7 @@ input[type='checkbox'] {
   cursor: pointer;
 }
 
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
@@ -55,6 +55,17 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: #fcfcfc;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-size-adjust: none !important;
+} */
+
+.test {
+  -webkit-text-fill-color: red;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-size-adjust: none !important;
+}
+.test2 {
+  -webkit-text-fill-color: yellow;
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-size-adjust: none !important;
 }

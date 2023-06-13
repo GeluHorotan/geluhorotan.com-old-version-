@@ -59,7 +59,7 @@ const Checkbox = ({
             value={value}
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
-            className="h-4 w-4 rounded !bg-secondary_s_2 !p-2 checked:!bg-accent dark:!bg-primary_t checked:dark:!bg-accent2  "
+            className=" h-4 w-4  rounded border-gray-300 bg-gray-100 text-yellow-600 dark:border-gray-600 dark:bg-gray-700  "
           />
           {error && (
             <TooltipTrigger className="flex ">
