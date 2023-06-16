@@ -21,7 +21,7 @@ const AboutTechEntry: FC<Props> = ({ techName }) => {
           }}
         />
       </div>
-      <p className="uppercase">
+      <p className="uppercase ">
         {techName === 'react' ? 'react / nextjs' : techName}
       </p>
     </div>

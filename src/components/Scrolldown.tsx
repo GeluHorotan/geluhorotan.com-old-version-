@@ -39,7 +39,7 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
       )}
     >
       <svg
-        width="40px"
+        width="20px"
         height="100%"
         viewBox="0 0 247 390"
         version="1.1"
@@ -56,7 +56,7 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
       >
         <motion.path
           initial={{ y: 0 }}
-          animate={{ y: 50 }}
+          animate={{ y: 40 }}
           transition={{
             duration: 1,
             repeat: Infinity,
@@ -68,7 +68,7 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
           style={{
             fill: 'none',
             stroke: '#fff',
-            strokeWidth: '20px',
+            strokeWidth: '15px',
           }}
         />
         <path
@@ -77,11 +77,11 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
           style={{
             fill: 'none',
             stroke: '#fff',
-            strokeWidth: '20px',
+            strokeWidth: '10px',
           }}
         />
       </svg>
-      <h6 className="text-lg font-bold tracking-wider">Scroll Down</h6>
+      <p className="text-sm  tracking-wider">Scroll Down</p>
     </div>
   );
 };

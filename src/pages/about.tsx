@@ -6,6 +6,7 @@ import AboutEntry from '@/components/AboutEntry';
 import AboutTechEntry from '@/components/AboutTechEntry';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+import { TextTemplate } from '@/templates/TextTemplate';
 
 type Props = {
   children?: React.ReactNode;
@@ -35,7 +36,9 @@ const About: NextPage<Props> = () => {
   }, [scrollTo, scrollDuration]);
 
   return (
-    <Main
+    <TextTemplate
+      pageTitle="About"
+      headerPadding
       meta={
         <Meta
           title="Gelu Horotan - Software Engineer"
@@ -43,15 +46,14 @@ const About: NextPage<Props> = () => {
         />
       }
     >
-      <section className=" container flex !h-max  items-center justify-center gap-40 py-40  max-[1100px]:flex-col  ">
-        <div className="flex h-full w-1/2 flex-col justify-center gap-10  max-[1100px]:w-full">
-          <h1 className="futura-heavy relative    tracking-widest ">ABOUT</h1>
-          <div className="flex w-full flex-col gap-8 max-[1076px]:w-full">
-            <h4 className="">
+      <section className=" flex !h-max flex-col items-start  justify-center gap-8 px-20 max-[1100px]:flex-col  max-md:px-4  ">
+        <div className="flex h-full w-full flex-col justify-center gap-10   max-[1100px]:w-full">
+          <div className="flex w-1/2  flex-col gap-8 max-[1076px]:w-full">
+            <h4>
               Detail-oriented professional and critical thinker with a flair for
               creating elegant solutions in the least amount of time.
             </h4>
-            <p>
+            <p className="">
               {' '}
               Driven by curiosity and inspired by my best friend&apos;s
               encouragement, I embarked on my coding journey in November 2021.
@@ -80,10 +82,10 @@ const About: NextPage<Props> = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col items-start justify-center gap-2 max-[1100px]:items-center">
-          <h6 className="tracking-widedst">TECH</h6>
+        <div className="flex flex-col items-start justify-center gap-2  max-[1100px]:items-center">
+          <h4 className="tracking-widedst font-semibold">TECH</h4>
 
-          <div className="rounded- flex w-full flex-col items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
+          <div className=" flex w-full  items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
             <AboutTechEntry techName={'javascript'} />
 
             <AboutTechEntry techName={'react'} />
@@ -93,67 +95,70 @@ const About: NextPage<Props> = () => {
           </div>
         </div>
       </section>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+      <div>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
 
-      <AboutEntry
-        id="engaging"
-        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686318465/About%20Photos/fotis-fotopoulos-DuHKoV44prg-unsplash_jjuvsw.webp"
-        title="Crafting Captivating and User-Centric Interfaces"
-        colorScheme="reverse"
-      >
-        {' '}
-        With a passion for user-centric design and expertise in frontend
-        technologies, I specialize in crafting engaging user interfaces that
-        captivate audiences. By seamlessly blending aesthetics and
-        functionality, I create visually stunning and intuitive web solutions.
-        Through meticulous attention to detail, strategic use of animations, and
-        seamless navigation, I ensure memorable and impactful user experiences.
-        I take pride in designing interfaces that not only meet client goals but
-        also leave a lasting impression.
-      </AboutEntry>
+        <AboutEntry
+          id="engaging"
+          imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686318465/About%20Photos/fotis-fotopoulos-DuHKoV44prg-unsplash_jjuvsw.webp"
+          title="Crafting Captivating and User-Centric Interfaces"
+          colorScheme="reverse"
+        >
+          {' '}
+          With a passion for user-centric design and expertise in frontend
+          technologies, I specialize in crafting engaging user interfaces that
+          captivate audiences. By seamlessly blending aesthetics and
+          functionality, I create visually stunning and intuitive web solutions.
+          Through meticulous attention to detail, strategic use of animations,
+          and seamless navigation, I ensure memorable and impactful user
+          experiences. I take pride in designing interfaces that not only meet
+          client goals but also leave a lasting impression.
+        </AboutEntry>
 
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <AboutEntry
-        id="performance"
-        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686318464/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_sy5mar.webp"
-        title="Enhancing Website Performance for Lightning-Fast Loading"
-        colorScheme="normal"
-        isReversed
-      >
-        {' '}
-        Performance I am committed to optimizing website performance to its
-        fullest potential. By implementing advanced techniques, meticulous code
-        optimization, and strategic asset compression, I ensure lightning-fast
-        loading times and seamless user interactions. Through efficient caching
-        strategies, browser compatibility, and performance-enhancing
-        methodologies, I deliver superior user experiences. By prioritizing
-        performance, I help businesses thrive in today&apos;s digital landscape,
-        providing a competitive edge and driving success.
-      </AboutEntry>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <AboutEntry
-        id="responsive"
-        imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686317800/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_bjunnz.webp"
-        title="Designing Websites that Seamlessly Adapt Across Devices"
-        colorScheme="reverse"
-        objectPosition="object-right"
-      >
-        {' '}
-        With a mobile-first approach and deep expertise in responsive design
-        principles, I specialize in creating seamless and user-friendly
-        websites. By utilizing fluid layouts, flexible grids, and media queries,
-        I ensure consistent experiences across devices. Through meticulous
-        attention to detail, accessibility considerations, and a focus on
-        usability, I deliver websites that adapt effortlessly to any screen size
-        or device. I prioritize responsive design to provide inclusive
-        experiences that cater to diverse audiences.
-      </AboutEntry>
-      <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-      <div className="h-20 w-full bg-accent dark:bg-accent2" id="test"></div>
-    </Main>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <AboutEntry
+          id="performance"
+          imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686318464/About%20Photos/gabriel-vasiliu-1cIirhlCMts-unsplash_sy5mar.webp"
+          title="Enhancing Website Performance for Lightning-Fast Loading"
+          colorScheme="normal"
+          isReversed
+        >
+          {' '}
+          Performance I am committed to optimizing website performance to its
+          fullest potential. By implementing advanced techniques, meticulous
+          code optimization, and strategic asset compression, I ensure
+          lightning-fast loading times and seamless user interactions. Through
+          efficient caching strategies, browser compatibility, and
+          performance-enhancing methodologies, I deliver superior user
+          experiences. By prioritizing performance, I help businesses thrive in
+          today&apos;s digital landscape, providing a competitive edge and
+          driving success.
+        </AboutEntry>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <AboutEntry
+          id="responsive"
+          imgSrc="https://res.cloudinary.com/dbhkxaszq/image/upload/v1686317800/About%20Photos/mohammad-rahmani-gA396xahf-Q-unsplash_bjunnz.webp"
+          title="Designing Websites that Seamlessly Adapt Across Devices"
+          colorScheme="reverse"
+          objectPosition="object-right"
+        >
+          {' '}
+          With a mobile-first approach and deep expertise in responsive design
+          principles, I specialize in creating seamless and user-friendly
+          websites. By utilizing fluid layouts, flexible grids, and media
+          queries, I ensure consistent experiences across devices. Through
+          meticulous attention to detail, accessibility considerations, and a
+          focus on usability, I deliver websites that adapt effortlessly to any
+          screen size or device. I prioritize responsive design to provide
+          inclusive experiences that cater to diverse audiences.
+        </AboutEntry>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
+      </div>
+    </TextTemplate>
   );
 };
 

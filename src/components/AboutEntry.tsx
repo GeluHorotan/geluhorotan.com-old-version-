@@ -35,7 +35,7 @@ const AboutEntry: FC<Props> = ({
       id={id}
       className={`${colorMap[colorScheme as keyof ColorMap]} container  flex ${
         isReversed && 'flex-row-reverse'
-      }  items-center justify-center !p-0  max-[850px]:!h-max max-[850px]:!min-h-max  max-[850px]:flex-col max-[850px]:gap-20 max-[850px]:pb-20 `}
+      }  items-center justify-center !p-0  max-[850px]:!h-max max-[850px]:!min-h-max  max-[850px]:flex-col max-[850px]:gap-20 max-[850px]:!pb-14 `}
     >
       <div className="relative h-screen w-[50vw] overflow-hidden  max-[850px]:h-[50vh] max-[850px]:w-full">
         <Image
