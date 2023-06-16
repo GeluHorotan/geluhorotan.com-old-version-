@@ -45,6 +45,7 @@ module.exports = {
       },
       fontFamily: {
         exosoft: ['exo-soft', 'sans-serif'],
+        futura: ['futura-pt', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

@@ -22,11 +22,11 @@ const ScrollTo: FC<Props> = ({
 }) => {
   return (
     <Link
-      className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary dark:bg-accent2 dark:text-primary"
-      to="target"
-      smooth={true}
-      delay={100}
-      duration={500}
+      className={` w-max cursor-pointer rounded-xl px-4 py-2  text-primary dark:text-secondary ${className}`}
+      to={to}
+      smooth={smooth}
+      delay={delay}
+      duration={duration}
     >
       {children}
     </Link>

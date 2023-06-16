@@ -45,8 +45,6 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
     }
   }, [theme]);
 
-  const pathClassNames = isDarkMode ? 'stroke-primary' : 'stroke-secondary';
-
   return (
     <button
       onClick={() => toggle()}
@@ -55,8 +53,8 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
   `}
     >
       <svg
-        width={`${isScrolled ? '18' : '23'}`}
-        height={`${isScrolled ? '18' : '23'}`}
+        width={`${isScrolled ? '16' : '20'}`}
+        height={`${isScrolled ? '16' : '20'}`}
         viewBox="0 0 23 23"
       >
         <Path

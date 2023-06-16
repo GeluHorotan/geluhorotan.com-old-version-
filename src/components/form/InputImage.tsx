@@ -42,8 +42,6 @@ const InputImage = ({
     reader.readAsDataURL(file);
   };
 
-  console.log(value, 'vv');
-
   return (
     <div className=" flex w-full flex-col   items-center gap-2 rounded-lg ">
       <p className="text-primary ">{label}</p>

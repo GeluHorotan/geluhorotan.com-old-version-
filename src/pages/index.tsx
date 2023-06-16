@@ -47,7 +47,7 @@ export default function Home() {
     return () => {
       clearTimeout(timeout);
     };
-  }, [scrollTo, scrollDuration]);
+  }, [scrollTo, scrollDuration, urlParams]);
 
   return (
     <Main
@@ -81,12 +81,12 @@ export default function Home() {
               </p>
 
               <ScrollTo
-                className=" w-max rounded-xl bg-accent px-4 py-2 text-secondary
-              dark:bg-accent2 dark:text-primary"
+                className=" border-2 
+               border-accent dark:border-accent2 "
                 to="projects"
                 smooth
                 delay={100}
-                duration={500}
+                duration={1000}
               >
                 TO PROJECTS
               </ScrollTo>
@@ -175,7 +175,10 @@ export default function Home() {
         )}
         {isLoading && <Spinner size={'large'} />}
 
-        <div className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 ">
+        <div
+          id="projects"
+          className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 "
+        >
           {projects?.map((project, i) => {
             return (
               <div
@@ -220,7 +223,10 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="container flex  items-center justify-center ">
+      <section
+        id="contact"
+        className="container flex  items-center justify-center "
+      >
         <div className="flex w-1/2 flex-col gap-12 max-[800px]:w-full ">
           <div className="flex w-full flex-col gap-4">
             <h2 className="futura-heavy tracking-wider">

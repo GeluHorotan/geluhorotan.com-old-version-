@@ -69,7 +69,6 @@ const ProjectID = () => {
     getProject();
   }, [projects]);
 
-  console.log(project);
   if (project)
     return (
       <Main

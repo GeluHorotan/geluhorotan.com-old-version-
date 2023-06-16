@@ -19,7 +19,6 @@ import { useDimensions } from '@/customHooks/useDimensions';
 import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
 import ProfilePicture from './ProfilePicture';
-import Logo from './svgs/Logo';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -85,29 +84,30 @@ interface SidebarProps {
   navItems: {
     id: number;
     name: string;
+    to: string;
   }[];
   user: User;
   isAuthenticated: boolean;
 }
 
 interface SidebarItemProps {
-  item: {
-    id: number;
-    name: string;
-  };
+  name: string;
+  to: string;
+  toggle: () => void;
 }
 
-const SidebarItem: FC<SidebarItemProps> = ({ item }) => {
+const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle }) => {
   return (
     <motion.li
+      onClick={() => toggle()}
       variants={ItemVariant}
-      className="flex w-full flex-col items-start justify-center   "
+      className="navigation-item flex w-full flex-col items-start justify-center  "
     >
       <Link
-        href={`/${item.name === 'home' ? '' : item.name}`}
+        href={to}
         className=" text-xl font-medium uppercase tracking-widest text-primary dark:text-secondary"
       >
-        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+        {name}
       </Link>
     </motion.li>
   );
@@ -212,16 +212,24 @@ const Sidebar: FC<SidebarProps> = ({
             setTheme={setTheme}
             isScrolled={isScrolled}
           />
-          <Link href="/" className="">
-            <div
-              className={`${
-                isScrolled ? 'text-2xl' : 'text-3xl'
-              }  duration-250 text-accent transition-all ease-in-out dark:text-accent2`}
-            >
-              HG
-            </div>
-          </Link>
+
+          <div
+            className={`${
+              isScrolled ? 'text-base' : 'text-lg'
+            }  duration-250 font-medium text-accent transition-all ease-in-out dark:text-accent2`}
+          >
+            MENU
+          </div>
         </div>
+        <Link href="/" className="">
+          <div
+            className={`${
+              isScrolled ? 'text-2xl' : 'text-3xl'
+            }  duration-250 mr-5 font-medium text-accent transition-all ease-in-out dark:text-accent2`}
+          >
+            HG
+          </div>
+        </Link>
         <div className="flex  items-center justify-between gap-6  ">
           {!isAuthenticated ? (
             <Link href="/login" className="   text-primary dark:text-secondary">
@@ -254,48 +262,70 @@ const Sidebar: FC<SidebarProps> = ({
            `}
       >
         <motion.div
-          className={`fixed bottom-0 z-40 flex h-screen  w-full items-start justify-center  bg-secondary p-20 py-40 dark:bg-primary max-md:px-4`}
+          className={`fixed bottom-0 z-40 flex h-screen   w-full items-start justify-center bg-secondary  px-20 py-40 dark:bg-primary max-md:px-4`}
           variants={sidebar}
         >
           <motion.ul
             variants={SidebarVariant}
-            className=" flex w-full flex-col items-start justify-center  gap-8 px-5 "
+            className=" flex w-full flex-col items-start justify-center gap-8   "
           >
-            <motion.div variants={ItemVariant}>
-              <DarkMode
-                theme={theme}
-                setTheme={setTheme}
-                isScrolled={isScrolled}
-              />
-            </motion.div>
-            <div className="flex flex-col gap-4">
-              {navItems.map((item: { id: number; name: string }, i: Key) => (
-                <SidebarItem key={i} item={item} />
-              ))}
-            </div>
-
-            <div className="my-4 flex  flex-col  gap-4">
-              <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
-                <motion.li variants={ItemVariant}>Privacy Policy</motion.li>
-                <motion.li variants={ItemVariant}>Terms of use</motion.li>
-              </ul>
+            <div className="flex flex-col gap-14">
+              <motion.div variants={ItemVariant}>
+                <DarkMode
+                  theme={theme}
+                  setTheme={setTheme}
+                  isScrolled={isScrolled}
+                />
+              </motion.div>
+              <div className="flex flex-col gap-4">
+                {navItems.map(
+                  (
+                    item: {
+                      to: string;
+                      id: number;
+                      name: string;
+                    },
+                    i: Key
+                  ) => (
+                    <SidebarItem
+                      key={i}
+                      name={item.name}
+                      to={item.to}
+                      toggle={() => toggleOpen()}
+                    />
+                  )
+                )}
+              </div>
+              <div className="my-4 flex  flex-col  gap-4">
+                <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
+                  <motion.li variants={ItemVariant} className="navigation-item">
+                    Privacy Policy
+                  </motion.li>
+                  <motion.li variants={ItemVariant} className="navigation-item">
+                    Terms of use
+                  </motion.li>
+                </ul>
+              </div>
+              <div className="flex items-center gap-2 text-accent dark:text-accent2">
+                <motion.div variants={ItemVariant}>
+                  <AiFillGithub size={20} />
+                </motion.div>
+                <motion.div variants={ItemVariant}>
+                  <TiSocialLinkedin size={24} />
+                </motion.div>
+                <motion.div variants={ItemVariant}>
+                  <AiOutlineTwitter size={20} />
+                </motion.div>
+              </div>
               <motion.div
                 variants={ItemVariant}
-                className="flex items-center gap-2 text-accent dark:text-accent2"
+                className="flex items-center gap-2 text-primary dark:text-secondary"
               >
-                <AiFillGithub size={20} />
-                <TiSocialLinkedin size={24} />
-                <AiOutlineTwitter size={20} />
+                {new Date().getFullYear()}
+                <BiCopyright />
+                <p>All right reserved.</p>
               </motion.div>
             </div>
-            <motion.div
-              variants={ItemVariant}
-              className="flex items-center gap-2 text-primary dark:text-secondary"
-            >
-              {new Date().getFullYear()}
-              <BiCopyright />
-              <p>All right reserved.</p>
-            </motion.div>
           </motion.ul>
         </motion.div>
       </motion.nav>

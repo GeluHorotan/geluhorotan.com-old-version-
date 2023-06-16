@@ -144,10 +144,12 @@ export const ProjectProvider = ({ children }: Props) => {
         'https://geluhorotancom-horotangelu17.b4a.run/api/projects'
       );
       setProjects(res.data.projects);
+      console.log(res, 'res');
       setError(undefined);
       setIsLoading(false);
     } catch (err: any) {
       setError(err);
+      console.log(err, 'err');
       setIsLoading(false);
       return err.response;
     }

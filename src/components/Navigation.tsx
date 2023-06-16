@@ -24,35 +24,21 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const isMobile = useMediaQuery('(max-width: 1012px)');
 
   const navItems = [
-    { id: 2, name: 'about' },
-    { id: 3, name: 'projects' },
-    { id: 4, name: 'contact' },
+    { id: 0, name: 'ABOUT', to: '/about' },
+    { id: 1, name: 'PROJECTS', to: '/?scrollTo=projects&scrollDuration=2000' },
+    {
+      id: 2,
+      name: 'CONTACT',
+      to: '/?scrollTo=contact&scrollDuration=2500',
+    },
   ];
 
   const dropdownData = {
     header: 'Signed in as',
     items: [
       {
-        name: 'Profile',
-        to: '/dashboard',
-        id: 1,
-      },
-      {
-        name: 'Settings',
-        to: '/about',
-        id: 2,
-      },
-
-      {
-        name: 'Report a bug',
-        to: '/about',
-        id: 3,
-      },
-
-      {
         name: 'Log out',
 
-        isNew: true,
         id: 4,
         action: logout,
       },
@@ -89,7 +75,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
               <div
                 className={`${
                   isScrolled ? 'text-4xl' : 'text-5xl'
-                }  duration-250 text-primary transition-all ease-in-out dark:text-secondary`}
+                }  duration-250 font-medium text-primary transition-all ease-in-out dark:text-secondary`}
               >
                 HG
               </div>
@@ -97,10 +83,8 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {
                 return (
-                  <li key={item.id} className="navigation-item">
-                    <Link href={`/${item.name === 'home' ? '' : item.name}`}>
-                      {item.name}
-                    </Link>
+                  <li key={item.id} className="navigation-item ">
+                    <Link href={item.to}>{item.name}</Link>
                   </li>
                 );
               })}

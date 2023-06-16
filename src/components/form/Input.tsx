@@ -50,7 +50,7 @@ const Input = ({
       controls.start({ x: [0, 3, 0] });
     }
   }, [error]);
-  console.log(theme, 'theme');
+
   if (isMounted) {
     return (
       <TooltipProvider>

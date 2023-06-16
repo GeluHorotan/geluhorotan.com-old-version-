@@ -36,7 +36,7 @@ interface Props {
 const Dropdown: FC<Props> = ({ children, data, secondLabel, reverseColor }) => {
   const router = useRouter();
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger
         className={`${reverseColor && 'text-secondary dark:text-primary'} `}
       >
@@ -52,7 +52,7 @@ const Dropdown: FC<Props> = ({ children, data, secondLabel, reverseColor }) => {
         {data?.items.map((item, i) => {
           return (
             <div key={item.id}>
-              {item.isNew && <DropdownMenuSeparator></DropdownMenuSeparator>}
+              {item.isNew && <DropdownMenuSeparator />}
               <DropdownMenuGroup>
                 <DropdownMenuItem
                   onClick={() => {
