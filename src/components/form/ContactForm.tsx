@@ -12,6 +12,7 @@ import useButtonCooldown from '@/context/hooks/useButtonCooldown';
 import { useContact } from '@/context/hooks/useContact';
 
 import Checkbox from './Checkbox';
+import TextArea from './TextArea';
 
 type Props = {
   className?: string;
@@ -20,23 +21,28 @@ type Props = {
 
 const ContactSchema = Yup.object().shape({
   firstName: Yup.string()
+    .trim()
     .min(3, 'Please enter more than 3 characters!')
-    .max(10, `Please enter less than 10 characters!`)
+    .max(20, `Please enter less than 10 characters!`)
     .required('This field is required!'),
   lastName: Yup.string()
+    .trim()
     .min(3, 'Please enter more than 3 characters!')
-    .max(10, `Please enter less than 10 characters!`)
+    .max(20, `Please enter less than 10 characters!`)
     .required('This field is required!'),
   email: Yup.string()
+    .trim()
     .email('Please enter a valid email!')
     .required('This field is required!'),
   subject: Yup.string()
+    .trim()
     .min(3, 'Please enter more than 3 characters!')
-    .max(10, `Please enter less than 10 characters!`)
+    .max(100, `Please enter less than 10 characters!`)
     .required('This field is required!'),
   message: Yup.string()
+    .trim()
     .min(10, 'Please enter more than 10 characters!')
-    .max(100, 'Please enter less than 100 characters!')
+    .max(10000, 'Please enter less than 100 characters!')
     .required('This field is required!'),
   consent: Yup.boolean().oneOf([true], 'This field is required!'),
 });
@@ -91,7 +97,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             name="firstName"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
+            inputType="text"
             value={firstName}
             error={errors.firstName}
             as={Input}
@@ -104,7 +110,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             name="lastName"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
+            inputType="text"
             value={lastName}
             error={errors.lastName}
             as={Input}
@@ -117,7 +123,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             name="email"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
+            inputType="text"
             value={email}
             error={errors.email}
             as={Input}
@@ -130,7 +136,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             name="subject"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
+            inputType="text"
             value={subject}
             error={errors.subject}
             as={Input}
@@ -143,11 +149,10 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
             name="message"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
             value={message}
             error={errors.message}
             labelColor={'text-secondary'}
-            as={Input}
+            as={TextArea}
             isRequired
           />
           <Field

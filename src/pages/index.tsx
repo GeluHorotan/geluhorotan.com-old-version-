@@ -97,7 +97,7 @@ export default function Home() {
         </div>
         <Scrolldown />
       </section>
-      <section className="container flex !h-max !min-h-max  items-center justify-center   py-20 ">
+      <section className="container flex !h-max !min-h-max  items-center justify-center   py-20">
         <Showcase>
           <ShowcaseEntry
             scrollToId="engaging"

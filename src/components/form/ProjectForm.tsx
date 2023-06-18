@@ -28,7 +28,7 @@ const ProjectForm: React.FC = () => {
   const ProjectSchema = Yup.object().shape({
     fullProjectName: Yup.string()
       .min(3, 'The project name must be longer than 3 characters!')
-      .max(15, 'The project name must not be longer than 15 characters!')
+      .max(20, 'The project name must not be longer than 15 characters!')
       .required('The project name is required!'),
     url: Yup.string().url().required('The url is required!'),
     githubRepo: Yup.string()
@@ -44,7 +44,7 @@ const ProjectForm: React.FC = () => {
     domain: Yup.string()
       .min(3, 'The domain of the project must be longer than 3 characters!')
       .max(
-        45,
+        20,
         'The domain of the project must not be longer than 15 characters!'
       )
       .required('The domain of the project is required!'),
@@ -52,6 +52,10 @@ const ProjectForm: React.FC = () => {
       .min(
         10,
         'The description of the project must be longer than 10 characters!'
+      )
+      .max(
+        1000,
+        'The description of the project must not be longer than 15 characters!'
       )
       .required('The description is required!'),
     technologies: Yup.array()
@@ -139,7 +143,7 @@ const ProjectForm: React.FC = () => {
                     name="fullProjectName"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={fullProjectName}
                     error={errors.fullProjectName}
                     as={Input}
@@ -153,7 +157,7 @@ const ProjectForm: React.FC = () => {
                     name="url"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={url}
                     error={errors.url}
                     as={Input}
@@ -166,7 +170,7 @@ const ProjectForm: React.FC = () => {
                     name="githubRepo"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={githubRepo}
                     error={errors.githubRepo}
                     as={Input}
@@ -182,7 +186,7 @@ const ProjectForm: React.FC = () => {
                     name="domain"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={domain}
                     error={errors.domain}
                     as={Input}
@@ -195,7 +199,6 @@ const ProjectForm: React.FC = () => {
                     name="desc"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
                     value={desc}
                     error={errors.desc}
                     as={TextArea}
@@ -244,7 +247,7 @@ const ProjectForm: React.FC = () => {
                       label="Header Image"
                       as={InputImage}
                       error={errors.images}
-                      type="file"
+                      inputType="file"
                       labelColor="text-primary"
                       reverseTextColor
                     />
@@ -256,7 +259,7 @@ const ProjectForm: React.FC = () => {
                       label="Gallery Image"
                       as={InputImage}
                       error={errors.images}
-                      type="file"
+                      inputType="file"
                       multiple
                       labelColor="text-primary"
                       reverseTextColor

@@ -8,7 +8,7 @@ import getCroppedImg from '@/utils/cropImage';
 
 type Props = {
   value: string;
-  type: string;
+  inputType: string;
   name: string;
   error: string;
   id: string;
@@ -28,7 +28,7 @@ type Crop = {
 };
 
 const InputCropImage = ({
-  type,
+  inputType,
   setFieldValue,
 
   name,
@@ -103,7 +103,7 @@ const InputCropImage = ({
                   accept="image/jpg"
                   onChange={onInputChange}
                   name={name}
-                  type={type}
+                  type={inputType}
                   id={id}
                   className="hidden bg-blue-600"
                 />

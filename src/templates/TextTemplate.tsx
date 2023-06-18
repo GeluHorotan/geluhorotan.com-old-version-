@@ -10,6 +10,7 @@ type ITextTemplateProps = {
   pageTitle: string;
   headerPadding?: boolean;
   bodyPadding?: boolean;
+  bottomBodyPadding?: boolean;
 };
 
 const TextTemplate = ({
@@ -18,6 +19,7 @@ const TextTemplate = ({
   pageTitle,
   headerPadding,
   bodyPadding,
+  bottomBodyPadding,
 }: ITextTemplateProps) => {
   const [theme, setTheme] = useDarkMode();
   return (
@@ -35,8 +37,8 @@ const TextTemplate = ({
         </h1>
         <div
           className={`flex h-1/2  flex-col gap-20 ${
-            !bodyPadding || 'px-20 max-md:px-4'
-          } `}
+            !bottomBodyPadding || 'pb-20'
+          }  ${!bodyPadding || 'px-20 max-md:px-4'} `}
         >
           {children}
         </div>

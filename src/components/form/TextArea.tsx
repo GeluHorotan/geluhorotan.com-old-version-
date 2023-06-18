@@ -21,6 +21,7 @@ type Props = {
   placeholder?: string;
   onChangeHandler: () => void;
   onBlurHandler: () => void;
+  reverseTextColor?: boolean;
 };
 
 const TextArea = ({
@@ -34,6 +35,7 @@ const TextArea = ({
   label,
   placeholder,
   backgroundColor,
+  reverseTextColor,
   labelColor,
 }: Props) => {
   const controls = useAnimationControls();
@@ -84,7 +86,11 @@ const TextArea = ({
               placeholder={placeholder || ''}
               name={name}
               id={id}
-              className={`peer relative  w-full  border-b-2 border-b-accent bg-transparent  py-2 outline-none dark:border-b-accent2   `}
+              className={`peer  relative w-full border-0 border-b-2 border-b-accent bg-transparent py-2 px-0 text-base font-light    placeholder:text-secondary_s_2 focus:border-b-2   focus:ring-0 dark:border-b-accent2 dark:autofill:shadow-none ${
+                reverseTextColor
+                  ? ' text-primary  autofill:shadow-fill-secondary  '
+                  : 'text-primary autofill:shadow-fill-secondary autofill:text-fill-primary  dark:text-secondary    dark:autofill:shadow-fill-primary  dark:autofill:text-fill-secondary  '
+              } `}
               value={value}
               onChange={onChangeHandler}
               onBlur={onBlurHandler}

@@ -14,7 +14,7 @@ import useMount from '@/customHooks/useMount';
 
 type Props = {
   value: string;
-  type: string;
+  inputType: string;
   name: string;
   error: string;
   id: string;
@@ -31,7 +31,7 @@ const Input = ({
   value,
   onChangeHandler,
   onBlurHandler,
-  type,
+  inputType,
   name,
   error,
   id,
@@ -42,7 +42,6 @@ const Input = ({
   isRequired,
 }: Props) => {
   const controls = useAnimationControls();
-  const [theme, setTheme] = useDarkMode();
   const [isMounted] = useMount();
 
   useEffect(() => {
@@ -63,7 +62,7 @@ const Input = ({
           >
             <label
               htmlFor={name}
-              className={` flex items-center
+              className={` flex items-center ${!error || '!text-error'}
              gap-1 ${labelColor || 'text-primary dark:text-secondary'} `}
             >
               {error && (
@@ -82,14 +81,14 @@ const Input = ({
 
             <div className={` relative   `}>
               <input
-                className={` peer relative w-full   border-b-2  border-b-accent bg-transparent py-2  pr-4 text-base font-light  outline-none  placeholder:text-secondary_s_2   dark:border-b-accent2   ${
+                className={` peer  relative w-full border-0 border-b-2 border-b-accent bg-transparent py-2 px-0 text-base font-light    placeholder:text-secondary_s_2 focus:border-b-2   focus:ring-0 dark:border-b-accent2 dark:autofill:shadow-none  ${
                   reverseTextColor
-                    ? ' text-primary  autofill:shadow-fill-secondary   '
-                    : 'text-primary autofill:shadow-fill-secondary autofill:text-fill-primary  dark:text-secondary dark:autofill:shadow-fill-primary   dark:autofill:text-fill-secondary '
-                } `}
+                    ? ' text-primary  autofill:shadow-fill-secondary  '
+                    : 'text-primary autofill:shadow-fill-secondary autofill:text-fill-primary  dark:text-secondary    dark:autofill:shadow-fill-primary  dark:autofill:text-fill-secondary  '
+                }  `}
                 placeholder={placeholder || ''}
                 name={name}
-                type={type}
+                type={inputType}
                 id={id}
                 value={value}
                 onChange={onChangeHandler}

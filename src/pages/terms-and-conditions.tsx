@@ -19,6 +19,7 @@ const TermsAndConditions: NextPage<Props> = () => {
       pageTitle="Terms and conditions"
       headerPadding
       bodyPadding
+      bottomBodyPadding
       meta={
         <Meta
           title="Gelu Horotan - Software Engineer"
@@ -26,7 +27,7 @@ const TermsAndConditions: NextPage<Props> = () => {
         />
       }
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 ">
         <p>
           These terms and conditions outline the rules and regulations for the
           use of Gelu Horotan&apos;s Website, located at www.geluhorotan.com.

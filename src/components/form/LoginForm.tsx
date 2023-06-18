@@ -1,5 +1,6 @@
 // Form
 import { Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
 
 // Icons
 import { useAuth } from '@//context/hooks/useAuth';
@@ -13,6 +14,11 @@ type Props = {
   rounded?: boolean;
 };
 
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().trim().required('This field is required!'),
+  password: Yup.string().trim().required('This field is required!'),
+});
+
 const LoginForm = ({ className, rounded }: Props) => {
   const { login } = useAuth();
   const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
@@ -21,6 +27,7 @@ const LoginForm = ({ className, rounded }: Props) => {
     <Formik
       validateOnBlur
       validateOnChange
+      validationSchema={LoginSchema}
       initialValues={{
         email: '',
         password: '',
@@ -40,7 +47,7 @@ const LoginForm = ({ className, rounded }: Props) => {
             name="email"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="input"
+            inputType="text"
             value={email}
             error={errors.email}
             as={Input}
@@ -51,7 +58,7 @@ const LoginForm = ({ className, rounded }: Props) => {
             name="password"
             onChangeHandler={handleChange}
             onBlurHandler={handleBlur}
-            type="password"
+            inputType="password"
             value={password}
             error={errors.password}
             as={Input}

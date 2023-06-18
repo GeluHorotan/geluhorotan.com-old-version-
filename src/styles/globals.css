@@ -59,7 +59,7 @@
 
 /* Hide the default scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -125,5 +125,40 @@ input[type='checkbox'] {
 
 .text-template-container {
   padding-top: 10rem;
-  padding-bottom: 10rem;
 }
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fcfcfc;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-size-adjust: none !important;
+} */
+
+/* Remove border styles for input[type='text'] */
+
+/* input[type='text'],
+input[type='text']:focus,
+input[type='text']:-webkit-autofill {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+} */
+
+/* Remove border styles for input[type='password'] */
+/* input[type='password'],
+input[type='password']:focus,
+input[type='password']:-webkit-autofill {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+} */

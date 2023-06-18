@@ -5,7 +5,7 @@ import { BiImageAdd } from 'react-icons/bi';
 type Props = {
   multiple?: boolean;
   label: string;
-  type: string;
+  inputType: string;
   id: string;
   value: any;
   setFieldValue: (field: string, value: any) => void;
@@ -15,7 +15,7 @@ type Props = {
 const InputImage = ({
   name,
   id,
-  type,
+  inputType,
   setFieldValue,
   value,
   label,
@@ -82,7 +82,7 @@ const InputImage = ({
             accept="image/jpg"
             onChange={onInputChange}
             name={name}
-            type={type}
+            type={inputType}
             id={id}
             className="hidden bg-blue-600"
           />

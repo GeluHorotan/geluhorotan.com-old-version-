@@ -95,7 +95,7 @@ const About: NextPage<Props> = () => {
           </div>
         </div>
       </section>
-      <div>
+      <div className="flex w-full flex-col bg-red-400">
         <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
         <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
 
@@ -155,8 +155,6 @@ const About: NextPage<Props> = () => {
           screen size or device. I prioritize responsive design to provide
           inclusive experiences that cater to diverse audiences.
         </AboutEntry>
-        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
-        <div className="h-20 w-full bg-accent dark:bg-accent2"></div>
       </div>
     </TextTemplate>
   );

@@ -35,21 +35,26 @@ type Props = {
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
+    .trim()
     .min(3, 'Please enter more than 3 characters!')
-    .max(10, `Please enter less than 10 characters!`)
+    .max(20, `Please enter less than 10 characters!`)
     .required('This field is required!'),
   lastName: Yup.string()
+    .trim()
     .min(3, 'Please enter more than 3 characters!')
-    .max(10, `Please enter less than 10 characters!`)
+    .max(20, `Please enter less than 10 characters!`)
     .required('This field is required!'),
   email: Yup.string()
+    .trim()
     .email('Please enter a valid email!')
     .required('This field is required!'),
   password: Yup.string()
+    .trim()
     .required('This field is required!')
     .min(6, 'Please enter more than 6 characters!')
     .max(24, 'Please enter less than 24 characters!'),
   password2: Yup.string()
+    .trim()
     .required('Password confirmation is required')
     .when('password', {
       is: (value: string) => value && value.length > 0,
@@ -205,7 +210,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                         id="profilePicture"
                         name="profilePicture"
                         onBlurHandler={handleBlur}
-                        type="file"
+                        inputType="file"
                         value={profilePicture}
                         error={errors.profilePicture}
                         as={InputCropImage}
@@ -248,7 +253,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                     name="firstName"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={firstName}
                     error={errors.firstName}
                     as={Input}
@@ -261,7 +266,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                     name="lastName"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type="input"
+                    inputType="text"
                     value={lastName}
                     error={errors.lastName}
                     as={Input}
@@ -274,7 +279,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                   name="email"
                   onChangeHandler={handleChange}
                   onBlurHandler={handleBlur}
-                  type="input"
+                  inputType="text"
                   value={email}
                   error={errors.email}
                   as={Input}
@@ -287,7 +292,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                     name="password"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type={passVisible ? 'text' : 'password'}
+                    inputType={passVisible ? 'text' : 'password'}
                     value={password}
                     error={errors.password}
                     as={Input}
@@ -299,7 +304,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
                     name="password2"
                     onChangeHandler={handleChange}
                     onBlurHandler={handleBlur}
-                    type={passVisible ? 'text' : 'password'}
+                    inputType={passVisible ? 'text' : 'password'}
                     value={password2}
                     error={errors.password2}
                     as={Input}
@@ -312,7 +317,6 @@ const RegisterForm = ({ className, rounded }: Props) => {
                   id="showPass"
                   name="showPass"
                   type="checkbox"
-                  isRequired
                 />
                 <Field
                   label={
