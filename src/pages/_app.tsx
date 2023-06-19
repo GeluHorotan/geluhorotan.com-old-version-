@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import type { ReactElement, ReactNode } from 'react';
+import { type ReactElement, type ReactNode, useEffect } from 'react';
 
 import AlertWrapper from '@/components/AlertWrapper';
 import { RouteShield } from '@/components/RouteShield';
@@ -19,6 +19,20 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const [theme, setTheme] = useDarkMode();
+
+  // Back button bug fixed
+  useEffect(() => {
+    const handlePopstate = () => {
+      window.location.reload();
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('popstate', handlePopstate);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopstate);
+    };
+  }, []);
 
   return (
     <>
