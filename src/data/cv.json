@@ -1,0 +1,96 @@
+{
+  "experience": [
+    {
+      "title": "Gelu Horotan Personal Portfolio",
+      "role": "Full-stack developer",
+      "date": "Sept 2022 - present",
+      "responsabilities": [
+        {
+          "text": "Optimized the application for maximum speed by implementing best practices for front-end and back-end development, including using server-side rendering, caching strategies, reducing HTTP requests."
+        },
+        {
+          "text": "Designed and developed solutions using modern technologies, conducting testing and quality assurance, and deploying applications to production environments."
+        },
+        {
+          "text": "Ensured the security and privacy of the application by implementing best practices for secure coding, such as using encryption and hashing algorithms to protect sensitive data, and implementing access controls to restrict unauthorized access."
+        }
+      ],
+      "acquiredSkills": [
+        "Tailwind CSS",
+        "Next JS",
+        "Node JS (Express)",
+        "Context API",
+        "React Query",
+        "Redux",
+        "Web Sockets",
+        "Mongo DB",
+        "Github"
+      ],
+      "githubURL": "https://github.com/GeluHorotan/geluhorotan.com"
+    },
+    {
+      "title": "The Sinners - Dota 2 Web Application",
+      "role": "Front-end developer",
+      "date": "Apr 2022 - Sept 2022",
+      "responsabilities": [
+        {
+          "text": "Implemented and optimized front-end performance by using techniques such as code splitting, lazy loading, and minification to improve page load times and overall application performance. Monitored front-end performance metrics using tools such as Google PageSpeed Insights and Lighthouse, and made necessary improvements to ensure that the application is fast, efficient, and provided a smooth user experience."
+        },
+        {
+          "text": "Conducted cross-browser testing and implemented web accessibility best practices to ensure that the application is accessible and usable by all users, including those with disabilities."
+        },
+        {
+          "text": "Consumed REST APIs and integrated data visualization tools to present complex data in a user-friendly and understandable way."
+        }
+      ],
+      "acquiredSkills": [
+        "Styled-Components",
+        "React JS",
+        "Node JS (Express)",
+        "Context API",
+        "REST APIs",
+        "Github"
+      ],
+      "githubURL": "https://github.com/GeluHorotan/theSinners",
+      "siteURL": "https://thesinners.netlify.app/"
+    }
+  ],
+  "education": [
+    {
+      "title": "Technical University of Cluj-Napoca",
+      "domain": "Faculty of Sciences - Management",
+      "date": "Oct 2020 - June 2023"
+    },
+    {
+      "title": "Cognizant Softvision",
+      "domain": "Software Testing Workshop - Fall 2019",
+      "date": "Oct 2019 - Dec 2019"
+    }
+  ],
+  "skills": {
+    "softSkills": [
+      "Problem-solving",
+      "Communication",
+      "Critical Thinking",
+      "Receptive",
+      "Time management and organization"
+    ],
+    "hardSkills": [
+      "Algorithms",
+      "Data Structures",
+      "OOP Analysis and Design",
+      "Next JS / Tailwind CSS",
+      "Node JS / Express"
+    ]
+  },
+  "languages": [
+    {
+      "name": "Romanian",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "C2"
+    }
+  ]
+}
