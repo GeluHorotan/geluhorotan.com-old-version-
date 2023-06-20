@@ -85,6 +85,7 @@ const ProjectID = () => {
               src={images.header}
               alt={fullProjectName}
               fill={true}
+              priority
               className="inset-0 block h-auto w-full object-contain object-center"
             />
             <Scrolldown className=" " />
@@ -177,7 +178,7 @@ const ProjectID = () => {
                     alt={fullProjectName}
                     width={1920}
                     height={1080}
-                    className="w-full"
+                    className="w-full "
                   />
                 );
               })}

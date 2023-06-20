@@ -41,6 +41,7 @@ const AboutEntry: FC<Props> = ({
         <Image
           src={imgSrc}
           alt={id}
+          priority
           fill={true}
           sizes="(max-width: 768) 75vw, (min-width: 769) 100vh"
           className={`${

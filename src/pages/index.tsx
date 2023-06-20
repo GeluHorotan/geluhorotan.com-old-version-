@@ -27,7 +27,6 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects, isLoading } = useProject();
   const { user } = useAuth();
-  const myRef = useRef(null);
 
   return (
     <Main
@@ -80,7 +79,7 @@ export default function Home() {
       <section className="container flex !h-max !min-h-max  items-center justify-center   py-20">
         <Showcase>
           <ShowcaseEntry
-            scrollToId="engaging"
+            target="engaging"
             icon={<AiOutlineLayout size={64} />}
             title={'Enagaging UI'}
             number={1}
@@ -97,7 +96,7 @@ export default function Home() {
             on users.
           </ShowcaseEntry>
           <ShowcaseEntry
-            scrollToId="performance"
+            target="performance"
             icon={<MdSpeed size={64} />}
             title={`Performance Optimization`}
             number={2}
@@ -114,7 +113,7 @@ export default function Home() {
             driving success.
           </ShowcaseEntry>
           <ShowcaseEntry
-            scrollToId="responsive"
+            target="responsive"
             icon={<MdDeveloperMode size={64} />}
             title={'Responsive Design'}
             number={3}
@@ -207,7 +206,6 @@ export default function Home() {
       {/* <Element name="contact"> */}
       <section
         id="contact"
-        ref={myRef}
         className="container flex  items-center justify-center "
       >
         <div className="flex w-1/2 flex-col gap-12 max-[800px]:w-full ">

@@ -2,9 +2,11 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import React from 'react';
 
+import useScrollToElement from '@/customHooks/useScrollToElement';
+
 type Props = {
   scrollDuration?: number;
-  scrollToId?: string;
+  target?: string;
   children: React.ReactNode;
   icon?: React.ReactNode;
   title: string;
@@ -13,12 +15,13 @@ type Props = {
 
 const ShowcaseEntry: FC<Props> = ({
   children,
-  scrollDuration,
   icon,
   title,
   number,
-  scrollToId,
+  target,
 }) => {
+  const handleContactClick = useScrollToElement();
+
   return (
     <div className=" relative  flex  h-full flex-col items-start justify-center gap-6   p-4 text-primary dark:text-secondary ">
       <div className="flex items-center justify-start gap-2  ">
@@ -32,7 +35,10 @@ const ShowcaseEntry: FC<Props> = ({
             0{number}
           </h3>
           <Link
-            href={`/about?scrollTo=${scrollToId}&scrollDuration=${scrollDuration}`}
+            href={`/about`}
+            onClick={(event) =>
+              handleContactClick(event, '/about', target, 100)
+            }
             className="rounded-xl border border-accent  px-3 py-1 text-primary dark:border-accent2 dark:text-secondary"
           >
             READ MORE

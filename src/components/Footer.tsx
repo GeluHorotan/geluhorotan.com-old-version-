@@ -5,19 +5,26 @@ import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { TiSocialLinkedin } from 'react-icons/ti';
 import { Link as ScrollLink } from 'react-scroll';
 
+import useScrollToElement from '@/customHooks/useScrollToElement';
+
 type Props = {
   children?: React.ReactNode;
 };
 
 type FooterItemProps = {
   children?: React.ReactNode;
-  href: string;
+  to: string;
   target?: string;
 };
 
-const FooterItem: FC<FooterItemProps> = ({ children, href, target }) => {
+const FooterItem: FC<FooterItemProps> = ({ children, to, target }) => {
+  const handleContactClick = useScrollToElement();
   return (
-    <Link href={href} target={target || ''}>
+    <Link
+      href={to}
+      target={target || ''}
+      onClick={(event) => handleContactClick(event, to, target, 100)}
+    >
       <p className="flex items-center gap-2 text-start  font-light tracking-widest transition-all duration-150 ease-in-out hover:translate-x-1 ">
         {children}
       </p>
@@ -36,12 +43,12 @@ const Footer: FC<Props> = ({ children }) => {
               Navigation
             </p>
             <div className="flex flex-col gap-2">
-              <FooterItem href={'/about'}>About</FooterItem>
-              <FooterItem href={`/?scrollTo=projects&scrollDuration=2000`}>
+              <FooterItem to={'/about'}>About</FooterItem>
+              <FooterItem to={`/`} target={'projects'}>
                 Projects
               </FooterItem>
-              <FooterItem href={`/cv`}>CV</FooterItem>
-              <FooterItem href={`/?scrollTo=contact&scrollDuration=2000`}>
+              <FooterItem to={`/cv`}>CV</FooterItem>
+              <FooterItem to={`/`} target="contact">
                 Contact
               </FooterItem>
             </div>
@@ -51,10 +58,10 @@ const Footer: FC<Props> = ({ children }) => {
           <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
             <p className="font-bold  uppercase tracking-[0.2rem] ">Legal</p>
             <div className="flex flex-col gap-2">
-              <FooterItem href={'/terms-and-conditions'}>
+              <FooterItem to={'/terms-and-conditions'}>
                 Terms and Conditions
               </FooterItem>
-              <FooterItem href={'/privacy-policy'}>Privacy Policy</FooterItem>
+              <FooterItem to={'/privacy-policy'}>Privacy Policy</FooterItem>
             </div>
           </div>
         </div>
@@ -62,21 +69,18 @@ const Footer: FC<Props> = ({ children }) => {
           <div className="flex h-full w-full flex-col items-start justify-start gap-4 ">
             <p className="font-bold  uppercase tracking-[0.2rem] ">Socials</p>
             <div className="flex flex-col gap-2">
-              <FooterItem
-                href="https://github.com/GeluHorotan"
-                target={'_blank'}
-              >
+              <FooterItem to="https://github.com/GeluHorotan" target={'_blank'}>
                 {' '}
                 <AiFillGithub size={20} /> Github
               </FooterItem>
               <FooterItem
-                href="https://www.linkedin.com/in/gelu-horotan/"
+                to="https://www.linkedin.com/in/gelu-horotan/"
                 target={'_blank'}
               >
                 <TiSocialLinkedin size={20} /> LinkedIn
               </FooterItem>
               <FooterItem
-                href="https://twitter.com/oxymoron365"
+                to="https://twitter.com/oxymoron365"
                 target={'_blank'}
               >
                 <AiOutlineTwitter size={20} /> Twitter

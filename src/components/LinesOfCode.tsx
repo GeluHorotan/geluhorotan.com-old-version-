@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
+import Spinner from './Spinner';
+
 type Props = {
   repoName: string;
 };
@@ -11,6 +13,7 @@ type LinesOfCodeTypes = {
 
 const LinesOfCode: React.FC<Props> = ({ repoName }) => {
   const [linesOfCode, setLines] = useState<LinesOfCodeTypes | undefined>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getLines = async () => {
     try {
@@ -21,8 +24,10 @@ const LinesOfCode: React.FC<Props> = ({ repoName }) => {
       const filteredData = data.filter(
         (item: { language: string }) => item.language === 'Total'
       );
+      setIsLoading(false);
       setLines(filteredData[0]);
     } catch (error) {
+      setIsLoading(false);
       setLines(undefined);
     }
   };
@@ -31,7 +36,15 @@ const LinesOfCode: React.FC<Props> = ({ repoName }) => {
     getLines();
   }, []);
 
-  return <p>{linesOfCode?.lines ? linesOfCode.lines : '-'}</p>;
+  return (
+    <div>
+      {linesOfCode?.lines ? (
+        linesOfCode.lines
+      ) : (
+        <Spinner size="small"></Spinner>
+      )}
+    </div>
+  );
 };
 
 export default LinesOfCode;

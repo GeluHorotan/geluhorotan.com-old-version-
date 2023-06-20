@@ -1,12 +1,15 @@
 import Link from 'next/link';
+import router from 'next/router';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { Element } from 'react-scroll';
+import type { UrlObject } from 'url';
 
 import { useAuth } from '@/context/hooks/useAuth';
 import type { Theme } from '@/customHooks/useDarkMode';
 import useMediaQuery from '@/customHooks/useMediaQuery';
+import useScrollToElement from '@/customHooks/useScrollToElement';
 
 import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
@@ -22,15 +25,17 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
   const isMobile = useMediaQuery('(max-width: 1012px)');
+  const handleContactClick = useScrollToElement();
 
   const navItems = [
     { id: 0, name: 'ABOUT', to: '/about' },
-    { id: 1, name: 'PROJECTS', to: '/?scrollTo=projects&scrollDuration=2000' },
-    { id: 1, name: 'CV', to: '/cv' },
+    { id: 1, name: 'PROJECTS', to: '/', target: 'projects' },
+    { id: 2, name: 'CV', to: '/cv' },
     {
-      id: 2,
+      id: 3,
       name: 'CONTACT',
       to: '/',
+      target: 'contact',
     },
   ];
 
@@ -85,7 +90,14 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
               {navItems?.map((item) => {
                 return (
                   <li key={item.id} className="navigation-item ">
-                    <Link href={item.to}>{item.name}</Link>
+                    <Link
+                      href={item.to}
+                      onClick={(event) =>
+                        handleContactClick(event, item.to, item.target, 100)
+                      }
+                    >
+                      {item.name}
+                    </Link>
                   </li>
                 );
               })}

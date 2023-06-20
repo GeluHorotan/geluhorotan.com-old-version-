@@ -13,7 +13,7 @@ import { TextTemplate } from '@/templates/TextTemplate';
 type Props = {
   children?: React.ReactNode;
 };
-console.log(cv);
+
 const CV: NextPage<Props> = () => {
   return (
     <TextTemplate

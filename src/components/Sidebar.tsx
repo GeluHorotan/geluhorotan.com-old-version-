@@ -15,6 +15,7 @@ import SidebarToggler from '@/components/SidebarToggler';
 import type { User } from '@/context/providers/AuthProvider';
 import type { Theme } from '@/customHooks/useDarkMode';
 import { useDimensions } from '@/customHooks/useDimensions';
+import useScrollToElement from '@/customHooks/useScrollToElement';
 
 import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
@@ -94,9 +95,12 @@ interface SidebarItemProps {
   name: string;
   to: string;
   toggle: () => void;
+  target?: string;
 }
 
-const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle }) => {
+const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle, target }) => {
+  const handleContactClick = useScrollToElement();
+
   return (
     <motion.li
       onClick={() => toggle()}
@@ -105,6 +109,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle }) => {
     >
       <Link
         href={to}
+        onClick={(event) => handleContactClick(event, to, target, 100)}
         className=" text-xl font-medium uppercase tracking-widest text-primary dark:text-secondary"
       >
         {name}
@@ -284,12 +289,14 @@ const Sidebar: FC<SidebarProps> = ({
                       to: string;
                       id: number;
                       name: string;
+                      target?: string;
                     },
                     i: Key
                   ) => (
                     <SidebarItem
                       key={i}
                       name={item.name}
+                      target={item.target}
                       to={item.to}
                       toggle={() => toggleOpen()}
                     />
