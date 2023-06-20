@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
+import { Element } from 'react-scroll';
 
 import { useAuth } from '@/context/hooks/useAuth';
 import type { Theme } from '@/customHooks/useDarkMode';
@@ -11,7 +12,6 @@ import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
 import ProfilePicture from './ProfilePicture';
 import Sidebar from './Sidebar';
-import Logo from './svgs/Logo';
 
 interface NavProps {
   theme: Theme;
@@ -29,7 +29,11 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
     {
       id: 2,
       name: 'CONTACT',
-      to: '/?scrollTo=contact&scrollDuration=2500',
+      query: {
+        scrollTo: 'contact',
+        scrollDuration: 2000,
+      },
+      to: '/',
     },
   ];
 

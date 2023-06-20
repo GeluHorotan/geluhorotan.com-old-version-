@@ -27,7 +27,7 @@ const TermsAndConditions: NextPage<Props> = () => {
         />
       }
     >
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-8 ">
         <p>
           These terms and conditions outline the rules and regulations for the
           use of Gelu Horotan&apos;s Website, located at www.geluhorotan.com.

@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineLayout } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
-import { scroller } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
 
 import Button from '@/components/Button';
 import ContactForm from '@/components/form/ContactForm';
@@ -26,28 +27,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects, isLoading } = useProject();
   const { user } = useAuth();
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const scrollTo = urlParams.get('scrollTo');
-  const scrollDuration = urlParams.get('scrollDuration');
-
-  useEffect(() => {
-    if (scrollTo) {
-      scroller.scrollTo(scrollTo, {
-        smooth: true,
-        duration: scrollDuration,
-      });
-    }
-    // Delay clearing the query parameters by 2 seconds
-    const timeout = setTimeout(() => {
-      const newUrl = window.location.origin + window.location.pathname;
-      window.history.replaceState({}, document.title, newUrl);
-    }, parseInt(scrollDuration, 10));
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [scrollTo, scrollDuration, urlParams]);
+  const myRef = useRef(null);
 
   return (
     <Main
@@ -151,6 +131,7 @@ export default function Home() {
           </ShowcaseEntry>
         </Showcase>
       </section>
+
       <section
         id="projects"
         className="container flex h-max w-full flex-col items-center justify-center gap-8  "
@@ -223,8 +204,10 @@ export default function Home() {
           })}
         </div>
       </section>
+      {/* <Element name="contact"> */}
       <section
         id="contact"
+        ref={myRef}
         className="container flex  items-center justify-center "
       >
         <div className="flex w-1/2 flex-col gap-12 max-[800px]:w-full ">
@@ -241,6 +224,7 @@ export default function Home() {
           <ContactForm />
         </div>
       </section>
+      {/* </Element> */}
     </Main>
   );
 }

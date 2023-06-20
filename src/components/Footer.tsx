@@ -53,9 +53,7 @@ const Footer: FC<Props> = ({ children }) => {
               <FooterItem href={'/terms-and-conditions'}>
                 Terms and Conditions
               </FooterItem>
-              <FooterItem href={'/terms-and-conditions'}>
-                Privacy Policy
-              </FooterItem>
+              <FooterItem href={'/privacy-policy'}>Privacy Policy</FooterItem>
             </div>
           </div>
         </div>
