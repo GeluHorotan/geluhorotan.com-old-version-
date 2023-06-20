@@ -162,7 +162,7 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
                 to contact me regarding this inquiry. <br /> For further
                 information, please read our&nbsp;
                 <Link
-                  href="/terms-and-conditions"
+                  href="/privacy-policy"
                   key="privacy"
                   className="text-accent dark:text-accent2"
                 >

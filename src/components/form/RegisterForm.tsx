@@ -327,6 +327,13 @@ const RegisterForm = ({ className, rounded }: Props) => {
                         className="text-accent dark:text-accent2"
                       >
                         terms and conditions
+                      </Link>{' '}
+                      and{' '}
+                      <Link
+                        href="/privacy-policy"
+                        className="text-accent dark:text-accent2"
+                      >
+                        privacy policy
                       </Link>
                       . *
                     </div>

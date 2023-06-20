@@ -26,13 +26,10 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const navItems = [
     { id: 0, name: 'ABOUT', to: '/about' },
     { id: 1, name: 'PROJECTS', to: '/?scrollTo=projects&scrollDuration=2000' },
+    { id: 1, name: 'CV', to: '/cv' },
     {
       id: 2,
       name: 'CONTACT',
-      query: {
-        scrollTo: 'contact',
-        scrollDuration: 2000,
-      },
       to: '/',
     },
   ];

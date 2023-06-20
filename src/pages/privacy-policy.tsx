@@ -27,7 +27,7 @@ const PrivacyPolicy: NextPage<Props> = () => {
         />
       }
     >
-      <div className="flex flex-col gap-8 ">
+      <div className="flex flex-col gap-8">
         <p>
           This Privacy Policy describes how geluhorotan.com ("we," "us," or
           "our") collects, uses, and shares personal information when you visit

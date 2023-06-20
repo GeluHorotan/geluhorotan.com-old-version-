@@ -298,24 +298,43 @@ const Sidebar: FC<SidebarProps> = ({
               </div>
               <div className="my-4 flex  flex-col  gap-4">
                 <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
-                  <motion.li variants={ItemVariant} className="navigation-item">
-                    Privacy Policy
-                  </motion.li>
-                  <motion.li variants={ItemVariant} className="navigation-item">
-                    Terms of use
-                  </motion.li>
+                  <Link href="privacy-policy">
+                    <motion.li
+                      variants={ItemVariant}
+                      className="navigation-item"
+                    >
+                      Privacy Policy
+                    </motion.li>
+                  </Link>
+                  <Link href="terms-and-conditions">
+                    <motion.li
+                      variants={ItemVariant}
+                      className="navigation-item"
+                    >
+                      Terms and Conditions
+                    </motion.li>
+                  </Link>
                 </ul>
               </div>
               <div className="flex items-center gap-2 text-accent dark:text-accent2">
-                <motion.div variants={ItemVariant}>
-                  <AiFillGithub size={20} />
-                </motion.div>
-                <motion.div variants={ItemVariant}>
-                  <TiSocialLinkedin size={24} />
-                </motion.div>
-                <motion.div variants={ItemVariant}>
-                  <AiOutlineTwitter size={20} />
-                </motion.div>
+                <Link href="https://github.com/GeluHorotan" target={'_blank'}>
+                  <motion.div variants={ItemVariant}>
+                    <AiFillGithub size={20} />
+                  </motion.div>
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/gelu-horotan/"
+                  target={'_blank'}
+                >
+                  <motion.div variants={ItemVariant}>
+                    <TiSocialLinkedin size={24} />
+                  </motion.div>
+                </Link>
+                <Link href="https://twitter.com/oxymoron365" target={'_blank'}>
+                  <motion.div variants={ItemVariant}>
+                    <AiOutlineTwitter size={20} />
+                  </motion.div>
+                </Link>
               </div>
               <motion.div
                 variants={ItemVariant}

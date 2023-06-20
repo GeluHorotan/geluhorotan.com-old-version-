@@ -40,6 +40,7 @@ const Footer: FC<Props> = ({ children }) => {
               <FooterItem href={`/?scrollTo=projects&scrollDuration=2000`}>
                 Projects
               </FooterItem>
+              <FooterItem href={`/cv`}>CV</FooterItem>
               <FooterItem href={`/?scrollTo=contact&scrollDuration=2000`}>
                 Contact
               </FooterItem>
