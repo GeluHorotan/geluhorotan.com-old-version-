@@ -1,4 +1,5 @@
 import axios from 'axios';
+import router from 'next/router';
 import React, { createContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
@@ -201,7 +202,7 @@ export const AuthProvider = ({ children }: Props) => {
       setIsAuthenticated(false);
       setIsLoading(false);
       updateAlert(alertId, res.data.msg, res.data.success);
-
+      router.push('/login?redirected=true');
       return res.data;
     } catch (err: any) {
       const { data } = err.response;

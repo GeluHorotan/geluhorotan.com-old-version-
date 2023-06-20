@@ -18,9 +18,9 @@ const Login: NextPage<Props> = () => {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   router.push('/?redirected=true');
-    // }
+    if (isAuthenticated) {
+      router.push('/?redirected=true');
+    }
   }, [isAuthenticated, router]);
 
   const tabList = ['login', 'register'];

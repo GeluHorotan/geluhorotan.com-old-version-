@@ -14,17 +14,6 @@ type Props = {
 };
 
 const Register: NextPage<Props> = () => {
-  const router = useRouter();
-  const { isAuthenticated } = useAuth();
-
-  useEffect(() => {
-    // if (isAuthenticated) {
-    //   router.push('/?redirected=true');
-    // }
-  }, [isAuthenticated, router]);
-
-  const tabList = ['login', 'register'];
-
   return (
     <Main
       meta={
