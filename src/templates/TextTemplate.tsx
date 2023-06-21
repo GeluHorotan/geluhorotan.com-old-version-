@@ -22,6 +22,7 @@ const TextTemplate = ({
   bottomBodyPadding,
 }: ITextTemplateProps) => {
   const [theme, setTheme] = useDarkMode();
+  console.log(bottomBodyPadding);
   return (
     <>
       {meta}
@@ -36,9 +37,10 @@ const TextTemplate = ({
           {pageTitle}
         </h1>
         <div
-          className={`flex h-1/2  flex-col gap-20 ${
-            !bottomBodyPadding || 'pb-20'
-          }  ${!bodyPadding || 'px-20 max-md:px-4'} `}
+          style={{ paddingBottom: bottomBodyPadding ? '5rem' : '0rem' }}
+          className={`flex h-1/2  flex-col gap-20   ${
+            !bodyPadding || 'px-20 max-md:px-4'
+          } `}
         >
           {children}
         </div>

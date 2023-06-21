@@ -15,6 +15,7 @@ import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
 import ProfilePicture from './ProfilePicture';
 import Sidebar from './Sidebar';
+import Logo from './svgs/Logo';
 
 interface NavProps {
   theme: Theme;
@@ -77,14 +78,13 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
           }  fixed top-0 z-50 flex w-full flex-row items-center justify-between px-20 transition-all duration-150   ease-in-out  `}
         >
           <ul className="flex w-1/2 flex-row items-center justify-start gap-12  ">
-            <Link href="/">
-              <div
-                className={`${
-                  isScrolled ? 'text-4xl' : 'text-5xl'
-                }  duration-250 font-medium text-primary transition-all ease-in-out dark:text-secondary`}
-              >
-                HG
-              </div>
+            <Link href="/" className="flex items-center gap-4">
+              <Logo
+                size={isScrolled ? 32 : 40}
+                className={'duration-250  transition-all ease-in-out '}
+                primaryColor="fill-accent dark:fill-accent2"
+                secondaryColor="fill-accent2 dark:fill-accent"
+              />
             </Link>
             <div className="flex items-center justify-center gap-8">
               {navItems?.map((item) => {

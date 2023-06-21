@@ -105,7 +105,7 @@ const ProjectID = () => {
               </div>
             </div>
             <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
-              <div className="flex  flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
+              <div className="flex  flex-[1_1_33%]  items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 LINES OF CODE
                 <LinesOfCode repoName={project.githubRepo} />
               </div>

@@ -20,6 +20,7 @@ import useScrollToElement from '@/customHooks/useScrollToElement';
 import DarkMode from './DarkMode';
 import Dropdown from './Dropdown';
 import ProfilePicture from './ProfilePicture';
+import Logo from './svgs/Logo';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -227,13 +228,12 @@ const Sidebar: FC<SidebarProps> = ({
           </div>
         </div>
         <Link href="/" className="">
-          <div
-            className={`${
-              isScrolled ? 'text-2xl' : 'text-3xl'
-            }  duration-250 mr-5 font-medium text-accent transition-all ease-in-out dark:text-accent2`}
-          >
-            HG
-          </div>
+          <Logo
+            size={isScrolled ? 32 : 40}
+            className={'duration-250  transition-all ease-in-out '}
+            primaryColor="fill-accent dark:fill-accent2"
+            secondaryColor="fill-accent2 dark:fill-accent"
+          />
         </Link>
         <div className="flex  items-center justify-between gap-6  ">
           {!isAuthenticated ? (

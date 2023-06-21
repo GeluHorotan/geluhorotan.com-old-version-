@@ -1,11 +1,13 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import React from 'react';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { TiSocialLinkedin } from 'react-icons/ti';
-import { Link as ScrollLink } from 'react-scroll';
 
 import useScrollToElement from '@/customHooks/useScrollToElement';
+
+import Logo from './svgs/Logo';
 
 type Props = {
   children?: React.ReactNode;
@@ -33,10 +35,29 @@ const FooterItem: FC<FooterItemProps> = ({ children, to, target }) => {
 };
 
 const Footer: FC<Props> = ({ children }) => {
+  const router = useRouter();
+  const isAboutPage = router.pathname.includes('/about');
+
   return (
-    <div className=" flex h-[50vh] flex-col items-center justify-between  bg-primary p-20  text-secondary dark:bg-secondary dark:text-primary max-[1012px]:h-max max-[1012px]:gap-10 max-[1012px]:px-8  max-[1012px]:py-6  ">
+    <div
+      className={`${
+        isAboutPage
+          ? 'bg-secondary text-primary dark:bg-primary dark:text-secondary'
+          : 'bg-primary text-secondary dark:bg-secondary dark:text-primary'
+      }  flex h-[50vh] flex-col items-center justify-between   p-20   max-[1012px]:h-max max-[1012px]:gap-10 max-[1012px]:px-8  max-[1012px]:py-6 `}
+    >
       <div className="flex w-full justify-center gap-40 max-[1012px]:flex-col max-[1012px]:gap-6 ">
         {' '}
+        <div className="self-center max-md:self-start">
+          <Link href="/" className="">
+            <Logo
+              size={64}
+              className={'duration-250  transition-all ease-in-out '}
+              primaryColor="fill-accent dark:fill-accent2"
+              secondaryColor="fill-accent2 dark:fill-accent"
+            />
+          </Link>
+        </div>
         <div className="flex h-full flex-col items-center justify-center   ">
           <div className="flex h-full  w-full flex-col items-start justify-start gap-4 ">
             <p className="font-bold  uppercase tracking-[0.2rem] ">
@@ -89,7 +110,13 @@ const Footer: FC<Props> = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="h-[0.1rem] w-full bg-primary "></div>
+      <div
+        className={` ${
+          isAboutPage
+            ? 'bg-primary  dark:bg-secondary '
+            : 'bg-secondary  dark:bg-primary '
+        }   h-[0.1rem] w-full `}
+      ></div>
       <div className="">
         <p className="text-center tracking-widest">
           All rights reserved &copy; Gelu Horotan {new Date().getFullYear()}{' '}

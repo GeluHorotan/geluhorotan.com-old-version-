@@ -37,12 +37,9 @@ const LinesOfCode: React.FC<Props> = ({ repoName }) => {
   }, []);
 
   return (
-    <div>
-      {linesOfCode?.lines ? (
-        linesOfCode.lines
-      ) : (
-        <Spinner size="small"></Spinner>
-      )}
+    <div className="">
+      {/* {linesOfCode?.lines ? linesOfCode.lines : } */}
+      <Spinner size="small" noText />
     </div>
   );
 };

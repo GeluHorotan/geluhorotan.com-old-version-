@@ -13,28 +13,6 @@ type Props = {
 };
 
 const About: NextPage<Props> = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const scrollTo = urlParams.get('scrollTo');
-  const scrollDuration = urlParams.get('scrollDuration');
-
-  // useEffect(() => {
-  //   if (scrollTo) {
-  //     scroller.scrollTo(scrollTo, {
-  //       smooth: true,
-  //       duration: scrollDuration,
-  //     });
-  //   }
-  //   // Delay clearing the query parameters by 2 seconds
-  //   const timeout = setTimeout(() => {
-  //     const newUrl = window.location.origin + window.location.pathname;
-  //     window.history.replaceState({}, document.title, newUrl);
-  //   }, parseInt(scrollDuration, 10));
-
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [scrollTo, scrollDuration]);
-
   return (
     <TextTemplate
       pageTitle="About"
