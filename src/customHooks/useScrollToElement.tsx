@@ -8,13 +8,12 @@ const useScrollToElement = () => {
   const scrollToElement = (elementId: string, offset = 0) => {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
         behavior: 'smooth',
-        block: 'start',
-        inline: 'start',
       });
-      const yOffset = -100 + offset; // Adjust the offset as needed
-      window.scrollBy(0, yOffset);
     }
   };
 

@@ -23,7 +23,7 @@ const FooterItem: FC<FooterItemProps> = ({ children, to, target }) => {
     <Link
       href={to}
       target={target || ''}
-      onClick={(event) => handleContactClick(event, to, target, 100)}
+      onClick={(event) => handleContactClick(event, to, target, -25)}
     >
       <p className="flex items-center gap-2 text-start  font-light tracking-widest transition-all duration-150 ease-in-out hover:translate-x-1 ">
         {children}

@@ -93,7 +93,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
                     <Link
                       href={item.to}
                       onClick={(event) =>
-                        handleContactClick(event, item.to, item.target, 100)
+                        handleContactClick(event, item.to, item.target, -25)
                       }
                     >
                       {item.name}

@@ -109,7 +109,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle, target }) => {
     >
       <Link
         href={to}
-        onClick={(event) => handleContactClick(event, to, target, 100)}
+        onClick={(event) => handleContactClick(event, to, target, -25)}
         className=" text-xl font-medium uppercase tracking-widest text-primary dark:text-secondary"
       >
         {name}

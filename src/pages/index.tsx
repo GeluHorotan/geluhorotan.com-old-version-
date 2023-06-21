@@ -19,6 +19,7 @@ import ShowcaseEntry from '@/components/ShowcaseEntry';
 import Spinner from '@/components/Spinner';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
+import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import Role from '@/utils/roles';
@@ -27,6 +28,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects, isLoading } = useProject();
   const { user } = useAuth();
+  const handleContactClick = useScrollToElement();
 
   return (
     <Main
@@ -42,7 +44,7 @@ export default function Home() {
           ' container mt-[4.25rem] flex flex-col  items-center justify-center  '
         }
       >
-        <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[10rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
+        <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
           <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-start  ">
             <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
@@ -59,16 +61,16 @@ export default function Home() {
                 adhering to industry best practices for exceptional quality.
               </p>
 
-              <ScrollTo
-                className=" border-2 
-               border-accent dark:border-accent2 "
-                to="projects"
-                smooth
-                delay={100}
-                duration={1000}
+              <Link
+                className=" w-max 
+               cursor-pointer rounded-xl border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary"
+                href=""
+                onClick={(event) =>
+                  handleContactClick(event, '', 'projects', -25)
+                }
               >
                 TO PROJECTS
-              </ScrollTo>
+              </Link>
             </div>
           </div>
 
@@ -76,7 +78,7 @@ export default function Home() {
         </div>
         <Scrolldown />
       </section>
-      <section className="container flex !h-max !min-h-max  items-center justify-center   py-20">
+      <section className="container flex !h-max !min-h-max  items-center justify-center    py-20">
         <Showcase>
           <ShowcaseEntry
             target="engaging"
