@@ -78,7 +78,7 @@ export default function Home() {
         </div>
         <Scrolldown />
       </section>
-      <section className="container flex !h-max !min-h-max  items-center justify-center    py-20">
+      <section className="container flex !h-max !min-h-max  items-center justify-center p-20">
         <Showcase>
           <ShowcaseEntry
             target="engaging"
@@ -135,7 +135,7 @@ export default function Home() {
 
       <section
         id="projects"
-        className="container flex h-max w-full flex-col items-center justify-center gap-8  "
+        className="container flex h-max w-full flex-col items-center justify-center gap-8   "
       >
         {user && user.role === Role.Admin && (
           <Button
@@ -192,7 +192,8 @@ export default function Home() {
                         LEARN MORE
                       </Link>
                       <Link
-                        href="#"
+                        href={project.url}
+                        target="_blank"
                         className="flex items-center justify-center gap-2 rounded-xl border border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
                       >
                         <HiOutlineExternalLink size={16} /> VISIT
@@ -205,7 +206,7 @@ export default function Home() {
           })}
         </div>
       </section>
-      {/* <Element name="contact"> */}
+
       <section
         id="contact"
         className="container flex  items-center justify-center "
@@ -224,7 +225,6 @@ export default function Home() {
           <ContactForm />
         </div>
       </section>
-      {/* </Element> */}
     </Main>
   );
 }

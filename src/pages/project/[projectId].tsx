@@ -1,11 +1,9 @@
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
-import { Fragment, useEffect, useState } from 'react';
-import { AiFillGithub, AiOutlineArrowLeft } from 'react-icons/ai';
-import { MdAccountBalance } from 'react-icons/md';
+import { useEffect, useState } from 'react';
+import { AiFillGithub } from 'react-icons/ai';
 import { TfiWorld } from 'react-icons/tfi';
 
-import Button from '@/components/Button';
 import LinesOfCode from '@/components/LinesOfCode';
 import ProfilePicture from '@/components/ProfilePicture';
 import Scrolldown from '@/components/Scrolldown';
@@ -68,7 +66,7 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
-
+  console.log(project);
   if (project)
     return (
       <Main
@@ -94,14 +92,21 @@ const ProjectID = () => {
             <div className="flex flex-col items-center justify-center gap-2 ">
               <h1 className="futura-heavy">{fullProjectName}</h1>
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
-                <AiFillGithub
-                  size={28}
-                  className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
-                />
-                <TfiWorld
-                  size={24}
-                  className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
-                />
+                <Link
+                  href={`https://github.com/GeluHorotan/${project.githubRepo}`}
+                  target="_blank"
+                >
+                  <AiFillGithub
+                    size={28}
+                    className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                  />
+                </Link>
+                <Link href={project.url} target="_blank">
+                  <TfiWorld
+                    size={24}
+                    className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                  />
+                </Link>
               </div>
             </div>
             <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
