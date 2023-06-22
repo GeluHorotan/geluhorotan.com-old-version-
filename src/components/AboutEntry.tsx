@@ -49,8 +49,8 @@ const AboutEntry: FC<Props> = ({
           } inset-0 block h-auto w-full object-cover `}
         />
       </div>
-      <aside className="flex h-full w-1/2 flex-col  gap-6 px-8 max-[850px]:w-full max-[850px]:px-4">
-        <h2 className="font-semibold uppercase">{title}</h2> <p> {children}</p>
+      <aside className="flex h-full w-1/2 flex-col  gap-6 px-8  max-[850px]:w-full max-[850px]:px-4">
+        <h3 className="font-semibold uppercase">{title}</h3> <p> {children}</p>
       </aside>
     </section>
   );
