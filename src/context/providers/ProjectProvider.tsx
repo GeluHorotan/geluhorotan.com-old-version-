@@ -90,9 +90,9 @@ export const ProjectProvider = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>();
 
-  useEffect(() => {
-    fetchUsers(Role.Developer);
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers(Role.Developer);
+  // }, []);
 
   useEffect(() => {
     fetchProjects();
@@ -140,9 +140,7 @@ export const ProjectProvider = ({ children }: Props) => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get(
-        'https://geluhorotancom-horotangelu17.b4a.run/api/projects'
-      );
+      const res = await axios.get('/api/projects');
       setProjects(res.data.projects);
 
       setError(undefined);

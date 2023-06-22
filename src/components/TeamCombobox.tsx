@@ -7,7 +7,9 @@ import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
 
+import { useProject } from '@/context/hooks/useProject';
 import { rolesOptions } from '@/utils/comboboxOptions';
+import Role from '@/utils/roles';
 
 import ProfilePicture from './ProfilePicture';
 import SingleCombobox from './SingleCombobox';
@@ -49,6 +51,7 @@ const TeamCombobox = ({
 }: Props) => {
   const [query, setQuery] = useState('');
   const controls = useAnimationControls();
+  const { fetchUsers } = useProject();
 
   const filteredOptions =
     query === ''
@@ -65,6 +68,10 @@ const TeamCombobox = ({
       controls.start({ x: [0, 3, 0] });
     }
   }, [error]);
+
+  useEffect(() => {
+    fetchUsers(Role.Developer);
+  }, []);
 
   const removeEntry = (index: number) => {
     // Create a copy of the current team array
