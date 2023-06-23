@@ -123,15 +123,12 @@ export default function Home() {
             number={2}
             scrollDuration={2000}
           >
-            I am committed to optimizing website performance to its fullest
-            potential. By implementing advanced techniques, meticulous code
-            optimization, and strategic asset compression, I ensure
-            lightning-fast loading times and seamless user interactions. Through
-            efficient caching strategies, browser compatibility, and
-            performance-enhancing methodologies, I deliver superior user
-            experiences. By prioritizing performance, I help businesses thrive
-            in today&apos;s digital landscape, providing a competitive edge and
-            driving success.
+            I excel in enhancing website performance to provide lightning-fast
+            loading times and seamless interactions. Through advanced
+            optimization techniques, code efficiency, and intelligent asset
+            management, I ensure optimal website performance. By prioritizing
+            speed, scalability, and responsiveness, I create exceptional user
+            experiences that keep visitors engaged and satisfied.
           </ShowcaseEntry>
           <ShowcaseEntry
             target="responsive"
@@ -140,14 +137,12 @@ export default function Home() {
             number={3}
             scrollDuration={2500}
           >
-            With a mobile-first approach and deep expertise in responsive design
-            principles, I specialize in creating seamless and user-friendly
-            websites. By utilizing fluid layouts, flexible grids, and media
-            queries, I ensure consistent experiences across devices. Through
-            meticulous attention to detail, accessibility considerations, and a
-            focus on usability, I deliver websites that adapt effortlessly to
-            any screen size or device. I prioritize responsive design to provide
-            inclusive experiences that cater to diverse audiences.
+            I have honed my skills in designing websites that seamlessly adapt
+            to different devices and screen sizes. By employing responsive
+            design principles, fluid layouts, and media queries, I guarantee
+            that websites look and function flawlessly across various platforms.
+            With a focus on accessibility and usability, I create inclusive
+            experiences that cater to a wide range of users.
           </ShowcaseEntry>
         </Showcase>
       </section>
