@@ -18,8 +18,8 @@ const Register: NextPage<Props> = () => {
     <Main
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - Register"
+          description={`Step into my world of creativity, innovation, and technical expertise as you explore my projects, skills, and accomplishments. Join the club!`}
         />
       }
     >

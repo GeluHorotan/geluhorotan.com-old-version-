@@ -23,8 +23,8 @@ const CV: NextPage<Props> = () => {
       bottomBodyPadding
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - CV"
+          description={`Curious to know more about the coding virtuoso behind the screen? Delve into my comprehensive curriculum vitae (CV) and discover my expertise, experience, and accomplishments. From my educational background to notable projects, this page provides an in-depth look into my coding prowess. Step into my professional world and witness the skills that can elevate your next development project.`}
         />
       }
     >

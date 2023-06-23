@@ -21,8 +21,8 @@ const About: NextPage<Props> = () => {
       headerPadding
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - About"
+          description={`Welcome to the heart of my coding universe! The about page is where you get to know more about me. Dive into my story, passions, and the driving force behind my dedication to frontend development. Uncover the magic that fuels my creativity and see how I can bring your software project to life.`}
         />
       }
     >

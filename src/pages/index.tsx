@@ -35,7 +35,7 @@ export default function Home() {
     <Main
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
+          title="Gelu Horotan - Homepage"
           description={`Step into my coder's lair and see what's cookin'. Browse through my projects and see how I can help bring your next software development project to life. `}
         />
       }

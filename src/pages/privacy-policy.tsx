@@ -22,8 +22,8 @@ const PrivacyPolicy: NextPage<Props> = () => {
       bottomBodyPadding
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - Privacy Policy"
+          description={`Your privacy is my top priority! My privacy policy page is where we unveil my commitment to safeguarding your personal information. Rest assured that your data is handled with the utmost care and in accordance with industry standards. Explore my privacy policy to learn how I protect your digital footprint. Your peace of mind is our mission.`}
         />
       }
     >

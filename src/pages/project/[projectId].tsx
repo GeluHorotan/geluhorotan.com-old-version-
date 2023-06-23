@@ -87,8 +87,8 @@ const ProjectID = () => {
       <Main
         meta={
           <Meta
-            title="Gelu Horotan - Software Engineer"
-            description={`Keep your account information up-to-date with my user friendly dashboard. `}
+            title={`Gelu Horotan - ${getProjectName()}`}
+            description={`Delve into the intricacies, explore the details, and unravel the story behind this exceptional project. From conception to execution, discover the challenges overcome, the innovations employed, and the remarkable outcomes achieved. Immerse yourself in the world of ${getProjectName()} and witness the seamless fusion of creativity and technical expertise. Get inspired, gain insights, and witness firsthand the impact of ${getProjectName()}. Join me on this captivating journey and explore the essence of ${getProjectName()}.`}
           />
         }
       >

@@ -29,8 +29,8 @@ const Login: NextPage<Props> = () => {
     <Main
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - Login"
+          description={`Unlock the doors to the secret club of awesomeness with my login page - Enter your credentials, grab a drink and let's code together!`}
         />
       }
     >

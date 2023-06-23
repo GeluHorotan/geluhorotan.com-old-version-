@@ -22,8 +22,8 @@ const TermsAndConditions: NextPage<Props> = () => {
       bottomBodyPadding
       meta={
         <Meta
-          title="Gelu Horotan - Software Engineer"
-          description={`Unlock the doors to the secret club of awesomeness with my signin page - Enter your credentials, grab a drink and let's code together`}
+          title="Gelu Horotan - Terms and Conditions"
+          description={`Before embarking on this epic coding adventure, let's set some ground rules. My terms and conditions page outlines the guidelines for using my platform. From intellectual property rights to user responsibilities, we've got you covered. Familiarize yourself with my terms and conditions, and let's ensure a smooth and enjoyable coding journey together.`}
         />
       }
     >
