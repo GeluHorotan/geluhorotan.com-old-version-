@@ -23,7 +23,7 @@ const ShowcaseEntry: FC<Props> = ({
   const handleContactClick = useScrollToElement();
 
   return (
-    <div className=" relative  flex  h-full flex-col items-start justify-center gap-6   p-4 text-primary dark:text-secondary ">
+    <div className=" relative  flex  h-full flex-col items-start justify-center gap-6    text-primary dark:text-secondary ">
       <div className="flex items-center justify-start gap-2  ">
         <div className="text-accent dark:text-accent2"> {icon}</div>
         <h6 className="break-words ">{title}</h6>

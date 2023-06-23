@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { AiFillGithub } from 'react-icons/ai';
 import { TfiWorld } from 'react-icons/tfi';
 
+import ContactForm from '@/components/form/ContactForm';
 import LinesOfCode from '@/components/LinesOfCode';
 import ProfilePicture from '@/components/ProfilePicture';
 import Scrolldown from '@/components/Scrolldown';
@@ -13,9 +14,12 @@ import { Main } from '@/templates/Main';
 
 type ProjectState = {
   githubRepo: string;
+  startDate: string;
+  endDate: string;
   fullProjectName: string;
   url: string;
   domain: string;
+  keyHighlights: string;
   desc: string;
   technologies: {
     _id: string;
@@ -38,8 +42,19 @@ type ProjectState = {
 const ProjectID = () => {
   const [project, setProject] = useState<ProjectState | undefined>();
   const { projects } = useProject();
-  const { fullProjectName, images, desc, domain, technologies, team } =
-    project ?? {};
+  const {
+    fullProjectName,
+    images,
+    desc,
+    url,
+    githubRepo,
+    domain,
+    technologies,
+    team,
+    keyHighlights,
+    startDate,
+    endDate,
+  } = project ?? {};
 
   const getProjectName = () => {
     const { pathname } = window.location;
@@ -66,7 +81,7 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
-  console.log(project);
+
   if (project)
     return (
       <Main
@@ -90,10 +105,13 @@ const ProjectID = () => {
           </div>
           <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex flex-col items-center justify-center gap-2 ">
-              <h1 className="futura-heavy">{fullProjectName}</h1>
+              <h1 className="futura-heavy text-center">{fullProjectName}</h1>
+              <p className="text-primary_t_2 dark:text-secondary_s_2">
+                {startDate} - {endDate}
+              </p>
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
                 <Link
-                  href={`https://github.com/GeluHorotan/${project.githubRepo}`}
+                  href={`https://github.com/GeluHorotan/${githubRepo}`}
                   target="_blank"
                 >
                   <AiFillGithub
@@ -101,7 +119,7 @@ const ProjectID = () => {
                     className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
                   />
                 </Link>
-                <Link href={project.url} target="_blank">
+                <Link href={url} target="_blank">
                   <TfiWorld
                     size={24}
                     className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
@@ -112,7 +130,7 @@ const ProjectID = () => {
             <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
               <div className="flex  flex-[1_1_33%]  items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 LINES OF CODE
-                <LinesOfCode repoName={project.githubRepo} />
+                <LinesOfCode repoName={githubRepo} />
               </div>
               <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 DOMAIN
@@ -146,6 +164,7 @@ const ProjectID = () => {
                 })}
               </div>
             </div>
+
             <div className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center">
               CONTRIBUTORS
               <div className="flex items-center justify-center gap-2 ">
@@ -169,11 +188,23 @@ const ProjectID = () => {
                 })}
               </div>
             </div>
-
+            <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
+              KEY HIGHLIGHTS
+              <div
+                className="flex flex-col gap-4  font-light italic  "
+                dangerouslySetInnerHTML={{ __html: keyHighlights }}
+              ></div>
+            </div>
             <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
               DESCRIPTION
-              <p className="text-justify indent-8 ">{desc}</p>
+              <p
+                className=" indent-8 "
+                dangerouslySetInnerHTML={{ __html: desc }}
+              ></p>
             </div>
+
+            <ContactForm width={'w-full'} />
+
             <div className="grid grid-cols-1 items-center justify-center gap-4">
               {images.gallery.map((image, i) => {
                 return (

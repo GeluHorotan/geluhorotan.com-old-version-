@@ -22,6 +22,9 @@ export const technologyOptions = [
   { value: 'nuxtjs', label: 'Nuxt' },
   { value: 'svelte', label: 'Svelte' },
   { value: 'tailwindcss', label: 'Tailwind' },
+  { value: 'sass', label: 'Sass' },
+  { value: 'html5', label: 'HTML' },
+  { value: 'css3', label: 'CSS' },
 ];
 
 export const rolesOptions = [

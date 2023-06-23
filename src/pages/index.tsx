@@ -87,7 +87,7 @@ export default function Home() {
                     handleContactClick(event, '', 'projects', -25)
                   }
                 >
-                  TO PROJECTS
+                  PROJECTS
                 </Link>
               </div>
             </div>
@@ -200,13 +200,17 @@ export default function Home() {
                       <h3 className="futura-heavy uppercase  tracking-wider">
                         {project.fullProjectName}
                       </h3>
-
-                      <p className="h-full line-clamp-3">{project.desc}</p>
+                      <p className="text-primary_t_2 dark:text-secondary_s_2">
+                        {project.startDate} - {project.endDate}
+                      </p>
+                      <p className="h-full font-normal tracking-wider line-clamp-3">
+                        {project.desc}
+                      </p>
                     </div>
                     <div className="flex items-center gap-6  tracking-widest">
                       <Link
                         href={`/project/${project.fullProjectName}`}
-                        className="rounded-xl bg-accent px-3 py-1  text-secondary dark:bg-accent2 dark:text-primary "
+                        className="items-center justify-center rounded-xl bg-accent  px-3 py-1 text-secondary dark:bg-accent2 dark:text-primary"
                       >
                         LEARN MORE
                       </Link>
@@ -230,19 +234,7 @@ export default function Home() {
         id="contact"
         className="container flex  items-center justify-center "
       >
-        <div className="flex w-1/2 flex-col gap-12 max-[800px]:w-full ">
-          <div className="flex w-full flex-col gap-4">
-            <h2 className="futura-heavy tracking-wider">
-              Let&apos;s meet
-              <span className="text-accent dark:text-accent2">!</span>{' '}
-            </h2>
-            <p>
-              Can&apos;t wait to meet you. <br />
-              Please note that the fields marked with * are required!{' '}
-            </p>
-          </div>
-          <ContactForm />
-        </div>
+        <ContactForm />
       </section>
     </Main>
   );

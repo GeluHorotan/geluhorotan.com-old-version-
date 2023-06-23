@@ -16,9 +16,12 @@ type User = {
 export type ProjectDetails = {
   fullProjectName: string;
   url: string;
+  startDate: string;
+  endDate: string;
   githubRepo: string;
   domain: string;
   desc: string;
+  keyHighlights: string;
   technologies: {
     value: string;
     label: string;
@@ -54,10 +57,13 @@ type Error = {
 type Projects = {
   _id: string;
   domain: string;
+  startDate: string;
+  endDate: string;
   githubRepo: string;
   url: string;
   fullProjectName: string;
   desc: string;
+  keyHighlights: string;
   technologies: {
     value: string;
     label: string;
@@ -90,10 +96,6 @@ export const ProjectProvider = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>();
 
-  // useEffect(() => {
-  //   fetchUsers(Role.Developer);
-  // }, []);
-
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -101,8 +103,11 @@ export const ProjectProvider = ({ children }: Props) => {
   const addProject = async ({
     fullProjectName,
     githubRepo,
+    startDate,
+    endDate,
     domain,
     desc,
+    keyHighlights,
     technologies,
     team,
     url,
@@ -112,8 +117,11 @@ export const ProjectProvider = ({ children }: Props) => {
     const body = JSON.stringify({
       fullProjectName,
       domain,
+      startDate,
+      endDate,
       githubRepo,
       desc,
+      keyHighlights,
       technologies,
       team,
       url,

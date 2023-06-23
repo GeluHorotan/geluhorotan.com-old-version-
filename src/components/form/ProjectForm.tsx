@@ -41,6 +41,8 @@ const ProjectForm: React.FC = () => {
         'The github repo name of the project must not be longer than 15 characters!'
       )
       .required('The github repo name of the project is required!'),
+    startDate: Yup.string().required('The start date is required!'),
+    endDate: Yup.string().required('The start date is required!'),
     domain: Yup.string()
       .min(3, 'The domain of the project must be longer than 3 characters!')
       .max(
@@ -54,7 +56,17 @@ const ProjectForm: React.FC = () => {
         'The description of the project must be longer than 10 characters!'
       )
       .max(
-        1000,
+        3000,
+        'The description of the project must not be longer than 15 characters!'
+      )
+      .required('The description is required!'),
+    keyHighlights: Yup.string()
+      .min(
+        10,
+        'The description of the project must be longer than 10 characters!'
+      )
+      .max(
+        3000,
         'The description of the project must not be longer than 15 characters!'
       )
       .required('The description is required!'),
@@ -77,8 +89,11 @@ const ProjectForm: React.FC = () => {
           fullProjectName: '',
           url: '',
           githubRepo: '',
+          startDate: '',
+          endDate: '',
           domain: '',
           desc: '',
+          keyHighlights: '',
           technologies: [],
           team: [],
           images: {
@@ -91,8 +106,11 @@ const ProjectForm: React.FC = () => {
           fullProjectName,
           url,
           githubRepo,
+          startDate,
+          endDate,
           domain,
           desc,
+          keyHighlights,
           technologies,
           team,
           images,
@@ -101,8 +119,11 @@ const ProjectForm: React.FC = () => {
             fullProjectName,
             url,
             githubRepo,
+            startDate,
+            endDate,
             domain,
             desc,
+            keyHighlights,
             technologies,
             team,
             images,
@@ -114,8 +135,11 @@ const ProjectForm: React.FC = () => {
             fullProjectName,
             url,
             githubRepo,
+            startDate,
+            endDate,
             domain,
             desc,
+            keyHighlights,
             technologies,
             team,
             images,
@@ -177,6 +201,34 @@ const ProjectForm: React.FC = () => {
                     labelColor="text-primary"
                     reverseTextColor
                   />
+                  <div className="flex justify-between gap-20">
+                    <Field
+                      label="Start Date"
+                      id="startDate"
+                      name="startDate"
+                      onChangeHandler={handleChange}
+                      onBlurHandler={handleBlur}
+                      inputType="month"
+                      value={startDate}
+                      error={errors.startDate}
+                      as={Input}
+                      labelColor="text-primary"
+                      reverseTextColor
+                    />
+                    <Field
+                      label="End Date"
+                      id="githubRepo"
+                      name="endDate"
+                      onChangeHandler={handleChange}
+                      onBlurHandler={handleBlur}
+                      inputType="month"
+                      value={endDate}
+                      error={errors.endDate}
+                      as={Input}
+                      labelColor="text-primary"
+                      reverseTextColor
+                    />
+                  </div>
                 </ProjectWrapper>
 
                 <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
@@ -201,6 +253,18 @@ const ProjectForm: React.FC = () => {
                     onBlurHandler={handleBlur}
                     value={desc}
                     error={errors.desc}
+                    as={TextArea}
+                    labelColor="text-primary"
+                    reverseTextColor
+                  />
+                  <Field
+                    label="Key Highlights"
+                    id="keyHighlights"
+                    name="keyHighlights"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    value={keyHighlights}
+                    error={errors.keyHighlights}
                     as={TextArea}
                     labelColor="text-primary"
                     reverseTextColor

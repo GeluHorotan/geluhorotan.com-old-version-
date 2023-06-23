@@ -17,6 +17,7 @@ import TextArea from './TextArea';
 type Props = {
   className?: string;
   rounded?: boolean;
+  width?: string;
 };
 
 const ContactSchema = Yup.object().shape({
@@ -47,7 +48,7 @@ const ContactSchema = Yup.object().shape({
   consent: Yup.boolean().oneOf([true], 'This field is required!'),
 });
 
-const ContactForm: FC<Props> = ({ className, rounded }) => {
+const ContactForm: FC<Props> = ({ className, rounded, width }) => {
   const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
   const { sendMessage } = useContact();
 
@@ -89,109 +90,125 @@ const ContactForm: FC<Props> = ({ className, rounded }) => {
         handleBlur,
         handleChange,
       }) => (
-        <Form className={'flex h-1/2  flex-col justify-center gap-8   py-4'}>
-          <Field
-            label="First name"
-            placeholder="Alex"
-            id="firstName"
-            name="firstName"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            inputType="text"
-            value={firstName}
-            error={errors.firstName}
-            as={Input}
-            isRequired
-          />
-          <Field
-            label="Last name"
-            placeholder="Montoya"
-            id="lastName"
-            name="lastName"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            inputType="text"
-            value={lastName}
-            error={errors.lastName}
-            as={Input}
-            isRequired
-          />
-          <Field
-            label="Email"
-            placeholder="john.doe@gmail.com"
-            id="email"
-            name="email"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            inputType="text"
-            value={email}
-            error={errors.email}
-            as={Input}
-            isRequired
-          />
-          <Field
-            label="Subject"
-            placeholder="Frontend Opportunity"
-            id="subject"
-            name="subject"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            inputType="text"
-            value={subject}
-            error={errors.subject}
-            as={Input}
-            isRequired
-          />
-          <Field
-            label="Message"
-            placeholder="Your thoughts here."
-            id="message"
-            name="message"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            value={message}
-            error={errors.message}
-            labelColor={'text-secondary'}
-            as={TextArea}
-            isRequired
-          />
-          <Field
-            label={
-              <div>
-                I agree that my personal information provided above may be used
-                to contact me regarding this inquiry. <br /> For further
-                information, please read our&nbsp;
-                <Link
-                  href="/privacy-policy"
-                  key="privacy"
-                  className="text-accent dark:text-accent2"
-                >
-                  privacy policy
-                </Link>
-                . *
-              </div>
-            }
-            id="consent"
-            name="consent"
-            onChangeHandler={handleChange}
-            onBlurHandler={handleBlur}
-            type="checkbox"
-            value={consent}
-            error={errors.consent}
-            labelColor={'text-primary dark:text-secondary'}
-            as={Checkbox}
-            isRequired
-          />
+        <div
+          className={`flex ${
+            width || 'w-1/2'
+          } item-start flex-col gap-12 max-[800px]:w-full `}
+        >
+          <div className="flex w-full flex-col gap-4 ">
+            <h2 className="futura-heavy tracking-wider">
+              Let&apos;s meet
+              <span className="text-accent dark:text-accent2">!</span>{' '}
+            </h2>
+            <p>
+              Get in touch by filling out the contact form below! <br />
+              Please note that the fields marked with * are required!{' '}
+            </p>
+          </div>
+          <Form className={'flex h-1/2  flex-col justify-center gap-8   py-4'}>
+            <Field
+              label="First name"
+              placeholder="John"
+              id="firstName"
+              name="firstName"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              inputType="text"
+              value={firstName}
+              error={errors.firstName}
+              as={Input}
+              isRequired
+            />
+            <Field
+              label="Last name"
+              placeholder="Doe"
+              id="lastName"
+              name="lastName"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              inputType="text"
+              value={lastName}
+              error={errors.lastName}
+              as={Input}
+              isRequired
+            />
+            <Field
+              label="Email"
+              placeholder="john.doe@gmail.com"
+              id="email"
+              name="email"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              inputType="text"
+              value={email}
+              error={errors.email}
+              as={Input}
+              isRequired
+            />
+            <Field
+              label="Subject"
+              placeholder="React Developer Opportunity"
+              id="subject"
+              name="subject"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              inputType="text"
+              value={subject}
+              error={errors.subject}
+              as={Input}
+              isRequired
+            />
+            <Field
+              label="Message"
+              placeholder="Your thoughts here."
+              id="message"
+              name="message"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              value={message}
+              error={errors.message}
+              labelColor={'text-secondary'}
+              as={TextArea}
+              isRequired
+            />
+            <Field
+              label={
+                <div>
+                  I agree that my personal information provided above may be
+                  used to contact me regarding this inquiry. <br /> For further
+                  information, please read our&nbsp;
+                  <Link
+                    href="/privacy-policy"
+                    key="privacy"
+                    className="text-accent dark:text-accent2"
+                  >
+                    privacy policy
+                  </Link>
+                  . *
+                </div>
+              }
+              id="consent"
+              name="consent"
+              onChangeHandler={handleChange}
+              onBlurHandler={handleBlur}
+              type="checkbox"
+              value={consent}
+              error={errors.consent}
+              labelColor={'text-primary dark:text-secondary'}
+              as={Checkbox}
+              isRequired
+            />
 
-          <Button
-            type="submit"
-            className=" mb-4 w-max rounded-lg border-2  border-accent  px-6 py-2 font-bold   uppercase transition-all duration-75 ease-in-out  disabled:!border-secondary_s_2 disabled:!text-secondary_s_2  dark:border-accent2 "
-            rounded
-            disabled={isButtonDisabled}
-          >
-            SEND MESSAGE
-          </Button>
-        </Form>
+            <Button
+              type="submit"
+              className=" mb-4 w-max rounded-lg border-2  border-accent  px-6 py-2 font-bold   uppercase transition-all duration-75 ease-in-out  disabled:!border-secondary_s_2 disabled:!text-secondary_s_2  dark:border-accent2 "
+              rounded
+              disabled={isButtonDisabled}
+            >
+              SEND MESSAGE
+            </Button>
+          </Form>
+        </div>
       )}
     </Formik>
   );

@@ -22,7 +22,7 @@ const TextTemplate = ({
   bottomBodyPadding,
 }: ITextTemplateProps) => {
   const [theme, setTheme] = useDarkMode();
-  console.log(bottomBodyPadding);
+
   return (
     <>
       {meta}

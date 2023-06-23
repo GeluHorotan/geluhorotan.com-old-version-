@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
-import { scroller } from 'react-scroll';
 
 import AboutEntry from '@/components/AboutEntry';
 import AboutTechEntry from '@/components/AboutTechEntry';
+import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
-import { Main } from '@/templates/Main';
 import { TextTemplate } from '@/templates/TextTemplate';
 
 type Props = {
@@ -13,6 +13,8 @@ type Props = {
 };
 
 const About: NextPage<Props> = () => {
+  const handleContactClick = useScrollToElement();
+
   return (
     <TextTemplate
       pageTitle="About"
@@ -61,14 +63,30 @@ const About: NextPage<Props> = () => {
           </div>
         </div>
         <div className="flex flex-col items-start justify-center gap-2  max-[1100px]:items-center">
-          <h4 className="tracking-widedst font-semibold">TECH</h4>
-
           <div className=" flex w-full  items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
             <AboutTechEntry techName={'react'} />
             <AboutTechEntry techName={'nodejs'} />
             <AboutTechEntry techName={'typescript'} />
             <AboutTechEntry techName={'tailwindcss'} />
           </div>
+        </div>
+        <div className="flex gap-4">
+          <Link
+            className=" flex 
+               w-max cursor-pointer  items-center rounded-xl bg-accent px-4  py-2 text-secondary  dark:bg-accent2 dark:text-primary "
+            href=""
+            onClick={(event) => handleContactClick(event, '/', 'contact', -25)}
+          >
+            CONTACT
+          </Link>
+          <Link
+            className=" flex 
+               w-max cursor-pointer items-center rounded-xl border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary"
+            href=""
+            onClick={(event) => handleContactClick(event, '/', 'projects', -25)}
+          >
+            PROJECTS
+          </Link>
         </div>
       </section>
       <div className="flex w-full flex-col bg-red-400">
