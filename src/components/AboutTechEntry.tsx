@@ -4,26 +4,25 @@ import React from 'react';
 
 type Props = {
   techName?: string;
+  noText?: boolean;
 };
 
-const AboutTechEntry: FC<Props> = ({ techName }) => {
+const AboutTechEntry: FC<Props> = ({ techName, noText }) => {
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center justify-center gap-4 ">
       <div className="relative flex h-8  w-8  ">
         <Image
           src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${techName}/${techName}-original.svg`}
           fill={true}
           alt={techName}
-          className="inset-0  object-cover "
+          className="inset-0  object-cover drop-shadow-md "
           onError={(e) => {
             const img = e.target as HTMLImageElement;
             img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${techName}/${techName}-plain.svg`;
           }}
         />
       </div>
-      <p className="uppercase ">
-        {techName === 'react' ? 'react / nextjs' : techName}
-      </p>
+      {!noText && <p className="uppercase ">{techName}</p>}
     </div>
   );
 };

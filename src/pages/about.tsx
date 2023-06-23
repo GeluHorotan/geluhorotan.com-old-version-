@@ -64,11 +64,9 @@ const About: NextPage<Props> = () => {
           <h4 className="tracking-widedst font-semibold">TECH</h4>
 
           <div className=" flex w-full  items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
-            <AboutTechEntry techName={'javascript'} />
-
             <AboutTechEntry techName={'react'} />
-            <AboutTechEntry techName={'typescript'} />
             <AboutTechEntry techName={'nodejs'} />
+            <AboutTechEntry techName={'typescript'} />
             <AboutTechEntry techName={'tailwindcss'} />
           </div>
         </div>

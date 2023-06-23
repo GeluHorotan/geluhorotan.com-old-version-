@@ -7,6 +7,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
 import { Element, scroller } from 'react-scroll';
 
+import AboutTechEntry from '@/components/AboutTechEntry';
 import Button from '@/components/Button';
 import ContactForm from '@/components/form/ContactForm';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -45,7 +46,13 @@ export default function Home() {
         }
       >
         <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
-          <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-start  ">
+          <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
+            <div className="flex items-center gap-4">
+              <AboutTechEntry techName={'react'} noText />
+              <AboutTechEntry techName={'typescript'} noText />
+
+              <AboutTechEntry techName={'tailwindcss'} noText />
+            </div>
             <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
               into Pixel
@@ -54,6 +61,7 @@ export default function Home() {
                 Perfection
               </span>
             </h1>
+
             <div className="flex flex-col items-start gap-4 ">
               <p>
                 Discover a curated collection of meticulously crafted projects
@@ -89,7 +97,7 @@ export default function Home() {
         </div>
         <Scrolldown />
       </section>
-      <section className="container flex !h-max !min-h-max  items-center justify-center p-20">
+      <section className="container flex !h-max !min-h-max  items-center justify-center  p-20 max-md:px-4">
         <Showcase>
           <ShowcaseEntry
             target="engaging"
