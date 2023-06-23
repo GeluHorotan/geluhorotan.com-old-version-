@@ -47,11 +47,11 @@ export default function Home() {
       >
         <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
           <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
-            <div className="flex items-center gap-4">
-              <AboutTechEntry techName={'react'} noText />
-              <AboutTechEntry techName={'typescript'} noText />
+            <div className="flex items-center gap-4 max-[840px]:flex-wrap max-[840px]:justify-center">
+              <AboutTechEntry techName={'react'} />
+              <AboutTechEntry techName={'typescript'} />
 
-              <AboutTechEntry techName={'tailwindcss'} noText />
+              <AboutTechEntry techName={'tailwindcss'} />
             </div>
             <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
@@ -62,8 +62,8 @@ export default function Home() {
               </span>
             </h1>
 
-            <div className="flex flex-col items-start gap-4 ">
-              <p>
+            <div className="flex flex-col items-start gap-4 max-[840px]:items-center ">
+              <p className="max-[840px]:text-center">
                 Discover a curated collection of meticulously crafted projects
                 that embody cutting-edge creativity, executed with precision and
                 adhering to industry best practices for exceptional quality.

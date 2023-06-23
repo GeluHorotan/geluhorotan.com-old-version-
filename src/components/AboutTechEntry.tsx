@@ -22,7 +22,7 @@ const AboutTechEntry: FC<Props> = ({ techName, noText }) => {
           }}
         />
       </div>
-      {!noText && <p className="uppercase ">{techName}</p>}
+      {!noText && <p className="uppercase tracking-widest ">{techName}</p>}
     </div>
   );
 };
