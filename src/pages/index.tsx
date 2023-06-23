@@ -60,17 +60,28 @@ export default function Home() {
                 that embody cutting-edge creativity, executed with precision and
                 adhering to industry best practices for exceptional quality.
               </p>
-
-              <Link
-                className=" w-max 
-               cursor-pointer rounded-xl border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary"
-                href=""
-                onClick={(event) =>
-                  handleContactClick(event, '', 'projects', -25)
-                }
-              >
-                TO PROJECTS
-              </Link>
+              <div className="flex gap-4">
+                <Link
+                  className=" flex 
+               w-max cursor-pointer  items-center rounded-xl bg-accent px-4  py-2 text-secondary  dark:bg-accent2 dark:text-primary "
+                  href=""
+                  onClick={(event) =>
+                    handleContactClick(event, '', 'contact', -25)
+                  }
+                >
+                  GET IN TOUCH
+                </Link>
+                <Link
+                  className=" flex 
+               w-max cursor-pointer items-center rounded-xl border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary"
+                  href=""
+                  onClick={(event) =>
+                    handleContactClick(event, '', 'projects', -25)
+                  }
+                >
+                  TO PROJECTS
+                </Link>
+              </div>
             </div>
           </div>
 
