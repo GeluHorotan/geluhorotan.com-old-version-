@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { AiOutlineLayout } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
-import { Element, scroller } from 'react-scroll';
 
 import AboutTechEntry from '@/components/AboutTechEntry';
 import Button from '@/components/Button';
@@ -14,20 +13,19 @@ import ProjectForm from '@/components/form/ProjectForm';
 import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
 import Scrolldown from '@/components/Scrolldown';
-import ScrollTo from '@/components/ScrollTo';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import Spinner from '@/components/Spinner';
 import { useAuth } from '@/context/hooks/useAuth';
-import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
+import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import Role from '@/utils/roles';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const { projects, isLoading } = useProject();
+  // const { projects, isLoading } = useProject();
   const { user } = useAuth();
   const handleContactClick = useScrollToElement();
 
@@ -169,7 +167,6 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
-        {isLoading && <Spinner size={'large'} />}
 
         <div
           id="projects"
@@ -178,7 +175,7 @@ export default function Home() {
           {projects?.map((project, i) => {
             return (
               <div
-                key={project._id}
+                key={i}
                 className="flex h-full min-h-full w-full flex-col items-center justify-center gap-4    "
               >
                 <Image

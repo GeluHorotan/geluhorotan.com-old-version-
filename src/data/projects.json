@@ -1,0 +1,42 @@
+[
+  {
+    "fullProjectName": "The Sinners",
+    "desc": "This project allowed me to delve deep into the world of Dota 2, showcasing match data between teams, providing extensive hero information, and keeping users updated with the latest blogs, news articles, and patch releases. It was an exciting challenge to replicate the intricate design and functionality of the original website. <br/> <br/>Throughout the development process, I had the opportunity to expand my skill set by working with APIs and serverless functions. Integrating external APIs enabled me to fetch real-time match data, hero statistics, and other dynamic content for a seamless user experience. Additionally, implementing serverless functions helped optimize the performance and scalability of my application. I gained valuable insights into handling API requests, data manipulation, and serverless architecture.<br/> <br/>As I progressed with the project, I explored various innovative features to enhance the user experience. Whether it was implementing interactive match visualizations, incorporating social sharing functionality, or designing a personalized dashboard, I constantly pushed the boundaries of my knowledge and creativity. Moreover, this project served as a significant milestone in my coding journey, providing me with invaluable experience in frontend development, project management, and problem-solving. It sparked my passion for building intuitive web applications and laid a solid foundation for future projects.",
+    "githubUrl": "https://github.com/GeluHorotan/theSinners",
+    "linesOfCode": "98.236",
+    "url": "https://thesinners.netlify.app/",
+    "startDate": "Apr 2021",
+    "endDate": "Sept 2021",
+    "domain": "Video Game",
+    "keyHighlights": [
+      "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and patch updates.",
+      "Acquired valuable knowledge and hands-on experience in working with APIs to fetch real-time match data and hero statistics.",
+      "Significantly improved user engagement and satisfaction by providing a seamless and interactive Dota 2 experience."
+    ],
+    "technologies": [
+      { "value": "html5", "label": "HTML" },
+      { "value": "css3", "label": "CSS" },
+      { "value": "react", "label": "React" },
+      { "value": "sass", "label": "Sass" }
+    ],
+    "team": [
+      {
+        "value": "Gelu Horotan",
+        "label": "Gelu Horotan",
+        "role": "Front End Developer",
+        "profilePicture": "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687541375/Profile%20Pictures/t4kzulppn8rpc7si6jkl.jpg"
+      }
+    ],
+    "images": {
+      "gallery": [
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544418/Projects/The%20Sinners/gallery/galleryImage1687544416809.png",
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544418/Projects/The%20Sinners/gallery/galleryImage1687544416813.png",
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544418/Projects/The%20Sinners/gallery/galleryImage1687544416816.png",
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544418/Projects/The%20Sinners/gallery/galleryImage1687544416819.png",
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544417/Projects/The%20Sinners/gallery/galleryImage1687544416821.png",
+        "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544418/Projects/The%20Sinners/gallery/galleryImage1687544416823.png"
+      ],
+      "header": "https://res.cloudinary.com/dbhkxaszq/image/upload/v1687544416/Projects/The%20Sinners/header/headerImage.png"
+    }
+  }
+]

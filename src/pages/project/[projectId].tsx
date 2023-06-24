@@ -1,33 +1,32 @@
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
+import type { Key } from 'react';
 import { useEffect, useState } from 'react';
 import { AiFillGithub } from 'react-icons/ai';
 import { TfiWorld } from 'react-icons/tfi';
 
 import ContactForm from '@/components/form/ContactForm';
-import LinesOfCode from '@/components/LinesOfCode';
 import ProfilePicture from '@/components/ProfilePicture';
 import Scrolldown from '@/components/Scrolldown';
-import { useProject } from '@/context/hooks/useProject';
+import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 type ProjectState = {
-  githubRepo: string;
+  githubUrl: string;
+  linesOfCode: string;
   startDate: string;
   endDate: string;
   fullProjectName: string;
   url: string;
   domain: string;
-  keyHighlights: string;
+  keyHighlights: string[];
   desc: string;
   technologies: {
-    _id: string;
     value: string;
     label: string;
   }[];
   team: {
-    _id: string;
     profilePicture: string;
     value: string;
     label: string;
@@ -41,13 +40,14 @@ type ProjectState = {
 
 const ProjectID = () => {
   const [project, setProject] = useState<ProjectState | undefined>();
-  const { projects } = useProject();
+
   const {
     fullProjectName,
     images,
     desc,
     url,
-    githubRepo,
+    githubUrl,
+    linesOfCode,
     domain,
     technologies,
     team,
@@ -110,10 +110,7 @@ const ProjectID = () => {
                 {startDate} - {endDate}
               </p>
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
-                <Link
-                  href={`https://github.com/GeluHorotan/${githubRepo}`}
-                  target="_blank"
-                >
+                <Link href={githubUrl} target="_blank">
                   <AiFillGithub
                     size={28}
                     className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
@@ -130,7 +127,7 @@ const ProjectID = () => {
             <div className="flex w-full flex-wrap  gap-4  p-1  max-md:flex-col">
               <div className="flex  flex-[1_1_33%]  items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 LINES OF CODE
-                <LinesOfCode repoName={githubRepo} />
+                <p>{linesOfCode}</p>
               </div>
               <div className="flex flex-[1_1_33%] items-center justify-between rounded-xl border border-accent px-6 py-2 font-bold tracking-widest text-primary dark:border-accent2 dark:text-secondary">
                 DOMAIN
@@ -144,7 +141,7 @@ const ProjectID = () => {
                 {technologies.map((technology, i) => {
                   return (
                     <div
-                      key={technology._id}
+                      key={i}
                       className="flex items-center justify-center gap-2"
                     >
                       <Image
@@ -171,7 +168,7 @@ const ProjectID = () => {
                 {team.map((member, i) => {
                   return (
                     <div
-                      key={member._id}
+                      key={i}
                       className=" flex  items-center justify-center gap-4 max-md:flex-col  "
                     >
                       <ProfilePicture
@@ -190,10 +187,15 @@ const ProjectID = () => {
             </div>
             <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
               KEY HIGHLIGHTS
-              <div
-                className="flex flex-col gap-4  font-light italic  "
-                dangerouslySetInnerHTML={{ __html: keyHighlights }}
-              ></div>
+              <ul className="flex flex-col gap-4  font-light italic  ">
+                {keyHighlights.map((highlight: string, i: Key) => {
+                  return (
+                    <li className="indent-3" key={i}>
+                      {highlight}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
             <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
               DESCRIPTION
