@@ -73,7 +73,7 @@ const About: NextPage<Props> = () => {
         <div className="flex gap-4">
           <Link
             className=" flex 
-               w-max cursor-pointer  items-center rounded-xl bg-accent px-4  py-2 text-secondary  dark:bg-accent2 dark:text-primary "
+               w-max cursor-pointer  items-center rounded-xl bg-accent px-4  py-2 text-secondary transition-all duration-200 ease-in-out hover:scale-105  dark:bg-accent2 dark:text-primary "
             href=""
             onClick={(event) => handleContactClick(event, '/', 'contact', -25)}
           >
@@ -81,7 +81,7 @@ const About: NextPage<Props> = () => {
           </Link>
           <Link
             className=" flex 
-               w-max cursor-pointer items-center rounded-xl border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary"
+               w-max cursor-pointer items-center rounded-xl border-2 border-accent px-4 py-2 text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary"
             href=""
             onClick={(event) => handleContactClick(event, '/', 'projects', -25)}
           >

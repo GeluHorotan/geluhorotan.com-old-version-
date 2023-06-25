@@ -57,7 +57,7 @@ const ExperienceEntry: FC<Props> = ({
           target="_blank"
           href={githubURL}
           className=" 
-               w-max cursor-pointer  rounded-xl  border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary "
+             w-max cursor-pointer rounded-xl border-2  border-accent px-4  py-2  text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary "
         >
           GITHUB
         </Link>
@@ -66,7 +66,7 @@ const ExperienceEntry: FC<Props> = ({
             target="_blank"
             href={siteURL}
             className=" 
-               w-max cursor-pointer  rounded-xl  border-2 border-accent px-4 py-2 text-primary  dark:border-accent2 dark:text-secondary "
+            w-max cursor-pointer rounded-xl border-2   border-accent px-4  py-2  text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary "
           >
             VISIT
           </Link>

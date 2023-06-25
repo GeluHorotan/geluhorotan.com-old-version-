@@ -37,7 +37,7 @@ const ShowcaseEntry: FC<Props> = ({
           <Link
             href={`/about`}
             onClick={(event) => handleContactClick(event, '/about', target, 50)}
-            className="rounded-xl border border-accent  px-3 py-1 text-primary dark:border-accent2 dark:text-secondary"
+            className="rounded-xl border border-accent px-3 py-1 text-primary transition-all  duration-200 ease-in-out hover:scale-105 dark:border-accent2 dark:text-secondary"
           >
             READ MORE
           </Link>

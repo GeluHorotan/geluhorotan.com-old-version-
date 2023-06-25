@@ -157,45 +157,45 @@ const ProjectID = () => {
 
             <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
               CONTENT
-              <ul className="flex list-inside list-decimal flex-col items-start  gap-2  uppercase italic text-accent dark:text-accent2">
+              <ul className="flex list-inside  list-decimal flex-col items-start  gap-2  uppercase italic text-accent dark:text-accent2">
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2 "
+                  className="cursor-pointer font-light  transition-all duration-200 ease-in-out hover:translate-x-2 "
                   onClick={() => scrollToElement('tech', 150)}
                 >
                   Technologies
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('contributors', 150)}
                 >
                   CONTRIBUTORS
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('keyHighlights', 150)}
                 >
                   KEY HIGHLIGHTS
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('conceptsCovered', 150)}
                 >
                   CONCEPTS COVERED
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('description', 150)}
                 >
                   DESCRIPTION
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('contact', 150)}
                 >
                   CONTACT
                 </li>
                 <li
-                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('gallery', 150)}
                 >
                   GALLERY

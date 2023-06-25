@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
+import ScrollToTop from '@/components/ScrollToTop';
 import useDarkMode from '@/customHooks/useDarkMode';
 
 type ITextTemplateProps = {
@@ -28,6 +29,7 @@ const TextTemplate = ({
       {meta}
 
       <Navigation theme={theme} setTheme={setTheme} />
+      <ScrollToTop />
       <div className="  text-template-container flex min-h-screen w-full flex-col items-start justify-center  gap-8 text-primary dark:text-secondary ">
         <h1
           className={`futura-heavy relative    tracking-widest ${
