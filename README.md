@@ -27,6 +27,8 @@ This is dota 2 website with multiple pages:
 * Typescript.
 * Node JS (Express JS).
 * Mongo DB.
+* Mongoose.
+* Socket.IO.
 * Tailwind CSS.
 * React Query (TanStack).
 
