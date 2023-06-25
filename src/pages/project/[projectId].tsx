@@ -8,6 +8,7 @@ import { TfiWorld } from 'react-icons/tfi';
 import ContactForm from '@/components/form/ContactForm';
 import ProfilePicture from '@/components/ProfilePicture';
 import Scrolldown from '@/components/Scrolldown';
+import useScrollToElement from '@/customHooks/useScrollToElement';
 import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
@@ -15,12 +16,14 @@ import { Main } from '@/templates/Main';
 type ProjectState = {
   githubUrl: string;
   linesOfCode: string;
+  introduction: string;
   startDate: string;
   endDate: string;
   fullProjectName: string;
   url: string;
   domain: string;
   keyHighlights: string[];
+  conceptsCovered: string[];
   desc: string;
   technologies: {
     value: string;
@@ -40,10 +43,12 @@ type ProjectState = {
 
 const ProjectID = () => {
   const [project, setProject] = useState<ProjectState | undefined>();
+  const handleContactClick = useScrollToElement();
 
   const {
     fullProjectName,
     images,
+    introduction,
     desc,
     url,
     githubUrl,
@@ -52,6 +57,7 @@ const ProjectID = () => {
     technologies,
     team,
     keyHighlights,
+    conceptsCovered,
     startDate,
     endDate,
   } = project ?? {};
@@ -81,6 +87,18 @@ const ProjectID = () => {
   useEffect(() => {
     getProject();
   }, [projects]);
+
+  const scrollToElement = (elementId: string, offset = 0) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   if (project)
     return (
@@ -135,7 +153,60 @@ const ProjectID = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-6 self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center">
+            <h6 className="font-normal">{introduction}</h6>
+
+            <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
+              CONTENT
+              <ul className="flex list-inside list-decimal flex-col items-start  gap-2  uppercase italic text-accent dark:text-accent2">
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2 "
+                  onClick={() => scrollToElement('tech', 150)}
+                >
+                  Technologies
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('contributors', 150)}
+                >
+                  CONTRIBUTORS
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('keyHighlights', 150)}
+                >
+                  KEY HIGHLIGHTS
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('conceptsCovered', 150)}
+                >
+                  CONCEPTS COVERED
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('description', 150)}
+                >
+                  DESCRIPTION
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('contact', 150)}
+                >
+                  CONTACT
+                </li>
+                <li
+                  className="cursor-pointer font-semibold transition-all duration-200 ease-in-out hover:translate-x-2"
+                  onClick={() => scrollToElement('gallery', 150)}
+                >
+                  GALLERY
+                </li>
+              </ul>
+            </div>
+
+            <div
+              id="tech"
+              className="flex flex-col gap-6 self-start rounded-xl  font-bold  tracking-widest text-primary dark:text-secondary max-md:items-center max-md:self-center"
+            >
               TECHNOLOGIES
               <div className="flex items-center justify-center gap-4 ">
                 {technologies.map((technology, i) => {
@@ -162,7 +233,10 @@ const ProjectID = () => {
               </div>
             </div>
 
-            <div className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center">
+            <div
+              id="contributors"
+              className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center"
+            >
               CONTRIBUTORS
               <div className="flex items-center justify-center gap-2 ">
                 {team.map((member, i) => {
@@ -185,29 +259,51 @@ const ProjectID = () => {
                 })}
               </div>
             </div>
-            <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
+            <div
+              id="keyHighlights"
+              className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
+            >
               KEY HIGHLIGHTS
-              <ul className="flex flex-col gap-4  font-light italic  ">
+              <ul className="flex list-inside list-disc  flex-col gap-4 font-light italic ">
                 {keyHighlights.map((highlight: string, i: Key) => {
                   return (
-                    <li className="indent-3" key={i}>
+                    <li className="" key={i}>
                       {highlight}
                     </li>
                   );
                 })}
               </ul>
             </div>
-            <div className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary">
+            <div
+              id="conceptsCovered"
+              className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
+            >
+              CONCEPTS COVERED
+              <ul className="flex list-inside list-disc  flex-col gap-4 font-light ">
+                {conceptsCovered.map((concept: string, i: Key) => {
+                  return (
+                    <li className="" key={i}>
+                      {concept}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div
+              id="description"
+              className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
+            >
               DESCRIPTION
-              <p
-                className=" indent-8 "
-                dangerouslySetInnerHTML={{ __html: desc }}
-              ></p>
+              <p className="" dangerouslySetInnerHTML={{ __html: desc }}></p>
+            </div>
+            <div className="w-full" id="contact">
+              <ContactForm width={'w-full'} />
             </div>
 
-            <ContactForm width={'w-full'} />
-
-            <div className="grid grid-cols-1 items-center justify-center gap-4">
+            <div
+              id="gallery"
+              className="grid grid-cols-1 items-center justify-center gap-4"
+            >
               {images.gallery.map((image, i) => {
                 return (
                   <Image

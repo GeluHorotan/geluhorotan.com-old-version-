@@ -1,7 +1,8 @@
 [
   {
     "fullProjectName": "The Sinners",
-    "desc": "This project allowed me to delve deep into the world of Dota 2, showcasing match data between teams, providing extensive hero information, and keeping users updated with the latest blogs, news articles, and patch releases. It was an exciting challenge to replicate the intricate design and functionality of the original website. <br/> <br/>Throughout the development process, I had the opportunity to expand my skill set by working with APIs and serverless functions. Integrating external APIs enabled me to fetch real-time match data, hero statistics, and other dynamic content for a seamless user experience. Additionally, implementing serverless functions helped optimize the performance and scalability of my application. I gained valuable insights into handling API requests, data manipulation, and serverless architecture.<br/> <br/>As I progressed with the project, I explored various innovative features to enhance the user experience. Whether it was implementing interactive match visualizations, incorporating social sharing functionality, or designing a personalized dashboard, I constantly pushed the boundaries of my knowledge and creativity. Moreover, this project served as a significant milestone in my coding journey, providing me with invaluable experience in frontend development, project management, and problem-solving. It sparked my passion for building intuitive web applications and laid a solid foundation for future projects.",
+    "introduction": "The Sinners is a dynamic frontend website designed exclusively for Dota 2 enthusiasts. It serves as a comprehensive platform for users to stay up-to-date with the latest news, patch notes, game updates, hero information, team match details, and leaderboard rankings.",
+    "desc": "The Sinners is a dynamic frontend website exclusively tailored for Dota 2 enthusiasts. It serves as a comprehensive platform that offers a wealth of information and features related to the popular online game. Users can delve into the latest news, patch notes, game updates, hero details, team match results, and leaderboard rankings, all in one centralized hub. With a focus on providing a seamless user experience, the website boasts an intuitive interface and client-side routing, allowing smooth transitions between pages without the need for page reloads. Furthermore, the integration of serverless functions ensures real-time data retrieval and processing, ensuring that users receive up-to-date information at their fingertips.<br/><br/>The Sinners goes beyond being a mere information hub. It incorporates advanced functionality by utilizing technologies like React, Styled-Components, and React Query. This enables users to enjoy interactive filtering and sorting options, empowering them to navigate through the vast Dota 2 content with ease. Moreover, the website's responsive design ensures a seamless experience across various devices, from desktop computers to smartphones and tablets, making Dota 2 knowledge accessible anytime, anywhere.<br/><br/>In summary, The Sinners stands as a go-to destination for Dota 2 enthusiasts, providing an all-encompassing platform to keep them informed and engaged. With its user-friendly interface, seamless navigation, real-time data updates, and responsive design, the website guarantees an immersive and accessible experience. Whether it's staying up-to-date with the latest news, diving into hero details, exploring match results, or simply browsing the leaderboard rankings, The Sinners caters to the diverse needs of Dota 2 enthusiasts, making it a must-visit destination for avid gamers.",
     "githubUrl": "https://github.com/GeluHorotan/theSinners",
     "linesOfCode": "98.236",
     "url": "https://thesinners.netlify.app/",
@@ -12,6 +13,16 @@
       "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and patch updates.",
       "Acquired valuable knowledge and hands-on experience in working with APIs to fetch real-time match data and hero statistics.",
       "Significantly improved user engagement and satisfaction by providing a seamless and interactive Dota 2 experience."
+    ],
+    "conceptsCovered": [
+      "React for building user interfaces (UI).",
+      "Integration of serverless functions (Lambda functions).",
+      "Client-side routing using React Router to enable seamless transitions between pages without reloading the entire app.",
+      "Seamless integration of the Dota 2 API to provide real-time data.",
+      "Dynamic rendering of content for up-to-date information.",
+      "Responsive design ensuring optimal display across devices.",
+      "Utilization of popular third-party libraries, including React Query, for enhanced functionality.",
+      "User-friendly interface with intuitive navigation and layout."
     ],
     "technologies": [
       { "value": "html5", "label": "HTML" },
