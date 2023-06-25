@@ -196,7 +196,7 @@ export default function Home() {
                         {project.startDate} - {project.endDate}
                       </p>
                       <p className="h-full font-normal tracking-wider line-clamp-3">
-                        {project.desc}
+                        {project.introduction}
                       </p>
                     </div>
                     <div className="flex items-center gap-6  tracking-widest">

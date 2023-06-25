@@ -292,20 +292,23 @@ const ProjectID = () => {
 
             <div
               id="gallery"
-              className="grid grid-cols-1 items-center justify-center gap-4"
+              className="grid w-full grid-cols-1 flex-col items-center justify-center   gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
             >
-              {images.gallery.map((image, i) => {
-                return (
-                  <Image
-                    src={image}
-                    key={i}
-                    alt={fullProjectName}
-                    width={1920}
-                    height={1080}
-                    className="w-full "
-                  />
-                );
-              })}
+              GALLERY
+              <div className="flex flex-col gap-12">
+                {images.gallery.map((image, i) => {
+                  return (
+                    <Image
+                      src={image}
+                      key={i}
+                      alt={fullProjectName}
+                      width={1920}
+                      height={1080}
+                      className="w-full "
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
