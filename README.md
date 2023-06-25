@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to The Sinners!
 
-## Getting Started
+Personal portfolio platform where I showcase my skills, work examples, and provide a glimpse into who I am as a frontend developer. With a passion for crafting captivating user experiences, I present a collection of my notable projects that demonstrate my expertise and creativity.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Introduction](#introduction)
+- [Technologies used](#technologies-used)
+- [Concepts covered](#concepts-covered)
+- [Demo](#demo)
+- [Author](#author)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
+This is dota 2 website with multiple pages:
+* Homepage: Explore my homepage showcasing my projects and skills
+* Project Page: Dive into the details of a specific project I have worked on.
+* About Page: Discover my motivation to create impactful and innovative solutions.
+* CV Page: Learn about my education, work experience, and professional achievements.
+* Login Page: Securely enter your credentials to authenticate and gain access to your account.
+* Register Page: Fill out the registration form to establish your user profile.
+* Privacy Policy Page: Understand how your personal information is collected, stored, and used.
+* Terms and Conditions Page: Review the terms and conditions for using my portfolio website.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Technologies used:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+* React (Next JS).
+* Typescript.
+* Node JS (Express JS).
+* Mongo DB.
+* Mongoose.
+* Socket.IO.
+* Tailwind CSS.
+* React Query (TanStack).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Live demo of the app available here: https://geluhorotan.com
 
-## Learn More
+## Concepts covered
 
-To learn more about Next.js, take a look at the following resources:
+* React (Next JS) for building user interfaces (UI).
+* Conventional commit messages to provide clear and standardized information about code changes.
+* Use of PropTypes for validating props to ensure that data passed between components is of the correct type.
+* Authentication with JSON Web Tokens (JWT) for secure user authentication.
+* User roles (user, developer, admin) to control access to different parts of the website.
+* Testing UI components using React Testing Library (RTL) to ensure proper functionality.
+* HTTP requests to external APIs using axios and processing responses for displaying relevant data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- GitHub [@GeluHorotan](https://github.com/GeluHorotan) 
+- LinkedIn [@gelu-horotan](https://www.linkedin.com/in/gelu-horotan/) 
+- Twitter [@oxymoron365](https://www.twitter.com/oxymoron365)
