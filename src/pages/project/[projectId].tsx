@@ -24,7 +24,6 @@ type ProjectState = {
   domain: string;
   keyHighlights: string[];
   conceptsCovered: string[];
-  desc: string;
   technologies: {
     value: string;
     label: string;
@@ -49,7 +48,6 @@ const ProjectID = () => {
     fullProjectName,
     images,
     introduction,
-    desc,
     url,
     githubUrl,
     linesOfCode,
@@ -153,7 +151,10 @@ const ProjectID = () => {
               </div>
             </div>
 
-            <h6 className="font-normal">{introduction}</h6>
+            <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
+              DESCRIPTION
+              <p className="indent-8">{introduction}</p>
+            </div>
 
             <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
               CONTENT
@@ -182,12 +183,7 @@ const ProjectID = () => {
                 >
                   CONCEPTS COVERED
                 </li>
-                <li
-                  className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
-                  onClick={() => scrollToElement('description', 150)}
-                >
-                  DESCRIPTION
-                </li>
+
                 <li
                   className="cursor-pointer font-light transition-all duration-200 ease-in-out hover:translate-x-2"
                   onClick={() => scrollToElement('contact', 150)}
@@ -289,13 +285,7 @@ const ProjectID = () => {
                 })}
               </ul>
             </div>
-            <div
-              id="description"
-              className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
-            >
-              DESCRIPTION
-              <p className="" dangerouslySetInnerHTML={{ __html: desc }}></p>
-            </div>
+
             <div className="w-full" id="contact">
               <ContactForm width={'w-full'} />
             </div>
