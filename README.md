@@ -37,6 +37,7 @@ Live demo of the app available here: https://geluhorotan.com
 ## Concepts covered
 
 * React (Next JS) for building user interfaces (UI).
+* Conventional commit messages to provide clear and standardized information about code changes.
 * Use of PropTypes for validating props to ensure that data passed between components is of the correct type.
 * Authentication with JSON Web Tokens (JWT) for secure user authentication.
 * User roles (user, developer, admin) to control access to different parts of the website.
