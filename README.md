@@ -11,14 +11,19 @@ Personal portfolio platform where I showcase my skills, work examples, and provi
 
 ## Technologies used:
 
-- React (Next JS).
-- Typescript.
-- Node JS (Express JS).
-- Mongo DB.
-- Mongoose.
-- Socket.IO.
-- Tailwind CSS.
-- React Query (TanStack).
+Frontend:
+
+* React (Next JS).
+* Typescript.
+* Tailwind CSS.
+* React Query (TanStack).
+
+Backend:
+
+* Node JS (Express JS).
+* Mongo DB.
+* Mongoose.
+* Socket.IO.
 
 ## Demo
 
@@ -27,9 +32,9 @@ Live demo of the app available here: https://geluhorotan.com
 ## Concepts covered
 
 - React (Next JS) for building user interfaces (UI).
+- Use of Typescript to help catch errors early and improves code reliability.
 - Conventional commit messages to provide clear and standardized information about code changes.
 - Use of custom hooks, providing reusable and efficient solutions for various situations.
-- Use of PropTypes for validating props to ensure that data passed between components is of the correct type.
 - Authentication with JSON Web Tokens (JWT) for secure user authentication.
 - User roles (user, developer, admin) to control access to different parts of the website.
 - Testing UI components using React Testing Library (RTL) to ensure proper functionality.
