@@ -24,7 +24,7 @@ Backend:
 * Mongo DB.
 * Mongoose.
 * Socket.IO.
-* Docker
+* Docker.
 
 ## Demo
 
