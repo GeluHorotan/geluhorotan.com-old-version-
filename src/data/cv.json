@@ -6,25 +6,20 @@
       "date": "Sept 2022 - present",
       "responsabilities": [
         {
-          "text": "Optimized the application for maximum speed by implementing best practices for front-end and back-end development, including using server-side rendering, caching strategies, reducing HTTP requests."
+          "text": "Created a personal portfolio platform that showcases my skills and work examples as a frontend developer using React (Next JS), Typescript and Tailwind CSS."
         },
         {
-          "text": "Designed and developed solutions using modern technologies, conducting testing and quality assurance, and deploying applications to production environments."
+          "text": "Learned to develop custom hooks to provide reusable and efficient solutions for various situations."
         },
         {
-          "text": "Ensured the security and privacy of the application by implementing best practices for secure coding, such as using encryption and hashing algorithms to protect sensitive data, and implementing access controls to restrict unauthorized access."
+          "text": "Learned to develop a backend architecture, securing user authentication and role-based access control."
+        },
+        {
+          "text": "Enables efficient management and delivery of data, allowing me to update and showcase my latest projects and skills effortlessly."
         }
       ],
       "acquiredSkills": [
-        "Tailwind CSS",
-        "Next JS",
-        "Node JS (Express)",
-        "Context API",
-        "React Query",
-        "Redux",
-        "Web Sockets",
-        "Mongo DB",
-        "Github"
+        "React.js (Next.js), Typescript, Tailwind CSS, React Query (TanStack), Context API, Node.js (Express.js), Mongo DB, Mongoose, Socket.io, Docker, Github"
       ],
       "githubURL": "https://github.com/GeluHorotan/geluhorotan.com"
     },
@@ -34,21 +29,21 @@
       "date": "Apr 2022 - Sept 2022",
       "responsabilities": [
         {
-          "text": "Implemented and optimized front-end performance by using techniques such as code splitting, lazy loading, and minification to improve page load times and overall application performance. Monitored front-end performance metrics using tools such as Google PageSpeed Insights and Lighthouse, and made necessary improvements to ensure that the application is fast, efficient, and provided a smooth user experience."
+          "text": "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and patch updates."
         },
         {
-          "text": "Conducted cross-browser testing and implemented web accessibility best practices to ensure that the application is accessible and usable by all users, including those with disabilities."
+          "text": "Acquired valuable knowledge and hands-on experience in working with APIs to fetch real-time match data and hero statistics."
         },
         {
-          "text": "Consumed REST APIs and integrated data visualization tools to present complex data in a user-friendly and understandable way."
+          "text": "Significantly improved user engagement and satisfaction by providing a seamless and interactive Dota 2 experience."
         }
       ],
       "acquiredSkills": [
-        "Styled-Components",
-        "React JS",
-        "Node JS (Express)",
+        "React.js",
+        "Styled-Components (CSS)",
         "Context API",
-        "REST APIs",
+        "Context API",
+        "React Query (TanStack)",
         "Github"
       ],
       "githubURL": "https://github.com/GeluHorotan/theSinners",
@@ -76,11 +71,11 @@
       "Time management and organization"
     ],
     "hardSkills": [
-      "Algorithms",
-      "Data Structures",
-      "OOP Analysis and Design",
-      "Next JS / Tailwind CSS",
-      "Node JS / Express"
+      "React.js / Next.js",
+      "Typescript",
+      "Redux / Context API",
+      "Tailwind CSS",
+      "Node.js / Express.js"
     ]
   },
   "languages": [

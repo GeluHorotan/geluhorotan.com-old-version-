@@ -233,7 +233,7 @@ const ProjectID = () => {
               className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center"
             >
               CONTRIBUTORS
-              <div className="flex items-center justify-center gap-20 ">
+              <div className="flex flex-wrap items-center justify-center gap-20   ">
                 {team.map((member, i) => {
                   return (
                     <div
@@ -245,7 +245,7 @@ const ProjectID = () => {
                         size="medium"
                         className="drop-shadow-lg dark:drop-shadow-none"
                       />
-                      <div className="flex flex-col items-start max-md:items-center">
+                      <div className="flex flex-col items-start  max-md:items-center">
                         {member.label}
                         <p className="text-sm">{member.role}</p>
                       </div>

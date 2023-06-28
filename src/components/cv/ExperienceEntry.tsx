@@ -53,24 +53,24 @@ const ExperienceEntry: FC<Props> = ({
         </div>
       </div>
       <div className="flex gap-4">
-        <Link
-          target="_blank"
-          href={githubURL}
-          className=" 
-             w-max cursor-pointer rounded-xl border-2  border-accent px-4  py-2  text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary "
-        >
-          GITHUB
-        </Link>
         {siteURL && (
           <Link
             target="_blank"
             href={siteURL}
             className=" 
-            w-max cursor-pointer rounded-xl border-2   border-accent px-4  py-2  text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary "
+            flex w-max cursor-pointer items-center rounded-xl    bg-accent px-4  py-2  text-secondary transition-all duration-200 ease-in-out hover:scale-105  dark:bg-accent2 dark:text-primary "
           >
             VISIT
           </Link>
         )}
+        <Link
+          target="_blank"
+          href={githubURL}
+          className=" 
+             flex w-max cursor-pointer items-center rounded-xl border-2  border-accent px-4  py-2  text-primary transition-all duration-200 ease-in-out hover:scale-105  dark:border-accent2 dark:text-secondary "
+        >
+          GITHUB
+        </Link>
       </div>
     </div>
   );
