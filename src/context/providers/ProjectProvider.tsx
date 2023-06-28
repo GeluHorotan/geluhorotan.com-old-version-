@@ -18,13 +18,16 @@ export type ProjectDetails = {
   url: string;
   startDate: string;
   endDate: string;
-  githubRepo: string;
+  githubUrl: string;
+  linesOfCode: string;
   domain: string;
   desc: string;
   keyHighlights: string;
+  conceptsCovered: string;
   technologies: {
     value: string;
     label: string;
+    img: string;
     _id: string;
   }[];
   team: {
@@ -57,16 +60,19 @@ type Error = {
 type Projects = {
   _id: string;
   domain: string;
+  linesOfCode: string;
+  githubUrl: string;
   startDate: string;
   endDate: string;
-  githubRepo: string;
   url: string;
   fullProjectName: string;
   desc: string;
   keyHighlights: string;
+  conceptsCovered: string;
   technologies: {
     value: string;
     label: string;
+    img: string;
     _id: string;
   }[];
   team: Developers;
@@ -102,12 +108,14 @@ export const ProjectProvider = ({ children }: Props) => {
 
   const addProject = async ({
     fullProjectName,
-    githubRepo,
+    githubUrl,
     startDate,
+    linesOfCode,
     endDate,
     domain,
     desc,
     keyHighlights,
+    conceptsCovered,
     technologies,
     team,
     url,
@@ -118,8 +126,10 @@ export const ProjectProvider = ({ children }: Props) => {
       fullProjectName,
       domain,
       startDate,
+      githubUrl,
       endDate,
-      githubRepo,
+      conceptsCovered,
+      linesOfCode,
       desc,
       keyHighlights,
       technologies,

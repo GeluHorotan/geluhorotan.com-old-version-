@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 
 import AboutEntry from '@/components/AboutEntry';
 import AboutTechEntry from '@/components/AboutTechEntry';
+import TechStack from '@/components/TechStack';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
 import { TextTemplate } from '@/templates/TextTemplate';
@@ -29,10 +30,6 @@ const About: NextPage<Props> = () => {
       <section className=" flex !h-max flex-col items-start  justify-center gap-8 px-20 max-[1100px]:flex-col  max-md:px-4  ">
         <div className="flex h-full w-full flex-col justify-center gap-10   max-[1100px]:w-full">
           <div className="flex w-1/2  flex-col gap-8 max-[1076px]:w-full">
-            <h4>
-              Detail-oriented professional and critical thinker with a flair for
-              creating elegant solutions in the least amount of time.
-            </h4>
             <p className="">
               {' '}
               Driven by curiosity and inspired by my best friend&apos;s
@@ -55,22 +52,14 @@ const About: NextPage<Props> = () => {
               Tailwind CSS, TypeScript, and even Node.js to gain a deeper
               understanding of backend technologies.
             </p>
-            <p>
-              {' '}
-              With an unwavering passion and relentless drive, I am poised to
-              make a lasting impact in the world of frontend development.
-            </p>
           </div>
         </div>
         <div className="flex flex-col items-start justify-center gap-2  max-[1100px]:items-center">
           <div className=" flex w-full  items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
-            <AboutTechEntry techName={'react'} />
-            <AboutTechEntry techName={'nodejs'} />
-            <AboutTechEntry techName={'typescript'} />
-            <AboutTechEntry techName={'tailwindcss'} />
+            <TechStack />
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex w-full gap-4 max-md:justify-center ">
           <Link
             className=" flex 
                w-max cursor-pointer  items-center rounded-xl bg-accent px-4  py-2 text-secondary transition-all duration-200 ease-in-out hover:scale-105  dark:bg-accent2 dark:text-primary "

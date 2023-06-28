@@ -35,7 +35,7 @@ const ExperienceEntry: FC<Props> = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-4">
         {responsabilities?.map((res, i) => {
           return (
             <p key={i} className="italic">

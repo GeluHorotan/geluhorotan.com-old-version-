@@ -20,6 +20,8 @@ type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
   fieldValue: {
+    id: number;
+    img: string;
     value: string;
     label: string;
     role: string;
@@ -65,18 +67,14 @@ const HeadlessCombobox = ({
   }, [error]);
 
   const removeEntry = (index: number) => {
-    // Create a copy of the current team array
-    const newEntries = [...fieldValue];
-    // Remove the language from the copy of the array
-    newEntries.splice(index, 1);
-    // Update the values object with the new array
+    const newEntries = fieldValue.filter((val, i) => val.id !== index);
     setFieldValue(name, newEntries);
   };
 
   const handleOnChange = (value: any[]) => {
     setFieldValue(name, value);
   };
-
+  console.log(fieldValue, 'fv');
   return (
     <TooltipProvider>
       <Tooltip>
@@ -141,14 +139,10 @@ const HeadlessCombobox = ({
                           <div className="flex flex-row items-center gap-3">
                             <span>{index + 1}.</span>
                             <Image
-                              src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${option.value}/${option.value}-original.svg`}
+                              src={option.img}
                               width={24}
                               height={24}
                               alt={option.label}
-                              onError={(e) => {
-                                const img = e.target as HTMLImageElement;
-                                img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${option.value}/${option.value}-plain.svg`;
-                              }}
                             />
 
                             <span
@@ -197,21 +191,17 @@ const HeadlessCombobox = ({
                     >
                       <div className=" flex h-full w-full  items-center justify-center gap-2  p-2">
                         <Image
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${sOption.value}/${sOption.value}-original.svg`}
+                          src={sOption.img}
                           width={20}
                           height={20}
                           alt={sOption.label}
                           className=""
-                          onError={(e) => {
-                            const img = e.target as HTMLImageElement;
-                            img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${sOption.value}/${sOption.value}-plain.svg`;
-                          }}
                         />
                         <p>{sOption.label}</p>
                       </div>
                       <MdClose
                         className=" absolute right-2"
-                        onClick={() => removeEntry(index)}
+                        onClick={() => removeEntry(sOption.id)}
                       ></MdClose>
                     </div>
                   );

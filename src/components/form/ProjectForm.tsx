@@ -28,26 +28,36 @@ const ProjectForm: React.FC = () => {
   const ProjectSchema = Yup.object().shape({
     fullProjectName: Yup.string()
       .min(3, 'The project name must be longer than 3 characters!')
-      .max(20, 'The project name must not be longer than 15 characters!')
+      .max(20, 'The project name must not be longer than 20 characters!')
       .required('The project name is required!'),
     url: Yup.string().url().required('The url is required!'),
-    githubRepo: Yup.string()
-      .min(
-        3,
-        'The github repo name of the project must be longer than 3 characters!'
-      )
-      .max(
-        45,
-        'The github repo name of the project must not be longer than 15 characters!'
-      )
-      .required('The github repo name of the project is required!'),
     startDate: Yup.string().required('The start date is required!'),
     endDate: Yup.string().required('The start date is required!'),
+    linesOfCode: Yup.string()
+      .required('The start date is required!')
+      .min(
+        1,
+        'The lines of code of the project should be longer than 1 character.'
+      )
+      .max(
+        8,
+        'The lines of code of the project should not be longer than 8 character.'
+      ),
+    githubUrl: Yup.string()
+      .required('The start date is required!')
+      .min(
+        1,
+        'The lines of code of the project should be longer than 1 character.'
+      )
+      .max(
+        100,
+        'The lines of code of the project should not be longer than 100 character.'
+      ),
     domain: Yup.string()
       .min(3, 'The domain of the project must be longer than 3 characters!')
       .max(
         20,
-        'The domain of the project must not be longer than 15 characters!'
+        'The domain of the project must not be longer than 20 characters!'
       )
       .required('The domain of the project is required!'),
     desc: Yup.string()
@@ -57,10 +67,20 @@ const ProjectForm: React.FC = () => {
       )
       .max(
         3000,
-        'The description of the project must not be longer than 15 characters!'
+        'The description of the project must not be longer than 3000 characters!'
       )
       .required('The description is required!'),
     keyHighlights: Yup.string()
+      .min(
+        10,
+        'The description of the project must be longer than 10 characters!'
+      )
+      .max(
+        3000,
+        'The description of the project must not be longer than 15 characters!'
+      )
+      .required('The description is required!'),
+    conceptsCovered: Yup.string()
       .min(
         10,
         'The description of the project must be longer than 10 characters!'
@@ -88,12 +108,14 @@ const ProjectForm: React.FC = () => {
         initialValues={{
           fullProjectName: '',
           url: '',
-          githubRepo: '',
+          githubUrl: '',
           startDate: '',
           endDate: '',
+          linesOfCode: '',
           domain: '',
           desc: '',
           keyHighlights: '',
+          conceptsCovered: '',
           technologies: [],
           team: [],
           images: {
@@ -105,9 +127,11 @@ const ProjectForm: React.FC = () => {
         onSubmit={async ({
           fullProjectName,
           url,
-          githubRepo,
+          conceptsCovered,
           startDate,
+          githubUrl,
           endDate,
+          linesOfCode,
           domain,
           desc,
           keyHighlights,
@@ -118,9 +142,11 @@ const ProjectForm: React.FC = () => {
           await addProject({
             fullProjectName,
             url,
-            githubRepo,
+            conceptsCovered,
             startDate,
+            githubUrl,
             endDate,
+            linesOfCode,
             domain,
             desc,
             keyHighlights,
@@ -134,7 +160,9 @@ const ProjectForm: React.FC = () => {
           values: {
             fullProjectName,
             url,
-            githubRepo,
+            githubUrl,
+            conceptsCovered,
+            linesOfCode,
             startDate,
             endDate,
             domain,
@@ -188,19 +216,7 @@ const ProjectForm: React.FC = () => {
                     labelColor="text-primary"
                     reverseTextColor
                   />
-                  <Field
-                    label="Github Repo"
-                    id="githubRepo"
-                    name="githubRepo"
-                    onChangeHandler={handleChange}
-                    onBlurHandler={handleBlur}
-                    inputType="text"
-                    value={githubRepo}
-                    error={errors.githubRepo}
-                    as={Input}
-                    labelColor="text-primary"
-                    reverseTextColor
-                  />
+
                   <div className="flex justify-between gap-20">
                     <Field
                       label="Start Date"
@@ -208,7 +224,7 @@ const ProjectForm: React.FC = () => {
                       name="startDate"
                       onChangeHandler={handleChange}
                       onBlurHandler={handleBlur}
-                      inputType="month"
+                      inputType="text"
                       value={startDate}
                       error={errors.startDate}
                       as={Input}
@@ -217,11 +233,11 @@ const ProjectForm: React.FC = () => {
                     />
                     <Field
                       label="End Date"
-                      id="githubRepo"
+                      id="End Date"
                       name="endDate"
                       onChangeHandler={handleChange}
                       onBlurHandler={handleBlur}
-                      inputType="month"
+                      inputType="text"
                       value={endDate}
                       error={errors.endDate}
                       as={Input}
@@ -229,6 +245,32 @@ const ProjectForm: React.FC = () => {
                       reverseTextColor
                     />
                   </div>
+                  <Field
+                    label="Lines of Code"
+                    id="linesOfCode"
+                    name="linesOfCode"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    inputType="text"
+                    value={linesOfCode}
+                    error={errors.linesOfCode}
+                    as={Input}
+                    labelColor="text-primary"
+                    reverseTextColor
+                  />
+                  <Field
+                    label="Github URL"
+                    id="githubUrl"
+                    name="githubUrl"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    inputType="text"
+                    value={githubUrl}
+                    error={errors.githubUrl}
+                    as={Input}
+                    labelColor="text-primary"
+                    reverseTextColor
+                  />
                 </ProjectWrapper>
 
                 <ProjectWrapper desc="What was the hardest thing to overcome ? A short description would be exactly what this project needs. ">
@@ -265,6 +307,18 @@ const ProjectForm: React.FC = () => {
                     onBlurHandler={handleBlur}
                     value={keyHighlights}
                     error={errors.keyHighlights}
+                    as={TextArea}
+                    labelColor="text-primary"
+                    reverseTextColor
+                  />
+                  <Field
+                    label="Concepts Covered"
+                    id="conceptsCovered"
+                    name="conceptsCovered"
+                    onChangeHandler={handleChange}
+                    onBlurHandler={handleBlur}
+                    value={conceptsCovered}
+                    error={errors.conceptsCovered}
                     as={TextArea}
                     labelColor="text-primary"
                     reverseTextColor

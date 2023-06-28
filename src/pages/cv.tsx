@@ -28,13 +28,9 @@ const CV: NextPage<Props> = () => {
         />
       }
     >
-      <h4 className="w-full">
-        Detail-oriented professional and critical thinker with a flair for
-        creating elegant solutions in the least amount of time. Highly motivated
-        to use my skills and knowledge to bring value to your company.
-      </h4>
       <div className="flex flex-col gap-12">
         <h2 className="font-semibold  ">Experience</h2>
+
         {cv?.experience.map((exp, i) => {
           return (
             <ExperienceEntry

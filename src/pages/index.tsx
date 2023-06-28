@@ -16,7 +16,9 @@ import Scrolldown from '@/components/Scrolldown';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import Spinner from '@/components/Spinner';
+import TechStack from '@/components/TechStack';
 import { useAuth } from '@/context/hooks/useAuth';
+import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
@@ -25,7 +27,7 @@ import Role from '@/utils/roles';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  // const { projects, isLoading } = useProject();
+  const { projects, isLoading } = useProject();
   const { user } = useAuth();
   const handleContactClick = useScrollToElement();
 
@@ -46,10 +48,7 @@ export default function Home() {
         <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
           <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
             <div className="flex items-center gap-4 max-[840px]:flex-wrap max-[840px]:justify-center">
-              <AboutTechEntry techName={'react'} />
-              <AboutTechEntry techName={'typescript'} />
-
-              <AboutTechEntry techName={'tailwindcss'} />
+              <TechStack />
             </div>
             <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
               Transforming Visions <br />
@@ -62,9 +61,11 @@ export default function Home() {
 
             <div className="flex flex-col items-start gap-4 max-[840px]:items-center ">
               <p className="max-[840px]:text-center">
-                Discover a curated collection of meticulously crafted projects
-                that embody cutting-edge creativity, executed with precision and
-                adhering to industry best practices for exceptional quality.
+                As a detail-oriented and highly motivated front-end developer, I
+                possess a strong skill set in React, Next JS, Typescript, Redux,
+                and Tailwind CSS. I am currently focused on expanding my
+                knowledge in data structures and algorithms to further enhance
+                my capabilities.
               </p>
               <div className="flex gap-4">
                 <Link
@@ -188,17 +189,21 @@ export default function Home() {
 
                 <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
                   <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
+                    <div></div>
                     <div className="  flex flex-col gap-2  ">
                       <h3 className="futura-heavy uppercase  tracking-wider">
                         {project.fullProjectName}
                       </h3>
+
                       <p className="text-primary_t_2 dark:text-secondary_s_2">
                         {project.startDate} - {project.endDate}
                       </p>
-                      <p className="h-full font-normal tracking-wider line-clamp-3">
-                        {project.introduction}
+
+                      <p className="h-full font-light tracking-wider line-clamp-3">
+                        {project.desc}
                       </p>
                     </div>
+
                     <div className="flex items-center gap-6  tracking-widest">
                       <Link
                         href={`/project/${project.fullProjectName}`}

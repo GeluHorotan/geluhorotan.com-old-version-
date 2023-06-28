@@ -29,12 +29,12 @@ const ScrollToTop: FC = () => {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 z-50 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-full  bg-secondary_s text-primary transition-opacity duration-200 dark:bg-primary_t dark:text-secondary ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+      className={`fixed bottom-4 right-4 z-50 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-full  bg-secondary text-primary transition-opacity duration-200 dark:bg-primary dark:text-secondary ${
+        isVisible ? 'flex' : 'hidden'
       }`}
       onClick={scrollToTop}
     >
-      <MdOutlineKeyboardArrowUp size={32} />
+      <MdOutlineKeyboardArrowUp size={40} />
     </div>
   );
 };

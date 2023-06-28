@@ -8,25 +8,27 @@ import { TfiWorld } from 'react-icons/tfi';
 import ContactForm from '@/components/form/ContactForm';
 import ProfilePicture from '@/components/ProfilePicture';
 import Scrolldown from '@/components/Scrolldown';
+import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
-import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+import { technologyOptions } from '@/utils/comboboxOptions';
 
 type ProjectState = {
   githubUrl: string;
   linesOfCode: string;
-  introduction: string;
+  desc: string;
   startDate: string;
   endDate: string;
   fullProjectName: string;
   url: string;
   domain: string;
-  keyHighlights: string[];
-  conceptsCovered: string[];
+  keyHighlights: string;
+  conceptsCovered: string;
   technologies: {
     value: string;
     label: string;
+    img: string;
   }[];
   team: {
     profilePicture: string;
@@ -41,13 +43,14 @@ type ProjectState = {
 };
 
 const ProjectID = () => {
+  const { projects } = useProject();
   const [project, setProject] = useState<ProjectState | undefined>();
   const handleContactClick = useScrollToElement();
 
   const {
     fullProjectName,
     images,
-    introduction,
+    desc,
     url,
     githubUrl,
     linesOfCode,
@@ -153,7 +156,7 @@ const ProjectID = () => {
 
             <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
               DESCRIPTION
-              <p className="indent-8">{introduction}</p>
+              <p className="indent-8">{desc}</p>
             </div>
 
             <div className="flex flex-col gap-6 self-start rounded-xl  font-bold tracking-widest   text-primary dark:text-secondary ">
@@ -204,23 +207,19 @@ const ProjectID = () => {
               className="flex flex-col gap-6 self-start rounded-xl  font-bold  tracking-widest text-primary dark:text-secondary max-md:items-center max-md:self-center"
             >
               TECHNOLOGIES
-              <div className="flex items-center justify-center gap-4 ">
+              <div className="flex w-full flex-wrap items-center justify-start gap-6 max-md:justify-center">
                 {technologies.map((technology, i) => {
                   return (
                     <div
                       key={i}
-                      className="flex items-center justify-center gap-2"
+                      className="flex flex-col items-center justify-center gap-2 rounded-full "
                     >
                       <Image
-                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-original.svg`}
-                        width={24}
-                        height={24}
+                        src={technology.img}
+                        width={32}
+                        height={32}
                         alt={technology.label}
-                        onError={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${technology.value}/${technology.value}-plain.svg`;
-                        }}
-                        className="drop-shadow-lg dark:drop-shadow-none"
+                        className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none"
                       />
                       <p>{technology.label}</p>
                     </div>
@@ -234,12 +233,12 @@ const ProjectID = () => {
               className="flex flex-col  gap-6  self-start rounded-xl font-bold tracking-widest   text-primary dark:text-secondary max-md:items-center max-md:self-center"
             >
               CONTRIBUTORS
-              <div className="flex items-center justify-center gap-2 ">
+              <div className="flex items-center justify-center gap-20 ">
                 {team.map((member, i) => {
                   return (
                     <div
                       key={i}
-                      className=" flex  items-center justify-center gap-4 max-md:flex-col  "
+                      className=" flex  items-center justify-center gap-4  max-md:flex-col  "
                     >
                       <ProfilePicture
                         imageSrc={member.profilePicture}
@@ -260,30 +259,20 @@ const ProjectID = () => {
               className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
             >
               KEY HIGHLIGHTS
-              <ul className="flex list-inside list-disc  flex-col gap-4 font-light italic ">
-                {keyHighlights.map((highlight: string, i: Key) => {
-                  return (
-                    <li className="" key={i}>
-                      {highlight}
-                    </li>
-                  );
-                })}
-              </ul>
+              <ul
+                className="flex list-inside list-disc  flex-col gap-4 font-light italic "
+                dangerouslySetInnerHTML={{ __html: keyHighlights }}
+              ></ul>
             </div>
             <div
               id="conceptsCovered"
               className="flex w-full  flex-col gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
             >
               CONCEPTS COVERED
-              <ul className="flex list-inside list-disc  flex-col gap-4 font-light ">
-                {conceptsCovered.map((concept: string, i: Key) => {
-                  return (
-                    <li className="" key={i}>
-                      {concept}
-                    </li>
-                  );
-                })}
-              </ul>
+              <ul
+                className="flex list-inside list-disc  flex-col gap-4 font-light "
+                dangerouslySetInnerHTML={{ __html: conceptsCovered }}
+              ></ul>
             </div>
 
             <div className="w-full" id="contact">
