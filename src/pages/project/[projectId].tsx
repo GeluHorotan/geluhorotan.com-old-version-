@@ -1,3 +1,4 @@
+import { motion, useDomEvent } from 'framer-motion';
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -279,20 +280,23 @@ const ProjectID = () => {
 
             <div
               id="gallery"
-              className="grid w-full grid-cols-1 flex-col items-center justify-center   gap-6  self-start  font-bold tracking-widest text-primary dark:text-secondary"
+              className="grid w-full grid-cols-1 flex-col items-center justify-center gap-6 self-start   overflow-hidden    font-bold tracking-widest text-primary dark:text-secondary"
             >
               GALLERY
-              <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-12 ">
                 {images.gallery.map((image, i) => {
                   return (
-                    <Image
-                      src={image}
-                      key={i}
-                      alt={fullProjectName}
-                      width={1920}
-                      height={1080}
-                      className="w-full "
-                    />
+                    <div key={i} className="overflow-hidden">
+                      <Image
+                        src={image}
+                        key={i}
+                        alt={`${fullProjectName}'s Image ${i}`}
+                        width={1280}
+                        sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
+                        height={720}
+                        className="scale-100 duration-500 ease-in-out hover:scale-105"
+                      />
+                    </div>
                   );
                 })}
               </div>
