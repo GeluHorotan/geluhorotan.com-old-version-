@@ -1,14 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 export const useDimensions = (ref: {
   current: { offsetWidth: number; offsetHeight: number };
 }) => {
-  const dimensions = useRef({ width: 0, height: 0 });
+  const dimensionsRef = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
-    dimensions.current.width = ref.current.offsetWidth;
-    dimensions.current.height = ref.current.offsetHeight;
+    dimensionsRef.current.width = ref.current.offsetWidth;
+    dimensionsRef.current.height = ref.current.offsetHeight;
   }, []);
 
-  return dimensions.current;
+  const dimensions = useMemo(() => dimensionsRef.current, []);
+
+  return dimensions;
 };

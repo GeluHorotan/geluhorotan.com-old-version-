@@ -6,6 +6,7 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 import { useAuth } from '@/context/hooks/useAuth';
 import type { Theme } from '@/customHooks/useDarkMode';
 import useMediaQuery from '@/customHooks/useMediaQuery';
+import useScrollThreshold from '@/customHooks/useScrollThreshold';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 
 import DarkMode from './DarkMode';
@@ -20,10 +21,10 @@ interface NavProps {
 }
 
 const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { isScrolled } = useScrollThreshold(10);
   const { isAuthenticated, user, logout } = useAuth();
   const isMobile = useMediaQuery('(max-width: 1012px)');
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   const navItems = [
     { id: 0, name: 'ABOUT', to: '/about' },
@@ -48,23 +49,6 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
       },
     ],
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = 10; // Adjust this value to determine the scroll threshold
-
-      if (window.scrollY > threshold) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <>

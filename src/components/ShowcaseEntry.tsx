@@ -20,7 +20,7 @@ const ShowcaseEntry: FC<Props> = ({
   number,
   target,
 }) => {
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   return (
     <div className=" relative  flex  h-full flex-col items-start justify-center gap-6    text-primary dark:text-secondary ">

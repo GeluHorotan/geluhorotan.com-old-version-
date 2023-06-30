@@ -20,7 +20,7 @@ type FooterItemProps = {
 };
 
 const FooterItem: FC<FooterItemProps> = ({ children, to, target }) => {
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
   return (
     <Link
       href={to}

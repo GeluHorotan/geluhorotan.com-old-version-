@@ -43,7 +43,7 @@ type ProjectState = {
 const ProjectID = () => {
   const { projects } = useProject();
   const [project, setProject] = useState<ProjectState | undefined>();
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   const {
     fullProjectName,
@@ -115,7 +115,7 @@ const ProjectID = () => {
               src={images.header}
               alt={fullProjectName}
               fill={true}
-              priority
+              sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
               className="inset-0 block h-auto w-full object-contain object-center"
             />
             <Scrolldown className=" " />

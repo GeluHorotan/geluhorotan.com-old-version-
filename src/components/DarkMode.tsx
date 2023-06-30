@@ -12,13 +12,8 @@ interface DarkModeProps {
   isScrolled?: boolean;
 }
 
-const DarkMode: FC<DarkModeProps> = ({
-  theme,
-  setTheme,
-  reverseColor,
-  isScrolled,
-}) => {
-  const [isMounted] = useMount();
+const DarkMode: FC<DarkModeProps> = ({ theme, setTheme, reverseColor }) => {
+  const { isMounted } = useMount();
 
   if (isMounted) {
     return (

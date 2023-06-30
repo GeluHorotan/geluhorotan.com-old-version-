@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import { useAuth } from '@/context/hooks/useAuth';
+import useScrollThreshold from '@/customHooks/useScrollThreshold';
 import { cn } from '@/utils/cn';
 
 type Props = {
@@ -9,18 +10,18 @@ type Props = {
   imageSrc?: string;
   userFirstName?: string;
   className?: string;
-  isScrolled?: boolean;
 };
 
 const ProfilePicture = ({
   size,
   imageSrc,
-  isScrolled,
+
   userFirstName,
   className,
   ...props
 }: Props) => {
   const { user } = useAuth();
+  const { isScrolled } = useScrollThreshold(10);
 
   const dimensions: { [key: string]: number } = {
     small: 36,
@@ -34,7 +35,7 @@ const ProfilePicture = ({
   return (
     <Image
       width={isScrolled ? 24 : width}
-      height={isScrolled ? 24 : width}
+      height={isScrolled ? 24 : height}
       alt={`${
         !userFirstName ? user?.firstName : userFirstName
       }'s profile picture`}

@@ -10,12 +10,15 @@ const MockupIphone = () => {
     <svg
       id="Asset_4"
       data-name="Asset 4"
+      aria-labelledby={`mockupTitle mockupDesc`}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width={` ${isDesktop ? '400.04' : is1020 ? '200.04' : ''}`}
       height={` ${isDesktop ? '600.61' : is1020 ? '400.61' : ''}`}
       viewBox="0 0 213.04 429.61"
     >
+      <title id={`mockupTitle`}>Iphone mockup</title>
+      <desc id={`mockupDesc`}>Iphone mockup</desc>
       <defs>
         <clipPath id="clipPath">
           <path

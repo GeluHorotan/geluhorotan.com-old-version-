@@ -14,7 +14,7 @@ const TechStack: FC<Props> = ({ noText }) => {
           <Image
             src={`https://img.icons8.com/?size=512&id=123603&format=png`}
             fill={true}
-            alt={'react'}
+            alt={'React'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
         </div>
@@ -25,7 +25,7 @@ const TechStack: FC<Props> = ({ noText }) => {
           <Image
             src={`https://img.icons8.com/?size=512&id=jD-fJzVguBmw&format=png`}
             fill={true}
-            alt={'react'}
+            alt={'Redux'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
         </div>
@@ -36,7 +36,7 @@ const TechStack: FC<Props> = ({ noText }) => {
           <Image
             src={`https://img.icons8.com/?size=512&id=Xf1sHBmY73hA&format=png`}
             fill={true}
-            alt={'react'}
+            alt={'Typescript'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
         </div>
@@ -47,7 +47,7 @@ const TechStack: FC<Props> = ({ noText }) => {
           <Image
             src={`https://img.icons8.com/?size=512&id=4PiNHtUJVbLs&format=png`}
             fill={true}
-            alt={'react'}
+            alt={'Tailwind CSS'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
         </div>

@@ -26,7 +26,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { projects, isLoading } = useProject();
   const { user } = useAuth();
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   return (
     <Main
@@ -181,6 +181,7 @@ export default function Home() {
                     src={project.images.header}
                     width={512}
                     height={480}
+                    sizes="(max-width: 768) 25vw, (min-width: 769) 100vh"
                     className="h-full w-full object-cover p-2"
                     alt={`${project.fullProjectName}'s image`}
                   />

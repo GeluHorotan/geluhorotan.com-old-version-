@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 function useMediaQuery(query: string): boolean {
-  const getMatches = (query: string): boolean => {
-    // Prevents SSR issues
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches;
-    }
-    return false;
-  };
+  const getMatches = useMemo(() => {
+    return (query: string): boolean => {
+      // Prevents SSR issues
+      if (typeof window !== 'undefined') {
+        return window.matchMedia(query).matches;
+      }
+      return false;
+    };
+  }, []);
 
-  const [matches, setMatches] = useState<boolean>(getMatches(query));
+  const [matches, setMatches] = useState<boolean>(() => getMatches(query));
 
   function handleChange() {
     setMatches(getMatches(query));
@@ -35,7 +37,6 @@ function useMediaQuery(query: string): boolean {
         matchMedia.removeEventListener('change', handleChange);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return matches;

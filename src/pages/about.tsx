@@ -13,7 +13,7 @@ type Props = {
 };
 
 const About: NextPage<Props> = () => {
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   return (
     <TextTemplate

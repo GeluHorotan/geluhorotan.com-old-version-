@@ -11,6 +11,7 @@ import SidebarToggler from '@/components/SidebarToggler';
 import type { User } from '@/context/providers/AuthProvider';
 import type { Theme } from '@/customHooks/useDarkMode';
 import { useDimensions } from '@/customHooks/useDimensions';
+import useScrollThreshold from '@/customHooks/useScrollThreshold';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 
 import DarkMode from './DarkMode';
@@ -96,7 +97,7 @@ interface SidebarItemProps {
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({ name, to, toggle, target }) => {
-  const handleContactClick = useScrollToElement();
+  const { handleContactClick } = useScrollToElement();
 
   return (
     <motion.li
@@ -123,7 +124,7 @@ const Sidebar: FC<SidebarProps> = ({
   user,
   isAuthenticated,
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { isScrolled } = useScrollThreshold(10);
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -180,23 +181,6 @@ const Sidebar: FC<SidebarProps> = ({
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = 10; // Adjust this value to determine the scroll threshold
-
-      if (window.pageYOffset > threshold) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <motion.div
@@ -206,23 +190,14 @@ const Sidebar: FC<SidebarProps> = ({
           isScrolled ? ' bg-secondary py-3 dark:bg-primary ' : 'py-5'
         }  fixed inset-0 z-50 flex h-max items-center justify-between   px-20  max-md:px-4  `}
       >
-        <div className="flex items-center justify-center gap-3    ">
-          <SidebarToggler
-            toggle={() => toggleOpen()}
-            isOpen={isOpen}
-            theme={theme}
-            setTheme={setTheme}
-            isScrolled={isScrolled}
-          />
+        <SidebarToggler
+          toggle={() => toggleOpen()}
+          isOpen={isOpen}
+          theme={theme}
+          setTheme={setTheme}
+          isScrolled={isScrolled}
+        />
 
-          <div
-            className={`${
-              isScrolled ? 'text-base' : 'text-lg'
-            }  duration-250 font-medium text-accent transition-all ease-in-out dark:text-accent2`}
-          >
-            MENU
-          </div>
-        </div>
         <Link href="/">
           <Logo
             id={1}
@@ -244,11 +219,7 @@ const Sidebar: FC<SidebarProps> = ({
               reverseColor
             >
               <div className="flex  items-center justify-between gap-2 ">
-                <ProfilePicture
-                  size="small"
-                  className="rounded-lg"
-                  isScrolled={isScrolled}
-                />
+                <ProfilePicture size="small" className="rounded-lg" />
                 <HiOutlineChevronRight className="rotate-90 text-accent dark:text-accent2" />
               </div>
             </Dropdown>
@@ -279,7 +250,7 @@ const Sidebar: FC<SidebarProps> = ({
                   isScrolled={isScrolled}
                 />
               </motion.div>
-              <div className="flex flex-col gap-4">
+              <ul className="flex flex-col gap-4">
                 {navItems.map(
                   (
                     item: {
@@ -299,7 +270,7 @@ const Sidebar: FC<SidebarProps> = ({
                     />
                   )
                 )}
-              </div>
+              </ul>
               <div className="my-4 flex  flex-col  gap-4">
                 <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
                   <motion.li variants={ItemVariant} className="navigation-item">
@@ -313,7 +284,11 @@ const Sidebar: FC<SidebarProps> = ({
                 </ul>
               </div>
               <div className="flex items-center gap-2 text-accent dark:text-accent2">
-                <Link href="https://github.com/GeluHorotan" target={'_blank'}>
+                <Link
+                  href="https://github.com/GeluHorotan"
+                  target={'_blank'}
+                  aria-label="Github"
+                >
                   <motion.div variants={ItemVariant}>
                     <AiFillGithub size={20} />
                   </motion.div>
@@ -321,12 +296,17 @@ const Sidebar: FC<SidebarProps> = ({
                 <Link
                   href="https://www.linkedin.com/in/gelu-horotan/"
                   target={'_blank'}
+                  aria-label="LinkedIn"
                 >
                   <motion.div variants={ItemVariant}>
                     <TiSocialLinkedin size={24} />
                   </motion.div>
                 </Link>
-                <Link href="https://twitter.com/oxymoron365" target={'_blank'}>
+                <Link
+                  href="https://twitter.com/oxymoron365"
+                  target={'_blank'}
+                  aria-label="Twitter"
+                >
                   <motion.div variants={ItemVariant}>
                     <AiOutlineTwitter size={20} />
                   </motion.div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export type Theme = 'light' | 'dark';
 
@@ -13,6 +13,14 @@ const useDarkMode = (): [
     return 'light';
   });
 
+  const handleSetTheme: React.Dispatch<React.SetStateAction<Theme>> =
+    useCallback(
+      (newTheme) => {
+        setTheme(newTheme);
+      },
+      [setTheme]
+    );
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (theme === 'dark') {
@@ -25,7 +33,7 @@ const useDarkMode = (): [
     }
   }, [theme]);
 
-  return [theme, setTheme];
+  return [theme, handleSetTheme];
 };
 
 export default useDarkMode;

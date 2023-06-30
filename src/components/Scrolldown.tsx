@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
+import useScrollThreshold from '@/customHooks/useScrollThreshold';
 import { cn } from '@/utils/cn';
 
 type Props = {
@@ -10,24 +11,7 @@ type Props = {
 };
 
 const Scrolldown: FC<Props> = ({ className }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = 10; // Adjust this value to determine the scroll threshold
-
-      if (window.pageYOffset > threshold) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { isScrolled } = useScrollThreshold(10);
   return (
     <div
       className={cn(

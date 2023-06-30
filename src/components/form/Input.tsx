@@ -40,7 +40,7 @@ const Input = ({
   isRequired,
 }: Props) => {
   const controls = useAnimationControls();
-  const [isMounted] = useMount();
+  const { isMounted } = useMount();
 
   useEffect(() => {
     if (error) {

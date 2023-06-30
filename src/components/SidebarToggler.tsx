@@ -49,14 +49,19 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
     <button
       onClick={() => toggle()}
       className={`
-     cursor-pointer  rounded-full border-none    outline-none
+     flex h-max w-max cursor-pointer items-center justify-center gap-4 rounded-full border-none    outline-none
   `}
     >
       <svg
-        width={`${isScrolled ? '16' : '20'}`}
-        height={`${isScrolled ? '16' : '20'}`}
-        viewBox="0 0 23 23"
+        width={`${isScrolled ? '16' : '18'}`}
+        height={`${isScrolled ? '16' : '18'}`}
+        viewBox="0 0 20 20"
+        aria-labelledby={`togglerTitle togglerDesc`}
       >
+        <title id={`togglerTitle`}>Sidebar Toggler</title>
+        <desc id={`togglerDesc`}>
+          Sidebar toggler that opens / closes the sidebar
+        </desc>
         <Path
           variants={{
             closed: { d: 'M 2 2.5 L 20 2.5' },
@@ -81,6 +86,13 @@ const SidebarToggler: FC<SidebarTogglerProps> = ({
           className={`stroke-accent transition-colors duration-700 dark:stroke-accent2`}
         />
       </svg>
+      <div
+        className={`${
+          isScrolled ? 'text-base' : 'text-lg'
+        }  duration-250 font-medium text-accent transition-all ease-in-out dark:text-accent2`}
+      >
+        MENU
+      </div>
     </button>
   );
 };
