@@ -1,6 +1,5 @@
 import Image from 'next/dist/client/image';
 import Link from 'next/link';
-import type { Key } from 'react';
 import { useEffect, useState } from 'react';
 import { AiFillGithub } from 'react-icons/ai';
 import { TfiWorld } from 'react-icons/tfi';
@@ -12,7 +11,6 @@ import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
-import { technologyOptions } from '@/utils/comboboxOptions';
 
 type ProjectState = {
   githubUrl: string;

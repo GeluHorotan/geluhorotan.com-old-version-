@@ -57,7 +57,7 @@ const Login: NextPage<Props> = () => {
                 . It only takes a few moments!
               </p>
             </div>
-            <LoginForm className="rounded-b-3xl" />
+            <LoginForm />
           </div>
         </div>
       </section>

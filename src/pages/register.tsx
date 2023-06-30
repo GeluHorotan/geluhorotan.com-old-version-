@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 // Components
 import RegisterForm from '@/components/form/RegisterForm';
-import { useAuth } from '@/context/hooks/useAuth';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
@@ -45,7 +44,7 @@ const Register: NextPage<Props> = () => {
                 </Link>
               </p>
             </div>
-            <RegisterForm className="rounded-b-3xl" />
+            <RegisterForm />
           </div>
         </div>
       </section>

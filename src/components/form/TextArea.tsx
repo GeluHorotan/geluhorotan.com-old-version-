@@ -17,7 +17,6 @@ type Props = {
   id: string;
   labelColor?: string;
   label: string;
-  backgroundColor?: string;
   placeholder?: string;
   onChangeHandler: () => void;
   onBlurHandler: () => void;
@@ -34,7 +33,6 @@ const TextArea = ({
   id,
   label,
   placeholder,
-  backgroundColor,
   reverseTextColor,
   labelColor,
 }: Props) => {

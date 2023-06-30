@@ -3,7 +3,6 @@ import { Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { AiOutlineLock, AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { BiErrorCircle } from 'react-icons/bi';
 import { BsPencilSquare } from 'react-icons/bs';
 // Icons
@@ -22,16 +21,8 @@ import {
   TooltipTrigger,
 } from '../Tooltip';
 import Checkbox from './Checkbox';
-// Motion
-// import { AnimatePresence, motion, useAnimation } from 'framer-motion'
-// Components
 import Input from './Input';
 import InputCropImage from './InputCropImage';
-
-type Props = {
-  className?: string;
-  rounded?: boolean;
-};
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -95,7 +86,7 @@ const SignupSchema = Yup.object().shape({
     }),
 });
 
-const RegisterForm = ({ className, rounded }: Props) => {
+const RegisterForm = () => {
   const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
   const { register } = useAuth();
   const [passVisible, setPassVisible] = useState<boolean>(false);

@@ -6,11 +6,10 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/utils/cn';
 
 type Props = {
-  children?: React.ReactNode;
   className?: string;
 };
 
-const Scrolldown: FC<Props> = ({ children, className }) => {
+const Scrolldown: FC<Props> = ({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
   return (
     <div
       className={cn(
-        `fixed bottom-4 left-1/2 flex w-full -translate-x-1/2 transform flex-col items-center justify-center gap-4 transition-all duration-150   ${
+        `fixed bottom-4  left-32 flex w-max -translate-x-1/2 transform flex-col items-center justify-center gap-4 transition-all duration-150   ${
           isScrolled ? 'invisible opacity-0' : 'visible opacity-100'
         }`,
         className
@@ -65,25 +64,15 @@ const Scrolldown: FC<Props> = ({ children, className }) => {
           }}
           id="wheel"
           d="M123.359,79.775l0,72.843"
-          // style={{
-          //   fill: 'none',
-          //   stroke: '#fff',
-          //   strokeWidth: '15px',
-          // }}
           className="fill-none stroke-accent stroke-[25px] dark:stroke-accent2"
         />
         <path
           id="mouse"
           d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
-          // style={{
-          //   fill: 'none',
-          //   stroke: '#fff',
-          //   strokeWidth: '10px',
-          // }}
           className="fill-none stroke-accent stroke-[20px] dark:stroke-accent2"
         />
       </svg>
-      <p className="text-sm  tracking-wider">Scroll Down</p>
+      <p className="text-sm  tracking-wider dark:bg-primary ">Scroll Down</p>
     </div>
   );
 };

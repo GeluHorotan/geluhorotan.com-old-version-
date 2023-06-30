@@ -1,12 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next';
-import React, { useEffect } from 'react';
-import { scroller } from 'react-scroll';
+import React from 'react';
 
-import AboutEntry from '@/components/AboutEntry';
-import AboutTechEntry from '@/components/AboutTechEntry';
 import { Meta } from '@/layouts/Meta';
-import { Main } from '@/templates/Main';
 import { TextTemplate } from '@/templates/TextTemplate';
 
 type Props = {

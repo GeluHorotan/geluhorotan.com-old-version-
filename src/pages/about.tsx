@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React, { useEffect } from 'react';
 
 import AboutEntry from '@/components/AboutEntry';
-import AboutTechEntry from '@/components/AboutTechEntry';
 import TechStack from '@/components/TechStack';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';

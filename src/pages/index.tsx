@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineLayout } from 'react-icons/ai';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { MdDeveloperMode, MdSpeed } from 'react-icons/md';
 
-import AboutTechEntry from '@/components/AboutTechEntry';
 import Button from '@/components/Button';
 import ContactForm from '@/components/form/ContactForm';
 import ProjectForm from '@/components/form/ProjectForm';
@@ -20,7 +18,6 @@ import TechStack from '@/components/TechStack';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
-import projects from '@/data/projects.json';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import Role from '@/utils/roles';
@@ -168,63 +165,65 @@ export default function Home() {
             </ModalWrapper>
           </Button>
         )}
+        {isLoading && <Spinner size="medium"></Spinner>}
+        {projects && (
+          <div
+            id="projects"
+            className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 "
+          >
+            {projects?.map((project, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex h-full min-h-full w-full flex-col items-center justify-center gap-4    "
+                >
+                  <Image
+                    src={project.images.header}
+                    width={512}
+                    height={480}
+                    className="h-full w-full object-cover p-2"
+                    alt={`${project.fullProjectName}'s image`}
+                  />
 
-        <div
-          id="projects"
-          className=" grid h-max w-full grid-cols-2  gap-14 max-[900px]:grid-cols-1 "
-        >
-          {projects?.map((project, i) => {
-            return (
-              <div
-                key={i}
-                className="flex h-full min-h-full w-full flex-col items-center justify-center gap-4    "
-              >
-                <Image
-                  src={project.images.header}
-                  width={512}
-                  height={480}
-                  className="h-full w-full object-cover p-2"
-                  alt={`${project.fullProjectName}'s image`}
-                />
+                  <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
+                    <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
+                      <div></div>
+                      <div className="  flex flex-col gap-2  ">
+                        <h3 className="futura-heavy uppercase  tracking-wider">
+                          {project.fullProjectName}
+                        </h3>
 
-                <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
-                  <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
-                    <div></div>
-                    <div className="  flex flex-col gap-2  ">
-                      <h3 className="futura-heavy uppercase  tracking-wider">
-                        {project.fullProjectName}
-                      </h3>
+                        <p className="text-primary_t_2 dark:text-secondary_s_2">
+                          {project.startDate} - {project.endDate}
+                        </p>
 
-                      <p className="text-primary_t_2 dark:text-secondary_s_2">
-                        {project.startDate} - {project.endDate}
-                      </p>
+                        <p className="h-full font-light tracking-wider line-clamp-3">
+                          {project.desc}
+                        </p>
+                      </div>
 
-                      <p className="h-full font-light tracking-wider line-clamp-3">
-                        {project.desc}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-6  tracking-widest">
-                      <Link
-                        href={`/project/${project.fullProjectName}`}
-                        className="items-center justify-center rounded-xl bg-accent  px-3 py-1 text-secondary dark:bg-accent2 dark:text-primary"
-                      >
-                        LEARN MORE
-                      </Link>
-                      <Link
-                        href={project.url}
-                        target="_blank"
-                        className="flex items-center justify-center gap-2 rounded-xl border border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
-                      >
-                        <HiOutlineExternalLink size={16} /> VISIT
-                      </Link>
+                      <div className="flex items-center gap-6  tracking-widest">
+                        <Link
+                          href={`/project/${project.fullProjectName}`}
+                          className="items-center justify-center rounded-xl bg-accent  px-3 py-1 text-secondary dark:bg-accent2 dark:text-primary"
+                        >
+                          DETAILS
+                        </Link>
+                        <Link
+                          href={project.url}
+                          target="_blank"
+                          className="flex items-center justify-center gap-2 rounded-xl border border-accent px-3 py-1 text-primary dark:border-accent2 dark:text-secondary "
+                        >
+                          <HiOutlineExternalLink size={16} /> VISIT
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       <section

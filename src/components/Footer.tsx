@@ -51,6 +51,7 @@ const Footer: FC<Props> = ({ children }) => {
         <div className="self-center max-md:self-start">
           <Link href="/" className="">
             <Logo
+              id={3}
               size={64}
               className={'duration-250  transition-all ease-in-out '}
               primaryColor="fill-accent dark:fill-accent2"

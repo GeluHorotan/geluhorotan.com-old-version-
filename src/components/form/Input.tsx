@@ -1,6 +1,5 @@
 import { motion, useAnimationControls } from 'framer-motion';
-import type { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BiErrorCircle } from 'react-icons/bi';
 
 import {
@@ -9,7 +8,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/Tooltip';
-import useDarkMode from '@/customHooks/useDarkMode';
 import useMount from '@/customHooks/useMount';
 
 type Props = {

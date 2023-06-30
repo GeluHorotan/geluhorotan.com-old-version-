@@ -24,7 +24,6 @@ const Checkbox = ({
   id,
   label,
   labelColor,
-  isRequired,
 }: Props) => {
   const controls = useAnimationControls();
 

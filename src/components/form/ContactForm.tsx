@@ -4,7 +4,6 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import * as Yup from 'yup';
 
-import { useAuth } from '@//context/hooks/useAuth';
 import Button from '@/components/Button';
 // Components
 import Input from '@/components/form/Input';
@@ -15,8 +14,6 @@ import Checkbox from './Checkbox';
 import TextArea from './TextArea';
 
 type Props = {
-  className?: string;
-  rounded?: boolean;
   width?: string;
 };
 
@@ -48,7 +45,7 @@ const ContactSchema = Yup.object().shape({
   consent: Yup.boolean().oneOf([true], 'This field is required!'),
 });
 
-const ContactForm: FC<Props> = ({ className, rounded, width }) => {
+const ContactForm: FC<Props> = ({ width }) => {
   const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
   const { sendMessage } = useContact();
 

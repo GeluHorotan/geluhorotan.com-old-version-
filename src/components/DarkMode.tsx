@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { HiOutlineLightBulb, HiOutlineMoon } from 'react-icons/hi';
 
 import type { Theme } from '@/customHooks/useDarkMode';
-import useMediaQuery from '@/customHooks/useMediaQuery';
 import useMount from '@/customHooks/useMount';
 
 interface DarkModeProps {

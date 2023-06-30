@@ -5,18 +5,22 @@ type Props = {
   className?: string;
   primaryColor?: string;
   secondaryColor?: string;
+  id?: number;
 };
 
-const Logo = ({ size, className, primaryColor, secondaryColor }: Props) => {
+const Logo = ({ size, primaryColor, secondaryColor, id }: Props) => {
   return (
     <svg
-      id="Layer_1"
-      data-name="Layer 1"
+      role="img"
+      id="logo"
+      aria-labelledby={`logoTitle-${id} logoDesc${id}`}
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 358.687 414.16"
     >
+      <title id={`logoTitle-${id}`}>Logo</title>
+      <desc id={`logoDesc${id}`}>Gelu&apos;s Horotan Logo</desc>
       <g id="Group_1" data-name="Group 1">
         <path
           id="Path_2"

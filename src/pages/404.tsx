@@ -38,7 +38,7 @@ const NotFoundPage: NextPage<Props> = () => {
       }
     >
       <div className="flex h-screen flex-col items-center justify-center gap-14 px-20 text-primary dark:text-secondary max-md:px-4">
-        <Logo size={200} />
+        <Logo id={2} size={200} />
         <div className="flex flex-col items-center justify-center gap-4 ">
           <h1 className="  text-center font-bold ">Page Not Found</h1>
 

@@ -2,11 +2,7 @@ import { motion, useCycle } from 'framer-motion';
 import Link from 'next/dist/client/link';
 import type { FC, Key } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import {
-  AiFillGithub,
-  AiOutlineGithub,
-  AiOutlineTwitter,
-} from 'react-icons/ai';
+import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { BiCopyright } from 'react-icons/bi';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { TiSocialLinkedin } from 'react-icons/ti';
@@ -227,8 +223,9 @@ const Sidebar: FC<SidebarProps> = ({
             MENU
           </div>
         </div>
-        <Link href="/" className="">
+        <Link href="/">
           <Logo
+            id={1}
             size={isScrolled ? 32 : 40}
             className={'duration-250  transition-all ease-in-out '}
             primaryColor="fill-accent dark:fill-accent2"
@@ -270,7 +267,7 @@ const Sidebar: FC<SidebarProps> = ({
           className={`fixed bottom-0 z-40 flex h-screen   w-full items-start justify-center bg-secondary  px-20 py-40 dark:bg-primary max-md:px-4`}
           variants={sidebar}
         >
-          <motion.ul
+          <motion.div
             variants={SidebarVariant}
             className=" flex w-full flex-col items-start justify-center gap-8   "
           >
@@ -305,22 +302,14 @@ const Sidebar: FC<SidebarProps> = ({
               </div>
               <div className="my-4 flex  flex-col  gap-4">
                 <ul className="flex flex-col items-start gap-2  text-primary_s_2 underline dark:text-secondary_s_2">
-                  <Link href="privacy-policy">
-                    <motion.li
-                      variants={ItemVariant}
-                      className="navigation-item"
-                    >
-                      Privacy Policy
-                    </motion.li>
-                  </Link>
-                  <Link href="terms-and-conditions">
-                    <motion.li
-                      variants={ItemVariant}
-                      className="navigation-item"
-                    >
+                  <motion.li variants={ItemVariant} className="navigation-item">
+                    <Link href="privacy-policy">Privacy Policy</Link>
+                  </motion.li>
+                  <motion.li variants={ItemVariant} className="navigation-item">
+                    <Link href="terms-and-conditions">
                       Terms and Conditions
-                    </motion.li>
-                  </Link>
+                    </Link>
+                  </motion.li>
                 </ul>
               </div>
               <div className="flex items-center gap-2 text-accent dark:text-accent2">
@@ -352,7 +341,7 @@ const Sidebar: FC<SidebarProps> = ({
                 <p>All right reserved.</p>
               </motion.div>
             </div>
-          </motion.ul>
+          </motion.div>
         </motion.div>
       </motion.nav>
     </>

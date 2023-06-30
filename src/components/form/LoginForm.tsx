@@ -9,17 +9,12 @@ import Button from '@/components/Button';
 import Input from '@/components/form/Input';
 import useButtonCooldown from '@/context/hooks/useButtonCooldown';
 
-type Props = {
-  className?: string;
-  rounded?: boolean;
-};
-
 const LoginSchema = Yup.object().shape({
   email: Yup.string().trim().required('This field is required!'),
   password: Yup.string().trim().required('This field is required!'),
 });
 
-const LoginForm = ({ className, rounded }: Props) => {
+const LoginForm = () => {
   const { login } = useAuth();
   const [isButtonDisabled, handleClick] = useButtonCooldown(3000);
 
