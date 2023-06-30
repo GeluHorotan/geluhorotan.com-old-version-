@@ -13,9 +13,11 @@ const TechStack: FC<Props> = ({ noText }) => {
       <div className="flex items-center justify-center gap-2">
         <div className="relative flex h-8  w-8  ">
           <Image
+            priority
             src={`https://img.icons8.com/?size=512&id=123603&format=png`}
-            fill={true}
-            sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
+            width={32}
+            height={32}
+            sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
             alt={'React'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
@@ -25,10 +27,12 @@ const TechStack: FC<Props> = ({ noText }) => {
       <div className="flex items-center justify-center gap-2">
         <div className="relative flex h-8  w-8  ">
           <Image
+            priority
             src={`https://img.icons8.com/?size=512&id=jD-fJzVguBmw&format=png`}
-            fill={true}
+            width={32}
+            height={32}
+            sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
             alt={'Redux'}
-            sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
         </div>
@@ -37,9 +41,11 @@ const TechStack: FC<Props> = ({ noText }) => {
       <div className="flex items-center justify-center gap-2">
         <div className="relative flex h-8  w-8  ">
           <Image
+            priority
             src={`https://img.icons8.com/?size=512&id=Xf1sHBmY73hA&format=png`}
-            fill={true}
-            sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
+            width={32}
+            height={32}
+            sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
             alt={'Typescript'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />
@@ -49,9 +55,11 @@ const TechStack: FC<Props> = ({ noText }) => {
       <div className="flex items-center justify-center gap-2">
         <div className="relative flex h-8  w-8  ">
           <Image
+            priority
             src={`https://img.icons8.com/?size=512&id=4PiNHtUJVbLs&format=png`}
-            fill={true}
-            sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
+            width={32}
+            height={32}
+            sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
             alt={'Tailwind CSS'}
             className="inset-0  object-cover drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
           />

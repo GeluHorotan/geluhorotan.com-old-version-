@@ -39,6 +39,7 @@ const AboutEntry: FC<Props> = ({
     >
       <div className="relative h-screen w-[50vw] overflow-hidden  max-[850px]:h-[50vh] max-[850px]:w-full">
         <Image
+          priority
           src={imgSrc}
           alt={id}
           fill={true}

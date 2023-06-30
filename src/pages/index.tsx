@@ -10,7 +10,6 @@ import ContactForm from '@/components/form/ContactForm';
 import ProjectForm from '@/components/form/ProjectForm';
 import MockupIphone from '@/components/MockupIphone';
 import ModalWrapper from '@/components/ModalWrapper';
-import Scrolldown from '@/components/Scrolldown';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import Spinner from '@/components/Spinner';
@@ -91,7 +90,6 @@ export default function Home() {
 
           <MockupIphone />
         </div>
-        <Scrolldown />
       </section>
       <section className="container flex !h-max !min-h-max  items-center justify-center  p-20 max-md:px-4">
         <Showcase>
@@ -178,10 +176,11 @@ export default function Home() {
                   className="flex h-full min-h-full w-full flex-col items-center justify-center gap-4    "
                 >
                   <Image
+                    priority
                     src={project.images.header}
                     width={512}
                     height={480}
-                    sizes="(max-width: 768) 25vw, (min-width: 769) 100vh"
+                    sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
                     className="h-full w-full object-cover p-2"
                     alt={`${project.fullProjectName}'s image`}
                   />

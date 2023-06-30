@@ -7,7 +7,6 @@ import { TfiWorld } from 'react-icons/tfi';
 
 import ContactForm from '@/components/form/ContactForm';
 import ProfilePicture from '@/components/ProfilePicture';
-import Scrolldown from '@/components/Scrolldown';
 import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
@@ -119,7 +118,6 @@ const ProjectID = () => {
               sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
               className="inset-0 block h-auto w-full object-contain object-center"
             />
-            <Scrolldown className=" " />
           </div>
           <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
             <div className="flex flex-col items-center justify-center gap-2 ">
@@ -290,9 +288,10 @@ const ProjectID = () => {
                       <Image
                         src={image}
                         key={i}
+                        priority
                         alt={`${fullProjectName}'s Image ${i}`}
                         width={1280}
-                        sizes="(max-width: 768) 100vw, (min-width: 769) 50vw"
+                        sizes="(max-width: 768) 100vw, (min-width: 769) 25vw"
                         height={720}
                         className="scale-100 duration-500 ease-in-out hover:scale-105"
                       />
