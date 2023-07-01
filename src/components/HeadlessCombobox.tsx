@@ -8,6 +8,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 // Icons
 import { MdClose, MdTaskAlt } from 'react-icons/md';
 
+import GetTechIcon from './svgs/GetTechIcon';
 import {
   Tooltip,
   TooltipContent,
@@ -74,7 +75,7 @@ const HeadlessCombobox = ({
   const handleOnChange = (value: any[]) => {
     setFieldValue(name, value);
   };
-  console.log(fieldValue, 'fv');
+
   return (
     <TooltipProvider>
       <Tooltip>
@@ -125,50 +126,54 @@ const HeadlessCombobox = ({
                       Nothing found.
                     </div>
                   ) : (
-                    filteredOptions.map((option, index) => (
-                      <Combobox.Option
-                        key={index}
-                        className={({ active }) =>
-                          `relative cursor-default  select-none py-2 pl-10 pr-4 ${
-                            active ? 'bg-secondary_s_2 ' : ''
-                          }`
-                        }
-                        value={option}
-                      >
-                        {({ selected, active }) => (
-                          <div className="flex flex-row items-center gap-3">
-                            <span>{index + 1}.</span>
-                            <Image
-                              src={option.img}
-                              width={24}
-                              height={24}
-                              alt={option.label}
-                            />
+                    filteredOptions.map((option, index) => {
+                      return (
+                        <Combobox.Option
+                          key={index}
+                          className={({ active }) =>
+                            `relative cursor-default  select-none py-2 pl-10 pr-4 ${
+                              active ? 'bg-secondary_s_2 ' : ''
+                            }`
+                          }
+                          value={option}
+                        >
+                          {({ selected, active }) => (
+                            <div className="flex flex-row items-center gap-3">
+                              <span>{index + 1}.</span>
+                              {/* <Image
+                                src={option.img}
+                                width={24}
+                                height={24}
+                                alt={option.label}
+                              /> */}
 
-                            <span
-                              className={`block truncate ${
-                                selected ? 'font-medium' : 'font-normal'
-                              }`}
-                            >
-                              {option.label}
-                            </span>
+                              <GetTechIcon name={option.value} size={24} />
 
-                            {selected ? (
                               <span
-                                className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                  active ? 'text-white' : 'text-teal-600'
+                                className={`block truncate ${
+                                  selected ? 'font-medium' : 'font-normal'
                                 }`}
                               >
-                                <MdTaskAlt
-                                  className={'text-success'}
-                                  size={16}
-                                />
+                                {option.label}
                               </span>
-                            ) : null}
-                          </div>
-                        )}
-                      </Combobox.Option>
-                    ))
+
+                              {selected ? (
+                                <span
+                                  className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                    active ? 'text-white' : 'text-teal-600'
+                                  }`}
+                                >
+                                  <MdTaskAlt
+                                    className={'text-success'}
+                                    size={16}
+                                  />
+                                </span>
+                              ) : null}
+                            </div>
+                          )}
+                        </Combobox.Option>
+                      );
+                    })
                   )}
                 </Combobox.Options>
               </div>
@@ -190,13 +195,15 @@ const HeadlessCombobox = ({
                       className=" relative  flex   w-full  items-center justify-center  rounded-lg bg-secondary_s_2   "
                     >
                       <div className=" flex h-full w-full  items-center justify-center gap-2  p-2">
-                        <Image
+                        {/* <Image
                           src={sOption.img}
                           width={20}
                           height={20}
                           alt={sOption.label}
                           className=""
-                        />
+                        /> */}
+                        <GetTechIcon name={sOption.value} size={20} />
+
                         <p>{sOption.label}</p>
                       </div>
                       <MdClose

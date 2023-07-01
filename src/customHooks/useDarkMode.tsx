@@ -14,12 +14,9 @@ const useDarkMode = (): [
   });
 
   const handleSetTheme: React.Dispatch<React.SetStateAction<Theme>> =
-    useCallback(
-      (newTheme) => {
-        setTheme(newTheme);
-      },
-      [setTheme]
-    );
+    useCallback((newTheme) => {
+      setTheme(newTheme);
+    }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

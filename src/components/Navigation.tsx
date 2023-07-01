@@ -97,7 +97,7 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
                 <Dropdown data={dropdownData} secondLabel={user?.email}>
                   <div className="flex  items-center justify-between gap-6 ">
                     <div className="flex  items-center justify-between gap-3 ">
-                      <ProfilePicture size="small" />
+                      <ProfilePicture size="small" isScrolled={isScrolled} />
                       <span className="text-primary dark:text-secondary">
                         {user?.firstName}&nbsp;{user?.lastName}
                       </span>

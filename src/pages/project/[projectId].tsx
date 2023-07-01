@@ -7,6 +7,7 @@ import { TfiWorld } from 'react-icons/tfi';
 
 import ContactForm from '@/components/form/ContactForm';
 import ProfilePicture from '@/components/ProfilePicture';
+import GetTechIcon from '@/components/svgs/GetTechIcon';
 import { useProject } from '@/context/hooks/useProject';
 import useScrollToElement from '@/customHooks/useScrollToElement';
 import { Meta } from '@/layouts/Meta';
@@ -209,15 +210,16 @@ const ProjectID = () => {
                   return (
                     <div
                       key={i}
-                      className="flex flex-col items-center justify-center gap-2 rounded-full "
+                      className="flex flex-col items-center justify-center gap-2 rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none "
                     >
-                      <Image
+                      {/* <Image
                         src={technology.img}
                         width={32}
                         height={32}
                         alt={technology.label}
                         className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.2)] dark:drop-shadow-none"
-                      />
+                      /> */}
+                      <GetTechIcon name={technology.value} size={32} />
                       <p>{technology.label}</p>
                     </div>
                   );

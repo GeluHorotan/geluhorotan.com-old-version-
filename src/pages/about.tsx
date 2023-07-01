@@ -55,7 +55,7 @@ const About: NextPage<Props> = () => {
         </div>
         <div className="flex flex-col items-start justify-center gap-2  max-[1100px]:items-center">
           <div className=" flex w-full  items-start justify-center gap-6 max-[1100px]:flex-row max-[1100px]:flex-wrap">
-            <TechStack />
+            <TechStack breakpoint="max-md:justify-center" />
           </div>
         </div>
         <div className="flex w-full gap-4 max-md:justify-center ">

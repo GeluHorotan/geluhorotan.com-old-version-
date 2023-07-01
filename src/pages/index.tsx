@@ -41,14 +41,12 @@ export default function Home() {
           ' container mt-[4.25rem] flex flex-col  items-center justify-center  '
         }
       >
-        <div className="mb-[4rem] flex h-full w-full items-center justify-between max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
+        <div className="mb-[4rem] flex h-full w-full items-center justify-between  max-[840px]:mb-[0rem]   max-[840px]:flex-col-reverse max-[840px]:gap-14 ">
           <div className="flex   w-1/2 flex-col justify-center gap-6 max-[840px]:w-full max-[840px]:items-center  ">
-            <div className="flex items-center gap-4 max-[840px]:flex-wrap max-[840px]:justify-center">
-              <TechStack />
-            </div>
-            <h1 className="  text-primary dark:text-secondary max-[840px]:text-3xl ">
-              Transforming Visions <br />
-              into Pixel
+            <TechStack />
+            <div className="flex items-center gap-4 max-[840px]:flex-wrap max-[840px]:justify-center"></div>
+            <h1 className="  text-primary dark:text-secondary max-[1250px]:text-4xl max-[961px]:text-3xl ">
+              Transforming Visions <br /> into Pixel
               <span className="text-accent_s dark:text-accent2_s">
                 {' '}
                 Perfection
@@ -56,12 +54,18 @@ export default function Home() {
             </h1>
 
             <div className="flex flex-col items-start gap-4 max-[840px]:items-center ">
-              <p className="max-[840px]:text-center">
-                As a detail-oriented and highly motivated front-end developer, I
-                possess a strong skill set in React, Next JS, Typescript, Redux,
-                and Tailwind CSS. I am currently focused on expanding my
-                knowledge in data structures and algorithms to further enhance
-                my capabilities.
+              <p className="font-extralight tracking-widest max-[840px]:text-center">
+                As a detail-oriented and highly motivated frontend developer, I
+                possess a strong skill set in{' '}
+                <span className="font-semibold ">
+                  React, Next JS, Typescript, Redux, and Tailwind CSS.
+                </span>{' '}
+                <br />
+                <br />I am currently learning to build backend architecture
+                using:{' '}
+                <span className="font-semibold ">
+                  Node.js, Express.js, MongoDB, Mongoose, Docker, Socket.io.
+                </span>{' '}
               </p>
               <div className="flex gap-4">
                 <Link
