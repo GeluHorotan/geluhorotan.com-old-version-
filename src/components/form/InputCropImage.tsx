@@ -118,7 +118,7 @@ const InputCropImage = ({
       </span>
 
       {dataUrl && !error && (
-        <div className="relative my-7 mx-auto h-72 w-[500px] bg-primary ">
+        <div className="relative my-7 mx-auto h-72 w-[500px] bg-primary max-[616px]:w-full ">
           <Cropper
             image={dataUrl}
             crop={crop}
