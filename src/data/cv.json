@@ -2,82 +2,109 @@
   "experience": [
     {
       "title": "Gelu Horotan Personal Portfolio",
-      "role": "Full-stack developer",
+      "role": "Fullstack developer",
       "date": "Sept 2022 - present",
       "responsabilities": [
         {
-          "text": "Created a personal portfolio platform that showcases my skills and work examples as a frontend developer using React (Next JS), Typescript and Tailwind CSS."
+          "text": "Created a personal portfolio platform using React (Next.js), Typescript and Tailwind CSS."
         },
         {
-          "text": "Learned to develop custom hooks to provide reusable and efficient solutions for various situations."
+          "text": "Learned to develop custom hooks to provide reusable and efficient solutions."
         },
         {
-          "text": "Learned to develop a backend architecture, securing user authentication and role-based access control."
+          "text": "Learned to develop a backend architecture and to implement user authentication and role-based access control."
         },
         {
-          "text": "Enables efficient management and delivery of data, allowing me to update and showcase my latest projects and skills effortlessly."
+          "text": "Enables efficient management and delivery of data, allowing me to update and showcase my latest projects effortlessly."
         }
       ],
       "acquiredSkills": [
-        "React.js (Next.js), Typescript, Tailwind CSS, React Query (TanStack), Context API, Node.js (Express.js), Mongo DB, Mongoose, Socket.io, Docker, Github"
+        "Teamwork",
+        "Communication",
+        "Collaboration",
+        "Adaptability",
+        "Problem-solving"
       ],
       "githubURL": "https://github.com/GeluHorotan/geluhorotan.com"
     },
     {
       "title": "The Sinners - Dota 2 Web Application",
-      "role": "Front-end developer",
+      "role": "Frontend developer",
       "date": "Apr 2022 - Sept 2022",
       "responsabilities": [
         {
-          "text": "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and patch updates."
+          "text": "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and game updates."
         },
         {
           "text": "Acquired valuable knowledge and hands-on experience in working with APIs to fetch real-time match data and hero statistics."
+        },
+        {
+          "text": "Learned to incorporate serverless functions, such as Lambda functions."
         },
         {
           "text": "Significantly improved user engagement and satisfaction by providing a seamless and interactive Dota 2 experience."
         }
       ],
       "acquiredSkills": [
-        "React.js",
-        "Styled-Components (CSS)",
-        "Context API",
-        "Context API",
-        "React Query (TanStack)",
-        "Github"
+        " Critical Thinking",
+        "Creativity",
+        "Attention to Detail",
+        "Time Management",
+        "Analytical Thinking"
       ],
       "githubURL": "https://github.com/GeluHorotan/theSinners",
       "siteURL": "https://thesinners.netlify.app/"
+    },
+    {
+      "title": "Freelance",
+      "role": "Graphic Designer",
+      "date": "Apr 2019 - Feb 2022",
+      "responsabilities": [
+        {
+          "text": "Worked closely with the clients on a wide range of projects."
+        },
+        {
+          "text": "Learned the importance of actively listen to client's feedback."
+        },
+        {
+          "text": "By tailoring my designs to effectively communicate the clients' messages, I significantly increased client satisfaction."
+        }
+      ],
+      "acquiredSkills": [
+        "Customer Relations",
+        "Creativity",
+        "Customer Service",
+        "Client Collaboration",
+        "Flexibility"
+      ]
     }
   ],
   "education": [
     {
       "title": "Technical University of Cluj-Napoca",
-      "domain": "Faculty of Sciences - Management",
+      "location": "Baia Mare",
+      "domain": "B.Sc in Management",
       "date": "Oct 2020 - June 2023"
-    },
-    {
-      "title": "Cognizant Softvision",
-      "domain": "Software Testing Workshop - Fall 2019",
-      "date": "Oct 2019 - Dec 2019"
     }
   ],
-  "skills": {
-    "softSkills": [
-      "Problem-solving",
-      "Communication",
-      "Critical Thinking",
-      "Receptive",
-      "Time management and organization"
-    ],
-    "hardSkills": [
-      "React.js / Next.js",
-      "Typescript",
-      "Redux / Context API",
-      "Tailwind CSS",
-      "Node.js / Express.js"
-    ]
-  },
+  "technologicalSkills": [
+    "React",
+    "Next.js",
+    "Typescript",
+    "Redux",
+    "Tailwind CSS",
+    "React-Query (TanStack)",
+    "Context API",
+    "Styled-Components",
+    "Headless UI / Radix UI",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Docker",
+    "Socket.io"
+  ],
+
   "languages": [
     {
       "name": "Romanian",
@@ -85,7 +112,7 @@
     },
     {
       "name": "English",
-      "level": "C2"
+      "level": "Proeficient"
     }
   ]
 }

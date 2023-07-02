@@ -12,6 +12,7 @@ type ITextTemplateProps = {
   headerPadding?: boolean;
   bodyPadding?: boolean;
   bottomBodyPadding?: boolean;
+  width?: string;
 };
 
 const TextTemplate = ({
@@ -19,6 +20,7 @@ const TextTemplate = ({
   meta,
   pageTitle,
   headerPadding,
+  width,
   bodyPadding,
   bottomBodyPadding,
 }: ITextTemplateProps) => {
@@ -40,7 +42,7 @@ const TextTemplate = ({
         </h1>
         <div
           style={{ paddingBottom: bottomBodyPadding ? '5rem' : '0rem' }}
-          className={`flex h-1/2  flex-col gap-20   ${
+          className={`flex h-1/2  ${width || ''} flex-col  gap-20    ${
             !bodyPadding || 'px-20 max-md:px-4'
           } `}
         >
