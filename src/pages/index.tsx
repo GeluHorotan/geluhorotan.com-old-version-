@@ -56,13 +56,14 @@ export default function Home() {
             <div className="flex flex-col items-start gap-4 max-[840px]:items-center ">
               <p className="font-extralight tracking-widest max-[840px]:text-center">
                 Detail-oriented and highly motivated frontend developer with
-                expertise in
+                expertise in&nbsp;
                 <span className="font-semibold ">
                   React, Next JS, Typescript, Redux, and Tailwind CSS.
                 </span>{' '}
                 <br />
-                <br />I am dedicated to constantly expanding my technical skills
-                and knowledge by proactively learning new technologies such as
+                <br />I am dedicated to constantly expand my technical skills
+                and knowledge by proactively learning new technologies such
+                as&nbsp;
                 <span className="font-semibold ">
                   Node.js, Express.js, MongoDB, Mongoose, Docker, and Socket.io.
                 </span>{' '}

@@ -40,7 +40,7 @@ const CV: NextPage<Props> = () => {
                   <Disclosure key={i}>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="bg- flex w-full items-center justify-between rounded-lg bg-accent px-4 py-2 text-left text-sm font-medium text-secondary hover:bg-accent focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-accent2 dark:text-primary">
+                        <Disclosure.Button className=" flex w-full items-center justify-between rounded-lg bg-accent px-4 py-2 text-left text-sm font-medium text-secondary transition-all duration-200 ease-in-out hover:bg-accent_s_2 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-accent2 dark:text-primary hover:dark:bg-accent2_s_2">
                           <div className="flex flex-col">
                             <h6>{exp.role}</h6>
 
@@ -52,7 +52,7 @@ const CV: NextPage<Props> = () => {
                             } h-5 w-5 text-secondary transition-all duration-200 ease-in-out  dark:text-primary`}
                           />
                         </Disclosure.Button>
-                        <Disclosure.Panel className="flex  w-full flex-col gap-8 p-4 text-sm tracking-wide text-primary dark:text-secondary">
+                        <Disclosure.Panel className="flex w-full flex-col gap-8   p-4 text-sm tracking-wide text-primary dark:text-secondary">
                           <h6 className="font-normal">{exp.title}</h6>
 
                           <ul className="flex list-inside list-disc flex-col flex-wrap gap-4">
