@@ -20,7 +20,7 @@ Frontend:
 
 Backend:
 
-* Node JS (Express JS).
+* Node.js (Express.js).
 * Mongo DB.
 * Mongoose.
 * Socket.IO.
@@ -32,7 +32,7 @@ Live demo of the app available here: https://geluhorotan.com
 
 ## Concepts covered
 
-- React (Next JS) for building user interfaces (UI).
+- React (Next.js) for building user interfaces (UI).
 - Use of Typescript to help catch errors early and improves code reliability.
 - Conventional commit messages to provide clear and standardized information about code changes.
 - Use of custom hooks, providing reusable and efficient solutions for various situations.
