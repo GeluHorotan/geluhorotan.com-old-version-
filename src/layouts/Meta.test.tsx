@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 
 import { Meta } from './Meta';
 
-// Mock `next/head`: https://bradgarropy.com/blog/mocking-nextjs
 jest.mock(
   'next/head',
   () =>
@@ -15,10 +14,11 @@ jest.mock(
 
 describe('Meta component', () => {
   describe('Render method', () => {
-    it('should a page title', async () => {
+    it('should have a page title', async () => {
       const title = 'Random title';
+      const desc = 'Random description';
 
-      render(<Meta title={title} description="Random description" />);
+      render(<Meta title={title} description={desc} />);
 
       await waitFor(() => {
         expect(document.title).toEqual(title);

@@ -283,10 +283,10 @@ const ProjectID = () => {
               className="grid w-full grid-cols-1 flex-col items-center justify-center gap-6 self-start   overflow-hidden    font-bold tracking-widest text-primary dark:text-secondary"
             >
               GALLERY
-              <div className="flex flex-col gap-12 ">
+              <div className="flex w-full flex-col gap-12  ">
                 {images.gallery.map((image, i) => {
                   return (
-                    <div key={i} className="overflow-hidden">
+                    <div key={i} className="w-full overflow-hidden">
                       <Image
                         src={image}
                         key={i}
@@ -295,7 +295,7 @@ const ProjectID = () => {
                         width={1280}
                         sizes="(max-width: 768) 100vw, (min-width: 769) 25vw"
                         height={720}
-                        className="scale-100 duration-500 ease-in-out hover:scale-105"
+                        className="w-full scale-100 overflow-hidden duration-500 ease-in-out hover:scale-105"
                       />
                     </div>
                   );

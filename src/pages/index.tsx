@@ -150,6 +150,7 @@ export default function Home() {
         id="projects"
         className="container flex h-max w-full flex-col items-center justify-center gap-8   "
       >
+        <h3 className="self-start font-semibold tracking-widest">PROJECTS</h3>
         {user && user.role === Role.Admin && (
           <Button
             type="button"
