@@ -1,73 +1,48 @@
 {
   "experience": [
     {
-      "title": "Gelu Horotan Personal Portfolio",
-      "role": "Fullstack developer",
-      "date": "Sept 2022 - present",
+      "title": "Freelance",
+      "role": "Frontend Developer",
+      "date": "Apr 2022 - present",
       "responsabilities": [
         {
-          "text": "Created a personal portfolio platform using React (Next.js), Typescript and Tailwind CSS."
+          "text": "Built a booking system using React, Typescript, Redux and Tailwind CSS."
         },
         {
-          "text": "Learned to develop custom hooks to provide reusable and efficient solutions."
+          "text": "Implemented custom hooks to provide reusable and efficient solutions."
         },
         {
-          "text": "Learned to develop a backend architecture and to implement user authentication and role-based access control."
+          "text": "Developed a backend architecture and implemented user authentication as well as role-based access control."
         },
         {
-          "text": "Enables efficient management and delivery of data, allowing me to update and showcase my latest projects effortlessly."
+          "text": "Implemented serverless functions, such as Lambda functions."
+        },
+        {
+          "text": "Increased website performance and loading times due to optimization techniques such as lazy loading, resulting in reduced bounce rates and improved user engagement."
         }
       ],
       "acquiredSkills": [
-        "Teamwork",
+        "Attention To Detail,",
         "Communication",
         "Collaboration",
         "Adaptability",
         "Problem-solving"
-      ],
-      "githubURL": "https://github.com/GeluHorotan/geluhorotan.com"
+      ]
     },
-    {
-      "title": "The Sinners - Dota 2 Web Application",
-      "role": "Frontend developer",
-      "date": "Apr 2022 - Sept 2022",
-      "responsabilities": [
-        {
-          "text": "Implemented features such as displaying match data between Dota 2 teams, comprehensive hero information, blogs, news, and game updates."
-        },
-        {
-          "text": "Acquired valuable knowledge and hands-on experience in working with APIs to fetch real-time match data and hero statistics."
-        },
-        {
-          "text": "Learned to incorporate serverless functions, such as Lambda functions."
-        },
-        {
-          "text": "Significantly improved user engagement and satisfaction by providing a seamless and interactive Dota 2 experience."
-        }
-      ],
-      "acquiredSkills": [
-        " Critical Thinking",
-        "Creativity",
-        "Attention to Detail",
-        "Time Management",
-        "Analytical Thinking"
-      ],
-      "githubURL": "https://github.com/GeluHorotan/theSinners",
-      "siteURL": "https://thesinners.netlify.app/"
-    },
+
     {
       "title": "Freelance",
       "role": "Graphic Designer",
       "date": "Apr 2019 - Feb 2022",
       "responsabilities": [
         {
-          "text": "Worked closely with the clients on a wide range of projects."
+          "text": "Collaborated closely with diverse clients, addressing their needs and objectives effectively."
         },
         {
-          "text": "Learned the importance of actively listen to client's feedback."
+          "text": "Actively listened to client feedback, incorporating valuable insights into my design process."
         },
         {
-          "text": "By tailoring my designs to effectively communicate the clients' messages, I significantly increased client satisfaction."
+          "text": "Employed a client-centric approach, achieving higher client satisfaction through tailored designs."
         }
       ],
       "acquiredSkills": [

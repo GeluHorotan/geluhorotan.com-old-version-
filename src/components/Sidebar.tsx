@@ -228,9 +228,9 @@ const Sidebar: FC<SidebarProps> = ({
       </motion.div>
       <motion.nav
         custom={height}
+        ref={containerRef}
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
-        ref={containerRef}
         className={` fixed inset-0 z-40 flex  h-[4.25rem] w-full items-center  justify-between    
            `}
       >
