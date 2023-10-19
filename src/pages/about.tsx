@@ -32,17 +32,16 @@ const About: NextPage<Props> = () => {
             <p className="">
               {' '}
               Driven by curiosity and inspired by my best friend&apos;s
-              encouragement, I embarked on my coding journey in November 2021.
-              Despite initial doubts about my math skills, I discovered that
-              programming transcends traditional barriers.{' '}
+              encouragement, I embarked on my coding journey. Despite initial
+              doubts about my math skills, I discovered that programming
+              transcends traditional barriers.{' '}
             </p>
             <p>
               {' '}
               Starting with C and Python, I quickly grasped the fundamentals and
               drew upon my background in graphic design to excel in frontend
-              development. In February 2022, I immersed myself in HTML, CSS, and
-              React, harnessing my creativity to craft captivating user
-              interfaces.
+              development. I immersed myself in HTML, CSS, and React, harnessing
+              my creativity to craft captivating user interfaces.
             </p>
             <p>
               Determined to learn and grow, I ventured into freelancing,
