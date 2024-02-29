@@ -31,8 +31,6 @@ const ProjectForm: React.FC = () => {
       .max(20, 'The project name must not be longer than 20 characters!')
       .required('The project name is required!'),
     url: Yup.string().url().required('The url is required!'),
-    startDate: Yup.string().required('The start date is required!'),
-    endDate: Yup.string().required('The start date is required!'),
     linesOfCode: Yup.string()
       .required('The start date is required!')
       .min(
@@ -44,7 +42,6 @@ const ProjectForm: React.FC = () => {
         'The lines of code of the project should not be longer than 8 character.'
       ),
     githubUrl: Yup.string()
-      .required('The start date is required!')
       .min(
         1,
         'The lines of code of the project should be longer than 1 character.'
@@ -109,8 +106,7 @@ const ProjectForm: React.FC = () => {
           fullProjectName: '',
           url: '',
           githubUrl: '',
-          startDate: '',
-          endDate: '',
+
           linesOfCode: '',
           domain: '',
           desc: '',
@@ -128,9 +124,9 @@ const ProjectForm: React.FC = () => {
           fullProjectName,
           url,
           conceptsCovered,
-          startDate,
+
           githubUrl,
-          endDate,
+
           linesOfCode,
           domain,
           desc,
@@ -143,9 +139,9 @@ const ProjectForm: React.FC = () => {
             fullProjectName,
             url,
             conceptsCovered,
-            startDate,
+
             githubUrl,
-            endDate,
+
             linesOfCode,
             domain,
             desc,
@@ -163,8 +159,7 @@ const ProjectForm: React.FC = () => {
             githubUrl,
             conceptsCovered,
             linesOfCode,
-            startDate,
-            endDate,
+
             domain,
             desc,
             keyHighlights,
@@ -217,34 +212,6 @@ const ProjectForm: React.FC = () => {
                     reverseTextColor
                   />
 
-                  <div className="flex justify-between gap-20">
-                    <Field
-                      label="Start Date"
-                      id="startDate"
-                      name="startDate"
-                      onChangeHandler={handleChange}
-                      onBlurHandler={handleBlur}
-                      inputType="text"
-                      value={startDate}
-                      error={errors.startDate}
-                      as={Input}
-                      labelColor="text-primary"
-                      reverseTextColor
-                    />
-                    <Field
-                      label="End Date"
-                      id="End Date"
-                      name="endDate"
-                      onChangeHandler={handleChange}
-                      onBlurHandler={handleBlur}
-                      inputType="text"
-                      value={endDate}
-                      error={errors.endDate}
-                      as={Input}
-                      labelColor="text-primary"
-                      reverseTextColor
-                    />
-                  </div>
                   <Field
                     label="Lines of Code"
                     id="linesOfCode"

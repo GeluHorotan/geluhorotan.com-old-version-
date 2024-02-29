@@ -15,9 +15,8 @@ type User = {
 export type ProjectDetails = {
   fullProjectName: string;
   url: string;
-  startDate: string;
-  endDate: string;
-  githubUrl: string;
+
+  githubUrl?: string;
   linesOfCode: string;
   domain: string;
   desc: string;
@@ -60,9 +59,7 @@ type Projects = {
   _id: string;
   domain: string;
   linesOfCode: string;
-  githubUrl: string;
-  startDate: string;
-  endDate: string;
+  githubUrl?: string;
   url: string;
   fullProjectName: string;
   desc: string;
@@ -108,9 +105,7 @@ export const ProjectProvider = ({ children }: Props) => {
   const addProject = async ({
     fullProjectName,
     githubUrl,
-    startDate,
     linesOfCode,
-    endDate,
     domain,
     desc,
     keyHighlights,
@@ -124,9 +119,7 @@ export const ProjectProvider = ({ children }: Props) => {
     const body = JSON.stringify({
       fullProjectName,
       domain,
-      startDate,
       githubUrl,
-      endDate,
       conceptsCovered,
       linesOfCode,
       desc,

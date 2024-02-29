@@ -14,11 +14,10 @@ import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 
 type ProjectState = {
-  githubUrl: string;
+  githubUrl?: string;
   linesOfCode: string;
   desc: string;
-  startDate: string;
-  endDate: string;
+
   fullProjectName: string;
   url: string;
   domain: string;
@@ -58,8 +57,6 @@ const ProjectID = () => {
     team,
     keyHighlights,
     conceptsCovered,
-    startDate,
-    endDate,
   } = project ?? {};
 
   const getProjectName = () => {
@@ -120,12 +117,10 @@ const ProjectID = () => {
               className="inset-0 block h-auto w-full object-contain object-center"
             />
           </div>
-          <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20   py-6 max-lg:w-full">
-            <div className="flex flex-col items-center justify-center gap-2 ">
+          <div className="mx-auto flex h-full w-4/5 flex-col items-center justify-center gap-20  py-6 max-lg:w-full">
+            <div className="flex flex-col items-center justify-center gap-2  ">
               <h1 className="futura-heavy text-center">{fullProjectName}</h1>
-              <p className="text-primary_t_2 dark:text-secondary_s_2">
-                {startDate} - {endDate}
-              </p>
+
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
                 <Link href={githubUrl} target="_blank">
                   <AiFillGithub

@@ -193,15 +193,10 @@ export default function Home() {
 
                   <div className="flex h-full w-full flex-row items-start justify-center   p-2 text-primary dark:text-secondary">
                     <div className="center  flex  h-full w-full flex-col justify-between gap-6 ">
-                      <div></div>
                       <div className="  flex flex-col gap-2  ">
                         <h3 className="futura-heavy uppercase  tracking-wider">
                           {project.fullProjectName}
                         </h3>
-
-                        <p className="text-primary_t_2 dark:text-secondary_s_2">
-                          {project.startDate} - {project.endDate}
-                        </p>
 
                         <p className="h-full font-light tracking-wider line-clamp-3">
                           {project.desc}
