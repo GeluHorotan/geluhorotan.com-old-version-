@@ -67,8 +67,47 @@ export const technologyOptions = [
   {
     value: 'redux',
     label: 'Redux',
-
     id: 12,
+  },
+  {
+    value: 'rq',
+    label: 'React Query',
+    id: 13,
+  },
+  {
+    value: 'graphql',
+    label: 'GraphQL',
+    id: 14,
+  },
+  {
+    value: 'aws',
+    label: 'AWS',
+    id: 15,
+  },
+  {
+    value: 'aws',
+    label: 'AWS S3',
+    id: 16,
+  },
+  {
+    value: 'storybook',
+    label: 'Storybook',
+    id: 17,
+  },
+  {
+    value: 'vercel',
+    label: 'Vercel',
+    id: 18,
+  },
+  {
+    value: 'directus',
+    label: 'Directus',
+    id: 19,
+  },
+  {
+    value: 'postgresql',
+    label: 'PostgreSQL',
+    id: 20,
   },
 ];
 

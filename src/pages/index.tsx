@@ -13,6 +13,7 @@ import ModalWrapper from '@/components/ModalWrapper';
 import Showcase from '@/components/Showcase';
 import ShowcaseEntry from '@/components/ShowcaseEntry';
 import Spinner from '@/components/Spinner';
+import GetTechIcon from '@/components/svgs/GetTechIcon';
 import TechStack from '@/components/TechStack';
 import { useAuth } from '@/context/hooks/useAuth';
 import { useProject } from '@/context/hooks/useProject';
