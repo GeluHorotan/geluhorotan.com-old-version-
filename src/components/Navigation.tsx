@@ -29,9 +29,8 @@ const Navigation: FC<NavProps> = ({ theme, setTheme }) => {
   const navItems = [
     { id: 0, name: 'ABOUT', to: '/about' },
     { id: 1, name: 'PROJECTS', to: '/', target: 'projects' },
-    { id: 2, name: 'CV', to: '/cv' },
     {
-      id: 3,
+      id: 2,
       name: 'CONTACT',
       to: '/',
       target: 'contact',

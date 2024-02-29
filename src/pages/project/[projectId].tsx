@@ -122,12 +122,14 @@ const ProjectID = () => {
               <h1 className="futura-heavy text-center">{fullProjectName}</h1>
 
               <div className="flex items-center justify-center gap-4 text-accent dark:text-accent2 ">
-                <Link href={githubUrl} target="_blank">
-                  <AiFillGithub
-                    size={28}
-                    className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
-                  />
-                </Link>
+                {githubUrl && (
+                  <Link href={githubUrl} target="_blank">
+                    <AiFillGithub
+                      size={28}
+                      className="cursor-pointer drop-shadow-lg transition-transform duration-150 ease-in-out hover:scale-110 dark:drop-shadow-none"
+                    />
+                  </Link>
+                )}
                 <Link href={url} target="_blank">
                   <TfiWorld
                     size={24}
