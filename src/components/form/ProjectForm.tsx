@@ -89,7 +89,7 @@ const ProjectForm: React.FC = () => {
       .required('The description is required!'),
     technologies: Yup.array()
       .min(2, 'The tech stack must contain more technologies!')
-      .max(5, 'The tech stack must contain less technologies!')
+      .max(20, 'The tech stack must contain less technologies!')
       .required('The tech stack is required!'),
     team: Yup.array()
       .min(1, 'The team must be made from more than one developer!')

@@ -185,10 +185,10 @@ export default function Home() {
                   <Image
                     priority
                     src={project.images.header}
-                    width={512}
-                    height={480}
-                    sizes="(max-width: 768) 25vw, (min-width: 769) 100vw"
-                    className="h-full w-full object-cover p-2"
+                    width={1920}
+                    height={1080}
+                    quality={100}
+                    className="aspect-[16/9] h-full w-full object-cover p-2"
                     alt={`${project.fullProjectName}'s image`}
                   />
 
