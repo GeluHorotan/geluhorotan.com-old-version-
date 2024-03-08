@@ -188,7 +188,7 @@ export default function Home() {
                     width={1920}
                     height={1080}
                     quality={100}
-                    className="aspect-[16/9] h-full w-full object-cover p-2"
+                    className="aspect-[16/9] h-full w-full object-contain p-2"
                     alt={`${project.fullProjectName}'s image`}
                   />
 
